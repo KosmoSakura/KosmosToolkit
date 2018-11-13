@@ -4,7 +4,7 @@ import cos.mos.library.init.KFragment;
 import cos.mos.library.retrofit.HostWrapper;
 
 /**
- * @Description: <p>
+ * @Description: base
  * @Author: Kosmos
  * @Date: 2018年08月02日 15:01
  * @Email: KosmoSakura@gmail.com

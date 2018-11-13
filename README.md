@@ -5,7 +5,7 @@
 
 ---
 #### 其中：
-`ULog`:是基于[lankj](https://github.com/Blankj)的工具封装
+`ULog`:是基于[Blankj](https://github.com/Blankj/AndroidUtilCode)的工具封装
 
 `UToast`:是基于鸿洋[ToastUtils](https://github.com/getActivity/ToastUtils)封装
 

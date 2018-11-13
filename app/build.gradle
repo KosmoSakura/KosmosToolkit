@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+greendao {
+    schemaVersion 1 //版本号,升级时叠加
+    daoPackage 'cos.mos.antivirus.dao.gen'//包名
+    targetGenDir 'src/main/java'//生成文件路径
+}
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "cos.mos.utils"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true //开启：MultiDexApplication
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true //是否开启混淆配置
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //Zipalign优化
+            zipAlignEnabled true
+            //资源压缩, 移除无用的resource文件，默认开启，用以减小应用体积，移除未被使用的类和成员，
+            // 并且会在优化动作执行之后再次执行（因为优化后可能会再次暴露一些未被使用的类和成员）
+            shrinkResources true
+            //前一部分代表系统默认的android程序的混淆文件，该文件已经包含了基本的混淆声明，后一个文件是自己的定义混淆文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+        disable 'MissingTranslation'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'me.jessyan:autosize:0.9.1'//屏幕适配
+    implementation 'org.greenrobot:greendao:3.2.2'//数据库
+    implementation 'org.greenrobot:greendao-generator:3.2.2' //数据库工具类
+//    implementation 'com.ruffian.library:RWidgetHelper:1.0.2'//drawable图库
+//    implementation project(':kosmoslibrary')
+}

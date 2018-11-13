@@ -47,5 +47,5 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.2.2'//数据库
     implementation 'org.greenrobot:greendao-generator:3.2.2' //数据库工具类
 //    implementation 'com.ruffian.library:RWidgetHelper:1.0.2'//drawable图库
-//    implementation project(':kosmoslibrary')
+    implementation project(':kosmoslibrary')
 }

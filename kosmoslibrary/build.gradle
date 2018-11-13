@@ -29,7 +29,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation 'com.google.android.material:material:1.1.0-alpha01'
     api 'androidx.multidex:multidex:2.0.0'
     api 'androidx.appcompat:appcompat:1.0.2'
     //Rx

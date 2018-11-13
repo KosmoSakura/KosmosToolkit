@@ -28,11 +28,11 @@ public class App extends KApp {
 
     @Override
     protected String defaultSP() {
-        return "wallpaper";
+        return "Kosmos";
     }
 
     @Override
     protected String baseUrl() {
-        return "https://api.qv92.com/wp/";
+        return "-----";
     }
 }

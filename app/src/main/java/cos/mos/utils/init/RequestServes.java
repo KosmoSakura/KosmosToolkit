@@ -10,6 +10,9 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 
+/**
+ * eg
+ */
 public interface RequestServes {
     //分类接口
     @GET("category")

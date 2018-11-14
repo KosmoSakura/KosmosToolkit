@@ -1,4 +1,4 @@
-package cos.mos.library.retrofit;
+package cos.mos.utils.init;
 
 
 import java.io.File;

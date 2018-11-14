@@ -4,7 +4,7 @@ package cos.mos.utils.init;
 import cos.mos.library.init.KApp;
 
 /**
- * @Description: <p>
+ * @Description: <p> Flatten Package Abbreviate qualified
  * @Author: Kosmos
  * @Date: 2018.11.12 15:44
  * @Email: KosmoSakura@gmail.com

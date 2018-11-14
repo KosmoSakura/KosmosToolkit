@@ -9,7 +9,7 @@ import java.io.OutputStream;
 
 import cos.mos.library.Utils.ULog;
 import cos.mos.library.constant.KConfig;
-import cos.mos.library.retrofit.connector.HttpMsgListener;
+import cos.mos.utils.mvp.HttpMsgListener;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

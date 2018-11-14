@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KosmosUtils</string>
+    <string name="download_into" formatted="false">Successfully download under %1$s of SD card</string>
 </resources>

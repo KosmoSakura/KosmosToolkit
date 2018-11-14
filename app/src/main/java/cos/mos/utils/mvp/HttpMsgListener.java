@@ -1,4 +1,4 @@
-package cos.mos.library.retrofit.connector;
+package cos.mos.utils.mvp;
 
 import io.reactivex.disposables.Disposable;
 

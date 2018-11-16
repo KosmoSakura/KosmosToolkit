@@ -1,35 +1,5 @@
-#          .======.
-#          | INRI |
-#          |      |
-#   耶稣保佑|      |程序不崩
-# .========'      '========.
-# |   _      xxxx      _   |
-# |  /_;-.__ / _\  _.-;_\  |
-# |     `-._`'`_/'`.-'     |
-# '========.`\   /`========'
-#          | |  / |
-#          |/-.(  |
-#          |\_._\ |
-#          | \ \`;|
-#          |  > |/|
-#          | / // |
-#          | |//  |
-#          | \(\  |
-#          |  ``  |
-#          |      |
-#          |      |
-# \\    _\\| \//  |//_   _ \// _
-# ^ `^`^ ^`` `^ ^` ``^^`  `^^` `^ `^
-
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
-
-# 如果您的项目使用带有JS的WebView，请取消注释以下内容
-# 并为JavaScript接口指定完全限定的类名
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
 
 # 取消注释以保留用于调试堆栈跟踪的行号信息。
 #-keepattributes SourceFile,LineNumberTable
@@ -47,17 +17,17 @@
 #预校验
 -dontpreverify
 #混淆时是否记录日志
--verbose
+#-verbose
 #忽略警告
 -ignorewarning
 #apk 包内所有 class 的内部结构
--dump proguard/class_files.txt
+#-dump proguard/class_files.txt
 #未混淆的类和成员
--printseeds proguard/seeds.txt
+#-printseeds proguard/seeds.txt
 #列出从 apk 中删除的代码
--printusage proguard/unused.txt
+#-printusage proguard/unused.txt
 #混淆前后的映射
--printmapping proguardMapping.txt
+#-printmapping proguardMapping.txt
 # 混淆时所采用的算法
 -optimizations !code/simplification/cast,!field/*,!class/merging/*
 #保护注解
@@ -67,7 +37,6 @@
 -keepattributes SourceFile,LineNumberTable
 
 #2.默认保留区 保持哪些类不被混淆
--keep public class cos.mos.antivirus.init.App
 -keep public class * extends android.app.Fragment
 -keep public class * extends android.support.v4.app.Fragment
 -keep public class * extends android.app.Activity
@@ -84,12 +53,10 @@
 
 #如果有引用v4包可以添加下面这行
 #-keep class android.support.** {*;}
+-keep class androidx.** { *; }
 -keep class android.support.v4.** { *; }
 -keep class android.support.v7.** { *; }
-#保持 native 方法不被混淆
-#-keepclasseswithmembernames class * {
-#    native <methods>;
-#}
+
 #保持自定义控件类不被混淆
 -keepclassmembers class * extends android.app.Activity{
     public void *(android.view.View);
@@ -156,8 +123,8 @@
 
 #---------定制化区域----------------------------------------------
 #--1.实体类---------------------------------
--keep class cos.mos.antivirus.dao.**{*;}
--keep class cos.mos.antivirus.widget.{*;}
+#实体类一定不能混淆
+-keep public class cos.mos.utils.mvp.bean.**{*;}
 
 #（可选）避免Log打印输出
 -assumenosideeffects class android.util.Log {
@@ -196,23 +163,37 @@
 -keepclasseswithmembernames class * {
    @butterknife.* <methods>;
 }
-
+# --------------------------------glide------------------------------------
+-dontwarn com.bumptech.glide.**
+-keep class com.bumptech.glide.**{*;}
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+    **[] $VALUES;
+    public *;
+}
+#glide如果你的API级别<=Android API 27 则需要添加
+-dontwarn com.bumptech.glide.load.resource.bitmap.VideoDecoder
+# for DexGuard only
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+ # 从glide4.0开始，GifDrawable没有提供getDecoder()方法，
+ # 需要通过反射获取gifDecoder字段值，所以需要保持GifFrameLoader和GifState类不被混淆
+ -keep class com.bumptech.glide.load.resource.gif.GifDrawable$GifState{*;}
+ -keep class com.bumptech.glide.load.resource.gif.GifFrameLoader {*;}
+ -keep public class * implements com.bumptech.glide.module.GlideModule
+ -keep public class * extends com.bumptech.glide.module.AppGlideModule
+ -keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+   **[] $VALUES;
+   public *;
+ }
 # --------------------------------Gson------------------------------------
 # Gson specific classes
--keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.stream.** { *; }
+-keepattributes EnclosingMethod
+-keep class sun.misc.Unsafe { *; }
 # Application classes that will be serialized/deserialized over Gson
 -keep class com.google.gson.examples.android.model.** { *; }
 -keep class com.google.gson.** { *;}
-#--------------------------------Glide------------------------------------
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
-# for DexGuard only
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 #---------------------------------greendao----------------------------------
 -keep class org.greenrobot.greendao.**{*;}
 -keep public interface org.greenrobot.greendao.**
@@ -227,20 +208,41 @@ public static java.lang.String TABLENAME;
 #-------------------------------zxing------------------------------
 -dontwarn com.google.zxing.**
 -keep  class com.google.zxing.**{*;}
-#------------------------------okhttp-----------------------------
--dontwarn com.squareup.okhttp3.**
--keep class com.squareup.okhttp3.** { *;}
--keep class okhttp3.** { *; }
+#------------------------------Retrofit2  -----------------------------
+-dontwarn javax.annotation.**
+-dontwarn javax.inject.**
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+#------------------------------OkHttp3-----------------------------
+-dontwarn okhttp3.logging.**
+-keep class okhttp3.internal.**{*;}
 -dontwarn okio.**
--dontwarn com.google.common.cache.**
--dontwarn java.nio.file.**
+#------------------------------RxJava RxAndroid-----------------------------
 -dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+    long producerIndex;
+    long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
 #------------------------------其他小东西-----------------------------
 -keep class java.nio.file.** { *; }
 -keep class sun.misc.** { *; }
-#-------------------------------------------------------------------------
 #---------------------------------3.与js互相调用的类------------------------
-#暂无
+# 如果您的项目使用带有JS的WebView，请取消注释以下内容
+# 并为JavaScript接口指定完全限定的类名
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
 #-------------------------------------------------------------------------
+#保持 native 方法不被混淆
+#-keepclasseswithmembernames class * {
+#    native <methods>;
+#}
 #---------------------------------4.反射相关的类和方法-----------------------
 #暂无

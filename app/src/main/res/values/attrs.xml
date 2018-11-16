@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--侧滑删除-->
+    <declare-styleable name="EasySwipeMenuLayout">
+        <attr name="leftMenuView" format="reference"/>
+        <attr name="rightMenuView" format="reference"/>
+        <attr name="contentView" format="reference"/>
+        <attr name="canRightSwipe" format="boolean"/>
+        <attr name="canLeftSwipe" format="boolean"/>
+        <attr name="fraction" format="float"/>
+    </declare-styleable>
+</resources>

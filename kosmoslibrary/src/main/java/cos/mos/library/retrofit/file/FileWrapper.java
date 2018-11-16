@@ -23,7 +23,6 @@ public class FileWrapper {
         });
         mRetrofit = new Retrofit.Builder()
             .baseUrl(KConfig.getBaseUrl())
-//            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(clientBuilder.build())

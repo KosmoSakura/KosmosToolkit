@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 
 /**
  * @Description: <p>
@@ -19,7 +18,7 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class KFragment extends Fragment {
     protected Context context;
-    private CompositeDisposable compositeDisposable;
+    protected CompositeDisposable compositeDisposable;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,13 +34,6 @@ public abstract class KFragment extends Fragment {
         return contentView;
     }
 
-
-    protected void rxEvent(Disposable disposable) {
-        if (compositeDisposable == null) {
-            compositeDisposable = new CompositeDisposable();
-        }
-        compositeDisposable.add(disposable);
-    }
 
     /**
      * @return 返回布局

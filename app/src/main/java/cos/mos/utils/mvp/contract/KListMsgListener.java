@@ -1,4 +1,6 @@
-package cos.mos.library.retrofit.connector;
+package cos.mos.utils.mvp.contract;
+
+import java.util.List;
 
 import io.reactivex.disposables.Disposable;
 
@@ -8,23 +10,19 @@ import io.reactivex.disposables.Disposable;
  * @Date: 2018年10月17日 21:31
  * @Email: KosmoSakura@gmail.com
  */
-public abstract class HttpMsgListener<T> {
+public abstract class KListMsgListener<T> {
     /**
-     * @param dto 返回实体类
      * @apiNote 实体类永远不会为空
      */
-    public abstract void onSuccess(T dto);
+    public abstract void onSuccess(List<T> list);
 
-    public void onSubscribe(Disposable disposable) {
-    }
+    public abstract void onSubscribe(Disposable disposable);
 
     /**
      * @param describe 错误描述
      * @apiNote 错误描述永远不会为空
      */
-    public void onError(String describe) {
-
-    }
+    public abstract void onError(String describe);
 
     /**
      * @apiNote 所有请求结束，选择实现，控制流程用(关闭进度条等）

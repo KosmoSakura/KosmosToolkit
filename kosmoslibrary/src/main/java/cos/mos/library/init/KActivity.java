@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 
 /**
  * @Description: <p>
@@ -16,8 +15,7 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class KActivity extends AppCompatActivity {
     protected Context context;
-    private CompositeDisposable compositeDisposable;
-
+    protected CompositeDisposable compositeDisposable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,12 +44,6 @@ public abstract class KActivity extends AppCompatActivity {
      */
     protected abstract void logic();
 
-    protected void rxEvent(Disposable disposable) {
-        if (compositeDisposable == null) {
-            compositeDisposable = new CompositeDisposable();
-        }
-        compositeDisposable.add(disposable);
-    }
 
     @Override
     protected void onDestroy() {

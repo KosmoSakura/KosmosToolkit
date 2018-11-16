@@ -54,7 +54,6 @@ public final class FileResponseBody extends ResponseBody {
     }
 
     /**
-     * @param source
      * @return Source
      * @apiNote 回调进度接口
      */

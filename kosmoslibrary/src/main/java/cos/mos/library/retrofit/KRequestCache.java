@@ -50,7 +50,7 @@ import retrofit2.http.Url;
  * * @QueryMap 和Query使用类似
  * * @Url 指定请求路径
  */
-public interface KRequest {
+public interface KRequestCache {
     /**
      * method 表示请求的方法，区分大小写 * path表示路径 * hasBody表示是否有请求体
      */

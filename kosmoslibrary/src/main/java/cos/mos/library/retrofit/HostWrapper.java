@@ -3,7 +3,6 @@ package cos.mos.library.retrofit;
 
 import cos.mos.library.constant.KConfig;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -11,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HostWrapper {
     private static volatile HostWrapper sInstance;
     private static Retrofit mRetrofit;
-    private static volatile Request request = null;
 
     private HostWrapper() {
         //初始化okhttp
@@ -38,16 +36,6 @@ public class HostWrapper {
             }
         }
         return sInstance;
-    }
-
-
-    public static Request getRequest() {
-        if (request == null) {
-            synchronized (Request.class) {
-                request = mRetrofit.create(Request.class);
-            }
-        }
-        return request;
     }
 
     public <T> T create(Class<T> service) {

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 greendao {
     schemaVersion 1 //版本号,升级时叠加
-    daoPackage 'cos.mos.antivirus.dao.gen'//包名
+    daoPackage 'cos.mos.utils.dao.gen'//包名
     targetGenDir 'src/main/java'//生成文件路径
 }
 android {

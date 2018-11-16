@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="cos.mos.utils"
           xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <!--壁纸-->
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
     <application
         android:name=".init.App"
         android:allowBackup="true"

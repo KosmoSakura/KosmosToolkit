@@ -1,4 +1,4 @@
-package cos.mos.library.Utils.glide;
+package cos.mos.library.Utils.glide.transform;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -26,7 +26,7 @@ public class TransformRound extends BitmapTransformation {
     private static float radius = 0f;
 
 
-    TransformRound(int dp) {
+    public TransformRound(int dp) {
         radius = Resources.getSystem().getDisplayMetrics().density * dp;
     }
 

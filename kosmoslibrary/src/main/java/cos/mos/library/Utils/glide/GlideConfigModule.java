@@ -7,8 +7,9 @@ import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheFactory;
 import com.bumptech.glide.module.AppGlideModule;
 
+import java.io.File;
+
 import androidx.annotation.NonNull;
-import cos.mos.library.Utils.UIO;
 
 
 /**
@@ -21,6 +22,18 @@ import cos.mos.library.Utils.UIO;
 public final class GlideConfigModule extends AppGlideModule {
     @Override
     public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
-        builder.setDiskCache(new DiskLruCacheFactory(UIO.getExternalCacheDir(context), 100 * 1024 * 1024));
+        //内存缓存：100M
+        builder.setDiskCache(new DiskLruCacheFactory(getExternalCacheDir(context), 100 * 1024 * 1024));
+    }
+
+    /**
+     * 获取缓存目录
+     */
+    private String getExternalCacheDir(Context context) {
+        File externalFilesDir = context.getExternalCacheDir();
+        if (externalFilesDir != null) {
+            return externalFilesDir.getPath();
+        }
+        return "";
     }
 }

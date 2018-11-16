@@ -20,9 +20,9 @@ import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
 import androidx.fragment.app.FragmentActivity;
-import cos.mos.library.retrofit.KRequest;
 import cos.mos.library.retrofit.file.FileWrapper;
 import cos.mos.utils.init.Constant;
+import cos.mos.utils.mvp.KRequest;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import okhttp3.ResponseBody;

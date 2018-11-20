@@ -30,7 +30,6 @@ public class UText {
         }
     }
 
-
     /**
      * 递归：移除list中为null的元素
      */

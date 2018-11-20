@@ -42,7 +42,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'me.jessyan:autosize:0.9.1'//屏幕适配
     implementation 'org.greenrobot:greendao:3.2.2'//数据库
     implementation 'org.greenrobot:greendao-generator:3.2.2' //数据库工具类

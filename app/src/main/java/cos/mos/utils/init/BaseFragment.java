@@ -2,6 +2,7 @@ package cos.mos.utils.init;
 
 import cos.mos.library.init.KFragment;
 import cos.mos.library.retrofit.HostWrapper;
+import cos.mos.utils.mvp.KRequest;
 import cos.mos.utils.mvp.contract.KContract;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -13,11 +14,11 @@ import io.reactivex.disposables.Disposable;
  * @Email: KosmoSakura@gmail.com
  */
 public abstract class BaseFragment extends KFragment implements KContract {
-    private RequestServes rs;
+    private KRequest rs;
 
-    protected RequestServes getServes() {
+    protected KRequest getServes() {
         if (rs == null) {
-            rs = HostWrapper.with().create(RequestServes.class);
+            rs = HostWrapper.with().create(KRequest.class);
         }
         return rs;
     }

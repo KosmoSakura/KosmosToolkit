@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import io.reactivex.disposables.CompositeDisposable;
@@ -19,6 +20,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public abstract class KFragment extends Fragment {
     protected Context context;
     protected CompositeDisposable compositeDisposable;
+    private View contentView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,12 +30,15 @@ public abstract class KFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View contentView = inflater.inflate(layout(), container, false);
+        contentView = inflater.inflate(layout(), container, false);
         init();
         logic();
         return contentView;
     }
 
+    protected <T extends View> T findViewById(@IdRes int id) {
+        return contentView.findViewById(id);
+    }
 
     /**
      * @return 返回布局

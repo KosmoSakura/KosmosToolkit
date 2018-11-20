@@ -31,10 +31,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * @Description: <p>
+ * @Description: 下载+壁纸
  * @Author: Kosmos
  * @Date: 2018.11.16 15:08
  * @Email: KosmoSakura@gmail.com
+ * 1.基于Retrofit2图片下载
+ * 2.2种方式设置壁纸
+ * 3.glide4.8获取bmp
  */
 public class UImage {
     public static final int FLAG_DOWNLOAD = 1;//下载

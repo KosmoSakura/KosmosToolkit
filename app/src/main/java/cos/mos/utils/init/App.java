@@ -22,7 +22,7 @@ public class App extends KApp {
     }
 
     @Override
-    protected String defaultTap() {
+    protected String logTag() {
         return "Kosmos";
     }
 

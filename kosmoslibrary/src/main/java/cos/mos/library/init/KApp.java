@@ -39,11 +39,11 @@ public abstract class KApp extends MultiDexApplication {
         ULog.init(this)
             .setLogSwitch(debugState())
             .setConsoleSwitch(debugState())
-            .setGlobalTag(defaultTap())
+            .setGlobalTag(logTag())
             .setLogHeadSwitch(true)
             .setLog2FileSwitch(false)
             .setDir("")
-            .setFilePrefix(defaultTap())//文件前缀
+            .setFilePrefix(logTag())//文件前缀
             .setBorderSwitch(true)
             .setSingleTagSwitch(true)
             .setConsoleFilter(ULog.V)
@@ -65,7 +65,7 @@ public abstract class KApp extends MultiDexApplication {
     /**
      * @return 日志默认Tag
      */
-    protected abstract String defaultTap();
+    protected abstract String logTag();
 
     /**
      * @return SharedPreferences 默认名字

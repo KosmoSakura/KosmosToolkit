@@ -1,4 +1,4 @@
-package cos.mos.utils.helper.list;
+package cos.mos.utils.widget.list;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;

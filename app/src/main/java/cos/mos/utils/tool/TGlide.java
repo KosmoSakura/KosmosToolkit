@@ -1,4 +1,4 @@
-package cos.mos.utils.helper.tool;
+package cos.mos.utils.tool;
 
 import android.content.Context;
 import android.widget.ImageView;

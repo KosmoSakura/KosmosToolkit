@@ -1,4 +1,4 @@
-package cos.mos.utils.helper;
+package cos.mos.utils.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

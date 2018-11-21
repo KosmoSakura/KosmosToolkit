@@ -10,7 +10,7 @@ import cos.mos.library.Utils.ULog;
 import cos.mos.library.Utils.UText;
 import cos.mos.library.retrofit.file.FileProgressCallback;
 import cos.mos.library.retrofit.file.FileWrapper;
-import cos.mos.utils.helper.ProgressDialog;
+import cos.mos.utils.widget.ProgressDialog;
 import cos.mos.utils.init.UHttp;
 import cos.mos.utils.mvp.KPresenter;
 import cos.mos.utils.mvp.KRequest;

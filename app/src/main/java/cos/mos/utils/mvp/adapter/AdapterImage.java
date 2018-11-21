@@ -11,7 +11,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import cos.mos.utils.R;
-import cos.mos.utils.helper.tool.TGlide;
+import cos.mos.utils.tool.TGlide;
 import cos.mos.utils.mvp.bean.ImageBean;
 
 /**

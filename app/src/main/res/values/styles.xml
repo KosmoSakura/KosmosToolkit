@@ -9,5 +9,24 @@
     <style name="StartAppTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/layer_image</item>
     </style>
+ <style name="KDatePicker" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="colorControlNormal">@color/black_txt</item>
+        <item name="buttonBarPositiveButtonStyle">@style/positiveBtnStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/negativeBtnstyle</item>
+        <item name="android:windowBackground">@color/T_all</item>
+        <item name="android:layout_gravity">center</item>
+        <!--是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--背景是否模糊显示-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- Minor指竖屏模式下的宽度 -->
+        <item name="android:windowMinWidthMinor">324dp</item>
+        <item name="windowFixedWidthMinor">324dp</item>
+    </style>
 
+    <style name="BDAlertDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <!--Minor指竖屏模式下的宽度-->
+        <item name="android:windowMinWidthMinor">324dp</item>
+        <item name="windowFixedWidthMinor">324dp</item>
+    </style>
 </resources>

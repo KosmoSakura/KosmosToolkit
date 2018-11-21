@@ -25,54 +25,25 @@ public class IconTextActivity extends KActivity {
         Fragment[] fragmentArray = new Fragment[2];
         fragmentArray[0] = new FragOne();
         fragmentArray[1] = new FragTwo();
+
         String[] titles = {"One", "Two"};
         int[] icons = {R.drawable.sl_qr, R.drawable.sl_history};
-        for (int i = 0; i < 2; i++) {
-            TabLayout.Tab tab = tl.newTab();
-            tab.setIcon(icons[i]);
-            tab.setText(titles[i]);
-            tl.addTab(tab);
-        }
 
-        KPagerAdapter adapter = new KPagerAdapter(getSupportFragmentManager(), fragmentArray);
+        KPagerAdapter adapter = new KPagerAdapter(getSupportFragmentManager(), fragmentArray, titles);
         vp.setAdapter(adapter);
-        vp.setOffscreenPageLimit(2);//预加载管理,除去当前显示页面以外需要被预加载的页面数。
+        //预加载管理,除去当前显示页面以外需要被预加载的页面数。
+        vp.setOffscreenPageLimit(2);
+        tl.setupWithViewPager(vp);
+        for (int i = 0; i < 3; i++) {
+            TabLayout.Tab tab = tl.getTabAt(i);
+            if (tab != null) {
+                tab.setText(titles[i]).setIcon(icons[i]);
+            }
+        }
     }
 
     @Override
     protected void logic() {
-        vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
 
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                tl.setScrollPosition(position, 0, true);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
-        tl.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                vp.setCurrentItem(tab.getPosition(), true);
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
-
 }

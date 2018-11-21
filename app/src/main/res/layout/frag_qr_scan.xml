@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_bg"
+    android:orientation="vertical">
+
+    <!--  <cn.bingoogolapple.qrcode.zbar.ZBarView
+          android:id="@+id/qr_zxing"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:qrcv_animTime="1000"
+          app:qrcv_borderColor="@android:color/white"
+          app:qrcv_borderSize="1dp"
+          app:qrcv_cornerColor="@color/colorPrimaryDark"
+          app:qrcv_cornerLength="20dp"
+          app:qrcv_cornerSize="3dp"
+          app:qrcv_isAutoZoom="true"
+          app:qrcv_isOnlyDecodeScanBoxArea="false"
+          app:qrcv_isScanLineReverse="true"
+          app:qrcv_isShowDefaultScanLineDrawable="true"
+          app:qrcv_isShowLocationPoint="true"
+          app:qrcv_maskColor="#33FFFFFF"
+          app:qrcv_rectWidth="200dp"
+          app:qrcv_scanLineColor="@color/colorPrimaryDark"
+          app:qrcv_topOffset="90dp"
+          app:qrcv_verticalBias="0.5"/>-->
+    <cn.bingoogolapple.qrcode.zxing.ZXingView
+        android:id="@+id/qr_zxing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:qrcv_barcodeRectHeight="140dp"
+        app:qrcv_borderColor="@color/red"
+        app:qrcv_borderSize="1dp"
+        app:qrcv_cornerColor="@color/colorPrimaryDark"
+        app:qrcv_cornerLength="15dp"
+        app:qrcv_cornerSize="3dp"
+        app:qrcv_isAutoZoom="true"
+        app:qrcv_isBarcode="false"
+        app:qrcv_isOnlyDecodeScanBoxArea="false"
+        app:qrcv_isScanLineReverse="true"
+        app:qrcv_isShowDefaultGridScanLineDrawable="false"
+        app:qrcv_isShowDefaultScanLineDrawable="true"
+        app:qrcv_isShowLocationPoint="true"
+        app:qrcv_isShowTipBackground="true"
+        app:qrcv_isShowTipTextAsSingleLine="false"
+        app:qrcv_isTipTextBelowRect="true"
+        app:qrcv_maskColor="#9d353434"
+        app:qrcv_rectWidth="200dp"
+        app:qrcv_scanLineColor="@color/red"
+        app:qrcv_scanLineMargin="10dp"
+        app:qrcv_scanLineSize="0.5dp"
+        app:qrcv_toolbarHeight="56dp"
+        app:qrcv_topOffset="120dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/qr_light"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/sl_light"/>
+
+        <ImageView
+            android:id="@+id/qr_focus"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_focus"/>
+
+        <ImageView
+            android:id="@+id/qr_cut"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_cut"/>
+
+    </LinearLayout>
+</FrameLayout>

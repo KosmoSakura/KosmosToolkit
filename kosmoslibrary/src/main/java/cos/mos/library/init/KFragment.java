@@ -10,6 +10,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * @Description: <p>
@@ -54,6 +55,13 @@ public abstract class KFragment extends Fragment {
      * 填充逻辑部分 include
      */
     protected abstract void logic();
+
+    protected void rxDisposable(Disposable disposable) {
+        if (compositeDisposable == null) {
+            compositeDisposable = new CompositeDisposable();
+        }
+        compositeDisposable.add(disposable);
+    }
 
     @Override
     public void onDestroy() {

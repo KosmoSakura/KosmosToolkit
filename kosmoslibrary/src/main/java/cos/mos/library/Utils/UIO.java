@@ -1,8 +1,13 @@
 package cos.mos.library.Utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Environment;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * @Description: <p>
@@ -11,6 +16,36 @@ import java.io.File;
  * @Email: KosmoSakura@gmail.com
  */
 public class UIO {
+    private static String SD_PATH;
+
+    private static String getSdPath() {
+        if (UText.isEmpty(SD_PATH)) {
+            SD_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "QR_Code";
+        }
+        File fileDr = new File(SD_PATH);
+        if (!fileDr.exists()) {
+            fileDr.mkdir();
+        }
+        return SD_PATH;
+    }
+
+    /**
+     * @param bmp 保存bmp到sd卡
+     */
+    public static void saveBitmap(Bitmap bmp) {
+        File fileDr = new File(getSdPath(), System.currentTimeMillis() + ".png");
+        try {
+            FileOutputStream out = new FileOutputStream(fileDr);
+            bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.flush();
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 获取缓存目录
      */

@@ -51,7 +51,7 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
     public void onStart() {
         super.onStart();
         //默认后置摄像头
-        int camera = Camera.CameraInfo.CAMERA_FACING_BACK;
+        camera = Camera.CameraInfo.CAMERA_FACING_BACK;
         //打开后置摄像头预览,但并没有开始扫描
         zxing.startCamera(camera);
         //开启扫描框

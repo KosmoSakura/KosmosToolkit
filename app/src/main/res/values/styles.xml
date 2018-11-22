@@ -11,8 +11,6 @@
     </style>
  <style name="KDatePicker" parent="@android:style/Theme.Holo.Light.Dialog">
         <item name="colorControlNormal">@color/black_txt</item>
-        <item name="buttonBarPositiveButtonStyle">@style/positiveBtnStyle</item>
-        <item name="buttonBarNegativeButtonStyle">@style/negativeBtnstyle</item>
         <item name="android:windowBackground">@color/T_all</item>
         <item name="android:layout_gravity">center</item>
         <!--是否半透明-->

@@ -6,6 +6,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import cos.mos.library.Utils.ULog;
 import cos.mos.library.init.KFragment;
+import cos.mos.utils.R;
 
 /**
  * @Description: <p>

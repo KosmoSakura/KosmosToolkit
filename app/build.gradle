@@ -13,7 +13,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true //开启：MultiDexApplication
+        multiDexEnabled true //开启：MultiDexApplication,
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {

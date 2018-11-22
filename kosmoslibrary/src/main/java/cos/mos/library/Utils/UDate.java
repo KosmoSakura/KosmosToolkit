@@ -12,6 +12,8 @@ import java.util.NoSuchElementException;
  * @Author: Kosmos
  * @Date: 2018年1月29日 16:04
  * @Email: KosmoSakura@gmail.com
+ * @eg 最新修改日期:2018.11.22
+ * 获取当前短/长日期
  * @eg 最新修改日期：2018.11.11.
  * setFirstDayOfWeek的失效，修复获取当前星期的天数方法
  * @eg: 最新修改日期：2018.10.31
@@ -88,9 +90,16 @@ public class UDate {
     }
 
     /**
-     * @return 当前日期
+     * @return 当前短日期
      */
-    public static String getDateNow() {
+    public static String getDateNowShort() {
+        return dateToStrSafety(new Date(), "yyyy-MM-dd");
+    }
+
+    /**
+     * @return 当前短日期
+     */
+    public static String getDateNowLong() {
         return dateToStrSafety(new Date(), FORMAT_DEFAULT);
     }
 

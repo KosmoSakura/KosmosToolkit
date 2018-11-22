@@ -1,9 +1,6 @@
 package cos.mos.utils.ui.sideslip;
 
 
-import com.liaoinstan.springview.container.DefaultHeader;
-import com.liaoinstan.springview.widget.SpringView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +12,6 @@ import cos.mos.library.Utils.UText;
 import cos.mos.library.Utils.UUnit;
 import cos.mos.library.init.KFragment;
 import cos.mos.library.listener.KOnFreshListener;
-import cos.mos.utils.R;
 import cos.mos.utils.dao.DbHelper;
 import cos.mos.utils.dao.UserBean;
 import cos.mos.utils.widget.list.MyDividerDecoration;

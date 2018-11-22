@@ -11,7 +11,6 @@ import cos.mos.library.Utils.UDialog;
 import cos.mos.library.Utils.ULog;
 import cos.mos.library.Utils.UText;
 import cos.mos.library.init.KFragment;
-import cos.mos.utils.R;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 

@@ -22,7 +22,7 @@ public class UGson {
             .serializeNulls()//序列化null
             .setDateFormat("yyyy-MM-dd HH:mm:ss")// 设置日期时间格式，另有2个重载方法 ,在序列化和反序化时均生效
             .disableInnerClassSerialization()// 禁此序列化内部类
-            .generateNonExecutableJson() //生成不可执行的Json（多了 )]}' 这4个字符）
+//            .generateNonExecutableJson() //生成不可执行的Json（多了 )]}' 这4个字符）
             .disableHtmlEscaping() //禁止转义html标签
             .setPrettyPrinting()//格式化输出
             .create();

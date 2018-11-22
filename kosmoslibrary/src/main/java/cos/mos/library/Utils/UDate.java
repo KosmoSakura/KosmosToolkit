@@ -90,6 +90,13 @@ public class UDate {
     }
 
     /**
+     * @return 当前日期:yyyy-MM-dd HH:mm:ss
+     */
+    public static String getDateNow(String format) {
+        return dateToStrSafety(new Date(), format);
+    }
+
+    /**
      * @return 当前短日期
      */
     public static String getDateNowShort() {

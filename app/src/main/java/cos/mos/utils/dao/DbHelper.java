@@ -39,6 +39,13 @@ public class DbHelper {
         DbManager.getDaoSession(context).getUserBeanDao().deleteByKey(imageId);
     }
 
+    public static void deleteByBean(Context context, UserBean bean) {
+        if (context == null) {
+            return;
+        }
+        DbManager.getDaoSession(context).getUserBeanDao().delete(bean);
+    }
+
     public static void deleteAll(Context context) {
         if (context == null) {
             return;
@@ -63,7 +70,7 @@ public class DbHelper {
         return DbManager.getDaoSession(context).getUserBeanDao().load(userid);
     }
 
-    private static List<UserBean> SearchAll(Context context) {
+    public static List<UserBean> SearchAll(Context context) {
         return DbManager.getDaoSession(context).getUserBeanDao().loadAll();
     }
 }

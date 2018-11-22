@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_bg">
+
+    <com.liaoinstan.springview.widget.SpringView
+        android:id="@+id/qr_hty_spv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/qr_hty_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.liaoinstan.springview.widget.SpringView>
+</FrameLayout>

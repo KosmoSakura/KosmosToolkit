@@ -3,6 +3,8 @@ package cos.mos.library.init;
 import android.content.Context;
 import android.os.Bundle;
 
+import org.greenrobot.eventbus.EventBus;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.disposables.CompositeDisposable;
@@ -17,6 +19,10 @@ import io.reactivex.disposables.Disposable;
 public abstract class KActivity extends AppCompatActivity {
     protected Context context;
     protected CompositeDisposable compositeDisposable;
+    /**
+     * 在哪里接收,在哪里注册
+     */
+    protected boolean initEventBus;//是否注册EventBus
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +33,9 @@ public abstract class KActivity extends AppCompatActivity {
             setContentView(layoutId);
         }
         init();
+        if (initEventBus) {
+            EventBus.getDefault().register(this);
+        }
         logic();
     }
 
@@ -51,11 +60,15 @@ public abstract class KActivity extends AppCompatActivity {
         }
         compositeDisposable.add(disposable);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (compositeDisposable != null) {
             compositeDisposable.clear();
+        }
+        if (initEventBus) {
+            EventBus.getDefault().register(this);
         }
     }
 }

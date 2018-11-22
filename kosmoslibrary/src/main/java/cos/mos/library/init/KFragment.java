@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -22,6 +24,10 @@ public abstract class KFragment extends Fragment {
     protected Context context;
     protected CompositeDisposable compositeDisposable;
     private View contentView;
+    /**
+     * 在哪里接收,在哪里注册
+     */
+    protected boolean initEventBus;//是否注册EventBus
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +39,9 @@ public abstract class KFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         contentView = inflater.inflate(layout(), container, false);
         init();
+        if (initEventBus) {
+            EventBus.getDefault().register(this);
+        }
         logic();
         return contentView;
     }
@@ -68,6 +77,9 @@ public abstract class KFragment extends Fragment {
         super.onDestroy();
         if (compositeDisposable != null) {
             compositeDisposable.clear();
+        }
+        if (initEventBus) {
+            EventBus.getDefault().register(this);
         }
     }
 }

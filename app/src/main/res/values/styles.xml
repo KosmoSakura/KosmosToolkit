@@ -6,10 +6,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TransparentBottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/SheetStyle</item>
+    </style>
+
+    <style name="SheetStyle" parent="android:Widget">
+        <item name="android:background">@color/T_all</item>
+        <item name="behavior_peekHeight">400dp</item>
+        <item name="behavior_hideable">true</item>
+        <item name="behavior_skipCollapsed">false</item>
+    </style>
+
     <style name="StartAppTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/layer_image</item>
     </style>
- <style name="KDatePicker" parent="@android:style/Theme.Holo.Light.Dialog">
+
+    <style name="KDatePicker" parent="@android:style/Theme.Holo.Light.Dialog">
         <item name="colorControlNormal">@color/black_txt</item>
         <item name="android:windowBackground">@color/T_all</item>
         <item name="android:layout_gravity">center</item>

@@ -38,11 +38,12 @@ public abstract class KFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         contentView = inflater.inflate(layout(), container, false);
+        initEventBus = false;
         init();
+        logic();
         if (initEventBus) {
             EventBus.getDefault().register(this);
         }
-        logic();
         return contentView;
     }
 

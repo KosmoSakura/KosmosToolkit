@@ -28,15 +28,16 @@ public abstract class KActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
+        initEventBus = false;
         int layoutId = layout();
         if (layoutId != 0) {
             setContentView(layoutId);
         }
         init();
+        logic();
         if (initEventBus) {
             EventBus.getDefault().register(this);
         }
-        logic();
     }
 
     /**

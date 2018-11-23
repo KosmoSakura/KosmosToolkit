@@ -7,21 +7,15 @@ greendao {
 }
 android {
     compileSdkVersion 28
-    //直接编译release包
-    signingConfigs {
-        release {
-            keyAlias 'antivirus'
-            keyPassword 'antivirus233'
-            storeFile file('C:/Kosmos/Source/Android/Kookea/Wallpaper/key/antivirus.jks')
-            storePassword 'antivirus233'
-        }
-        debug {
-            keyAlias 'antivirus'
-            keyPassword 'antivirus233'
-            storeFile file('C:/Kosmos/Source/Android/Kookea/Wallpaper/key/antivirus.jks')
-            storePassword 'antivirus233'
-        }
-    }
+    //KS_1：直接编译release包,注释编号：KS_1
+//    signingConfigs {
+//        release {
+//            keyAlias '....'
+//            keyPassword '....'
+//            storeFile file('.....jks')
+//            storePassword '.....'
+//        }
+//    }
 
     defaultConfig {
         applicationId "cos.mos.utils"
@@ -31,7 +25,6 @@ android {
         versionName "1.0"
         multiDexEnabled true //开启：MultiDexApplication,
         vectorDrawables.useSupportLibrary = true
-        signingConfig signingConfigs.release//直接编译release包
     }
     buildTypes {
         release {
@@ -45,7 +38,12 @@ android {
             shrinkResources true
             //前一部分代表系统默认的android程序的混淆文件，该文件已经包含了基本的混淆声明，后一个文件是自己的定义混淆文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release//KS_1：
         }
+        //KS_1：
+//        debug {
+//            signingConfig signingConfigs.release
+//        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

@@ -11,6 +11,12 @@
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <!--SD卡写入权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 获取网络状态改变的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <!-- 获取WIFI信息状态的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <application
         android:name=".init.App"
         android:allowBackup="true"

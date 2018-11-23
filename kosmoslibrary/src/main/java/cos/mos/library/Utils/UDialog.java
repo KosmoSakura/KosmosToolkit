@@ -119,6 +119,18 @@ public class UDialog {
     }
 
     /**
+     * @param title     标题
+     * @param msg       通知内容
+     * @param sureClick 确认按钮点击回调
+     * @apiNote 有2个按钮，带标题，2个回调
+     */
+    public void showTitleSelectWithTwobtn(String title, String msg, SureClick sureClick, CancelClick cancelClick) {
+        this.sureClick = sureClick;
+        this.cancelClick = cancelClick;
+        show(title, msg, null, "Confirm", "Cancel", -1);
+    }
+
+    /**
      * @param msg 通知内容
      * @apiNote 有两个按钮，点击直接消失
      */

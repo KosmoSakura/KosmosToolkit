@@ -1,13 +1,17 @@
 package cos.mos.utils.ui.qr_code;
 
-import android.app.Dialog;
+import android.content.Intent;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Vibrator;
+import android.util.Patterns;
 import android.view.View;
+import android.webkit.URLUtil;
 
 import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
 import cos.mos.library.Utils.UDialog;
+import cos.mos.library.Utils.UGson;
 import cos.mos.library.Utils.ULog;
 import cos.mos.library.Utils.UText;
 import cos.mos.library.init.KFragment;
@@ -79,6 +83,9 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
         super.onDestroy();
     }
 
+    private int scanFlag;
+    private WifiBean bean;
+
     /**
      * @param result 扫描成功解析二维码成功后的结果
      * @apiNote 摄像头扫码时只要回调了该方法 result 就一定有值，不会为 null。
@@ -89,17 +96,50 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
         //扫描成功后调用震动器
         vibrator();
         //显示扫描结果
+        String title;
         if (UText.isEmpty(result)) {
-            return;
+            title = "It's nothing any more";
+            scanFlag = 0;
+        } else if (Patterns.WEB_URL.matcher(result).matches() || URLUtil.isValidUrl(result)) {
+            title = "It looks like a link";
+            scanFlag = 1;
+        } else {
+            try {
+                bean = UGson.toParse(result, WifiBean.class);
+                if (bean == null) {
+                    title = "It's just plain text";
+                    scanFlag = 3;
+                } else {
+                    title = "It's a wifi link";
+                    scanFlag = 2;
+                }
+            } catch (Exception e) {
+                title = "It's just plain text";
+                scanFlag = 3;
+            }
         }
         UDialog.getInstance(getActivity(), false, false)
-            .showNoticeWithOnebtn(result, new UDialog.SureClick() {
-                @Override
-                public void OnSureClick(String result, Dialog dia) {
-                    //保存数据库
-                    zxing.startSpot();
-                    dia.dismiss();
+            .showTitleSelectWithTwobtn(title, result, (ss, dia) -> {
+                switch (scanFlag) {
+                    case 1://url 选择浏览器
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        Uri content_url = Uri.parse(result);
+                        intent.setData(content_url);
+                        startActivity(Intent.createChooser(intent, "Please select browser"));
+                        break;
+                    case 2://wifi
+                        //do something
+                        break;
+                    case 3://text
+                        //do something
+                        zxing.startSpot();
+                        break;
                 }
+                dia.dismiss();
+            }, dia -> {
+                dia.dismiss();
+                zxing.startSpot();
             });
     }
 

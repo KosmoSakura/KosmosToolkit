@@ -100,40 +100,66 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
         if (UText.isEmpty(result)) {
             title = "It's nothing any more";
             scanFlag = 0;
+        } else if (Patterns.PHONE.matcher(result).matches()) {
+            scanFlag = 1;
+            title = "It like a phone number";
+        } else if (Patterns.EMAIL_ADDRESS.matcher(result).matches()) {
+            scanFlag = 2;
+            title = "It like an email address";
         } else if (Patterns.WEB_URL.matcher(result).matches() || URLUtil.isValidUrl(result)) {
             title = "It looks like a link";
-            scanFlag = 1;
+            scanFlag = 3;
         } else {
             try {
                 bean = UGson.toParse(result, WifiBean.class);
                 if (bean == null) {
                     title = "It's just plain text";
-                    scanFlag = 3;
+                    scanFlag = 4;
                 } else {
                     title = "It's a wifi link";
-                    scanFlag = 2;
+                    scanFlag = 5;
                 }
             } catch (Exception e) {
                 title = "It's just plain text";
-                scanFlag = 3;
+                scanFlag = 4;
             }
-        }
-        UDialog.getInstance(getActivity(), false, false)
+        }UDialog.getInstance(getActivity(), false, false)
             .showTitleSelectWithTwobtn(title, result, (ss, dia) -> {
                 switch (scanFlag) {
-                    case 1://url 选择浏览器
+                    case 1://phone
+                        Intent phone = new Intent(Intent.ACTION_DIAL);
+                        phone.setData(Uri.parse("tel:" + result));
+                        phone.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(phone);
+                        getActivity().finish();
+                        break;
+                    case 2://email
+                        Intent data = new Intent(Intent.ACTION_SENDTO);
+                        data.setData(Uri.parse("mailto:way.ping.li@gmail.com"));
+                        data.putExtra(Intent.EXTRA_SUBJECT, "This is a title");
+                        data.putExtra(Intent.EXTRA_TEXT, "This is the content");
+                        startActivity(data);
+                        getActivity().finish();
+                        break;
+                    case 3://url
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
                         Uri content_url = Uri.parse(result);
                         intent.setData(content_url);
                         startActivity(Intent.createChooser(intent, "Please select browser"));
+                        getActivity().finish();
                         break;
-                    case 2://wifi
-                        //do something
-                        break;
-                    case 3://text
+                    case 4://text
                         //do something
                         zxing.startSpot();
+                        break;
+                    case 5://wifi
+                        Intent wifis = new Intent();
+                        wifis.setAction("android.net.wifi.PICK_WIFI_NETWORK");
+                        wifis.putExtra("extra_prefs_show_button_bar", true);
+                        wifis.putExtra("wifi_enable_next_on_connect", true);
+                        startActivity(wifis);
+                        getActivity().finish();
                         break;
                 }
                 dia.dismiss();

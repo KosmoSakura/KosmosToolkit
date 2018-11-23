@@ -7,6 +7,22 @@ greendao {
 }
 android {
     compileSdkVersion 28
+    //直接编译release包
+    signingConfigs {
+        release {
+            keyAlias 'antivirus'
+            keyPassword 'antivirus233'
+            storeFile file('C:/Kosmos/Source/Android/Kookea/Wallpaper/key/antivirus.jks')
+            storePassword 'antivirus233'
+        }
+        debug {
+            keyAlias 'antivirus'
+            keyPassword 'antivirus233'
+            storeFile file('C:/Kosmos/Source/Android/Kookea/Wallpaper/key/antivirus.jks')
+            storePassword 'antivirus233'
+        }
+    }
+
     defaultConfig {
         applicationId "cos.mos.utils"
         minSdkVersion 16
@@ -15,6 +31,7 @@ android {
         versionName "1.0"
         multiDexEnabled true //开启：MultiDexApplication,
         vectorDrawables.useSupportLibrary = true
+        signingConfig signingConfigs.release//直接编译release包
     }
     buildTypes {
         release {

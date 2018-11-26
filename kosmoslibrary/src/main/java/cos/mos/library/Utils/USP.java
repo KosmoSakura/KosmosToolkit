@@ -27,6 +27,38 @@ public class USP {
         return new USP(context);
     }
 
+
+    public void putString(String key, String value) {
+        editor.putString(key, value);
+        editor.apply();
+    }
+
+    public void putBoolean(String key, boolean value) {
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    public void putInt(String key, int value) {
+        editor.putInt(key, value);
+        editor.apply();
+    }
+
+    public long getLong(String key, long defaultObject) {
+        return sp.getLong(key, defaultObject);
+    }
+
+    public int getInt(String key, int defaultObject) {
+        return sp.getInt(key, defaultObject);
+    }
+
+    public String getString(String key) {
+        return sp.getString(key, "");
+    }
+
+    public boolean getBoolean(String key) {
+        return sp.getBoolean(key, false);
+    }
+
     /**
      * 存
      */
@@ -46,14 +78,6 @@ public class USP {
         }
 //        boolean commit = editor.commit();
         editor.apply();
-    }
-
-    public long getLong(String key, long defaultObject) {
-        return sp.getLong(key, defaultObject);
-    }
-
-    public int getInt(String key, int defaultObject) {
-        return sp.getInt(key, defaultObject);
     }
 
     /**

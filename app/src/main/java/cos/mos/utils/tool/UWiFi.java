@@ -1,5 +1,6 @@
 package cos.mos.utils.tool;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,18 +10,15 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import cos.mos.library.Utils.UText;
 import cos.mos.utils.init.App;
 
 /**
- * @Description: <p>
+ * @Description: wifi工具类
  * @Author: Kosmos
  * @Date: 2018.11.23 15:12
  * @Email: KosmoSakura@gmail.com
+ * @eg: 最新修改日期：2018年11月25日 17:19
  */
 public class UWiFi {
     private static WifiManager wifiMgr;
@@ -62,6 +60,7 @@ public class UWiFi {
 
     /**
      * 通过ConnectivityManager获取ssid
+     * 不需要权限
      */
     public static String getSSID() {
         NetworkInfo networkInfo = getConnectivityMgr().getNetworkInfo(ConnectivityManager.TYPE_WIFI);
@@ -175,31 +174,5 @@ public class UWiFi {
         intent.putExtra("extra_prefs_show_button_bar", true);
         intent.putExtra("wifi_enable_next_on_connect", true);
         activity.startActivity(intent);
-    }
-
-    /**
-     * @return wifi热点打开：true
-     */
-    public static boolean ishotspotOn() {
-        try {
-            //通过放射获取 getWifiApState()方法
-            Method method = getWifiMgr().getClass().getDeclaredMethod("getWifiApState");
-            //调用getWifiApState() ，获取返回值
-            int state = (int) method.invoke(getWifiMgr());
-            //通过放射获取 WIFI_AP的开启状态属性
-            Field field = getWifiMgr().getClass().getDeclaredField("WIFI_AP_STATE_ENABLED");
-            //获取属性值
-            int value = (int) field.get(getWifiMgr());
-            //判断是否开启
-            return state == value;
-        } catch (NoSuchMethodException e) {
-            return false;
-        } catch (IllegalAccessException e) {
-            return false;
-        } catch (InvocationTargetException e) {
-            return false;
-        } catch (NoSuchFieldException e) {
-            return false;
-        }
     }
 }

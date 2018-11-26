@@ -22,11 +22,10 @@ import java.util.List;
  */
 public class UText {
     public static String isNull(TextView tv) {
-        String str = tv.getText().toString();
-        if (isEmpty(str)) {
+        if (isEmpty(tv)) {
             return "";
         } else {
-            return str;
+            return tv.getText().toString();
         }
     }
 

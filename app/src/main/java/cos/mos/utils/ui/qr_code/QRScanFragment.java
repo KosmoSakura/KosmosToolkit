@@ -10,10 +10,10 @@ import android.webkit.URLUtil;
 
 import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
-import cos.mos.library.Utils.UDialog;
-import cos.mos.library.Utils.UGson;
-import cos.mos.library.Utils.ULog;
-import cos.mos.library.Utils.UText;
+import cos.mos.library.utils.UDialog;
+import cos.mos.library.utils.UGson;
+import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.UText;
 import cos.mos.library.init.KFragment;
 import cos.mos.utils.R;
 

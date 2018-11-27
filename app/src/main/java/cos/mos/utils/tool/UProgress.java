@@ -6,7 +6,7 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
-import cos.mos.library.Utils.ULog;
+import cos.mos.library.utils.ULog;
 import cos.mos.utils.R;
 import io.reactivex.annotations.NonNull;
 

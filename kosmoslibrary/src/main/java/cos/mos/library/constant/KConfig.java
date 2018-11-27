@@ -1,6 +1,6 @@
 package cos.mos.library.constant;
 
-import cos.mos.library.Utils.UText;
+import cos.mos.library.utils.UText;
 
 /**
  * @Description: <p>

@@ -3,7 +3,7 @@ package cos.mos.utils.tool;
 import android.content.Context;
 import android.widget.ImageView;
 
-import cos.mos.library.Utils.glide.GlideApp;
+import cos.mos.library.utils.glide.GlideApp;
 import cos.mos.utils.R;
 
 /**

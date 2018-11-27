@@ -2,8 +2,8 @@ package cos.mos.library.init;
 
 
 import androidx.multidex.MultiDexApplication;
-import cos.mos.library.Utils.ULog;
-import cos.mos.library.Utils.toast.UToast;
+import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.toast.UToast;
 import cos.mos.library.constant.KConfig;
 
 /**

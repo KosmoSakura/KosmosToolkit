@@ -6,8 +6,8 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
-import cos.mos.library.Utils.ULog;
-import cos.mos.library.Utils.UText;
+import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.UText;
 import cos.mos.library.retrofit.file.FileProgressCallback;
 import cos.mos.library.retrofit.file.FileWrapper;
 import cos.mos.utils.widget.ProgressDialog;

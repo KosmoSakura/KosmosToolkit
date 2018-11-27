@@ -37,27 +37,27 @@
 >
 > 及相关的踩坑记录，比如：[在Retrofit2网络请求时打印参数的踩坑记录](https://blog.csdn.net/zull_kos_mos/article/details/83934732)
 
-#### 8.Glide相关工具
+#### 8.[Glide](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/glide)相关工具
 
 > - 1.UGlideDisk:Glide内存磁盘方面
 > - 2.UGlideEffect:Glide特效方面
 > - 3.UGlideSimple:Glide普通使用
 
-#### 9.USnackbar
+#### 9.[USnackbar](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/snackbar)
 
 > 可以从上面弹出的SB
 >
 > 基于：[MySnackBar](https://github.com/guoyoujin/MySnackBar)
 
-#### 10.UToast
+#### 10.[UToast](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/toasts)
 
 > 基于鸿洋牌的[ToastUtils](https://github.com/getActivity/ToastUtils)封装
 
-#### 11.UColor
+#### 11.[UColor](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UColor.java)
 
 > 颜色工具类
 
-#### 12.UDate
+#### 12.[UDate](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UDate.java)
 
 > 时间日期处理,以及平时在处理日期时的踩坑修复
 >
@@ -73,45 +73,45 @@
 > - 10.`getDayOfWeek`:指定日期 所在周的星期
 > - 11.`getAnotherMonthDate(boolean future, int x)`、`getAnotherYearDate(boolean future, int x) `...:返回指定日期 前后x个单位的日期
 
-#### 13.UKeyboard
+#### 13.[UKeyboard](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UKeyboard.java)
 
 > 键盘输入工具类
 
-#### 14.ULog
+#### 14.[ULog](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/ULog.java)
 
 > 基于[Blankj](https://github.com/Blankj/AndroidUtilCode)的工具封装
 
-#### 15.URegular
+#### 15.[URegular](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)
 
 > 正则表达式相关工具
 
-#### 16.USP
+#### 16.[USP](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)
 
 > SharedPreferences工具
 
-#### 17.UText
+#### 17.[UText](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UText.java)
 
 > 文字相关工具
 
-#### 18.UUnit
+#### 18.[UUnit](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UUnit.java)
 
 > 单位换算：像素<->dp、摄氏度<->华氏度、字符串版本号换算、字节换算.
 
-#### 19.封装EventBus
+#### 19.[封装EventBus]()
 
-#### 20.权限工具
+#### 20.[UPermissions](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UPermissions.java)权限工具
 
 > 基于RxPermissions
 
-#### 21.UGPS
+#### 21.[UGPS](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UGPS.java)
 
 > GPS工具
 
-#### 22.UWiFi
+#### 22.[UWiFi](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UWiFi.java)
 
 > wifi工具类
 
-#### 23.UAp
+#### 23.[UAp](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UAp.java)
 
 > wifi热点工具类
 

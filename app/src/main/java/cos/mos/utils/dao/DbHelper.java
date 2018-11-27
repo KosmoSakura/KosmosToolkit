@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
-import cos.mos.library.Utils.UText;
+import cos.mos.library.utils.UText;
 import cos.mos.utils.dao.renewal.DbManager;
 
 

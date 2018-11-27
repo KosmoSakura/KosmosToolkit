@@ -10,7 +10,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
-import cos.mos.library.Utils.UText;
+import cos.mos.library.utils.UText;
 import cos.mos.utils.init.App;
 
 /**

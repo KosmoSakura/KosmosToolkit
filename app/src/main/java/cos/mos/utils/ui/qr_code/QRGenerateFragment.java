@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import java.util.concurrent.TimeUnit;
 
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder;
-import cos.mos.library.Utils.UIO;
-import cos.mos.library.Utils.UText;
-import cos.mos.library.Utils.toast.UToast;
+import cos.mos.library.utils.UIO;
+import cos.mos.library.utils.UText;
+import cos.mos.library.utils.toast.UToast;
 import cos.mos.library.init.KFragment;
 import cos.mos.library.listener.KTextWatcher;
 import cos.mos.utils.R;

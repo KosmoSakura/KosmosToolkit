@@ -4,7 +4,7 @@ import android.os.Environment;
 
 import java.io.File;
 
-import cos.mos.library.Utils.UText;
+import cos.mos.library.utils.UText;
 import cos.mos.library.constant.KConfig;
 
 

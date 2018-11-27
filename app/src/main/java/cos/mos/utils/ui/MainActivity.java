@@ -17,7 +17,7 @@ import java.util.List;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import cos.mos.library.Utils.UDialog;
+import cos.mos.library.utils.UDialog;
 import cos.mos.utils.R;
 import cos.mos.utils.init.BaseActivity;
 import cos.mos.utils.mvp.adapter.AdapterImage;

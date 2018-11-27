@@ -4,7 +4,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import cos.mos.library.Utils.ULog;
+import cos.mos.library.utils.ULog;
 import cos.mos.library.init.KFragment;
 import cos.mos.utils.R;
 

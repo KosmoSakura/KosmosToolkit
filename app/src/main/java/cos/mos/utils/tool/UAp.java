@@ -16,6 +16,12 @@ import cos.mos.utils.init.App;
  * @Author: Kosmos
  * @Date: 2018.11.26 18:08
  * @Email: KosmoSakura@gmail.com
+ * * 通过WifiManager获取ssid
+ * * 这种方式获取 需要2个权限
+ * * <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+ * * <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+ * * Manifest.permission.ACCESS_FINE_LOCATION
+ * * Manifest.permission.ACCESS_COARSE_LOCATION
  * 最新修改日期：2018年11月25日 17:19
  */
 public class UAp {

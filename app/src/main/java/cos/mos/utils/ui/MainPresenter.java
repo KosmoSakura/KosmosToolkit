@@ -91,12 +91,12 @@ class MainPresenter extends KPresenter {
 //        UHttp.download(rs.download("url"), new KDownloadListener() {
 //            @Override
 //            public void onSuccess() {
-//                ProgressDialog.getInstance().stopProgressDialog();
+//                UProgress.getInstance().stopProgressDialog();
 //            }
 //
 //            @Override
 //            public void onError(String describe) {
-//                ProgressDialog.getInstance().stopProgressDialog();
+//                UProgress.getInstance().stopProgressDialog();
 //            }
 //        });
     }

@@ -1,14 +1,13 @@
 # KosmosUtils
-> Kosmos的工具库,因为我比较懒，所以折腾了这个东西，
-> 把我平时在用的工具们抽取了出来，方便以后直接include进来
+> 这个是我的工具库,因为我比较懒，所以折腾了这个东西，
+> 把我平时在用的工具们抽取了出来，方便以后直接include使用
 
-#### 
 ---
 
 #### 0.androidx
 > androidx的踩坑记录
 
-#### 1.UImage
+#### 1.[UImage](https://github.com/KosmoSakura/KosmosUtils/blob/master/cos.mos.utils.tool/UImage.java)
 
 > 1.基于Retrofit2图片下载
 > 2.2种方式设置壁纸
@@ -99,6 +98,22 @@
 > 单位换算：像素<->dp、摄氏度<->华氏度、字符串版本号换算、字节换算.
 
 #### 19.封装EventBus
+
+#### 20.权限工具
+
+> 基于RxPermissions
+
+#### 21.UGPS
+
+> GPS工具
+
+#### 22.UWiFi
+
+> wifi工具类
+
+#### 23.UAp
+
+> wifi热点工具类
 
 ---
 

@@ -34,7 +34,7 @@ public class BottomSheetDialogSimple extends KActivity {
 
     private void showDialog(Bitmap bmp) {
         if (diaBottom == null) {
-            View view = View.inflate(context, R.layout.dialog_progress, null);
+            View view = View.inflate(context, R.layout.dia_progress, null);
             diaBottom = new BottomSheetDialog(context, R.style.TransparentBottomSheetStyle);
             diaBottom.setContentView(view);
         }

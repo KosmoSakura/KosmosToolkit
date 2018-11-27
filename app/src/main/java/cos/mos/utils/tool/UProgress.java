@@ -1,4 +1,4 @@
-package cos.mos.utils.widget;
+package cos.mos.utils.tool;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,28 +6,27 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import cos.mos.library.Utils.ULog;
 import cos.mos.utils.R;
+import io.reactivex.annotations.NonNull;
+
 
 /**
- * @Description: 进度弹窗
- * @Author: Kosmos
- * @Date: 2018.11.13 21:43
- * @Email: KosmoSakura@gmail.com
+ * @author YBY
+ * @apiNote 进度弹窗
  */
-public class ProgressDialog {
-    private volatile static ProgressDialog instance;
+public class UProgress {
+    private volatile static UProgress instance;
     private MyDialog myDialog;
 
-    private ProgressDialog() {
+    private UProgress() {
     }
 
-    public static ProgressDialog getInstance() {
+    public static UProgress getInstance() {
         if (instance == null) {
-            synchronized (ProgressDialog.class) {
+            synchronized (UProgress.class) {
                 if (instance == null) {
-                    instance = new ProgressDialog();
+                    instance = new UProgress();
                 }
             }
         }
@@ -59,7 +58,7 @@ public class ProgressDialog {
     }
 
     public void startProgressDialog(Context context) {
-        this.startProgressDialog(context, "Loading...");
+        this.startProgressDialog(context, "正在加载中...");
     }
 
     public void startProgressDialog(Context context, String content) {

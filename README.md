@@ -1,13 +1,13 @@
 # KosmosUtils
 > 这个是我的工具库,因为我比较懒，所以折腾了这个东西，
-> 把我平时在用的工具们抽取了出来，方便以后直接include使用
+> 把我平时在用的工具们抽取了出来，方便以后直接查用
 
 ---
 
 #### 0.androidx
 > androidx的踩坑记录
 
-#### 1.[UImage](https://github.com/KosmoSakura/KosmosUtils/blob/master/KosmosUtils/app/src/main/java/cos.mos.utils.tool/UImage.java)
+#### 1.[UImage](https://github.com/KosmoSakura/KosmosUtils/blob/master/KosmosUtils/blob/master/KosmosUtils/app/src/main/java/cos/mos/utils/tool/UImage.java)
 
 > 1.基于Retrofit2图片下载
 > 2.2种方式设置壁纸

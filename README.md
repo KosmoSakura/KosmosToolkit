@@ -7,7 +7,7 @@
 #### 0.androidx
 > androidx的踩坑记录
 
-#### 1.[UImage](https://github.com/KosmoSakura/KosmosUtils/blob/master/cos.mos.utils.tool/UImage.java)
+#### 1.[UImage](https://github.com/KosmoSakura/KosmosUtils/blob/master/KosmosUtils/cos.mos.utils.tool/UImage.java)
 
 > 1.基于Retrofit2图片下载
 > 2.2种方式设置壁纸

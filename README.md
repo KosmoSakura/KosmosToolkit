@@ -7,31 +7,31 @@
 #### 0.androidx
 > androidx的踩坑记录
 
-#### 1.[UImage](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UImage.java)
+#### 1.[UImage](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UImage.java):图片工具
 
 > 1.基于Retrofit2图片下载
 > 2.2种方式设置壁纸
 > 3.glide4.8获取bmp
 
-#### 2.cos.mos.utils.ui.pager_tab_frag包
+#### 2.[pager_tab_frag](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/ui/pager_tab_frag)包
 
 > TableLayout+ViewPager+Fragment使用示例
 
-#### 3.cos.mos.utils.uiMainActivity
+#### 3.[MainActivity](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/ui/MainActivity.java)
 
 > RecyclerView瀑布流示例
 
-#### 4.cos.mos.utils.mvp包
+#### 4.[mvp](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/mvp)包
 
 > 基于Retrofit2，rxJava的mvp示例
 
-#### 5.cos.mos.utils.dao
+#### 5.[dao](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/)包
 
 > greendao3.2数据库升级示例
 
-#### 6.混淆踩坑配置
+#### 6.[混淆踩坑配置](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/proguard-rules.pro)
 
-#### 7.cos.mos.library.retrofit包
+#### 7.[retrofit](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/librar/retrofit)包
 
 > Retrofit2网络请求，文件下载示例
 >

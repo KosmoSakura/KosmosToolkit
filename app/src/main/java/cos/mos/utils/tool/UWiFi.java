@@ -74,7 +74,7 @@ public class UWiFi {
     }
 
     /**
-     * 连接到wifi，常规情况
+     * 打开wifi并连接，常规情况
      */
     public static void toLinkedWifi(String ssid, String password) {
         //wifi未打开 执行打开操作
@@ -107,6 +107,7 @@ public class UWiFi {
     }
 
     /**
+     * 打开wifi并连接，区分加密方式
      * 热点的加密分为三种情况：
      * 1-没有密码
      * 2-用wep加密

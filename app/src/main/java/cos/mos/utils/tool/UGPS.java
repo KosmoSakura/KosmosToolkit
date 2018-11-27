@@ -19,7 +19,7 @@ public class UGPS {
     /**
      * @return GPS是否打开
      */
-    public static boolean checkGPSIsOpen(Context context) {
+    public static boolean isGPSOpne(Context context) {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }

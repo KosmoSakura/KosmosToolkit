@@ -18,7 +18,8 @@ import java.util.List;
  * @Date: 2016年8月29日 11:32
  * @Email: KosmoSakura@gmail.com
  * @eg: 修改日期：2018年09月12日 16:19
- * @eg: 最新修改日期：2018年09月22日 17:19
+ * @eg: 修改日期：2018年09月22日 17:19
+ * @eg: 最新修改日期：2018年11月27日 22:00
  */
 public class UText {
     public static String isNull(TextView tv) {
@@ -296,7 +297,7 @@ public class UText {
     }
 
     /**
-     * 下划线
+     * 给字符添加下划线
      */
     public static void getTextUnderLine(TextView t) {
         t.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线

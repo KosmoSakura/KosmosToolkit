@@ -60,7 +60,7 @@ public class USP {
     }
 
     /**
-     * 存
+     * 存入Object，自动判断类型
      */
     public void put(String key, Object object) {
         if (object instanceof String) {
@@ -81,7 +81,7 @@ public class USP {
     }
 
     /**
-     * 取
+     * 取出Object，，自动判断类型
      */
     public Object get(String key, Object defaultObject) {
         if (defaultObject instanceof String) {
@@ -100,7 +100,7 @@ public class USP {
     }
 
     /**
-     * 删
+     * 删除某一key对应的值
      */
     public void remove(String key) {
         editor.remove(key);
@@ -108,7 +108,7 @@ public class USP {
     }
 
     /**
-     * 清空
+     * 清空SharedPreferences
      */
     public void clear() {
         editor.clear();

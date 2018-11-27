@@ -12,7 +12,7 @@ import cos.mos.library.utils.ULog;
 import cos.mos.utils.init.App;
 
 /**
- * @Description: 热点工具类
+ * @Description: wifi热点工具类
  * @Author: Kosmos
  * @Date: 2018.11.26 18:08
  * @Email: KosmoSakura@gmail.com

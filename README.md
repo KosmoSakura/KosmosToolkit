@@ -4,7 +4,198 @@
 
 ---
 
+#### 1.[Glide](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/glide)→相关工具
+
+| 分类         | 功能              |
+| ------------ | ----------------- |
+| UGlideSimple | Glide普通使用     |
+| UGlideDisk   | Glide内存磁盘方面 |
+| UGlideEffect | Glide特效方面     |
+
+
+
+#### 2.[USnackbar](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/snackbar)→可以从上面弹出的SB
+
+> 基于：[MySnackBar](https://github.com/guoyoujin/MySnackBar)
+
+| 方法             | 描述                 | 封装               |
+| ---------------- | -------------------- | ------------------ |
+| showNormal       | 显示顶部普通通知     | 传入Contex代替View |
+| showWarning      | 显示顶部警告通知     |                    |
+| showError        | 显示顶部错误通知     |                    |
+| showProgress     | 显示顶部带进度条通知 |                    |
+| showNormalDown   | 显示底部普通通知     |                    |
+| showWarningDown  | 显示底部警告通知     |                    |
+| showErrorDown    | 显示底部错误通知     |                    |
+| showProgressDown | 显示底部带进度条通知 |                    |
+| showNoAction     | 显示不带action的通知 |                    |
+| showNoColor      | 显示默认颜色的通知   |                    |
+
+
+#### 3.[UToast](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/toasts)
+
+> 基于鸿洋牌的[ToastUtils](https://github.com/getActivity/ToastUtils)封装
+
+#### 4.[UColor](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UColor.java)→颜色工具类
+
+| 方法                            | 描述                        |
+| ------------------------------- | --------------------------- |
+| ColorFilter                     | 颜色反转                    |
+| RgbToInt(int , int , int )      | 将RGB颜色转化为int          |
+| RgbToInt(int , int , int, int ) | 将RGB颜色转化为int 带透明度 |
+| IntToRgb                        | int颜色转化为RGB            |
+| HexFromColor                    | Color对象转换成字符串       |
+
+
+
+#### 5.[UDate](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UDate.java)
+
+> 时间日期处理,以及平时在处理日期时的踩坑修复
+
+
+| 方法（重载）        | 描述                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| 踩坑记录            | 比如：[关于Calendar获取星期的天数踩坑记录](https://blog.csdn.net/zull_kos_mos/article/details/83934581) |
+| Safety              | 其中带`Safety`字样的是处理过异常判断的安全返回               |
+| strToStrSafety      | `strToStrSafety`:一种格式的时间 转换另一个 格式的时间        |
+| longToReadEasy      | `longToReadEasy`:目标时间和现在时间的长度(返回：14年2月1天11小时9分钟) |
+| dateToNow           | `dateToNow`:时间格式化(返回：几分钟前、几小时前、几天前、几月前、几年前) |
+| dateToSimpleStr     | `dateToSimpleStr`:某个时间段和现在时间的简要写法(eg:2018-10-05 15:30 至 15:40) |
+| getAgeSafety        | `getAgeSafety`:通过生日（String、Date）返回年龄              |
+| getMondayOfDate     | `getMondayOfDate`:返回指定日期所在的周一的日期               |
+| getSundayOfDate     | `getSundayOfDate`:返回指定日期所在的周七的日期               |
+| getDayOfWeek        | ` getDayOfWeek`:指定日期 所在周的星期                        |
+| getAnotherMonthDate | `getAnotherMonthDate(boolean future, int x)`、`getAnotherYearDate(boolean future, int x) `...:返回指定日期 前后x个单位的日期 |
+
+
+
+#### 6.[UKeyboard](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UKeyboard.java)→键盘输入工具类
+
+| 方法           | 描述                         |
+| -------------- | ---------------------------- |
+| isKeyboardShow | 是否显示软件盘               |
+| openOrhide     | 已经显示，则隐藏，反之则显示 |
+| showForce      | 强制显示键盘                 |
+| hideForce      | 强制隐藏键盘                 |
+
+
+#### 7.[ULog](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/ULog.java)
+
+> 基于[Blankj](https://github.com/Blankj/AndroidUtilCode)的工具封装
+
+| 方法       | 描述                |
+| ---------- | ------------------- |
+| commonD    | 普通打印Debug       |
+| commonV    | 普通打印Verbose     |
+| 。。。。。 | 略                  |
+| d          | 打印带边框的Debug   |
+| v          | 打印带边框的Verbose |
+| 。。。。。 | 略                  |
+
+
+
+#### 8.[URegular](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)→正则表达式相关工具
+
+| 方法                   | 描述                                  |
+| ---------------------- | ------------------------------------- |
+| emojiFilters           | 禁止输入表情                          |
+| checkPhoneNum          | 使用正则表达式检查手机号码            |
+| checkSign              | 使用正则表达式检查标点                |
+| checkChineseCharacters | 校验纯汉字                            |
+| checkBankCard          | 校验银行卡卡号                        |
+| checkPassword_3        | 密码：必须包含 数字,字母,符号 3项组合 |
+| checkPassword          | 密码：只能包含字母（大小写）和数字    |
+| checkNumber            | 6位纯数字                             |
+| checkIdCard            | 验证身份证号码                        |
+| checkEmail             | 验证邮箱                              |
+| formPhoneNo            | 隐藏手机号中间4位                     |
+| formIDCardNo           | 隐藏身份证号中间N位                   |
+| formBankCard           | 银行卡号每隔四位增加一个空格          |
+
+#### 9.[USP](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)→SharedPreferences工具
+
+| 方法                  | 描述                       |
+| --------------------- | -------------------------- |
+| put(String , Object ) | 存入Object，自动判断类型   |
+| get(String , Object ) | 取出Object，，自动判断类型 |
+| remove(String )       | 删除某一key对应的值        |
+| clear                 | 清空SharedPreferences      |
+| contain               | 查询某个key是否存在        |
+| getAll                | 返回所有的键值对           |
+| getString             | 获取String类型             |
+| putString             | 取出String类型             |
+| 类似的略              | 类似的略                   |
+
+
+
+#### 10.[UText](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UText.java)→文字、字符相关工具
+
+| 方法                                 | 描述                           | 重载传入                                                     |
+| ------------------------------------ | ------------------------------ | ------------------------------------------------------------ |
+| isNull（Object）                     | 为空返回安全类型               | TextView、String、Integer、Editable、CharSequence、Long、Float、Boolean |
+| isNull（Object ，defValue）          | 为空返回指定类型               | TextView、String、Integer、Editable、CharSequence、Long、Float、Boolean |
+| isEmpty（Object）                    | 判断是否为空                   | List、Z[]、String、TextView（判断是否有文字）                |
+| isSpace（String）                    | 判断字符串是否为null或全为空格 |                                                              |
+| clearNullOfList                      | 递归：移除list中为null的元素   | -                                                            |
+| lowerFirstLetter                     | 返回：首字母小写字符串         |                                                              |
+| equals（CharSequence，CharSequence） | 判断两字符是否相等             | {@code true}: 相等<br>{@code false}: 不相等                  |
+| getTextUnderLine                     | 给字符添加下划线               | TextView、String                                             |
+| getTextBold                          | 文本加粗                       |                                                              |
+| getTextItalic                        | 文本斜体                       |                                                              |
+| getSpannableString                   | 动态设置字符串的颜色和大小     | (TextView t, int color, int startLocation, int endLocation, float large) |
+| getFileName                          | 获取文件名                     |                                                              |
+| getFileSuffix                        | 获取后缀名                     |                                                              |
+
+
+
+#### 11.[UUnit](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UUnit.java)→单位换算工具类
+
+> 单位换算：像素<->dp、摄氏度<->华氏度、字符串版本号换算、字节换算.
+
+| 方法                             | 描述                                                         |
+| -------------------------------- | ------------------------------------------------------------ |
+| sizeFormatbit                    | 格式化字节单位（返回：XGB）                                  |
+| compareVersion(String , String ) | 比较版本号的大小, 前者大则返回一个正数, 后者大返回一个负数, 相等则返回0 |
+| px2dp                            | 像素转dp                                                     |
+| dp2px                            | 反过来                                                       |
+| cToF                             | 摄氏度转华氏度                                               |
+| fToC                             | 反过来                                                       |
+
+#### 12.[UGPS](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UGPS.java)→GPS工具
+
+|方法名   | 描述   |
+| ----------- | ----------- |
+| isGPSOpne | GPS是否打开 |
+| openGPSSettings | 跳转GPS设置界面 |
+
+#### 13.[UWiFi](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UWiFi.java)→wifi工具类
+
+|方法名   | 描述   |
+| ----------- | ----------- |
+| getSSIDWithManager | 通过WifiManager获取ssid（需要位置权限） |
+| getSSID | 通过ConnectivityManager获取ssid（不需要位置权限） |
+|toLinkedWifi | 打开wifi并连接，常规情况 |
+|toLinkedWifi | 打开wifi并连接，区分3种加密方式|
+| jumpToWifiSetting | 跳转到wifi设置页面|
+
+#### 14.[UAp](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UAp.java)→wifi热点工具类
+
+|    方法名  | 描述  |
+| ------------- | -------------------- |
+| getApSSID | 获取wifi热点的ssid （通过反射）  |
+|getApPassword|wifi热点的password（通过反射）|
+|getApState|获取热点状态（通过反射）|
+|getApOpen|热点是否已经打开（通过反射）|
+|closeAp|关闭热点（通过反射）|
+|openAp|打开热点(解决Android 8.0反射失效的情况）|
+|isSystemO|当前系统是否高于8.0|
+
+---
+
+## 其他
+
 #### 0.androidx
+
 > androidx的踩坑记录
 
 #### 1.[UImage](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UImage.java):图片工具
@@ -37,199 +228,10 @@
 >
 > 及相关的踩坑记录，比如：[在Retrofit2网络请求时打印参数的踩坑记录](https://blog.csdn.net/zull_kos_mos/article/details/83934732)
 
-#### 8.[Glide](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/glide)→相关工具
+#### 8.[封装EventBus]()
 
-| 分类         | 功能              |
-| ------------ | ----------------- |
-| UGlideSimple | Glide普通使用     |
-| UGlideDisk   | Glide内存磁盘方面 |
-| UGlideEffect | Glide特效方面     |
-
-
-
-#### 9.[USnackbar](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/snackbar)→可以从上面弹出的SB
-
-> 基于：[MySnackBar](https://github.com/guoyoujin/MySnackBar)
-
-| 方法             | 描述                 | 封装               |
-| ---------------- | -------------------- | ------------------ |
-| showNormal       | 显示顶部普通通知     | 传入Contex代替View |
-| showWarning      | 显示顶部警告通知     |                    |
-| showError        | 显示顶部错误通知     |                    |
-| showProgress     | 显示顶部带进度条通知 |                    |
-| showNormalDown   | 显示底部普通通知     |                    |
-| showWarningDown  | 显示底部警告通知     |                    |
-| showErrorDown    | 显示底部错误通知     |                    |
-| showProgressDown | 显示底部带进度条通知 |                    |
-| showNoAction     | 显示不带action的通知 |                    |
-| showNoColor      | 显示默认颜色的通知   |                    |
-
-
-#### 10.[UToast](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/toasts)
-
-> 基于鸿洋牌的[ToastUtils](https://github.com/getActivity/ToastUtils)封装
-
-#### 11.[UColor](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UColor.java)→颜色工具类
-
-| 方法                            | 描述                        |
-| ------------------------------- | --------------------------- |
-| ColorFilter                     | 颜色反转                    |
-| RgbToInt(int , int , int )      | 将RGB颜色转化为int          |
-| RgbToInt(int , int , int, int ) | 将RGB颜色转化为int 带透明度 |
-| IntToRgb                        | int颜色转化为RGB            |
-| HexFromColor                    | Color对象转换成字符串       |
-
-
-
-#### 12.[UDate](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UDate.java)
-
-> 时间日期处理,以及平时在处理日期时的踩坑修复
-
-
-| 方法（重载）        | 描述                                                         |
-| ------------------- | ------------------------------------------------------------ |
-| 踩坑记录            | 比如：[关于Calendar获取星期的天数踩坑记录](https://blog.csdn.net/zull_kos_mos/article/details/83934581) |
-| Safety              | 其中带`Safety`字样的是处理过异常判断的安全返回               |
-| strToStrSafety      | `strToStrSafety`:一种格式的时间 转换另一个 格式的时间        |
-| longToReadEasy      | `longToReadEasy`:目标时间和现在时间的长度(返回：14年2月1天11小时9分钟) |
-| dateToNow           | `dateToNow`:时间格式化(返回：几分钟前、几小时前、几天前、几月前、几年前) |
-| dateToSimpleStr     | `dateToSimpleStr`:某个时间段和现在时间的简要写法(eg:2018-10-05 15:30 至 15:40) |
-| getAgeSafety        | `getAgeSafety`:通过生日（String、Date）返回年龄              |
-| getMondayOfDate     | `getMondayOfDate`:返回指定日期所在的周一的日期               |
-| getSundayOfDate     | `getSundayOfDate`:返回指定日期所在的周七的日期               |
-| getDayOfWeek        | ` getDayOfWeek`:指定日期 所在周的星期                        |
-| getAnotherMonthDate | `getAnotherMonthDate(boolean future, int x)`、`getAnotherYearDate(boolean future, int x) `...:返回指定日期 前后x个单位的日期 |
-
-
-
-#### 13.[UKeyboard](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UKeyboard.java)→键盘输入工具类
-
-| 方法           | 描述                         |
-| -------------- | ---------------------------- |
-| isKeyboardShow | 是否显示软件盘               |
-| openOrhide     | 已经显示，则隐藏，反之则显示 |
-| showForce      | 强制显示键盘                 |
-| hideForce      | 强制隐藏键盘                 |
-
-
-#### 14.[ULog](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/ULog.java)
-
-> 基于[Blankj](https://github.com/Blankj/AndroidUtilCode)的工具封装
-
-| 方法       | 描述                |
-| ---------- | ------------------- |
-| commonD    | 普通打印Debug       |
-| commonV    | 普通打印Verbose     |
-| 。。。。。 | 略                  |
-| d          | 打印带边框的Debug   |
-| v          | 打印带边框的Verbose |
-| 。。。。。 | 略                  |
-
-
-
-#### 15.[URegular](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)→正则表达式相关工具
-
-| 方法                   | 描述                                  |
-| ---------------------- | ------------------------------------- |
-| emojiFilters           | 禁止输入表情                          |
-| checkPhoneNum          | 使用正则表达式检查手机号码            |
-| checkSign              | 使用正则表达式检查标点                |
-| checkChineseCharacters | 校验纯汉字                            |
-| checkBankCard          | 校验银行卡卡号                        |
-| checkPassword_3        | 密码：必须包含 数字,字母,符号 3项组合 |
-| checkPassword          | 密码：只能包含字母（大小写）和数字    |
-| checkNumber            | 6位纯数字                             |
-| checkIdCard            | 验证身份证号码                        |
-| checkEmail             | 验证邮箱                              |
-| formPhoneNo            | 隐藏手机号中间4位                     |
-| formIDCardNo           | 隐藏身份证号中间N位                   |
-| formBankCard           | 银行卡号每隔四位增加一个空格          |
-
-#### 16.[USP](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)→SharedPreferences工具
-
-| 方法                  | 描述                       |
-| --------------------- | -------------------------- |
-| put(String , Object ) | 存入Object，自动判断类型   |
-| get(String , Object ) | 取出Object，，自动判断类型 |
-| remove(String )       | 删除某一key对应的值        |
-| clear                 | 清空SharedPreferences      |
-| contain               | 查询某个key是否存在        |
-| getAll                | 返回所有的键值对           |
-| getString             | 获取String类型             |
-| putString             | 取出String类型             |
-| 类似的略              | 类似的略                   |
-
-
-
-#### 17.[UText](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UText.java)→文字、字符相关工具
-
-| 方法                                 | 描述                           | 重载传入                                                     |
-| ------------------------------------ | ------------------------------ | ------------------------------------------------------------ |
-| isNull（Object）                     | 为空返回安全类型               | TextView、String、Integer、Editable、CharSequence、Long、Float、Boolean |
-| isNull（Object ，defValue）          | 为空返回指定类型               | TextView、String、Integer、Editable、CharSequence、Long、Float、Boolean |
-| isEmpty（Object）                    | 判断是否为空                   | List、Z[]、String、TextView（判断是否有文字）                |
-| isSpace（String）                    | 判断字符串是否为null或全为空格 |                                                              |
-| clearNullOfList                      | 递归：移除list中为null的元素   | -                                                            |
-| lowerFirstLetter                     | 返回：首字母小写字符串         |                                                              |
-| equals（CharSequence，CharSequence） | 判断两字符是否相等             | {@code true}: 相等<br>{@code false}: 不相等                  |
-| getTextUnderLine                     | 给字符添加下划线               | TextView、String                                             |
-| getTextBold                          | 文本加粗                       |                                                              |
-| getTextItalic                        | 文本斜体                       |                                                              |
-| getSpannableString                   | 动态设置字符串的颜色和大小     | (TextView t, int color, int startLocation, int endLocation, float large) |
-| getFileName                          | 获取文件名                     |                                                              |
-| getFileSuffix                        | 获取后缀名                     |                                                              |
-
-
-
-#### 18.[UUnit](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UUnit.java)→单位换算工具类
-
-> 单位换算：像素<->dp、摄氏度<->华氏度、字符串版本号换算、字节换算.
-
-| 方法                             | 描述                                                         |
-| -------------------------------- | ------------------------------------------------------------ |
-| sizeFormatbit                    | 格式化字节单位（返回：XGB）                                  |
-| compareVersion(String , String ) | 比较版本号的大小, 前者大则返回一个正数, 后者大返回一个负数, 相等则返回0 |
-| px2dp                            | 像素转dp                                                     |
-| dp2px                            | 反过来                                                       |
-| cToF                             | 摄氏度转华氏度                                               |
-| fToC                             | 反过来                                                       |
-
-
-
-#### 19.[封装EventBus]()
-
-#### 20.[UPermissions](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UPermissions.java)→权限工具
-
+#### 9.[UPermissions](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UPermissions.java)→权限工具
 > 基于RxPermissions
-
-#### 21.[UGPS](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UGPS.java)→GPS工具
-
-|方法名   | 描述   |
-| ----------- | ----------- |
-| isGPSOpne | GPS是否打开 |
-| openGPSSettings | 跳转GPS设置界面 |
-
-#### 22.[UWiFi](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UWiFi.java)→wifi工具类
-
-|方法名   | 描述   |
-| ----------- | ----------- |
-| getSSIDWithManager | 通过WifiManager获取ssid（需要位置权限） |
-| getSSID | 通过ConnectivityManager获取ssid（不需要位置权限） |
-|toLinkedWifi | 打开wifi并连接，常规情况 |
-|toLinkedWifi | 打开wifi并连接，区分3种加密方式|
-| jumpToWifiSetting | 跳转到wifi设置页面|
-
-#### 23.[UAp](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UAp.java)→wifi热点工具类
-
-|    方法名  | 描述  |
-| ------------- | -------------------- |
-| getApSSID | 获取wifi热点的ssid （通过反射）  |
-|getApPassword|wifi热点的password（通过反射）|
-|getApState|获取热点状态（通过反射）|
-|getApOpen|热点是否已经打开（通过反射）|
-|closeAp|关闭热点（通过反射）|
-|openAp|打开热点(解决Android 8.0反射失效的情况）|
-|isSystemO|当前系统是否高于8.0|
 
 ---
 

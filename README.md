@@ -31,7 +31,7 @@
 
 #### 6.[混淆踩坑配置](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/proguard-rules.pro)
 
-#### 7.[retrofit](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/librar/retrofit)包
+#### 7.[retrofit](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/retrofit)包
 
 > Retrofit2网络请求，文件下载示例
 >

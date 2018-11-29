@@ -10,8 +10,11 @@ import cos.mos.library.init.KApp;
  * @Author: Kosmos
  * @Date: 2018.10.31 14:02
  * @Email: KosmoSakura@gmail.com
+ * @eg: 最新修改日期：2018年11月29日 22:00
  */
 public class UUnit {
+    private static final float scale = KApp.getInstance().getResources().getDisplayMetrics().density;
+
     /**
      * @param size 单位：字节
      * @apiNote 格式化字节单位
@@ -69,7 +72,6 @@ public class UUnit {
      * @return dp单位
      */
     public static int px2dp(float pxValue) {
-        final float scale = KApp.getInstance().getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
 
@@ -79,7 +81,6 @@ public class UUnit {
      * @return 像素单位
      */
     public static int dp2px(float dpValue) {
-        final float scale = KApp.getInstance().getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 

@@ -43,20 +43,28 @@ public class USP {
         editor.apply();
     }
 
-    public long getLong(String key, long defaultObject) {
-        return sp.getLong(key, defaultObject);
+    public long getLong(String key, long value) {
+        return sp.getLong(key, value);
     }
 
-    public int getInt(String key, int defaultObject) {
-        return sp.getInt(key, defaultObject);
+    public int getInt(String key, int value) {
+        return sp.getInt(key, value);
     }
 
     public String getString(String key) {
         return sp.getString(key, "");
     }
 
+    public String getString(String key, String value) {
+        return sp.getString(key, value);
+    }
+
     public boolean getBoolean(String key) {
         return sp.getBoolean(key, false);
+    }
+
+    public boolean getBoolean(String key, boolean value) {
+        return sp.getBoolean(key, value);
     }
 
     /**

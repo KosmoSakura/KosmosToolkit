@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="60dp"
+        android:layout_margin="40dp"
         android:background="@drawable/rect_rim"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -44,7 +44,6 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
-                android:src="@mipmap/ic_launcher"
                 android:visibility="gone"/>
             <!--提示内容文本-->
             <TextView

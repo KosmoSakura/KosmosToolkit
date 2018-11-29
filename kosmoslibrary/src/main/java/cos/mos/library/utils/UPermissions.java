@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
 
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
 import androidx.fragment.app.FragmentActivity;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -32,6 +34,7 @@ public class UPermissions {
         }
     }
 
+
     public void check(String notice, Listener listener, String... pers) {
         for (String per : pers) {
             if (!rxPermissions.isGranted(per)) {
@@ -40,12 +43,17 @@ public class UPermissions {
                     .showNoticeWithOnebtn(notice, "Agreed", (result, dia) -> {
                         Disposable subscribe = rxPermissions.request(pers)
                             .subscribe(granted -> {
-                                if (!granted) {
+                                if (granted) {
+                                    if (listener != null) {
+                                        listener.permission();
+                                    }
+                                } else {
                                     if (count > 2) {
                                         toGoSystem(notice);
+                                    } else {
+                                        check(notice, listener, pers);
                                     }
                                 }
-                                check(notice, listener, pers);
                             });
                         dia.dismiss();
                         rxDisposable(subscribe);

@@ -73,7 +73,7 @@ public abstract class KApp extends MultiDexApplication {
     protected abstract String defaultSP();
 
     /**
-     * @return SharedPreferences 默认名字
+     * @return Base url
      */
     protected abstract String baseUrl();
 

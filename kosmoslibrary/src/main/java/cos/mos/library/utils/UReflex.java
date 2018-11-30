@@ -14,7 +14,7 @@ public class UReflex {
     /**
      * @param obj  目标类的实例对象：WifiManager obj;
      * @param name 属性名字，eg：WIFI_AP_STATE_ENABLED
-     * @return 私有属性的值(比如是String类型 ）
+     * @return 公共属性的值(比如是String类型 ）
      */
     public static String getPrivateFirldStr(Object obj, String name) {
         Class<?> cc = obj.getClass();

@@ -189,6 +189,50 @@
 |closeAp|关闭热点（通过反射）|
 |openAp|打开热点(解决Android 8.0反射失效的情况）|
 |isSystemO|当前系统是否高于8.0|
+#### 15.[USensor ](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/USensor.java)→指南针辅助类：磁场放、方向等传感器工具
+
+> 指南针功能辅助类
+
+| 方法                                     | 描述                             |
+| ---------------------------------------- | -------------------------------- |
+| getSensors                               | 获取设备支持的传感器列表         |
+| setDegreeListener                        | 设置传感监听                     |
+| clear                                    | 资源清理，注销监听   |
+| private static final int sensitivity= 6; | 变化灵敏度，数值越小，变化月灵敏 |
+
+#### 16.[UPermissions](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UPermissions.java)→权限工具
+
+> 基于RxPermissions
+
+| 方法                               | 说明                      |
+| ---------------------------------- | ------------------------- |
+| clear                              | 资源清理                  |
+| check(String ,Listener,String... ) | 权限检测,操作逻辑内部处理 |
+| toGoSystem                         | 跳转系统授权页面          |
+
+### 16.[UReflex](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UReflex.java)→反射辅助工具
+
+| 方法               | 描述                                 |
+| ------------------ | ------------------------------------ |
+| getPrivateFirldStr | 获取公共属性的值(比如是String类型 ） |
+| getPicMethod       | 获取公共方法的值(比如是String类型 ） |
+| getPrtFirld        | 获取私有属性的值(比如是String类型 ） |
+| getPicFirld        | 获取公共属性的值(比如是String类型 ） |
+| getAllField        | 获取某类的全部属性                   |
+| getAllMethods      | 获取某类的全部方法                   |
+| getSuperClass      | 获取某类的父类                       |
+| getClassBase       | 通过包名+类名获取到类对象            |
+
+### 17.[UFlashLight](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UFlashLight.java)→闪光灯工具
+
+| 方法                       | 说明                              |
+| -------------------------- | --------------------------------- |
+| screenLight（float alpha） | 修改屏幕亮度                      |
+| light（boolean）           | true→开启闪光灯，false→关闭闪光灯 |
+| openFlash                  | 开启闪光灯                        |
+| closeFlash                 | 关闭闪光灯                        |
+
+
 
 ---
 
@@ -229,9 +273,6 @@
 > 及相关的踩坑记录，比如：[在Retrofit2网络请求时打印参数的踩坑记录](https://blog.csdn.net/zull_kos_mos/article/details/83934732)
 
 #### 8.[封装EventBus]()
-
-#### 9.[UPermissions](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UPermissions.java)→权限工具
-> 基于RxPermissions
 
 ---
 

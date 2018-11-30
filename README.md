@@ -232,6 +232,14 @@
 | openFlash                  | 开启闪光灯                        |
 | closeFlash                 | 关闭闪光灯                        |
 
+### 18.[USound](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/USound.java)→音频池工具
+
+| 方法                       | 说明                                 |
+| -------------------------- | ------------------------------------ |
+| instance                   | 异步                                 |
+| load(Context , int... res) | 数据加载方法，res为要被加载的raw资源 |
+| play（index）              | 播放                                 |
+
 
 
 ---

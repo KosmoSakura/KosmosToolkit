@@ -20,7 +20,7 @@ public class Constant extends KConfig {
 
     public static String getDownloadPath() {
         if (UText.isEmpty(DownloadPath)) {
-            DownloadPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + getSPName() + File.separator;
+            DownloadPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + getBaseUrl() + File.separator;
         }
         return DownloadPath;
     }

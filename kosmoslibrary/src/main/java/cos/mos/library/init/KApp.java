@@ -3,6 +3,7 @@ package cos.mos.library.init;
 
 import androidx.multidex.MultiDexApplication;
 import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.USP;
 import cos.mos.library.utils.toast.UToast;
 import cos.mos.library.constant.KConfig;
 
@@ -32,7 +33,7 @@ public abstract class KApp extends MultiDexApplication {
         //鸿洋牌吐司
         UToast.init(this);
         //SharedPreferences默认表名
-        KConfig.setSpName(defaultSP());
+        USP.with().init(this,defaultSP());
         //Base url
         KConfig.setBaseUrl(baseUrl());
         //Blankj封装的Log

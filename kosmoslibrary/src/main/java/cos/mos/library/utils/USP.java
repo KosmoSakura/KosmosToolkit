@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 
 import java.util.Map;
 
-import cos.mos.library.constant.KConfig;
-
 /**
  * @Description: SharedPreferences工具
  * @Author: Kosmos
@@ -15,18 +13,36 @@ import cos.mos.library.constant.KConfig;
  * @eg: 最新修改日期：2018年10月8日
  */
 public class USP {
+    private volatile static USP instance;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
-    private USP(Context context) {
-        sp = context.getSharedPreferences(KConfig.getSPName(), Context.MODE_PRIVATE);
+    private USP() {
+    }
+
+    public static USP with() {
+        if (instance == null) {
+            synchronized (USP.class) {
+                if (instance == null) {
+                    instance = new USP();
+                }
+            }
+        }
+        return instance;
+    }
+
+    /**
+     * 在Application里面初始化
+     */
+    public void init(Context context, String spName) {
+        sp = context.getSharedPreferences(spName, Context.MODE_PRIVATE);
         editor = sp.edit();
     }
 
-    public static USP with(Context context) {
-        return new USP(context);
+    public void putLong(String key, long value) {
+        editor.putLong(key, value);
+        editor.apply();
     }
-
 
     public void putString(String key, String value) {
         editor.putString(key, value);

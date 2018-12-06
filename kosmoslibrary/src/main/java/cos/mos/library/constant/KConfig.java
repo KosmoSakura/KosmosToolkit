@@ -10,19 +10,8 @@ import cos.mos.library.utils.UText;
  */
 public class KConfig {
     public static String Describe;//接口描述
-    private static String SP_NAME;//SharedPreferences默认表名
     private static String BASE_URL;//base url
 
-    public static void setSpName(String spName) {
-        SP_NAME = spName;
-    }
-
-    public static String getSPName() {
-        if (UText.isEmpty(SP_NAME)) {
-            SP_NAME = "sakura";
-        }
-        return SP_NAME;
-    }
 
     public static String getBaseUrl() {
         if (UText.isEmpty(BASE_URL)) {

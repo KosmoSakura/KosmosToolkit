@@ -20,7 +20,7 @@ public class USP {
     private USP() {
     }
 
-    public static USP with() {
+    public static USP instance() {
         if (instance == null) {
             synchronized (USP.class) {
                 if (instance == null) {

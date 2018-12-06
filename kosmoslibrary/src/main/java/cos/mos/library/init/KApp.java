@@ -33,7 +33,7 @@ public abstract class KApp extends MultiDexApplication {
         //鸿洋牌吐司
         UToast.init(this);
         //SharedPreferences默认表名
-        USP.with().init(this,defaultSP());
+        USP.instance().init(this, defaultSP());
         //Base url
         KConfig.setBaseUrl(baseUrl());
         //Blankj封装的Log

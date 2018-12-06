@@ -21,6 +21,7 @@ public class UPermissions {
     private static CompositeDisposable compositeDisposable;
     private FragmentActivity activity;
     private int count;
+    private int maxNoticeCount = 2;//弹窗最大弹出次数
 
     public UPermissions(FragmentActivity activity) {
         this.activity = activity;
@@ -34,6 +35,15 @@ public class UPermissions {
         }
     }
 
+    /**
+     * @param max 通知最大弹出次数，默认为2次
+     *            当次数为1，则响应式弹出通知
+     * @apiNote 用户体验优化
+     */
+    public UPermissions setMaxNoticeCount(int max) {
+        maxNoticeCount = max;
+        return this;
+    }
 
     public void check(String notice, Listener listener, String... pers) {
         for (String per : pers) {
@@ -45,13 +55,19 @@ public class UPermissions {
                             .subscribe(granted -> {
                                 if (granted) {
                                     if (listener != null) {
-                                        listener.permission();
+                                        listener.permission(true);
                                     }
                                 } else {
-                                    if (count > 2) {
-                                        toGoSystem(notice);
+                                    if (maxNoticeCount == 1) {
+                                        if (listener != null) {
+                                            listener.permission(false);
+                                        }
                                     } else {
-                                        check(notice, listener, pers);
+                                        if (count > maxNoticeCount) {
+                                            toGoSystem(notice);
+                                        } else {
+                                            check(notice, listener, pers);
+                                        }
                                     }
                                 }
                             });
@@ -62,7 +78,7 @@ public class UPermissions {
             }
         }
         if (listener != null) {
-            listener.permission();
+            listener.permission(true);
         }
     }
 
@@ -86,6 +102,6 @@ public class UPermissions {
     }
 
     public interface Listener {
-        void permission();
+        void permission(boolean hasPermission);
     }
 }

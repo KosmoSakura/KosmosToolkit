@@ -2,13 +2,16 @@ package cos.mos.library.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.hardware.Camera;
+import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.RequiresApi;
+import cos.mos.library.init.KApp;
 
 /**
  * @Description: 闪光灯工具
@@ -20,17 +23,16 @@ public class UFlashLight {
     private static UFlashLight flashLight;
     private CameraManager manager;
     private Camera camera;
-    private Context context;
 
-    private UFlashLight(Context context) {
-        this.context = context;
+    private UFlashLight() {
+
     }
 
-    public static UFlashLight instance(Context context) {
+    public static UFlashLight instance() {
         if (flashLight == null) {
             synchronized (UFlashLight.class) {
                 if (flashLight == null) {
-                    flashLight = new UFlashLight(context);
+                    flashLight = new UFlashLight();
                 }
             }
         }
@@ -40,7 +42,7 @@ public class UFlashLight {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private CameraManager getCMG() {
         if (manager == null) {
-            manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
+            manager = (CameraManager) KApp.getInstance().getSystemService(Context.CAMERA_SERVICE);
         }
         return manager;
     }
@@ -63,6 +65,13 @@ public class UFlashLight {
     }
 
     /**
+     * @return 是否有闪光灯
+     */
+    public static boolean hasFLASH() {
+        return KApp.getInstance().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+    }
+
+    /**
      * @param open true,开启闪光灯
      */
     public void light(boolean open) {
@@ -79,7 +88,20 @@ public class UFlashLight {
     public void openFlash() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
-                getCMG().setTorchMode("0", true);
+//                getCMG().setTorchMode("0", true);
+                //获取当前手机所有摄像头设备ID
+                String[] ids = getCMG().getCameraIdList();
+                CameraCharacteristics c;
+                for (String id : ids) {
+                    c = getCMG().getCameraCharacteristics(id);
+                    //查询该摄像头组件是否包含闪光灯
+                    Integer lensFacing = c.get(CameraCharacteristics.LENS_FACING);
+                    if (UText.isBoolean(c.get(CameraCharacteristics.FLASH_INFO_AVAILABLE)) &&
+                        lensFacing != null && lensFacing == CameraCharacteristics.LENS_FACING_BACK) {
+                        //打开或关闭手电筒
+                        getCMG().setTorchMode(id, true);
+                    }
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -97,19 +119,18 @@ public class UFlashLight {
     public void closeFlash() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
-                if (manager == null) {
-                    return;
+//                getCMG().setTorchMode("0", false);
+                //关闭当前手机所有摄像头设备ID
+                for (String id : getCMG().getCameraIdList()) {
+                    getCMG().setTorchMode(id, false);
                 }
-                manager.setTorchMode("0", false);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            if (camera == null) {
-                return;
-            }
-            camera.stopPreview();
-            camera.release();
+            getCamera().getParameters().setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+            getCamera().stopPreview();
+            getCamera().release();
         }
     }
 }

@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import cos.mos.library.utils.UDialog;
+import cos.mos.library.utils.UPermissions;
 import cos.mos.utils.R;
 import cos.mos.utils.init.BaseActivity;
 import cos.mos.utils.mvp.adapter.AdapterImage;
@@ -30,8 +31,7 @@ public class MainActivity extends BaseActivity implements MainListener {
     private MainPresenter presenter;
     private AdapterImage adapterImage;
     private ArrayList<ImageBean> listImage;
-    private RxPermissions rxPermissions;
-    private int count;//被用户拒绝的次数
+的次数
 
     @Override
     protected int layout() {
@@ -57,14 +57,12 @@ public class MainActivity extends BaseActivity implements MainListener {
 
     @Override
     protected void logic() {
-        rxPermissions = new RxPermissions(this);
-        count = 0;
-        if (!rxPermissions.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            showRequestPermissionDialog();
-        }
-        if (!rxPermissions.isGranted(Manifest.permission.CAMERA)) {
-            showRequestPermissionDialog();
-        }
+        new UPermissions(this).check("我要权限，给我权限", new UPermissions.Listener() {
+            @Override
+            public void permission(boolean hasPermission) {
+                spv.callFreshDelay();
+            }
+        }, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA);
         spv.setListener(new KOnFreshListener() {
             @Override
             public void onRefresh() {
@@ -74,31 +72,8 @@ public class MainActivity extends BaseActivity implements MainListener {
         adapterImage.setOnItemClickListener((adapter, view, position) -> {
 
         });
-        spv.callFreshDelay();
     }
 
-    /**
-     * 我们需要取存储空间权限，让程序运行
-     */
-    private void showRequestPermissionDialog() {
-        count++;
-        UDialog.getInstance(this, false, false)
-            .showNoticeWithOnebtn("We need the following permissions to make the program run properly",
-                "Agreed", (result, dia) -> {
-                    rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
-                        .subscribe(granted -> {
-                            if (!granted) {
-                                if (count > 2) {
-                                    toGoSystem();
-                                    dia.dismiss();
-                                    return;
-                                }
-                                showRequestPermissionDialog();
-                            }
-                        });
-                    dia.dismiss();
-                });
-    }
 
     private void toGoSystem() {
         UDialog.getInstance(this, false, false)

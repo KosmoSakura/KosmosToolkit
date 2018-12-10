@@ -31,7 +31,6 @@ public class MainActivity extends BaseActivity implements MainListener {
     private MainPresenter presenter;
     private AdapterImage adapterImage;
     private ArrayList<ImageBean> listImage;
-的次数
 
     @Override
     protected int layout() {

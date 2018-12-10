@@ -7,7 +7,12 @@ import cos.mos.utils.dao.gen.DaoMaster;
 import cos.mos.utils.dao.gen.DaoSession;
 import cos.mos.utils.init.Constant;
 
-
+/**
+ * @Description:
+ * @Author: Kosmos
+ * @Email: KosmoSakura@foxmail.com
+ * * @eg: 最新修改日期：2018年12月10日 22:00
+ */
 public class DbManager {
     private static DbManager mDbManager;
     private static DaoMaster.DevOpenHelper mDevOpenHelper;

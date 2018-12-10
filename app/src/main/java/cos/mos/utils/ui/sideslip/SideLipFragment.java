@@ -63,7 +63,7 @@ public class SideLipFragment extends KFragment {
             switch (view.getId()) {
                 case R.id.item_qr_right:
                     list.remove(position);
-                    DbHelper.deleteByBean(context, bean);
+                    DbHelper.deleteByBean(bean);
                     adapter.notifyItemRemoved(position);
                     break;
             }
@@ -86,7 +86,7 @@ public class SideLipFragment extends KFragment {
 
     private void refresh() {
         list.clear();
-        List<UserBean> userBeans = DbHelper.SearchAll(context);
+        List<UserBean> userBeans = DbHelper.SearchAll();
         if (!UText.isEmpty(userBeans)) {
             ULog.commonD("-->" + userBeans.size());
             list.addAll(userBeans);

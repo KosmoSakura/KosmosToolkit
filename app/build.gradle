@@ -64,6 +64,6 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.1.3'//大图查看
     implementation 'com.ruffian.library:RWidgetHelper:1.0.4'//drawable图库
     implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.3.4'//二维码
-    implementation 'com.github.castorflex.smoothprogressbar:library-circular:1.3.0'//圆形进度条
+//    implementation 'com.github.castorflex.smoothprogressbar:library-circular:1.3.0'//圆形进度条
     implementation project(':kosmoslibrary')
 }

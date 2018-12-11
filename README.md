@@ -240,7 +240,7 @@
 | load(Context , int... res) | 数据加载方法，res为要被加载的raw资源 |
 | play（index）              | 播放                                 |
 
-### 18.[UApps](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UApps.java)→应用程序工具包
+### 18.[UApps](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UApps.java)→[应用程序工具包](https://blog.csdn.net/zull_kos_mos/article/details/84958669)
 
 | 对外提供的方法           | 说明                                               |
 | ------------------------ | -------------------------------------------------- |

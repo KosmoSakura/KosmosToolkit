@@ -240,6 +240,23 @@
 | load(Context , int... res) | 数据加载方法，res为要被加载的raw资源 |
 | play（index）              | 播放                                 |
 
+### 18.[UApps](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UApps.java)→应用程序工具包
+
+| 对外提供的方法           | 说明                                               |
+| ------------------------ | -------------------------------------------------- |
+| getAppList()             | 获取系统所有安装应用（应用区分系统非系统：sysApp） |
+| loadUsersApp()           | 获取手机内非系统应用                               |
+| getAppByPkgName()        | 通过包名获取该应用的相关信息                       |
+| getShareApps()           | 查询手机内所有支持分享的应用                       |
+| startThridApp()          | 通过包名启动第三方app                              |
+| getSystemLanguageList()  | 获取当前系统上的语言列表(Locale列表)               |
+| getAppSize()             | 获取应用数据大小                                   |
+| installExternalStorage() | 应用是否安装在外置储存空间                         |
+| isSystemApp()            | 是否是系统应用                                     |
+| getCurTopAppPkg()        | 轻量： 获取栈顶应用包名(非系统程序在在栈顶时有效)  |
+| getTopAppPkg()           | 获取栈顶应用包名（所有程序有效）                   |
+| getLauncherPkgName()     | 获取当前正在运行的桌面launcher包名                 |
+
 
 
 ---

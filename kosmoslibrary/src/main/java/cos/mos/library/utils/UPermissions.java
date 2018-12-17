@@ -1,13 +1,17 @@
 package cos.mos.library.utils;
 
-import android.app.Activity;
+import android.app.AppOpsManager;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.provider.Settings;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import androidx.fragment.app.FragmentActivity;
+import cos.mos.library.init.KApp;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -30,6 +34,9 @@ public class UPermissions {
         count = 0;
     }
 
+    /**
+     * 清理资源
+     */
     public static void clear() {
         if (compositeDisposable != null) {
             compositeDisposable.clear();
@@ -46,6 +53,12 @@ public class UPermissions {
         return this;
     }
 
+    /**
+     * @param notice   没有权限的申请提示
+     * @param listener 权限监听
+     * @param pers     权限们
+     * @apiNote 权限检查，没有申请
+     */
     public void check(String notice, Listener listener, String... pers) {
         for (String per : pers) {
             if (!rxPermissions.isGranted(per)) {
@@ -99,5 +112,67 @@ public class UPermissions {
 
     public interface Listener {
         void permission(boolean hasPermission);
+    }
+
+    /*-以下是特权权限的检测，
+       不能申请，只能引导用户手动开，开启方法在UIntent里面
+    ------------------------------------------------------------------------------------*/
+
+    /**
+     * 辅助功能服务/[无障碍通道]是否开启
+     */
+    public static boolean isAssistOn() {
+        int accessibilityEnabled;//默认为0
+        try {
+            accessibilityEnabled = Settings.Secure.getInt(KApp.getInstance().getContentResolver(),
+                android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
+        } catch (Settings.SettingNotFoundException e) {
+            //找不到这个页面
+            accessibilityEnabled = 0;
+        }
+
+        if (accessibilityEnabled == 1) {
+            String services = Settings.Secure.getString(KApp.getInstance().getContentResolver(),
+                Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            if (services != null) {
+                return services.toLowerCase().contains(KApp.getInstance().getPackageName().toLowerCase());
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return 查看是否[存在][有权限查看使用情况的应用]权限
+     */
+    public static boolean isNoOption() {
+        PackageManager packageManager = KApp.getInstance().getPackageManager();
+        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        return !UText.isEmpty(packageManager
+            .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY));
+    }
+
+    /**
+     * @return 是否已经获取[有权限查看使用情况的应用]权限
+     */
+    public static boolean isStatAccessPermissionSet() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            try {
+                PackageManager packageManager = KApp.getInstance().getPackageManager();
+                ApplicationInfo info = packageManager
+                    .getApplicationInfo(KApp.getInstance().getPackageName(), 0);
+                AppOpsManager appOpsManager = (AppOpsManager) KApp.getInstance()
+                    .getSystemService(Context.APP_OPS_SERVICE);
+                appOpsManager
+                    .checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, info.uid, info.packageName);
+                return appOpsManager
+                    .checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, info.uid, info.packageName) ==
+                    AppOpsManager.MODE_ALLOWED;
+            } catch (Exception e) {
+                return false;
+            }
+        } else {
+            //小于Android4.4，用不着
+            return true;
+        }
     }
 }

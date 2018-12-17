@@ -1,6 +1,5 @@
 package cos.mos.library.utils;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.usage.UsageEvents;
 import android.app.usage.UsageStatsManager;
@@ -269,15 +268,5 @@ public class UApps {
         } else {
             return res.activityInfo.packageName;
         }
-    }
-
-    /**
-     * Home键操作
-     */
-    public static void goHome(Activity activity) {
-        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory(Intent.CATEGORY_HOME);
-        activity.startActivity(homeIntent);
-        activity.finish();
     }
 }

@@ -1,5 +1,6 @@
 package cos.mos.library.utils;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
@@ -64,7 +65,13 @@ public class UPermissions {
                                         }
                                     } else {
                                         if (count > maxNoticeCount) {
-                                            toGoSystem(notice);
+                                            UDialog.getInstance(activity, false, false)
+                                                .showNoticeWithOnebtn(notice,
+                                                    "To authorize", (result1, dia1) -> {
+                                                        UIntent.goSys();
+                                                        activity.finish();
+                                                    });
+
                                         } else {
                                             check(notice, listener, pers);
                                         }
@@ -82,17 +89,6 @@ public class UPermissions {
         }
     }
 
-    private void toGoSystem(String notice) {
-        UDialog.getInstance(activity, false, false)
-            .showNoticeWithOnebtn(notice,
-                "To authorize", (result, dia) -> {
-                    Uri packageURI = Uri.parse("package:" + activity.getPackageName());
-                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        packageURI);
-                    activity.startActivity(intent);
-                    activity.finish();
-                });
-    }
 
     private void rxDisposable(Disposable disposable) {
         if (compositeDisposable == null) {

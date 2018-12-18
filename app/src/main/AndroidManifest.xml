@@ -17,6 +17,8 @@
     <!-- 获取WIFI信息状态的权限 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!--指纹验证-->
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
     <application
         android:name=".init.App"
         android:allowBackup="true"

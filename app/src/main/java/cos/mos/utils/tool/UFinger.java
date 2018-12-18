@@ -81,10 +81,9 @@ public class UFinger {
             new FingerprintManager.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, CharSequence errString) {
-                //多次指纹验证错误后，回调此方法；
-                //并且，（第一次错误）由系统锁定30s
+                //指纹验证失败
                 if (listener != null) {
-                    listener.onResult(false, "多次错误，暂时锁定");
+                    listener.onResult(false, "指纹不匹配");
                 }
             }
 
@@ -99,9 +98,10 @@ public class UFinger {
 
             @Override
             public void onAuthenticationFailed() {
-                //指纹验证失败
+                //多次指纹验证错误后，回调此方法；
+                //并且，（第一次错误）由系统锁定30s
                 if (listener != null) {
-                    listener.onResult(false, "指纹不匹配");
+                    listener.onResult(false, "多次错误，暂时锁定");
                 }
             }
         },null);

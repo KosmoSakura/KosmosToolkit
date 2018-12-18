@@ -75,19 +75,18 @@ public class UBiometric {
                 @Override
                 public void onAuthenticationError(int errMsgId, CharSequence errString) {
                     super.onAuthenticationError(errMsgId, errString);
-                    //多次指纹验证错误后，回调此方法；
-                    //并且，（第一次错误）由系统锁定30s
-                    //多次指纹验证错误后，回调此方法；
-                    //并且，（第一次错误）由系统锁定30s
                     if (listener != null) {
-                        listener.onResult(false, "多次错误，暂时锁定");
+                        listener.onResult(false, "指纹不匹配");
                     }
+
                 }
 
                 @Override
                 public void onAuthenticationFailed() {
+                    //多次指纹验证错误后，回调此方法；
+                    //并且，（第一次错误）由系统锁定30s
                     if (listener != null) {
-                        listener.onResult(false, "指纹不匹配");
+                        listener.onResult(false, "多次错误，暂时锁定");
                     }
                 }
 

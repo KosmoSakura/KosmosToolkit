@@ -27,6 +27,16 @@ public class UIntent {
     }
 
     /**
+     * 去系统授权页面（悬浮窗权限）
+     * 高级权限
+     */
+    public static void goSysOverlay() {
+        Uri packageURI = Uri.parse("package:" + KApp.getInstance().getPackageName());
+        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, packageURI);
+        KApp.getInstance().startActivity(intent);
+    }
+
+    /**
      * 去系统授权页面（有权限查看使用情况的应用）
      * 高级权限
      */

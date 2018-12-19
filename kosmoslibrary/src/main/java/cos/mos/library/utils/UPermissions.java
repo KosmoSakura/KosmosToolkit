@@ -54,6 +54,26 @@ public class UPermissions {
     }
 
     /**
+     * @return 是否有悬浮窗权限
+     * <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+     */
+    public static boolean checkOverlay() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return Settings.canDrawOverlays(KApp.getInstance());
+        }
+        return true;
+    }
+
+    public boolean checkOnly(String... pers) {
+        for (String per : pers) {
+            if (!rxPermissions.isGranted(per)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * @param notice   没有权限的申请提示
      * @param listener 权限监听
      * @param pers     权限们

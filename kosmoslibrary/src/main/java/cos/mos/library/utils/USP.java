@@ -11,7 +11,7 @@ import java.util.Map;
  * @Date: 2018年08月03日 14:08
  * @Email: KosmoSakura@gmail.com
  * @eg: 修改日期：2018年10月8日
- * @eg: 修改日期：2018年12月6日
+ * @eg: 修改日期：2018年12月22日
  */
 public class USP {
     private volatile static USP instance;

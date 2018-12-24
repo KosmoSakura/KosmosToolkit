@@ -1,6 +1,7 @@
 package cos.mos.library.utils;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
@@ -13,6 +14,7 @@ import cos.mos.library.init.KApp;
  * @Author: Kosmos
  * @Date: 2018.12.17 15:16
  * @Email: KosmoSakura@gmail.com
+ * * @eg: 修改日期：2018年12月24日
  */
 public class UIntent {
     /**
@@ -33,6 +35,19 @@ public class UIntent {
     public static void goSysOverlay() {
         Uri packageURI = Uri.parse("package:" + KApp.getInstance().getPackageName());
         Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, packageURI);
+        KApp.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 去系统授权页面（自启动管理）
+     * 高级权限
+     * 注意，很多国外的手机没有这个页面，直接跳过去会崩
+     */
+    public static void goSysBKG() {
+        Intent intent = new Intent();
+        ComponentName comp = new ComponentName("com.android.settings",
+            "com.android.settings.BackgroundApplicationsManager");
+        intent.setComponent(comp);
         KApp.getInstance().startActivity(intent);
     }
 

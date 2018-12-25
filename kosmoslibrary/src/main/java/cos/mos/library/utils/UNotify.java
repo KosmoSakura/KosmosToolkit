@@ -3,7 +3,9 @@ package cos.mos.library.utils;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -53,6 +55,11 @@ public class UNotify {
      * @param title 标题
      * @param msg   信息
      * @param icon  图标
+     * @apiNote 栗子
+     * UNotify.instance()
+     * .init("流氓1", "1号流氓程序正在运行中", R.drawable.svg_reboot_red)
+     * .cleared(true)
+     * .show(2);
      */
     public UNotify init(String title, String msg, int icon) {
         createChannel();
@@ -60,6 +67,30 @@ public class UNotify {
             .setSmallIcon(icon)
             .setContentTitle(title)
             .setContentText(msg)
+            .setWhen(System.currentTimeMillis())
+            .build();
+        return nft;
+    }
+
+    /**
+     * @apiNote 添加点击意图-栗子
+     * UNotify.instance()
+     * .init("流氓1", "1号流氓程序正在运行中", R.drawable.svg_reboot_red, MainActivity.class)
+     * .cleared(true)
+     * .show(2);
+     */
+    public UNotify initIntent(String title, String msg, int icon, Class aClass) {
+        createChannel();
+        Intent intent = new Intent(KApp.getInstance(), aClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+            Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(KApp.getInstance(), 0,
+            intent, 0);
+        notify = new NotificationCompat.Builder(KApp.getInstance(), CHANNEL_ID)
+            .setSmallIcon(icon)
+            .setContentTitle(title)
+            .setContentText(msg)
+            .setContentIntent(pendingIntent)
             .setWhen(System.currentTimeMillis())
             .build();
         return nft;

@@ -12,9 +12,14 @@ import java.util.regex.Pattern;
  * @Author: Kosmos
  * @Date: 2016年9月21日 17:01
  * @Email: KosmoSakura@gmail.com
+ * →→is：是某种特定字符
+ * →→checkXX:校验类
+ * →→fun：功能类
  * @eg: 修改日期：2018年09月12日 16:19
+ * @eg: 修改日期：2018年12月26日
  */
 public class URegular {
+
 
     private static InputFilter emojiFilter = new InputFilter() {
         Pattern emoji = Pattern.compile(
@@ -31,212 +36,151 @@ public class URegular {
         }
     };
     /**
-     * 禁止输入表情
+     * @apiNote 禁止输入表情，Edt加上过滤器
      */
     public static InputFilter[] emojiFilters = {emojiFilter};
 
+//--check校验类-------------------------------------------------------------------------------------------------------
+
     /**
-     * 使用正则表达式检查手机号码
+     * @apiNote true→不包含符号
      */
-    public static boolean checkPhoneNum(String phone) {
-        return phone.matches(RegularExp.REGULAR_EXPRESSION_MOBILE);
+    public static boolean checkSymbol(String phone) {
+        return phone.matches("^(?!_)(?!.*?_$)[a-zA-Z0-9_\\u4e00-\\u9fa5]+$");
     }
 
     /**
-     * 使用正则表达式检查标点
+     * @apiNote true→纯汉字
      */
-    public static boolean checkSign(String phone) {
-        return phone.matches(RegularExp.REGULAR_EXPRESSION_SIGN);
-    }
-
-    /**
-     * 校验纯汉字
-     */
-    public static boolean checkChineseCharacters(String name) {
+    public static boolean checkChineseCharacter(String name) {
         return name.matches("^[\\u4e00-\\u9fa5]+$");
     }
 
-    public static void main(String[] args) {
-        String card = "534534534534535";
-//        System.out.println("      card: " + card);
-//        System.out.println("check code: " + getBankCardCheckCode(card.substring(0, card.length() - 1)));
-//        System.out.println("   card id: " + card + getBankCardCheckCode(card));
-//        System.out.println(checkBankCard(card));
-//        System.out.println(formBankCard(card));
-//        formatFileSize();
-//        System.out.println("1,纯数字:" + checkNumber("123456"));
-//        System.out.println("1，纯字母:" + checkNumber("aaaaaavvs"));
-//        System.out.println("1，纯符号:" + checkNumber("+-/**-+-/**-"));
-//        System.out.println("2，字数:" + checkNumber("aaAav4596"));
-//        System.out.println("2，字符:" + checkNumber("aaaav-/**-"));
-//        System.out.println("2，符数:" + checkNumber("5-/**-596"));
-//        System.out.println("3，字符数:" + checkNumber("aaaa*-596"));
+    /**
+     * @apiNote true→ 汉字 或 字母
+     */
+    public static boolean checkChineseLetter(String name) {
+        return name.matches("^[a-zA-Z\\u4e00-\\u9fa5]+$");
     }
 
     /**
-     * @return 必须包含 数字,字母,符号 3项组合
+     * @apiNote true→字母 或 数字
      */
-    public static boolean checkPassword_3(String password) {
-        return password.matches("(?:(?=.*[0-9].*)(?=.*[A-Za-z].*)(?=.*[,\\.#%'\\+\\*\\-:;^_`].*))[,\\.#%'\\+\\*\\-:;^_`0-9A-Za-z]{6,16}$");
-    }
-
-    /**
-     * @return 只能包含字母（大小写）和数字
-     */
-    public static boolean checkPassword(String password) {
+    public static boolean checkLetterDigit(String password) {
         return password.matches("^[A-Za-z0-9]+$");
     }
 
     /**
-     * 6位纯数字
+     * @apiNote true→汉字 或 字母 或 数字
      */
-    public static boolean checkNumber(String password) {
-        return password.matches("[0-9]+");
+    public static boolean checkChineseLetterDigit(String name) {
+        return name.matches("^[a-z0-9A-Z\\u4e00-\\u9fa5]+$");
     }
 
+//--check校验类-------------------------------------------------------------------------------------------------------
 
     /**
-     * 验证身份证号码
+     * @apiNote true→是手机号码
      */
-    public static boolean checkIdCard(String idcard) {
-        return idcard.matches(RegularExp.REGULAR_EXPRESSION_ID_CARD);
-    }
-
-    /**
-     * 验证邮箱
-     */
-    public static boolean checkEmail(String email) {
-        return email.matches(RegularExp.REGULAR_EXPRESSION_CONTACT_EMAIL);
+    public static boolean iskPhoneNum(String phone) {
+        return phone.matches("(\\+\\d+)?1\\d{10}$");
     }
 
     /**
-     * 使用正则表达式检查用户名
+     * @apiNote true→是身份证号码
      */
-    public static boolean checkUsername(String name) {
-        return name.matches(RegularExp.REGULAR_EXPRESSION_CONTACT);
+    public static boolean isIdCard(String idcard) {
+        return idcard.matches("[1-9]\\d{16}[a-zA-Z0-9]");
     }
 
     /**
-     * 隐藏手机号中间4位
+     * @apiNote true→是邮箱
      */
-    public static String formPhoneNo(String input) {
+    public static boolean isEmail(String email) {
+        return email.matches("\\w+@\\w+\\.[a-z]+(\\.[a-z]+)?");
+    }
+
+//--Fun工具类-------------------------------------------------------------------------------------------------------
+
+    /**
+     * @apiNote 隐藏手机号中间4位
+     * @eg 185****9095
+     */
+    public static String funHidePhone(String input) {
         return input.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
     }
 
     /**
-     * 隐藏身份证号中间N位
+     * @apiNote 隐藏身份证号中间N位
+     * @eg 511***********5815
      */
-    public static String formIDCardNo(String input) {
+    public static String funHideIDCard(String input) {
         return input.replaceAll("(\\d{3})\\d+(\\d{4})", "$1***********$2");
     }
 
     /**
-     * 银行卡号每隔四位增加一个空格
-     *
-     * @param input : 银行卡号,例如"6225880137706868"
+     * @apiNote 隐藏银行卡号前几位
+     * @eg **** **** **** **** 309
      */
-    public static String formBankCard(String input) {
-        String result = input.replaceAll("([\\d]{4})(?=\\d)", "$1 ");
-        return result;
+    public static String funHideBankF(String input) {
+        return input.replaceAll("([\\d]{4})(?=\\d)", "**** ");
     }
 
     /**
-     * 隐藏银行卡号前几位
+     * @apiNote 银行卡号每隔四位增加一个空格
+     * @eg 6225 8801 3770 6868
      */
-    public static String formBankCard2(String input) {
-        String result = input.replaceAll("([\\d]{4})(?=\\d)", "**** ");
-        return result;
+    public static String funBankCardChar(String input) {
+        return input.replaceAll("([\\d]{4})(?=\\d)", "$1 ");
     }
 
     /**
-     * 隐藏银行卡号前几位
+     * @param input 6225880137706868
+     * @param text  "-"
+     * @apiNote 银行卡号每隔四位增加一个指定字符
+     * @apiNote 银行卡号每隔四位增加一个指定字符
+     * @eg 6225-8801-3770-6868
      */
-    public static String formBankCard3(String input) {
-        String result = input.replaceAll("([\\d]{4})(?=\\d)", "$1 ");
-        return result;
+    public static String funBankCardChar(String input, String text) {
+        return input.replaceAll("([\\d]{4})(?=\\d)", "$1" + text);
     }
 
     /**
-     * 格式化数字
+     * @param digit 1236.51634
+     * @apiNote 每隔3位加一个逗号
      * 方式一:使用DecimalFormat
+     * @eg 1, 236.516
      */
-    public static String formatDigitString(String string, int digitLength) {
-//        DecimalFormat df1 = (DecimalFormat) DecimalFormat.getInstance();
-        DecimalFormat df1 = new DecimalFormat("#,##0.00");
-        df1.setGroupingSize(digitLength);
-        String result = null;
-        try {
-//            string = new DecimalFormat("0.00").format(Float.parseFloat(string));
-            result = df1.format(Float.parseFloat(string));
-            return result;
-        } catch (Exception e) {
-            return string;
-        }
-    }
-
-    /**
-     * 格式化数字
-     * 方式一:使用DecimalFormat
-     */
-    public static void formatFileSize() {
+    public static String funformatDigit_3(double digit) {
         DecimalFormat df1 = (DecimalFormat) DecimalFormat.getInstance();
         df1.setGroupingSize(3);
-        String result = df1.format(1234567.45);
-        System.out.println(result);
+        return df1.format(digit);
     }
 
     /**
-     * 格式化数字
+     * @param input 1236.51634
+     * @apiNote 每隔3位加一个逗号
      * 方式二:使用正则表达式
+     * @eg 1, 236.5, 1634
      */
-    public static String digit(String input) {
-//        String input = "1234567.45634";
-        String regx = "(?<=\\d)(\\d{4})";
-//        System.out.println(input.replaceAll(regx, " $1"));
-        return input.replaceAll(regx, " $1");
+    public static String funformatDigit_3(String input) {
+        String regx = "(?<=\\d)(\\d{3})";
+        return input.replaceAll(regx, ",$1");
     }
 
-
-    /**
-     * 校验银行卡卡号
-     *
-     * @param cardId
-     * @return
-     */
-    public static boolean checkBankCard(String cardId) {
-        char bit = getBankCardCheckCode(cardId.substring(0, cardId.length() - 1));
-        return cardId.charAt(cardId.length() - 1) == bit;
+    public static void main(String[] args) {
+        System.out.println("-->" + formatDigitString(5556.7468f, "###0.00"));
     }
 
     /**
-     * 从不含校验位的银行卡卡号采用 Luhm 校验算法获得校验位
+     * @param digit  5556.7468f
+     * @param fotmat "#,##0.00"
+     * @return 5, 556.75
+     * @apiNote 按照指定格式转化数字
      */
-    public static char getBankCardCheckCode(String nonCheckCodeCardId) {
-        if (nonCheckCodeCardId == null || nonCheckCodeCardId.trim().length() == 0
-            || !nonCheckCodeCardId.matches("\\d+")) {
-            throw new IllegalArgumentException("Bank card code must be number!");
-        }
-        char[] chs = nonCheckCodeCardId.trim().toCharArray();
-        int luhmSum = 0;
-        for (int i = chs.length - 1, j = 0; i >= 0; i--, j++) {
-            int k = chs[i] - '0';
-            if (j % 2 == 0) {
-                k *= 2;
-                k = k / 10 + k % 10;
-            }
-            luhmSum += k;
-        }
-        return (luhmSum % 10 == 0) ? '0' : (char) ((10 - luhmSum % 10) + '0');
+    public static String formatDigitString(double digit, String fotmat) {
+        return new DecimalFormat(fotmat).format(digit);
     }
 
-    private class RegularExp {
-        private static final String REGULAR_EXPRESSION_MOBILE = "(\\+\\d+)?1[345789]\\d{9}$";
-        private static final String REGULAR_EXPRESSION_SIGN = "^(?!_)(?!.*?_$)[a-zA-Z0-9_\\u4e00-\\u9fa5]+$";
-        private static final String REGULAR_EXPRESSION_ID_CARD = "[1-9]\\d{16}[a-zA-Z0-9]";
-        private static final String REGULAR_EXPRESSION_REAL_NAME = "^[\\u4e00-\\u9fa5]+[·•●]{0,1}[\\u4e00-\\u9fa5]+$";
-        private static final String REGULAR_EXPRESSION_CONTACT = "^[~\\-_`!\\/@#$%\\^\\+\\*&\\\\?\\|:\\.<>\\[\\]{}()';=\",]*$";
-        private static final String REGULAR_EXPRESSION_CONTACT_EMAIL = "\\w+@\\w+\\.[a-z]+(\\.[a-z]+)?";
-        private static final String REGUILAR_EXPERSSION_AMOUNT = "^(([1-9]\\d*)(\\.\\d{1,2})?)$|(0\\.0?([1-9]\\d?))$";
-        private static final String REGULAR_Emoji_Not = "[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]";
-    }
+
 }

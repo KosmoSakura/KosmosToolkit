@@ -81,7 +81,7 @@
 
 #### 7.[ULog](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/ULog.java)
 
-> 基于[Blankj](https://github.com/Blankj/AndroidUtilCode)的工具封装
+> 基于[Blankj](https://github.com/Blankj/AndroidUtilCode)的工具重构
 
 | 方法       | 描述                |
 | ---------- | ------------------- |

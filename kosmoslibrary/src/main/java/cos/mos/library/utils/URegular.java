@@ -168,10 +168,6 @@ public class URegular {
         return input.replaceAll(regx, ",$1");
     }
 
-    public static void main(String[] args) {
-        System.out.println("-->" + formatDigitString(5556.7468f, "###0.00"));
-    }
-
     /**
      * @param digit  5556.7468f
      * @param fotmat "#,##0.00"
@@ -181,6 +177,4 @@ public class URegular {
     public static String formatDigitString(double digit, String fotmat) {
         return new DecimalFormat(fotmat).format(digit);
     }
-
-
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="cos.mos.utils"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
     <!--壁纸-->
     <uses-permission android:name="android.permission.SET_WALLPAPER"/>
     <!--相机-->
@@ -21,6 +22,10 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
     <!--悬浮窗-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!--查看当前运行中的应用-->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions"/>
     <application
         android:name=".init.App"
         android:allowBackup="true"

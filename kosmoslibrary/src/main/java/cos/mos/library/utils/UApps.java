@@ -244,6 +244,7 @@ public class UApps {
                 usageEvents.getNextEvent(event);
                 if (event.getEventType() == UsageEvents.Event.MOVE_TO_FOREGROUND) {
                     result = event.getPackageName();
+                    //break;//注意，这里不能退出，因为这是获取一段时间内移到栈顶的包名，要取最新的才是当前栈顶的包名
                 }
             }
             if (!android.text.TextUtils.isEmpty(result)) {

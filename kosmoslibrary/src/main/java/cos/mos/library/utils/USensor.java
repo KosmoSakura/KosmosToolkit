@@ -8,11 +8,35 @@ import android.hardware.SensorManager;
 
 import java.util.List;
 
+import cos.mos.library.init.KApp;
+
 /**
  * @Description: 指南针辅助类：磁场放、方向等传感器工具
  * @Author: Kosmos
  * @Date: 2018.11.30 11:49
  * @Email: KosmoSakura@gmail.com
+ * @eg 栗子
+ * 1.检查
+ * USensor.instance().support()
+ * 2.注册监听→onResume()
+ * USensor.instance().setDegreeListener((value) -> degree = value);
+ * 3.指南针动画
+ * ValueAnimator valueAnimator = new ValueAnimator();
+ * valueAnimator.addUpdateListener(animation -> {
+ * float degree = (float) animation.getAnimatedValue();
+ * vCompass.setRotation(degree);
+ * });
+ * <p>每秒拉取一次数据（之前的做法是回调角度值做差>灵敏度，这个缺点是动画不能走完，指针会抖）
+ * rxDisposable(Observable.interval(1000, TimeUnit.MILLISECONDS)
+ * .subscribeOn(Schedulers.newThread())
+ * .observeOn(AndroidSchedulers.mainThread())
+ * .subscribe(along -> {
+ * valueAnimator.setFloatValues(olDegree, degree);
+ * valueAnimator.setDuration(1000).start();
+ * olDegree = degree;
+ * }));
+ * 4.释放→ onPause()
+ * USensor.instance().clear();
  */
 public class USensor implements SensorEventListener {
     private static USensor sensor;
@@ -20,32 +44,30 @@ public class USensor implements SensorEventListener {
     private float[] accelerometerValues = new float[3];
     private float[] magneticFieldValues = new float[3];
     private DegreeListener listener;
-    private float olDegree;
-    private static final int sensitivity = 6;//变化灵敏度，数值越小，变化月灵敏
 
-    private USensor(Context context) {
+    private USensor() {
         if (sorMgr == null) {
             //传感器管理
-            sorMgr = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-            //加速度传感器
-            Sensor accelerometer = sorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-            //地磁传感器
-            Sensor magnetic = sorMgr.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-            //注册监听
-            sorMgr.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
-            sorMgr.registerListener(this, magnetic, SensorManager.SENSOR_DELAY_GAME);
+            sorMgr = (SensorManager) KApp.getInstance().getSystemService(Context.SENSOR_SERVICE);
         }
     }
 
-    public static USensor instance(Context context) {
+    public static USensor instance() {
         if (sensor == null) {
             synchronized (USensor.class) {
                 if (sensor == null) {
-                    sensor = new USensor(context);
+                    sensor = new USensor();
                 }
             }
         }
         return sensor;
+    }
+
+    /**
+     * @return 支持方向地磁传感器
+     */
+    public boolean support() {
+        return sorMgr != null;
     }
 
     /**
@@ -57,15 +79,26 @@ public class USensor implements SensorEventListener {
 
     public void setDegreeListener(DegreeListener listener) {
         this.listener = listener;
+        //加速度传感器
+        Sensor accelerometer = sorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        //地磁传感器
+        Sensor magnetic = sorMgr.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        //注册监听
+        sorMgr.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
+        sorMgr.registerListener(this, magnetic, SensorManager.SENSOR_DELAY_GAME);
     }
 
     /**
      * 资源清理，注销监听
      */
     public void clear() {
-        sorMgr.unregisterListener(this);
-        sorMgr = null;
-        sensor = null;
+        if (sorMgr != null) {
+            sorMgr.unregisterListener(this);
+            sorMgr = null;
+        }
+        if (sensor != null) {
+            sensor = null;
+        }
     }
 
     @Override
@@ -77,20 +110,10 @@ public class USensor implements SensorEventListener {
             magneticFieldValues = event.values;
         }
 
-        float degree = calculateOrientation();
-        if (Math.abs(degree - olDegree) > sensitivity) {
-            if (listener != null) {
-                ULog.commonD(" --> " + degree);
-                listener.onDegree(olDegree, degree);
-            }
+        if (listener != null) {
+            listener.onDegree(calculateOrientation());
         }
-        olDegree = degree;
     }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
 
     /**
      * @return 计算偏移量
@@ -100,12 +123,16 @@ public class USensor implements SensorEventListener {
         float[] R = new float[9];
         SensorManager.getRotationMatrix(R, null, accelerometerValues, magneticFieldValues);
         SensorManager.getOrientation(R, values);
-        values[0] = (float) Math.toDegrees(values[0]);
+        //转化为度数：π=3.14159265358979323846 → Math.toDegrees
+        values[0] = values[0] * 180 / 3.1415f;
         return -values[0];
     }
 
-    public interface DegreeListener {
-        void onDegree(float olDegree, float degree);
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
 
+    public interface DegreeListener {
+        void onDegree(float value);
+    }
 }

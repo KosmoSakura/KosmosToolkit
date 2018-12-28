@@ -18,6 +18,15 @@ import cos.mos.library.init.KApp;
  * @Author: Kosmos
  * @Date: 2018.11.29 13:48
  * @Email: KosmoSakura@gmail.com
+ * @eg 栗子
+ * 1.检查
+ * UFlashLight.hasFLASH()
+ * 2.开灯
+ * UFlashLight.instance().openFlash()
+ * UFlashLight.screenLight(this, 1);
+ * 3.关灯
+ * UFlashLight.instance().closeFlash();
+ * UFlashLight.screenLight(this, 0.5f);
  */
 public class UFlashLight {
     private static UFlashLight flashLight;

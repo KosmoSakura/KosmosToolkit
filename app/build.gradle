@@ -25,6 +25,7 @@ android {
         versionName "1.0"
         multiDexEnabled true //开启：MultiDexApplication,
         vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -66,4 +67,8 @@ dependencies {
     implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.3.4'//二维码
 //    implementation 'com.github.castorflex.smoothprogressbar:library-circular:1.3.0'//圆形进度条
     implementation project(':kosmoslibrary')
+    //单元测试库
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

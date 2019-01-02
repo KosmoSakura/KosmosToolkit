@@ -1,6 +1,7 @@
 package cos.mos.utils;
 
 import android.content.Context;
+import android.os.Environment;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +21,10 @@ public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
+
+        System.out.println("1-" + Environment.getExternalStorageDirectory().getAbsolutePath());
+        System.out.println("2-" + Environment.getExternalStorageDirectory());
+
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("cos.mos.utils", appContext.getPackageName());

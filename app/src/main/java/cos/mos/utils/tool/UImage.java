@@ -23,8 +23,12 @@ import androidx.fragment.app.FragmentActivity;
 import cos.mos.library.retrofit.file.FileWrapper;
 import cos.mos.utils.init.Constant;
 import cos.mos.utils.mvp.KRequest;
+import io.reactivex.Observable;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,6 +42,7 @@ import retrofit2.Response;
  * 1.基于Retrofit2图片下载
  * 2.2种方式设置壁纸
  * 3.glide4.8获取bmp
+ * @eg 最新修改日期：2019-1-7
  */
 public class UImage {
     public static final int FLAG_DOWNLOAD = 1;//下载
@@ -46,7 +51,7 @@ public class UImage {
     private RxPermissions permissions;//权限
     private Bitmap bmp;//位图
     private FragmentActivity activity;
-    private CompositeDisposable disposable;
+    private static CompositeDisposable disposable;
     private String imageLink;//图片地址
     private ImageListener listener;
     private int flag;//功能区分
@@ -123,9 +128,9 @@ public class UImage {
                 bmp = futureTarget.get();//得到bmp
                 handler.sendEmptyMessage(1995);
             } catch (ExecutionException e) {
-                listener.error(flag, "Wallpaper setting failed");
+                listener.error(flag, "Image source error");
             } catch (InterruptedException e) {
-                listener.error(flag, "Wallpaper setting failed");
+                listener.error(flag, "Image source error");
             }
         }).start();
     }
@@ -142,11 +147,22 @@ public class UImage {
                     listener.error(flag, "Image source error");
                     return;
                 }
-                if (writeResponseBodyToDisk(response.body())) {
-                    listener.success(flag, "");
-                } else {
-                    listener.error(flag, "Image source error");
-                }
+                rxDisposable(Observable.create((ObservableOnSubscribe<Boolean>) emitter -> {
+                    if (writeResponseBodyToDisk(response.body())) {
+                        emitter.onNext(true);
+                    } else {
+                        emitter.onNext(false);
+                    }
+                })
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(aBoolean -> {
+                        if (aBoolean) {
+                            listener.success(flag, "");
+                        } else {
+                            listener.error(flag, "Image source error");
+                        }
+                    }));
             }
 
             @Override
@@ -199,6 +215,7 @@ public class UImage {
         intent.setData(uri);
         activity.startActivity(intent);
         handler.removeCallbacksAndMessages(null);
+        listener.success(flag, "");
     }
 
     /**
@@ -221,6 +238,12 @@ public class UImage {
             disposable = new CompositeDisposable();
         }
         disposable.add(d);
+    }
+
+    public static void clear() {
+        if (disposable != null) {
+            disposable.clear();
+        }
     }
 
     public interface ImageListener {

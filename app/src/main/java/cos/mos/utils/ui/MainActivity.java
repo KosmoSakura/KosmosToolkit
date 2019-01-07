@@ -9,7 +9,6 @@ import android.util.DisplayMetrics;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,9 @@ public class MainActivity extends BaseActivity implements MainListener {
 
     @Override
     protected void logic() {
-        new UPermissions(this).check("我要权限，给我权限", new UPermissions.Listener() {
+        new UPermissions(this)
+            .check("我要权限，给我权限", new UPermissions.Listener() {
+
             @Override
             public void permission(boolean hasPermission) {
                 spv.callFreshDelay();

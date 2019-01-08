@@ -42,7 +42,7 @@ import retrofit2.Response;
  * 1.基于Retrofit2图片下载
  * 2.2种方式设置壁纸
  * 3.glide4.8获取bmp
- * @eg 最新修改日期：2019-1-7
+ * @eg 最新修改日期：2019-1-7-RxJava线程管理
  */
 public class UImage {
     public static final int FLAG_DOWNLOAD = 1;//下载

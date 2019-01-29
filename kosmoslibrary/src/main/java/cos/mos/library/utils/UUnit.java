@@ -1,5 +1,7 @@
 package cos.mos.library.utils;
 
+import android.util.DisplayMetrics;
+
 import java.util.Locale;
 
 import cos.mos.library.init.KApp;
@@ -13,7 +15,8 @@ import cos.mos.library.init.KApp;
  * @eg: 最新修改日期：2018年11月29日 22:00
  */
 public class UUnit {
-    private static final float scale = KApp.getInstance().getResources().getDisplayMetrics().density;
+    private static final DisplayMetrics dm = KApp.getInstance().getResources().getDisplayMetrics();
+    private static final float scale = dm.density;
 
     /**
      * @param size 单位：字节
@@ -92,6 +95,20 @@ public class UUnit {
         //如果已经分出大小，则直接返回，如果未分出大小，则再比较位数，有子版本的为大；
         diff = (diff != 0) ? diff : versionArray1.length - versionArray2.length;
         return diff;
+    }
+
+    /**
+     * @return 屏幕宽度
+     */
+    public static int getScreenWith() {
+        return dm.widthPixels;
+    }
+
+    /**
+     * @return 高度
+     */
+    public static int getScreenHeight() {
+        return dm.heightPixels;
     }
 
     /**

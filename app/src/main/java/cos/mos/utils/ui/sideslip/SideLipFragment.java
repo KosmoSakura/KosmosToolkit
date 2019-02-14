@@ -10,7 +10,7 @@ import java.util.List;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.ULogBj;
 import cos.mos.library.utils.UText;
 import cos.mos.library.utils.UUnit;
 import cos.mos.library.init.KFragment;
@@ -81,14 +81,14 @@ public class SideLipFragment extends KFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ULog.commonD("onResume");
+        ULogBj.commonD("onResume");
     }
 
     private void refresh() {
         list.clear();
         List<UserBean> userBeans = DbHelper.SearchAll();
         if (!UText.isEmpty(userBeans)) {
-            ULog.commonD("-->" + userBeans.size());
+            ULogBj.commonD("-->" + userBeans.size());
             list.addAll(userBeans);
         }
         adapter.notifyDataSetChanged();

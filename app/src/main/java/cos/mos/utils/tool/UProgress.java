@@ -6,7 +6,7 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
-import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.ULogBj;
 import cos.mos.utils.R;
 import io.reactivex.annotations.NonNull;
 
@@ -41,7 +41,7 @@ public class UProgress {
                 try {
                     myDialog.dismiss();
                 } catch (Exception e) {
-                    ULog.d(e.toString());
+                    ULogBj.d(e.toString());
                 }
             }
             myDialog = null;
@@ -73,7 +73,7 @@ public class UProgress {
             try {
                 myDialog.show();
             } catch (Exception e) {
-                ULog.d(e.toString());
+                ULogBj.d(e.toString());
             }
         }
     }

@@ -3,7 +3,7 @@ package cos.mos.library.retrofit;
 
 import java.io.IOException;
 
-import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.ULogBj;
 import cos.mos.library.constant.KConfig;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -56,7 +56,7 @@ public class HeaderInterceptor implements Interceptor {
         } catch (Exception e) {
             sb.append("返回结果解析失败");
         }
-        ULog.commonV(sb.toString());
+        ULogBj.commonV(sb.toString());
     }
 
     private String bodyToString(final RequestBody requestBody) throws IOException {

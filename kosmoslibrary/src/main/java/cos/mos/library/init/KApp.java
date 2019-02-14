@@ -2,7 +2,7 @@ package cos.mos.library.init;
 
 
 import androidx.multidex.MultiDexApplication;
-import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.ULogBj;
 import cos.mos.library.utils.USP;
 import cos.mos.library.utils.toast.UToast;
 import cos.mos.library.constant.KConfig;
@@ -37,7 +37,7 @@ public abstract class KApp extends MultiDexApplication {
         //Base url
         KConfig.setBaseUrl(baseUrl());
         //Blankj封装的Log
-        ULog.init(this)
+        ULogBj.init(this)
             .setLogSwitch(debugState())
             .setConsoleSwitch(debugState())
             .setGlobalTag(logTag())
@@ -47,8 +47,8 @@ public abstract class KApp extends MultiDexApplication {
             .setFilePrefix(logTag())//文件前缀
             .setBorderSwitch(true)
             .setSingleTagSwitch(true)
-            .setConsoleFilter(ULog.V)
-            .setFileFilter(ULog.V)
+            .setConsoleFilter(ULogBj.V)
+            .setFileFilter(ULogBj.V)
             .setStackDeep(1)// log 栈深度，默认为 1
             .setStackOffset(0);
     }

@@ -7,7 +7,7 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.ULogBj;
 import cos.mos.utils.R;
 
 /**
@@ -40,7 +40,7 @@ public class ProgressDialog {
                 try {
                     myDialog.dismiss();
                 } catch (Exception e) {
-                    ULog.d(e.toString());
+                    ULogBj.d(e.toString());
                 }
             }
             myDialog = null;
@@ -72,7 +72,7 @@ public class ProgressDialog {
             try {
                 myDialog.show();
             } catch (Exception e) {
-                ULog.d(e.toString());
+                ULogBj.d(e.toString());
             }
         }
     }

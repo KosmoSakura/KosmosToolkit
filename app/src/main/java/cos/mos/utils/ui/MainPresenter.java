@@ -6,7 +6,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
-import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.ULogBj;
 import cos.mos.library.utils.UText;
 import cos.mos.library.retrofit.file.FileProgressCallback;
 import cos.mos.library.retrofit.file.FileWrapper;
@@ -85,7 +85,7 @@ class MainPresenter extends KPresenter {
         KRequest rs = FileWrapper.getInstance(new FileProgressCallback() {
             @Override
             public void onLoading(long total, long progress) {
-                ULog.commonD("All:" + total + ",Progress:" + progress);
+                ULogBj.commonD("All:" + total + ",Progress:" + progress);
             }
         }).create(KRequest.class);
 //        UHttp.download(rs.download("url"), new KDownloadListener() {

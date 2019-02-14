@@ -8,7 +8,7 @@ import android.os.Handler;
 
 import java.lang.reflect.Method;
 
-import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.ULogBj;
 import cos.mos.utils.init.App;
 
 /**
@@ -55,8 +55,8 @@ public class UAp {
         try {
             Method method = getWifiMgr().getClass().getDeclaredMethod("getWifiApConfiguration");
             WifiConfiguration configuration = (WifiConfiguration) method.invoke(getWifiMgr());
-            ULog.commonD("热点名：" + configuration.SSID);
-            ULog.commonD("热点密码：" + configuration.preSharedKey);
+            ULogBj.commonD("热点名：" + configuration.SSID);
+            ULogBj.commonD("热点密码：" + configuration.preSharedKey);
             return configuration.SSID;
         } catch (Exception e) {
             return null;

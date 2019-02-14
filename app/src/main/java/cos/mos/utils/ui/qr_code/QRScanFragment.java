@@ -12,7 +12,7 @@ import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
 import cos.mos.library.utils.UDialog;
 import cos.mos.library.utils.UGson;
-import cos.mos.library.utils.ULog;
+import cos.mos.library.utils.ULogBj;
 import cos.mos.library.utils.UText;
 import cos.mos.library.init.KFragment;
 import cos.mos.utils.R;
@@ -193,7 +193,7 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
      */
     @Override
     public void onScanQRCodeOpenCameraError() {
-        ULog.commonD("打开相机出错");
+        ULogBj.commonD("打开相机出错");
     }
 
     private void vibrator() {

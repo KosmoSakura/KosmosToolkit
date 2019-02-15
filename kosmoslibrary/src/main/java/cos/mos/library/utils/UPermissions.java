@@ -20,6 +20,7 @@ import io.reactivex.disposables.Disposable;
  * @Author: Kosmos
  * @Date: 2018.11.27 11:03
  * @Email: KosmoSakura@gmail.com
+ * @eg: 最新修改日期：2019年2月15日 14:00
  */
 public class UPermissions {
     private RxPermissions rxPermissions;
@@ -37,7 +38,7 @@ public class UPermissions {
     /**
      * 清理资源
      */
-    public static void clear() {
+    public void clear() {
         if (compositeDisposable != null) {
             compositeDisposable.clear();
         }
@@ -64,6 +65,10 @@ public class UPermissions {
         return true;
     }
 
+    /**
+     * @param pers 权限们
+     * @apiNote 校验是否有权限
+     */
     public boolean checkOnly(String... pers) {
         for (String per : pers) {
             if (!rxPermissions.isGranted(per)) {
@@ -73,13 +78,15 @@ public class UPermissions {
         return true;
     }
 
+
     /**
-     * @param notice   没有权限的申请提示
-     * @param listener 权限监听
+     * @param notice   权限申请提示
+     * @param listener 权限监听,不需要监听传入null
      * @param pers     权限们
+     * @return 已经拥有 权限返回true，只要当前没有被授予权限，返回false（用于流程判断用）
      * @apiNote 权限检查，没有申请
      */
-    public void check(String notice, Listener listener, String... pers) {
+    public boolean check(String notice, Listener listener, String... pers) {
         for (String per : pers) {
             if (!rxPermissions.isGranted(per)) {
                 count++;
@@ -114,12 +121,10 @@ public class UPermissions {
                         dia.dismiss();
                         rxDisposable(subscribe);
                     });
-                return;
+                return false;
             }
         }
-        if (listener != null) {
-            listener.permission(true);
-        }
+        return true;
     }
 
 
@@ -145,7 +150,7 @@ public class UPermissions {
         int accessibilityEnabled;//默认为0
         try {
             accessibilityEnabled = Settings.Secure.getInt(KApp.getInstance().getContentResolver(),
-                android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
+                Settings.Secure.ACCESSIBILITY_ENABLED);
         } catch (Settings.SettingNotFoundException e) {
             //找不到这个页面
             accessibilityEnabled = 0;

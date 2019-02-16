@@ -23,7 +23,7 @@ public class ProgressDialog {
     private ProgressDialog() {
     }
 
-    public static ProgressDialog getInstance() {
+    public static ProgressDialog instance() {
         if (instance == null) {
             synchronized (ProgressDialog.class) {
                 if (instance == null) {

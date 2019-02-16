@@ -35,11 +35,11 @@ class MainPresenter extends KPresenter {
     }
 
     void getImageList(int id) {
-        ProgressDialog.getInstance().startProgressDialog(listener.getActivity());
+        ProgressDialog.instance().startProgressDialog(listener.getActivity());
         UHttp.start(getRequest().getImageList(id), "图片列表", new KListMsgListener<ImageBean>() {
             @Override
             public void onSuccess(List<ImageBean> list) {
-                ProgressDialog.getInstance().stopProgressDialog();
+                ProgressDialog.instance().stopProgressDialog();
                 if (UText.isEmpty(list)) {
                     listener.onError("There is no data");
                 } else {
@@ -54,7 +54,7 @@ class MainPresenter extends KPresenter {
 
             @Override
             public void onError(String describe) {
-                ProgressDialog.getInstance().stopProgressDialog();
+                ProgressDialog.instance().stopProgressDialog();
                 listener.onError(describe);
             }
         });
@@ -81,7 +81,7 @@ class MainPresenter extends KPresenter {
     }
 
     private void toDownload() {
-        ProgressDialog.getInstance().startProgressDialog(listener.getActivity());
+        ProgressDialog.instance().startProgressDialog(listener.getActivity());
         KRequest rs = FileWrapper.getInstance(new FileProgressCallback() {
             @Override
             public void onLoading(long total, long progress) {

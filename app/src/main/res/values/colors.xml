@@ -3,4 +3,39 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!--透明颜色-->
+    <color name="T_light">#b0000000</color>
+    <color name="T_all">#00000000</color>
+    <color name="T_half">#88000000</color>
+    <color name="T_dark">#e0000000</color>
+    <color name="T_mini_black">#bd000000</color>
+    <color name="T_mini_gay">#bda1a1a1</color>
+    <color name="T_mini_blue">#ac39acc2</color>
+    <!--常规颜色值-->
+    <color name="line">#e5e5e5</color>
+    <color name="white">#ffffff</color>
+    <color name="white_bg">#f5f5f5</color>
+    <color name="white_dark">#f2f2f2</color>
+    <color name="black">#000000</color>
+    <color name="black_txt">#343434</color>
+    <color name="black_txt_light">#494949</color>
+    <color name="black_light">#333333</color>
+    <color name="gray">#bebebe</color>
+    <color name="gray_txt">#9a9a9a</color>
+    <color name="gray_deep">#656565</color>
+    <color name="gray_light">#8a8788</color>
+    <color name="green">#05e7b4</color>
+    <color name="green_txt">#7ECB9A</color>
+    <color name="pink">#e191e4</color>
+    <color name="red">#f74443</color>
+    <color name="red_default">#f50303</color>
+    <color name="red_light">#c26a6a</color>
+    <color name="red_dark">#600606</color>
+    <color name="yellow">#eedec0</color>
+    <color name="orange">#d65b0c</color>
+    <color name="orange_dark">#973b00</color>
+    <color name="orange_default">#FF8400</color>
+    <color name="orange_text">#ffe4ac75</color>
+    <color name="orange_bg">#fffffaf5</color>
 </resources>

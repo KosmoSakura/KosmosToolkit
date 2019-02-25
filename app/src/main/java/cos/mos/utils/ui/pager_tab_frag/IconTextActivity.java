@@ -5,7 +5,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import cos.mos.library.init.KActivity;
+import cos.mos.utils.zkosmoslibrary.init.KActivity;
 import cos.mos.utils.R;
 
 public class IconTextActivity extends KActivity {

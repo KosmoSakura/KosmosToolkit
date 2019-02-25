@@ -1,7 +1,7 @@
 package cos.mos.utils.init;
 
 
-import cos.mos.library.init.KApp;
+import cos.mos.utils.zkosmoslibrary.init.KApp;
 
 /**
  * @Description: <p> Flatten Package Abbreviate qualified

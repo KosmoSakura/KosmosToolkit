@@ -238,6 +238,14 @@ public static java.lang.String TABLENAME;
 -keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
     rx.internal.util.atomic.LinkedQueueNode consumerNode;
 }
+
+#------mp4parser相关---(isoviewer-1.0-RC-27)--------------------------
+-keep public class com.mp4parser.** {*;}
+-keep public class org.mp4parser.** {*;}
+-keep public class com.coremedia.** {*;}
+-keep public class com.googlecode.** {*;}
+#------mp3转wav相关---(AudioParse1.0.1.jar)---------------------------
+-keep public class javazoom.jl.** {*;}
 #------------------------------其他小东西-----------------------------
 -keep class java.nio.file.** { *; }
 -keep class sun.misc.** { *; }

@@ -6,7 +6,7 @@ import android.os.Build;
 import android.os.CancellationSignal;
 
 import androidx.annotation.RequiresApi;
-import cos.mos.library.init.KApp;
+import cos.mos.utils.zkosmoslibrary.init.KApp;
 
 
 /**

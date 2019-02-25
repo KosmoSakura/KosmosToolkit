@@ -9,7 +9,7 @@ import android.os.LocaleList;
 
 import java.util.Locale;
 
-import cos.mos.library.utils.USP;
+import cos.mos.utils.zkosmoslibrary.utils.USP;
 import cos.mos.utils.ui.MainActivity;
 
 /**

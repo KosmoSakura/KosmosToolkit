@@ -3,7 +3,7 @@ package cos.mos.utils.tool;
 import android.content.Context;
 import android.os.PowerManager;
 
-import cos.mos.library.init.KApp;
+import cos.mos.utils.zkosmoslibrary.init.KApp;
 
 
 /**

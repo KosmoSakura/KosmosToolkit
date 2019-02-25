@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--背景全透明无边框 -->
-    <style name="SakuraDialog" parent="android:style/Theme.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:backgroundDimEnabled">true</item>
-    </style>
-    <!--鸿洋toast-->
-    <style name="ToastAnimation" parent="@android:style/Animation.Toast">
-        <!--<item name="android:windowEnterAnimation">@anim/toast_enter</item>-->
-        <!--<item name="android:windowExitAnimation">@anim/toast_exit</item>-->
-    </style>
+
 </resources>

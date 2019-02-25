@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
 import androidx.fragment.app.FragmentActivity;
-import cos.mos.library.retrofit.file.FileWrapper;
+import cos.mos.utils.zkosmoslibrary.retrofit.file.FileWrapper;
 import cos.mos.utils.init.Constant;
 import cos.mos.utils.mvp.KRequest;
 import io.reactivex.Observable;

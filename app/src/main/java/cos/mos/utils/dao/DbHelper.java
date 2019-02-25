@@ -2,7 +2,7 @@ package cos.mos.utils.dao;
 
 import java.util.List;
 
-import cos.mos.library.utils.UText;
+import cos.mos.utils.zkosmoslibrary.utils.UText;
 import cos.mos.utils.dao.gen.UserBeanDao;
 import cos.mos.utils.dao.renewal.DbManager;
 

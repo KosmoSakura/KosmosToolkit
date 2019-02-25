@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import cos.mos.library.utils.UText;
-import cos.mos.library.constant.KConfig;
+import cos.mos.utils.zkosmoslibrary.utils.UText;
+import cos.mos.utils.zkosmoslibrary.constant.KConfig;
 import cos.mos.utils.mvp.bean.ResultBean;
 import cos.mos.utils.mvp.contract.KListMsgListener;
 import io.reactivex.Observable;

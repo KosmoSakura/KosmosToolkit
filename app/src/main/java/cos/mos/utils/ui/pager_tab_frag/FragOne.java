@@ -1,7 +1,7 @@
 package cos.mos.utils.ui.pager_tab_frag;
 
 import androidx.core.content.ContextCompat;
-import cos.mos.library.init.KFragment;
+import cos.mos.utils.zkosmoslibrary.init.KFragment;
 import cos.mos.utils.R;
 
 /**

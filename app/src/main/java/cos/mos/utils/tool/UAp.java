@@ -8,7 +8,7 @@ import android.os.Handler;
 
 import java.lang.reflect.Method;
 
-import cos.mos.library.utils.ULogBj;
+import cos.mos.utils.zkosmoslibrary.utils.ULogBj;
 import cos.mos.utils.init.App;
 
 /**

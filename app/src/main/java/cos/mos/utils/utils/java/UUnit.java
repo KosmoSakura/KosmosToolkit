@@ -1,10 +1,6 @@
 package cos.mos.utils.utils.java;
 
-import android.util.DisplayMetrics;
-
 import java.util.Locale;
-
-import cos.mos.utils.init.k.KApp;
 
 
 /**
@@ -12,34 +8,66 @@ import cos.mos.utils.init.k.KApp;
  * @Author: Kosmos
  * @Date: 2018.10.31 14:02
  * @Email: KosmoSakura@gmail.com
- * @eg: 最新修改日期：2018年11月29日 22:00
+ * @eg: 修改日期：2018年11月29日 22:00
+ * @eg: 修改日期：2019年2月22日
+ * @eg: 最新修改日期：2019年2月25日
  */
 public class UUnit {
-    private static final DisplayMetrics dm = KApp.getInstance().getResources().getDisplayMetrics();
-    private static final float scale = dm.density;
 
     /**
      * @param size 单位：字节
      * @apiNote 格式化字节单位
      */
-    public static String sizeFormatbit(double size) {
-        double kiloByte = size / 1024;
+    public static String sizeFormatbit(float size) {
+        float kiloByte = size / 1024;
         if (kiloByte < 1) {
-            return fotmat(size) + "\tB";
+            return fotmatMax(size) + "\tB";
         }
-        double megaByte = kiloByte / 1024;
+        float megaByte = kiloByte / 1024;
         if (megaByte < 1) {
-            return fotmat(kiloByte) + "\tKB";
+            return fotmatMax(kiloByte) + "\tKB";
         }
-        double gigaByte = megaByte / 1024;
+        float gigaByte = megaByte / 1024;
         if (gigaByte < 1) {
-            return fotmat(megaByte) + "\tMB";
+            return fotmatMax(megaByte) + "\tMB";
         }
-        double teraBytes = gigaByte / 1024;
+        float teraBytes = gigaByte / 1024;
         if (teraBytes < 1) {
-            return fotmat(gigaByte) + "\tGB";
+            return fotmatMax(gigaByte) + "\tGB";
         }
-        return fotmat(teraBytes) + "\tTB";
+        return fotmatMax(teraBytes) + "\tTB";
+    }
+
+    /**
+     * @param millisecond 单位：毫秒
+     * @apiNote 格式化字节单位
+     */
+    public static String sizeFormatbitTime(float millisecond) {
+        float second = millisecond / 1000;
+        if (second < 1) {
+            return fotmatMax(millisecond) + "ms";
+        }
+        float min = second / 60;
+        if (min < 1) {
+            return fotmatMax(second) + "s";
+        }
+        float h = min / 60;
+        if (h < 1) {
+            return fotmatMax(min) + "min";
+        }
+        float day = h / 24;
+        if (day < 1) {
+            return fotmatMax(h) + "h";
+        }
+        float mon = day / 30;
+        if (mon < 1) {
+            return fotmatMax(day) + "D";
+        }
+        float year = mon / 12;
+        if (year < 1) {
+            return fotmatMax(mon) + "M";
+        }
+        return fotmatMax(year) + "Y";
     }
 
     /**
@@ -72,6 +100,19 @@ public class UUnit {
         return String.format(Locale.CHINA, "%.2f", digit);
     }
 
+    public static String fotmat(float digit) {
+        return String.format(Locale.CHINA, "%.2f", digit);
+    }
+
+    /**
+     * @param digit 输入
+     * @return 2位有效小数
+     * 最优先使用
+     */
+    private static float fotmatMax(float digit) {
+        int n = (int) (digit * 100f);//截断2位以上的小数
+        return (float) n / 100f;
+    }
 
     /**
      * @param version    要比较的版本号
@@ -97,36 +138,6 @@ public class UUnit {
         return diff;
     }
 
-    /**
-     * @return 屏幕宽度
-     */
-    public static int getScreenWith() {
-        return dm.widthPixels;
-    }
-
-    /**
-     * @return 高度
-     */
-    public static int getScreenHeight() {
-        return dm.heightPixels;
-    }
-
-    /**
-     * @param pxValue 像素单位
-     * @return dp单位
-     */
-    public static int px2dp(float pxValue) {
-        return (int) (pxValue / scale + 0.5f);
-    }
-
-
-    /**
-     * @param dpValue dp单位
-     * @return 像素单位
-     */
-    public static int dp2px(float dpValue) {
-        return (int) (dpValue * scale + 0.5f);
-    }
 
     /**
      * @param celsius 摄氏度

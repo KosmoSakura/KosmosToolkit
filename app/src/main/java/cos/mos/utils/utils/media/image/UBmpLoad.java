@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import cos.mos.utils.utils.java.UUnit;
+import cos.mos.utils.utils.system.UScreen;
 
 /**
  * @Description: 关于位图处理
@@ -48,7 +48,7 @@ public class UBmpLoad {
     }
 
     public Bitmap decodeBmpDP(Resources res, int resId, int withDp, int heightDp) {
-        return decodeBmp(res, resId, UUnit.dp2px(withDp), UUnit.dp2px(heightDp));
+        return decodeBmp(res, resId, UScreen.dp2px(withDp), UScreen.dp2px(heightDp));
     }
 
     public Bitmap decodeBmp(Resources res, int resId, int with, int height) {

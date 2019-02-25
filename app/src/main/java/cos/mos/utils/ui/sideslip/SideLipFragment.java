@@ -10,14 +10,14 @@ import java.util.List;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import cos.mos.utils.utils.ULogBj;
-import cos.mos.utils.utils.java.UText;
-import cos.mos.utils.utils.java.UUnit;
-import cos.mos.utils.init.k.KFragment;
-import cos.mos.utils.utils.listener.KOnFreshListener;
 import cos.mos.utils.R;
 import cos.mos.utils.dao.DbHelper;
 import cos.mos.utils.dao.UserBean;
+import cos.mos.utils.init.k.KFragment;
+import cos.mos.utils.utils.ULogBj;
+import cos.mos.utils.utils.java.UText;
+import cos.mos.utils.utils.listener.KOnFreshListener;
+import cos.mos.utils.utils.system.UScreen;
 import cos.mos.utils.widget.list.MyDividerDecoration;
 
 /**
@@ -49,7 +49,7 @@ public class SideLipFragment extends KFragment {
         rv.setLayoutManager(new LinearLayoutManager(context));
         adapter.setEmptyView(R.layout.lay_empty, rv);
         rv.addItemDecoration(new MyDividerDecoration(ContextCompat.getColor(context, R.color.white_bg),
-            UUnit.dp2px(10), UUnit.dp2px(10), UUnit.dp2px(10)));
+            UScreen.dp2px(10), UScreen.dp2px(10), UScreen.dp2px(10)));
         rv.setAdapter(adapter);
     }
 

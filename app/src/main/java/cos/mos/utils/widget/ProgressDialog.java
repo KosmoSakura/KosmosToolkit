@@ -7,7 +7,7 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import cos.mos.utils.zkosmoslibrary.utils.ULogBj;
+import cos.mos.utils.utils.ULogBj;
 import cos.mos.utils.R;
 
 /**

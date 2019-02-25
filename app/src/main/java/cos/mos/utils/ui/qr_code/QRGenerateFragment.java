@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import java.util.concurrent.TimeUnit;
 
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder;
-import cos.mos.utils.zkosmoslibrary.utils.UIO;
-import cos.mos.utils.zkosmoslibrary.utils.UText;
-import cos.mos.utils.zkosmoslibrary.utils.toast.UToast;
-import cos.mos.utils.zkosmoslibrary.init.KFragment;
-import cos.mos.utils.zkosmoslibrary.listener.KTextWatcher;
+import cos.mos.utils.utils.media.UIO;
+import cos.mos.utils.utils.java.UText;
+import cos.mos.utils.utils.ui.toast.UToast;
+import cos.mos.utils.init.k.KFragment;
+import cos.mos.utils.utils.listener.KTextWatcher;
 import cos.mos.utils.R;
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;

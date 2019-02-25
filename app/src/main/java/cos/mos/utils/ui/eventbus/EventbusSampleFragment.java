@@ -4,8 +4,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import cos.mos.utils.zkosmoslibrary.utils.ULogBj;
-import cos.mos.utils.zkosmoslibrary.init.KFragment;
+import cos.mos.utils.utils.ULogBj;
+import cos.mos.utils.init.k.KFragment;
 import cos.mos.utils.R;
 
 /**

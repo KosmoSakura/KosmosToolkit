@@ -6,10 +6,10 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
-import cos.mos.utils.zkosmoslibrary.utils.ULogBj;
-import cos.mos.utils.zkosmoslibrary.utils.UText;
-import cos.mos.utils.zkosmoslibrary.retrofit.file.FileProgressCallback;
-import cos.mos.utils.zkosmoslibrary.retrofit.file.FileWrapper;
+import cos.mos.utils.utils.ULogBj;
+import cos.mos.utils.utils.java.UText;
+import cos.mos.utils.retrofit.file.FileProgressCallback;
+import cos.mos.utils.retrofit.file.FileWrapper;
 import cos.mos.utils.widget.ProgressDialog;
 import cos.mos.utils.init.UHttp;
 import cos.mos.utils.mvp.KPresenter;

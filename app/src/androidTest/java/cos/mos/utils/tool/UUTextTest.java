@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.test.runner.AndroidJUnit4;
-import cos.mos.utils.zkosmoslibrary.init.KApp;
-import cos.mos.utils.zkosmoslibrary.utils.USP;
+import cos.mos.utils.init.k.KApp;
+import cos.mos.utils.utils.media.USP;
 
 /**
  * @Description: <p>

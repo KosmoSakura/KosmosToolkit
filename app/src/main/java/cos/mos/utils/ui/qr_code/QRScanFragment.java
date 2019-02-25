@@ -10,11 +10,11 @@ import android.webkit.URLUtil;
 
 import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
-import cos.mos.utils.zkosmoslibrary.utils.UDialog;
-import cos.mos.utils.zkosmoslibrary.utils.UGson;
-import cos.mos.utils.zkosmoslibrary.utils.ULogBj;
-import cos.mos.utils.zkosmoslibrary.utils.UText;
-import cos.mos.utils.zkosmoslibrary.init.KFragment;
+import cos.mos.utils.utils.ui.UDialog;
+import cos.mos.utils.utils.java.UGson;
+import cos.mos.utils.utils.ULogBj;
+import cos.mos.utils.utils.java.UText;
+import cos.mos.utils.init.k.KFragment;
 import cos.mos.utils.R;
 
 import static android.content.Context.VIBRATOR_SERVICE;

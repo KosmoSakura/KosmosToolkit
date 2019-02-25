@@ -2,7 +2,7 @@ package cos.mos.utils.dao.renewal;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import cos.mos.utils.zkosmoslibrary.init.KApp;
+import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.dao.gen.DaoMaster;
 import cos.mos.utils.dao.gen.DaoSession;
 import cos.mos.utils.init.Constant;

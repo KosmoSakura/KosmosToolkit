@@ -4,8 +4,8 @@ import android.os.Environment;
 
 import java.io.File;
 
-import cos.mos.utils.zkosmoslibrary.utils.UText;
-import cos.mos.utils.zkosmoslibrary.constant.KConfig;
+import cos.mos.utils.utils.java.UText;
+import cos.mos.utils.constant.KConfig;
 
 
 /**

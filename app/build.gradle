@@ -84,6 +84,8 @@ dependencies {
 //    annotationProcessor "com.android.support:support-annotations:28.0.0"
     //----------------------------------------------------------
     //其他库----------------------------------------------------------
+    implementation files('libs/isoviewer-1.0-RC-27.jar')//mp4parse
+    implementation files('libs/AudioParse1.0.1.jar')//mp3转wav
     implementation 'com.github.chrisbanes:PhotoView:2.1.3'//大图查看
     implementation 'com.liaoinstan.springview:library:1.5.1'//下拉刷新外壳
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42' //RecyclerView适配器

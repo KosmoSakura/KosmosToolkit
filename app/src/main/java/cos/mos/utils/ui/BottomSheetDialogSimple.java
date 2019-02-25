@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-import cos.mos.utils.zkosmoslibrary.init.KActivity;
+import cos.mos.utils.init.k.KActivity;
 import cos.mos.utils.R;
 
 /**

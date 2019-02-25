@@ -11,8 +11,8 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import cos.mos.utils.R;
-import cos.mos.utils.tool.TGlide;
 import cos.mos.utils.mvp.bean.ImageBean;
+import cos.mos.utils.utils.media.image.glide.UGlideSimple;
 
 /**
  * @Description: 瀑布流适配器
@@ -37,7 +37,7 @@ public class AdapterImage extends BaseQuickAdapter<ImageBean, BaseViewHolder> {
         ImageView image = holder.getView(R.id.image_image);
         ViewGroup.LayoutParams layoutParams = image.getLayoutParams();
         layoutParams.height = (int) (width * getDiff(w, h));
-        TGlide.loadStaggered(holder.itemView.getContext(), item.getImg_url(), image);
+        UGlideSimple.loadImage(holder.itemView.getContext(), item.getImg_url(), image);
     }
 
     /**

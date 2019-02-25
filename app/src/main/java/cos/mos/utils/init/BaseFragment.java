@@ -1,7 +1,7 @@
 package cos.mos.utils.init;
 
-import cos.mos.utils.zkosmoslibrary.init.KFragment;
-import cos.mos.utils.zkosmoslibrary.retrofit.HostWrapper;
+import cos.mos.utils.init.k.KFragment;
+import cos.mos.utils.retrofit.HostWrapper;
 import cos.mos.utils.mvp.KRequest;
 import cos.mos.utils.mvp.contract.KContract;
 import io.reactivex.disposables.CompositeDisposable;

@@ -17,8 +17,8 @@ import cos.mos.utils.utils.ui.toast.UToast;
  * @Author: Kosmos
  * @Date: 2018.12.17 15:16
  * @Email: KosmoSakura@gmail.com
- * * @eg: 修改日期：2018年12月24日
- * * @eg: 最新修改日期：2019年2月26日
+ * @eg: 修改日期：2018年12月24日
+ * @eg: 最新修改日期：2019年2月26日
  */
 public class UIntent {
     private static void start(Intent intent) {

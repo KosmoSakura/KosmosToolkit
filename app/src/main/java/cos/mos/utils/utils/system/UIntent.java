@@ -9,6 +9,7 @@ import android.provider.Settings;
 import android.util.Log;
 
 import cos.mos.utils.init.k.KApp;
+import cos.mos.utils.utils.ui.toast.UToast;
 
 
 /**
@@ -17,17 +18,20 @@ import cos.mos.utils.init.k.KApp;
  * @Date: 2018.12.17 15:16
  * @Email: KosmoSakura@gmail.com
  * * @eg: 修改日期：2018年12月24日
+ * * @eg: 最新修改日期：2019年2月26日
  */
 public class UIntent {
+    private static void start(Intent intent) {
+        KApp.getInstance().startActivity(intent);
+    }
+
     /**
      * 去系统授权页面
      * 普通权限
      */
     public static void goSys() {
         Uri packageURI = Uri.parse("package:" + KApp.getInstance().getPackageName());
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-            packageURI);
-        KApp.getInstance().startActivity(intent);
+        start(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI));
     }
 
     /**
@@ -36,8 +40,7 @@ public class UIntent {
      */
     public static void goSysOverlay() {
         Uri packageURI = Uri.parse("package:" + KApp.getInstance().getPackageName());
-        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, packageURI);
-        KApp.getInstance().startActivity(intent);
+        start(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, packageURI));
     }
 
     /**
@@ -45,8 +48,7 @@ public class UIntent {
      * 高级权限
      */
     public static void goSysAdvanced() {
-        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
-        KApp.getInstance().startActivity(intent);
+        start(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
     }
 
     /**
@@ -66,7 +68,7 @@ public class UIntent {
     public static void goHome() {
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);
         homeIntent.addCategory(Intent.CATEGORY_HOME);
-        KApp.getInstance().startActivity(homeIntent);
+        start(homeIntent);
     }
 
     /**
@@ -75,7 +77,7 @@ public class UIntent {
     public static void goAssist() {
         Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        KApp.getInstance().startActivity(intent);
+        start(intent);
     }
 
     /**
@@ -88,7 +90,7 @@ public class UIntent {
         ComponentName comp = new ComponentName("com.android.settings",
             "com.android.settings.BackgroundApplicationsManager");
         intent.setComponent(comp);
-        KApp.getInstance().startActivity(intent);
+        start(intent);
     }
 
     /**
@@ -164,10 +166,31 @@ public class UIntent {
                     break;
             }
             intent.setComponent(componentName);
-            KApp.getInstance().startActivity(intent);
+            start(intent);
         } catch (Exception e) {//抛出异常就直接打开设置页面
             intent = new Intent(Settings.ACTION_SETTINGS);
-            KApp.getInstance().startActivity(intent);
+            start(intent);
         }
+    }
+
+    /**
+     * @param dir 视频地址
+     * @apiNote 打开系统视频播放器
+     */
+    public static void toVideo(String dir) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.parse(dir), "video/*");
+        try {
+            start(intent);
+        } catch (Exception e) {
+            UToast.show("No default player");
+        }
+    }
+
+    /**
+     * @param dir 音频地址
+     * @apiNote 打开系统音频播放器
+     */
+    public static void toAudio(String dir) {
     }
 }

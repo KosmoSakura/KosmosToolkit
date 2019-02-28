@@ -102,7 +102,7 @@ public class USnackbar {
      */
     private static void showColorDefault(Context parent, CharSequence text, int duration,
                                          CharSequence action, View.OnClickListener listener) {
-        base(getRootView(parent), text, duration, action, listener,
+        base(getView(parent), text, duration, action, listener,
             ContextCompat.getColor(parent, R.color.white),
             ContextCompat.getColor(parent, R.color.colorPrimaryDark),
             ContextCompat.getColor(parent, R.color.white));
@@ -118,7 +118,7 @@ public class USnackbar {
      */
     private static void showColorNo(Context parent, CharSequence text, int duration,
                                     CharSequence actionText, View.OnClickListener listener) {
-        base(getRootView(parent), text, duration, actionText, listener, NoColor, NoColor, NoColor);
+        base(getView(parent), text, duration, actionText, listener, NoColor, NoColor, NoColor);
     }
 
     /**
@@ -152,14 +152,14 @@ public class USnackbar {
     }
 
     /**
-     * @return xml级别布局底层View
+     * @return xml级别布局底层View，弹窗位置于可见视图底部（比如：区别于华为
      */
     private static ViewGroup getView(Context context) {
         return (ViewGroup) ((Activity) context).findViewById(android.R.id.content);
     }
 
     /**
-     * @return 页面最底层View
+     * @return 页面最底层View，弹窗位置无视可折叠底部导航栏（比如：华为
      */
     private static ViewGroup getRootView(Context context) {
         return (ViewGroup) getView(context).getRootView();

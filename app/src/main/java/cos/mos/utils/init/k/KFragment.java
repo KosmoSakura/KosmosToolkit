@@ -52,6 +52,17 @@ public abstract class KFragment extends Fragment {
     }
 
     /**
+     * @return true:返回键逻辑由Frag拦截处理，false：逻辑交由Activity处理
+     * 栗子：对应activity的onBackPressed中，frags[0]为目标Fragment
+     * if (frags[0] == null || !frags[0].onBackPressed()) {
+     * super.onBackPressed();
+     * }
+     */
+    public boolean onBackPressed() {
+        return false;
+    }
+
+    /**
      * @return 返回布局
      */
     protected abstract int layout();

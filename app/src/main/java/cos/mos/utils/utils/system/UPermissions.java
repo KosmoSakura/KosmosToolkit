@@ -22,7 +22,8 @@ import io.reactivex.disposables.Disposable;
  * @Author: Kosmos
  * @Date: 2018.11.27 11:03
  * @Email: KosmoSakura@gmail.com
- * @eg: 最新修改日期：2019年2月15日 14:00
+ * @eg: 修改日期：2019年2月15日 14:00
+ * @eg: 最新修改日期：2019年2月28日
  */
 public class UPermissions {
     private RxPermissions rxPermissions;
@@ -88,47 +89,46 @@ public class UPermissions {
      * @return 已经拥有 权限返回true，只要当前没有被授予权限，返回false（用于流程判断用）
      * @apiNote 权限检查，没有申请
      */
-    public boolean check(String notice, Listener listener, String... pers) {
-        for (String per : pers) {
-            if (!rxPermissions.isGranted(per)) {
-                count++;
-                UDialog.getInstance(activity, false, false)
-                    .showNoticeWithOnebtn(notice, "Agreed", (result, dia) -> {
-                        Disposable subscribe = rxPermissions.request(pers)
-                            .subscribe(granted -> {
-                                if (granted) {
+    public void check(String notice, Listener listener, String... pers) {
+        if (checkOnly(pers)) {
+            if (listener != null) {
+                listener.permission(true);
+            }
+        } else {
+            count++;
+            UDialog.getInstance(activity, false, false)
+                .showNoticeWithOnebtn(notice, "Agreed", (result, dia) -> {
+                    Disposable subscribe = rxPermissions.request(pers)
+                        .subscribe(granted -> {
+                            if (granted) {
+                                if (listener != null) {
+                                    listener.permission(true);
+                                }
+                            } else {
+                                if (maxNoticeCount == 1) {
                                     if (listener != null) {
-                                        listener.permission(true);
+                                        listener.permission(false);
                                     }
                                 } else {
-                                    if (maxNoticeCount == 1) {
-                                        if (listener != null) {
-                                            listener.permission(false);
-                                        }
-                                    } else {
-                                        if (count > maxNoticeCount) {
-                                            UDialog.getInstance(activity, false, false)
-                                                .showNoticeWithOnebtn(notice,
-                                                    "To authorize", (result1, dia1) -> {
-                                                        UIntent.goSys();
-                                                        activity.finish();
-                                                    });
+                                    if (count > maxNoticeCount) {
+                                        UDialog.getInstance(activity, false, false)
+                                            .showNoticeWithOnebtn(notice,
+                                                "To authorize", (result1, dia1) -> {
+                                                    UIntent.goSys();
+                                                    activity.finish();
+                                                });
 
-                                        } else {
-                                            check(notice, listener, pers);
-                                        }
+                                    } else {
+                                        check(notice, listener, pers);
                                     }
                                 }
-                            });
-                        dia.dismiss();
-                        rxDisposable(subscribe);
-                    });
-                return false;
-            }
+                            }
+                        });
+                    dia.dismiss();
+                    rxDisposable(subscribe);
+                });
         }
-        return true;
     }
-
 
     private void rxDisposable(Disposable disposable) {
         if (compositeDisposable == null) {

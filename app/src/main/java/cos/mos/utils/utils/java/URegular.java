@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
  * →→fun：功能类
  * @eg: 修改日期：2018年09月12日 16:19
  * @eg: 修改日期：2018年12月26日
+ * @eg: 最新修改日期：2019年2月28日
  */
 public class URegular {
 
@@ -41,6 +42,22 @@ public class URegular {
     public static InputFilter[] emojiFilters = {emojiFilter};
 
 //--check校验类-------------------------------------------------------------------------------------------------------
+
+    /**
+     * @param urls 判断字符串是否为URL（https://blog.csdn.net/bronna/article/details/77529145）
+     * @return true:是URL、false:不是URL
+     */
+    public static boolean checkUrl(String urls) {
+        boolean isUrl;
+        // 判断是否是网址的正则表达式
+        String regex = "(((https|http)?://)?([a-z0-9]+[.])|(www.))"
+            + "\\w+[.|\\/]([a-z0-9]{0,})?[[.]([a-z0-9]{0,})]+((/[\\S&&[^,;\u4E00-\u9FA5]]+)+)?([.][a-z0-9]{0,}+|/?)";
+
+        Pattern pat = Pattern.compile(regex.trim());
+        Matcher mat = pat.matcher(urls.trim());
+        isUrl = mat.matches();
+        return isUrl;
+    }
 
     /**
      * @apiNote true→不包含符号

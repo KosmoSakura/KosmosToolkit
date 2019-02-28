@@ -53,6 +53,16 @@ public class UKeyboard {
         }
     }
 
+    /**
+     * @param editText 接受软键盘输入的视图
+     * @apiNote 强制隐藏键盘(系统api)
+     */
+    public void hideForceApi(EditText editText) {
+        if (imm.isActive()) {
+            imm.hideSoftInputFromWindow(editText.getApplicationWindowToken(), 0);
+        }
+    }
+
 //--------------------------------------------------------------------------------------------------
 
     private Activity activity;

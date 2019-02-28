@@ -5,25 +5,28 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
 
 import java.lang.ref.WeakReference;
 
 import androidx.annotation.ColorInt;
+import androidx.core.content.ContextCompat;
+import cos.mos.utils.R;
 import cos.mos.utils.utils.java.UText;
 
+
 /**
- * @Description: Snackbar工具类 改
+ * @Description: Snackbar工具类
  * @Author: Kosmos
- * @Date: 2018年09月12日 16:19
+ * @Date: 2018年09月28日
  * @Email: KosmoSakura@foxmail.com
- * @eg: 基于MySnackBar封装 https://github.com/guoyoujin/MySnackBar
- * @eg: 最新修改日期：2018年09月2日 23:24
  */
 public class USnackbar {
-    private static WeakReference<TSnackbar> snackbarWeakReference;
+    private static WeakReference<Snackbar> snackbarWeakReference;
+    private static final int NoColor = -1;
 
     /**
-     * 取消snackbar显示
+     * @apiNote 取消snackbar显示
      */
     public static void dismissSnackbar() {
         if (snackbarWeakReference != null && snackbarWeakReference.get() != null) {
@@ -32,90 +35,133 @@ public class USnackbar {
         }
     }
 
-    public static void showNormal(Context parent, CharSequence text) {
-        showNoAction(getRootView(parent), text, Prompt.SUCCESS, TSnackbar.LENGTH_SHORT, true);
+    /**
+     * @param parent 当前页面Context（不能传AppContext)
+     * @param text   展示文字
+     * @apiNote 弹出短窗口
+     */
+    public static void showShort(Context parent, CharSequence text) {
+        showColorNo(parent, text, Snackbar.LENGTH_SHORT, null, null);
     }
 
-    public static void showWarning(Context parent, CharSequence text) {
-        showNoAction(getRootView(parent), text, Prompt.WARNING, TSnackbar.LENGTH_SHORT, true);
+    /**
+     * @param parent 当前页面Context（不能传AppContext)
+     * @param text   展示文字
+     * @apiNote 弹出长窗口
+     */
+    public static void showLong(Context parent, CharSequence text) {
+        showColorNo(parent, text, Snackbar.LENGTH_LONG, null, null);
     }
 
-    public static void showError(Context parent, CharSequence text) {
-        showNoAction(getRootView(parent), text, Prompt.ERROR, TSnackbar.LENGTH_SHORT, true);
+    /**
+     * @param parent   当前页面Context（不能传AppContext)
+     * @param text     展示文字
+     * @param action   事件文字
+     * @param listener 事件监听
+     * @apiNote 弹出带事件窗口
+     */
+    public static void showAction(Context parent, CharSequence text, String action, View.OnClickListener listener) {
+        showColorNo(parent, text, Snackbar.LENGTH_SHORT, action, listener);
     }
 
-    public static void showProgress(Context parent, CharSequence text) {
-        showNoColor(getRootView(parent), text, Prompt.SUCCESS, TSnackbar.LENGTH_SHORT, true, true, null, null);
+    /**
+     * @param parent 当前页面Context（不能传AppContext)
+     * @param text   展示文字
+     * @apiNote 展示默认颜色短弹窗
+     */
+    public static void showShortColor(Context parent, CharSequence text) {
+        showColorDefault(parent, text, Snackbar.LENGTH_SHORT, null, null);
     }
 
-    public static void showNormalDown(Context parent, CharSequence text) {
-        showNoAction(getView(parent), text, Prompt.SUCCESS, TSnackbar.LENGTH_SHORT, false);
+    /**
+     * @param parent 当前页面Context（不能传AppContext)
+     * @param text   展示文字
+     * @apiNote 弹出默认颜色长窗口
+     */
+    public static void showLongColor(Context parent, CharSequence text) {
+        showColorDefault(parent, text, Snackbar.LENGTH_LONG, null, null);
     }
 
-    public static void showWarningDown(Context parent, CharSequence text) {
-        showNoAction(getView(parent), text, Prompt.WARNING, TSnackbar.LENGTH_SHORT, false);
+    /**
+     * @param parent   当前页面Context（不能传AppContext)
+     * @param text     展示文字
+     * @param action   事件文字
+     * @param listener 事件监听
+     * @apiNote 弹出默认颜色带事件窗口
+     */
+    public static void showActionColor(Context parent, CharSequence text, String action, View.OnClickListener listener) {
+        showColorDefault(parent, text, Snackbar.LENGTH_SHORT, action, listener);
     }
 
-    public static void showErrorDown(Context parent, CharSequence text) {
-        showNoAction(getView(parent), text, Prompt.ERROR, TSnackbar.LENGTH_SHORT, false);
+    /**
+     * @param parent   当前页面Context（不能传AppContext)
+     * @param text     展示文字
+     * @param action   事件文字
+     * @param listener 事件监听
+     * @apiNote 展示默认颜色弹窗
+     */
+    private static void showColorDefault(Context parent, CharSequence text, int duration,
+                                         CharSequence action, View.OnClickListener listener) {
+        base(getRootView(parent), text, duration, action, listener,
+            ContextCompat.getColor(parent, R.color.white),
+            ContextCompat.getColor(parent, R.color.colorPrimaryDark),
+            ContextCompat.getColor(parent, R.color.white));
     }
 
-    public static void showProgressDown(Context parent, CharSequence text) {
-        showNoColor(getView(parent), text, Prompt.SUCCESS, TSnackbar.LENGTH_SHORT, false, true, null, null);
-    }
-
-    private static void showNoAction(View parent, CharSequence text, Prompt prompt, int duration, boolean top) {
-        showNoColor(parent, text, prompt, duration, top, false, null, null);
-    }
-
-    private static void showNoColor(View parent, CharSequence text, Prompt prompt, int duration,
-                                    boolean top, boolean progress, CharSequence actionText, View.OnClickListener listener) {
-        base(parent, text, prompt, duration, top, progress, -1, -1, -1, actionText, null);
-    }
-
-    private static ViewGroup getView(Context context) {
-        return (ViewGroup) ((Activity) context).findViewById(android.R.id.content);
-    }
-
-    private static ViewGroup getRootView(Context context) {
-        return (ViewGroup) ((Activity) context).findViewById(android.R.id.content).getRootView();
+    /**
+     * @param parent     当前页面Context（不能传AppContext)
+     * @param text       展示文字
+     * @param duration   弹窗时间
+     * @param actionText 事件文字
+     * @param listener   事件监听
+     * @apiNote 展示无色弹窗
+     */
+    private static void showColorNo(Context parent, CharSequence text, int duration,
+                                    CharSequence actionText, View.OnClickListener listener) {
+        base(getRootView(parent), text, duration, actionText, listener, NoColor, NoColor, NoColor);
     }
 
     /**
      * @param parent          父视图(CoordinatorLayout或者DecorView)
      * @param text            文本
-     * @param prompt          显示类型
      * @param duration        显示时长
-     * @param top             是否显示在顶部
-     * @param showProgress    是否显示进度条
      * @param textColor       文本颜色
      * @param bgColor         背景色
      * @param actionTextColor 事件文本颜色
      * @param actionText      事件文本
      * @param listener        监听器
      */
-    private static void base(View parent, CharSequence text, Prompt prompt, int duration, boolean top, boolean showProgress,
-                             @ColorInt int textColor, @ColorInt int bgColor, @ColorInt int actionTextColor,
-                             CharSequence actionText, View.OnClickListener listener) {
-        snackbarWeakReference = new WeakReference<>(TSnackbar.make(parent, text, duration,
-            top ? TSnackbar.APPEAR_FROM_TOP_TO_DOWN : TSnackbar.APPEAR_FROM_BOTTOM_TO_TOP));
-        TSnackbar snackbar = snackbarWeakReference.get();
-        if (textColor > 0) {
+    private static void base(View parent, CharSequence text, int duration,
+                             CharSequence actionText, View.OnClickListener listener,
+                             @ColorInt int textColor, @ColorInt int bgColor, @ColorInt int actionTextColor) {
+        snackbarWeakReference = new WeakReference<>(Snackbar.make(parent, text, duration));
+        Snackbar snackbar = snackbarWeakReference.get();
+        if (textColor != NoColor) {
             snackbar.setActionTextColor(textColor);
         }
-        if (bgColor > 0) {
+        if (bgColor != NoColor) {
             snackbar.getView().setBackgroundColor(bgColor);
         }
         if (!UText.isEmpty(actionText) && listener != null) {
-            if (actionTextColor > 0) {
+            if (actionTextColor != NoColor) {
                 snackbar.setActionTextColor(actionTextColor);
             }
             snackbar.setAction(actionText, listener);
         }
-        snackbar.setPromptThemBackground(prompt);
-        if (showProgress) {
-            snackbar.addIconProgressLoading(0, true, false);
-        }
         snackbar.show();
+    }
+
+    /**
+     * @return xml级别布局底层View
+     */
+    private static ViewGroup getView(Context context) {
+        return (ViewGroup) ((Activity) context).findViewById(android.R.id.content);
+    }
+
+    /**
+     * @return 页面最底层View
+     */
+    private static ViewGroup getRootView(Context context) {
+        return (ViewGroup) getView(context).getRootView();
     }
 }

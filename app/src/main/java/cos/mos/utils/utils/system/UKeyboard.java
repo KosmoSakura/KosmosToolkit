@@ -16,6 +16,7 @@ import android.widget.EditText;
  * @Date: 2018年2月8日 16:12
  * @Email: KosmoSakura@gmail.com
  * @eg: 修改日期：2018年09月24日 16:19
+ * @eg: 最新修改日期：2019年2月28日
  */
 public class UKeyboard {
     /**
@@ -37,7 +38,7 @@ public class UKeyboard {
      * @param editText 接受软键盘输入的视图
      * @apiNote 强制显示键盘
      */
-    public void showForce(EditText editText) {
+    public void showKeyboard(EditText editText) {
         imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
         editText.setFocusable(true);//可聚焦
         editText.requestFocus();//聚焦
@@ -47,7 +48,7 @@ public class UKeyboard {
      * @param editText 接受软键盘输入的视图
      * @apiNote 强制隐藏键盘
      */
-    public void hideForce(EditText editText) {
+    public void hideKeyboard(EditText editText) {
         if (isKeyboardShow()) {
             imm.hideSoftInputFromWindow(editText.getWindowToken(), 0); //强制隐藏键盘
         }
@@ -55,9 +56,9 @@ public class UKeyboard {
 
     /**
      * @param editText 接受软键盘输入的视图
-     * @apiNote 强制隐藏键盘(系统api)
+     * @apiNote 强制隐藏键盘(系统api判断)
      */
-    public void hideForceApi(EditText editText) {
+    public void hideKeyboardApi(EditText editText) {
         if (imm.isActive()) {
             imm.hideSoftInputFromWindow(editText.getApplicationWindowToken(), 0);
         }

@@ -20,6 +20,7 @@ import cos.mos.utils.utils.java.UText;
  * @Author: Kosmos
  * @Date: 2019.02.22 11:51
  * @Email: KosmoSakura@gmail.com
+ * @eg: 最新修改日期：2019年2月34日
  */
 public class UFile {
     /**
@@ -40,7 +41,7 @@ public class UFile {
      * @param path 删除指定的文件
      */
     public static void deleteFile(String path) {
-        if (path != null) {
+        if (!UText.isEmpty(path)) {
             File file = new File(path);
             if (file.exists()) {
                 file.delete();

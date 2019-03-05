@@ -20,7 +20,7 @@ public class UBiometric {
     private static CancellationSignal cancelSignal;//取消
 
     private UBiometric() {
-        compat = FingerprintManagerCompat.from(KApp.getInstance());
+        compat = FingerprintManagerCompat.from(KApp.instance());
     }
 
     public static UBiometric instance() {

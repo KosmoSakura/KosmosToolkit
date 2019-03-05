@@ -17,7 +17,7 @@ import cos.mos.utils.constant.KConfig;
 public abstract class KApp extends MultiDexApplication {
     private static KApp instances;
 
-    public static KApp getInstance() {
+    public static KApp instance() {
         return instances;
     }
 

@@ -46,7 +46,7 @@ public class UApps {
 
     private PackageManager getPkgMgr() {
         if (pkgMgr == null) {
-            pkgMgr = KApp.getInstance().getPackageManager();
+            pkgMgr = KApp.instance().getPackageManager();
         }
         return pkgMgr;
     }
@@ -159,7 +159,7 @@ public class UApps {
     public void startThridApp(String pkgName) {
         try {
             Intent minIntent = getPkgMgr().getLaunchIntentForPackage(pkgName);
-            KApp.getInstance().startActivity(minIntent);
+            KApp.instance().startActivity(minIntent);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -209,7 +209,7 @@ public class UApps {
      * 轻量： 获取栈顶应用包名(非系统程序在在栈顶时有效)
      */
     public String getCurTopAppPkg() {
-        ActivityManager am = (ActivityManager) KApp.getInstance().getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager am = (ActivityManager) KApp.instance().getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningTaskInfo> appTask = am.getRunningTasks(Integer.MAX_VALUE);
         if (!UText.isEmpty(appTask)) {
             return appTask.get(0).topActivity.getPackageName();
@@ -226,7 +226,7 @@ public class UApps {
     public String getTopAppPkg() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (actMgr == null) {
-                actMgr = (ActivityManager) KApp.getInstance().getSystemService(Context.ACTIVITY_SERVICE);
+                actMgr = (ActivityManager) KApp.instance().getSystemService(Context.ACTIVITY_SERVICE);
             }
             List<ActivityManager.RunningTaskInfo> appTasks = actMgr.getRunningTasks(1);
             if (null != appTasks && !appTasks.isEmpty()) {
@@ -235,7 +235,7 @@ public class UApps {
         } else {
             //5.0以后需要用这方法
             if (usgMgr == null) {
-                usgMgr = (UsageStatsManager) KApp.getInstance().getSystemService(Context.USAGE_STATS_SERVICE);
+                usgMgr = (UsageStatsManager) KApp.instance().getSystemService(Context.USAGE_STATS_SERVICE);
             }
             long endTime = System.currentTimeMillis();
             long beginTime = endTime - 10000;

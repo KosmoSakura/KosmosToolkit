@@ -63,7 +63,7 @@ public class UPermissions {
      */
     public static boolean checkOverlay() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return Settings.canDrawOverlays(KApp.getInstance());
+            return Settings.canDrawOverlays(KApp.instance());
         }
         return true;
     }
@@ -151,7 +151,7 @@ public class UPermissions {
     public static boolean isAssistOn() {
         int accessibilityEnabled;//默认为0
         try {
-            accessibilityEnabled = Settings.Secure.getInt(KApp.getInstance().getContentResolver(),
+            accessibilityEnabled = Settings.Secure.getInt(KApp.instance().getContentResolver(),
                 Settings.Secure.ACCESSIBILITY_ENABLED);
         } catch (Settings.SettingNotFoundException e) {
             //找不到这个页面
@@ -159,10 +159,10 @@ public class UPermissions {
         }
 
         if (accessibilityEnabled == 1) {
-            String services = Settings.Secure.getString(KApp.getInstance().getContentResolver(),
+            String services = Settings.Secure.getString(KApp.instance().getContentResolver(),
                 Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
             if (services != null) {
-                return services.toLowerCase().contains(KApp.getInstance().getPackageName().toLowerCase());
+                return services.toLowerCase().contains(KApp.instance().getPackageName().toLowerCase());
             }
         }
         return false;
@@ -172,7 +172,7 @@ public class UPermissions {
      * @return 查看是否[存在][有权限查看使用情况的应用]权限
      */
     public static boolean isNoOption() {
-        PackageManager packageManager = KApp.getInstance().getPackageManager();
+        PackageManager packageManager = KApp.instance().getPackageManager();
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         return !UText.isEmpty(packageManager
             .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY));
@@ -184,10 +184,10 @@ public class UPermissions {
     public static boolean isStatAccessPermissionSet() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             try {
-                PackageManager packageManager = KApp.getInstance().getPackageManager();
+                PackageManager packageManager = KApp.instance().getPackageManager();
                 ApplicationInfo info = packageManager
-                    .getApplicationInfo(KApp.getInstance().getPackageName(), 0);
-                AppOpsManager appOpsManager = (AppOpsManager) KApp.getInstance()
+                    .getApplicationInfo(KApp.instance().getPackageName(), 0);
+                AppOpsManager appOpsManager = (AppOpsManager) KApp.instance()
                     .getSystemService(Context.APP_OPS_SERVICE);
                 appOpsManager
                     .checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, info.uid, info.packageName);

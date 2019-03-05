@@ -31,7 +31,7 @@ import cos.mos.utils.init.k.KApp;
  * .setSmallIcon(R.drawable.ic_launcher);//设置通知小ICON
  */
 public class UNotify {
-    private static NotificationManager notifyMgr = (NotificationManager) KApp.getInstance().getSystemService(Context.NOTIFICATION_SERVICE);
+    private static NotificationManager notifyMgr = (NotificationManager) KApp.instance().getSystemService(Context.NOTIFICATION_SERVICE);
     private static final String CHANNEL_ID = "SAKURA_RUN";
     private static final String CHANNEL_NAME = "SAKURA_NAME";
     private static UNotify nft;
@@ -63,7 +63,7 @@ public class UNotify {
      */
     public UNotify init(String title, String msg, int icon) {
         createChannel();
-        notify = new NotificationCompat.Builder(KApp.getInstance(), CHANNEL_ID)
+        notify = new NotificationCompat.Builder(KApp.instance(), CHANNEL_ID)
             .setSmallIcon(icon)
             .setContentTitle(title)
             .setContentText(msg)
@@ -81,12 +81,12 @@ public class UNotify {
      */
     public UNotify initIntent(String title, String msg, int icon, Class aClass) {
         createChannel();
-        Intent intent = new Intent(KApp.getInstance(), aClass);
+        Intent intent = new Intent(KApp.instance(), aClass);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
             Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(KApp.getInstance(), 0,
+        PendingIntent pendingIntent = PendingIntent.getActivity(KApp.instance(), 0,
             intent, 0);
-        notify = new NotificationCompat.Builder(KApp.getInstance(), CHANNEL_ID)
+        notify = new NotificationCompat.Builder(KApp.instance(), CHANNEL_ID)
             .setSmallIcon(icon)
             .setContentTitle(title)
             .setContentText(msg)

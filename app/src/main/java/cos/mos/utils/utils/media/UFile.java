@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.java.UText;
 
 
@@ -21,6 +22,7 @@ import cos.mos.utils.utils.java.UText;
  * @Date: 2019.02.22 11:51
  * @Email: KosmoSakura@gmail.com
  * @eg: 最新修改日期：2019年2月34日
+ * @eg: 最新修改日期：2019年3月5日
  */
 public class UFile {
     /**
@@ -169,5 +171,21 @@ public class UFile {
         }
         // 目录此时为空，可以删除
         return dir.delete();
+    }
+
+    /**
+     * @param fileName 文件名
+     * @param times    校验次数(外部调用传入0，递归调用自增）
+     * @return 新名字
+     * @apiNote 检查文件是否存在，存在则重命名
+     */
+    private String fileRename(String fileName, int times) {
+        File file = new File(KApp.instance().getRootPath() + File.separator
+            + fileName + (times == 0 ? "" : "_" + times) + ".mp4");
+        if (file.exists()) {
+            return fileRename(fileName, times + 1);
+        } else {
+            return file.getAbsolutePath();
+        }
     }
 }

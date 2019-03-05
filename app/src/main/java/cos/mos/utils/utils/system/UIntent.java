@@ -22,7 +22,7 @@ import cos.mos.utils.utils.ui.toast.UToast;
  */
 public class UIntent {
     private static void start(Intent intent) {
-        KApp.getInstance().startActivity(intent);
+        KApp.instance().startActivity(intent);
     }
 
     /**
@@ -30,7 +30,7 @@ public class UIntent {
      * 普通权限
      */
     public static void goSys() {
-        Uri packageURI = Uri.parse("package:" + KApp.getInstance().getPackageName());
+        Uri packageURI = Uri.parse("package:" + KApp.instance().getPackageName());
         start(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI));
     }
 
@@ -39,7 +39,7 @@ public class UIntent {
      * 高级权限
      */
     public static void goSysOverlay() {
-        Uri packageURI = Uri.parse("package:" + KApp.getInstance().getPackageName());
+        Uri packageURI = Uri.parse("package:" + KApp.instance().getPackageName());
         start(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, packageURI));
     }
 
@@ -139,7 +139,7 @@ public class UIntent {
                     Intent intentOppo = new Intent();
                     intentOppo.setClassName("com.oppo.safe/.permission.startup",
                         "StartupAppListActivity");
-                    if (KApp.getInstance().getPackageManager().resolveActivity(intentOppo, 0) == null) {
+                    if (KApp.instance().getPackageManager().resolveActivity(intentOppo, 0) == null) {
                         componentName = ComponentName.unflattenFromString("com.coloros.safecenter" +
                             "/.startupapp.StartupAppListActivity");
                     }
@@ -155,13 +155,13 @@ public class UIntent {
                     // 在此根据用户手机当前版本跳转系统设置界面
                     if (Build.VERSION.SDK_INT >= 9) {
                         intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-                        intent.setData(Uri.fromParts("package", KApp.getInstance().getPackageName(), null));
+                        intent.setData(Uri.fromParts("package", KApp.instance().getPackageName(), null));
                     } else if (Build.VERSION.SDK_INT <= 8) {
                         intent.setAction(Intent.ACTION_VIEW);
                         intent.setClassName("com.android.settings",
                             "com.android.settings.InstalledAppDetails");
                         intent.putExtra("com.android.settings.ApplicationPkgName",
-                            KApp.getInstance().getPackageName());
+                            KApp.instance().getPackageName());
                     }
                     break;
             }

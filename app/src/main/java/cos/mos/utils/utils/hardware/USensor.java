@@ -48,7 +48,7 @@ public class USensor implements SensorEventListener {
     private USensor() {
         if (sorMgr == null) {
             //传感器管理
-            sorMgr = (SensorManager) KApp.getInstance().getSystemService(Context.SENSOR_SERVICE);
+            sorMgr = (SensorManager) KApp.instance().getSystemService(Context.SENSOR_SERVICE);
         }
     }
 

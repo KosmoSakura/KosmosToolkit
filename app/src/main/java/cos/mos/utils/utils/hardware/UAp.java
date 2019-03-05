@@ -34,7 +34,7 @@ public class UAp {
 
     private WifiManager getWifiMgr() {
         if (wifiMgr == null) {
-            wifiMgr = (WifiManager) App.getInstance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            wifiMgr = (WifiManager) App.instance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
         return wifiMgr;
     }

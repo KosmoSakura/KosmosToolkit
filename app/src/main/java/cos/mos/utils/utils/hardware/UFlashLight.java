@@ -52,7 +52,7 @@ public class UFlashLight {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private CameraManager getCMG() {
         if (manager == null) {
-            manager = (CameraManager) KApp.getInstance().getSystemService(Context.CAMERA_SERVICE);
+            manager = (CameraManager) KApp.instance().getSystemService(Context.CAMERA_SERVICE);
         }
         return manager;
     }
@@ -78,7 +78,7 @@ public class UFlashLight {
      * @return 是否有闪光灯
      */
     public static boolean hasFLASH() {
-        return KApp.getInstance().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+        return KApp.instance().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 
     /**

@@ -12,7 +12,7 @@ import cos.mos.utils.init.k.KApp;
  * @eg: 最新修改日期：2019年2月25日
  */
 public class UScreen {
-    private static final DisplayMetrics metric = KApp.getInstance().getResources().getDisplayMetrics();
+    private static final DisplayMetrics metric = KApp.instance().getResources().getDisplayMetrics();
     private static final float scale = metric.density;
 
     /**

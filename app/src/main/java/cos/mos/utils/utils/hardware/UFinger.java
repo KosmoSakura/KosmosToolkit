@@ -24,7 +24,7 @@ public class UFinger {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private UFinger() {
-        fingerMgr = (FingerprintManager) KApp.getInstance().getSystemService(Context.FINGERPRINT_SERVICE);
+        fingerMgr = (FingerprintManager) KApp.instance().getSystemService(Context.FINGERPRINT_SERVICE);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

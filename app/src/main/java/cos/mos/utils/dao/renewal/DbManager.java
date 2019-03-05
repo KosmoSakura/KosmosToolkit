@@ -21,7 +21,7 @@ public class DbManager {
 
 
     private DbManager() {
-        mDevOpenHelper = new DaoMaster.DevOpenHelper(KApp.getInstance(), Constant.DB_NAME);
+        mDevOpenHelper = new DaoMaster.DevOpenHelper(KApp.instance(), Constant.DB_NAME);
         getDaoMaster();
         getDaoSession();
     }
@@ -65,7 +65,7 @@ public class DbManager {
         if (null == mDaoMaster) {
             synchronized (DbManager.class) {
                 if (null == mDaoMaster) {
-                    RenewalHelper helper = new RenewalHelper(KApp.getInstance(), Constant.DB_NAME, null);
+                    RenewalHelper helper = new RenewalHelper(KApp.instance(), Constant.DB_NAME, null);
                     mDaoMaster = new DaoMaster(helper.getWritableDatabase());
                 }
             }

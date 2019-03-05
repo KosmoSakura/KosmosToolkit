@@ -27,14 +27,14 @@ public class UWiFi {
 
     private static WifiManager getWifiMgr() {
         if (wifiMgr == null) {
-            wifiMgr = (WifiManager) App.getInstance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            wifiMgr = (WifiManager) App.instance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
         return wifiMgr;
     }
 
     private static ConnectivityManager getConnectivityMgr() {
         if (connectivityMgr == null) {
-            connectivityMgr = (ConnectivityManager) App.getInstance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            connectivityMgr = (ConnectivityManager) App.instance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         }
         return connectivityMgr;
     }

@@ -23,7 +23,7 @@ public class UUTextTest {
 
     @Before
     public void setUp() {
-        USP.instance().init(KApp.getInstance(), "test");
+        USP.instance().init(KApp.instance(), "test");
     }
 
 

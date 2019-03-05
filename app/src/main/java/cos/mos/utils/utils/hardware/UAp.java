@@ -8,8 +8,8 @@ import android.os.Handler;
 
 import java.lang.reflect.Method;
 
+import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.ULogBj;
-import cos.mos.utils.init.App;
 
 /**
  * @Description: wifi热点工具类
@@ -34,7 +34,7 @@ public class UAp {
 
     private WifiManager getWifiMgr() {
         if (wifiMgr == null) {
-            wifiMgr = (WifiManager) App.instance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            wifiMgr = (WifiManager) KApp.instance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
         return wifiMgr;
     }

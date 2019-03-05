@@ -1,7 +1,5 @@
 package cos.mos.utils.utils.media;
 
-import android.text.TextUtils;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.Closeable;
@@ -13,7 +11,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import cos.mos.utils.init.k.KApp;
-import cos.mos.utils.utils.java.UText;
 
 
 /**
@@ -21,152 +18,38 @@ import cos.mos.utils.utils.java.UText;
  * @Author: Kosmos
  * @Date: 2019.02.22 11:51
  * @Email: KosmoSakura@gmail.com
- * @eg: 最新修改日期：2019年2月34日
+ * @eg: 修改日期：2019年2月34日
  * @eg: 最新修改日期：2019年3月5日
  */
 public class UFile {
     /**
-     * @param path 完整文件名（可以加路径）
-     * @return 文件后缀
+     * @param path 文件完整路径(a/b/c/aa.txt)
+     * @return 是否删除成功
+     * @apiNote 删除指定的文件
      */
-    public static String getFileSuffix(String path) {
-        if (path == null)
-            return "";
-        int index = path.lastIndexOf('.');
-        if (index > -1)
-            return path.substring(index + 1);
-        else
-            return "";
-    }
-
-    /**
-     * @param path 删除指定的文件
-     */
-    public static void deleteFile(String path) {
-        if (!UText.isEmpty(path)) {
+    public static boolean deleteFile(String path) {
+        if (path == null) {
+            return false;
+        } else {
             File file = new File(path);
             if (file.exists()) {
-                file.delete();
+                return file.delete();
+            } else {
+                return false;
             }
         }
-    }
-
-    /**
-     * @return 路径文件是否有效
-     */
-    public static boolean isFileExist(String filePath) {
-        if (UText.isEmpty(filePath)) {
-            return false;
-        }
-        return new File(filePath).exists();
-    }
-
-    /**
-     * @return 判断 两个文件大小相等.
-     */
-    public static boolean equalSize(String path1, String path2) {
-        return new File(path1).length() == new File(path2).length();
-    }
-
-    /**
-     * @param path a/b/c/d/123.mp3
-     * @return mp3
-     * @apiNote 通过路径获取文件名
-     */
-    public static String getFileNameByPath(String path) {
-        if (path == null)
-            return "";
-        int index = path.lastIndexOf('/');
-        if (index > -1)
-            return path.substring(index + 1);
-        else
-            return path;
-    }
-
-    /**
-     * @param path 路径
-     * @return 上一级路径
-     */
-    public static String getParent(String path) {
-        if (TextUtils.equals("/", path))
-            return path;
-        String parentPath = path;
-        if (parentPath.endsWith("/"))
-            parentPath = parentPath.substring(0, parentPath.length() - 1);
-        int index = parentPath.lastIndexOf('/');
-        if (index > 0) {
-            parentPath = parentPath.substring(0, index);
-        } else if (index == 0)
-            parentPath = "/";
-        return parentPath;
-    }
-
-
-    /**
-     * @param src 被复制的文件
-     * @param dst 复制到哪里
-     * @return 复制是否成功
-     */
-    public static boolean copyFile(String src, String dst) {
-        return copyFile(new File(src), new File(dst));
-    }
-
-    public static boolean copyFile(File src, File dst) {
-        boolean ret = true;
-        if (src.isDirectory()) {
-            File[] filesList = src.listFiles();
-            dst.mkdirs();
-            for (File file : filesList)
-                ret &= copyFile(file, new File(dst, file.getName()));
-        } else if (src.isFile()) {
-            InputStream in = null;
-            OutputStream out = null;
-            try {
-                in = new BufferedInputStream(new FileInputStream(src));
-                out = new BufferedOutputStream(new FileOutputStream(dst));
-
-                // Transfer bytes from in to out
-                byte[] buf = new byte[1024];
-                int len;
-                while ((len = in.read(buf)) > 0) {
-                    out.write(buf, 0, len);
-                }
-                return true;
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                close(in);
-                close(out);
-            }
-            return false;
-        }
-        return ret;
-    }
-
-    private static boolean close(Closeable closeable) {
-        if (closeable != null)
-            try {
-                closeable.close();
-                return true;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        return false;
     }
 
     /**
      * @param dir 目录
      * @return 是否成功
-     * 递归删除目录下的所有文件及子目录下所有文件
+     * @apiNote 递归删除目录下的所有文件及子目录下所有文件
      */
     public static boolean deleteDir(File dir) {
         if (dir.isDirectory()) {
             String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir(new File(dir, children[i]));
-                if (!success) {
-                    return false;
-                }
+            for (String aChildren : children) {
+                return deleteDir(new File(dir, aChildren));
             }
         }
         // 目录此时为空，可以删除
@@ -174,16 +57,120 @@ public class UFile {
     }
 
     /**
-     * @param fileName 文件名
+     * @param filePath 路径（a/b/c)、文件(a/b/c/aa.txt)
+     * @return 路径、文件是否存在
+     */
+    public static boolean isFileExist(String filePath) {
+        if (filePath == null) {
+            return false;
+        }
+        return new File(filePath).exists();
+    }
+
+    /**
+     * @return 判断 两个文件大小是否相等.
+     */
+    public static boolean isEqualSize(String path1, String path2) {
+        return new File(path1).length() == new File(path2).length();
+    }
+
+    /**
+     * @param path 完整文件名（可以加路径eg1:ss.txt,eg2:a/b/c/ss.txt）
+     * @return 文件后缀
+     * @apiNote 获取文件后缀名
+     */
+    public static String getSuffix(String path) {
+        if (path == null) {
+            return "";
+        }
+        int index = path.lastIndexOf('.');
+        if (index > -1) {
+            return path.substring(index + 1);
+        } else {
+            return "";
+        }
+    }
+
+    /**
+     * @param src 被复制文件的完整（路径+文件名+后缀名）
+     * @param dst 复制到哪里（路径+文件名+后缀名）
+     * @return 复制是否成功
+     * @apiNote 复制文件
+     */
+    public static boolean copyFile(String src, String dst) {
+        File file = new File(src);
+        if (file.exists() && file.isFile()) {
+            InputStream in = null;
+            OutputStream out = null;
+            try {
+                in = new BufferedInputStream(new FileInputStream(src));
+                out = new BufferedOutputStream(new FileOutputStream(dst));
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+                return true;
+            } catch (Exception e) {
+                return false;
+            } finally {
+                close(in);
+                close(out);
+            }
+        } else {
+            return false;//不是一个文件，或者文件不存在
+        }
+    }
+
+    private static void close(Closeable closeable) {
+        if (closeable != null) {
+            try {
+                closeable.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * @param fileName 文件名(不包含后缀名）
      * @param times    校验次数(外部调用传入0，递归调用自增）
      * @return 新名字
      * @apiNote 检查文件是否存在，存在则重命名
      */
-    private String fileRename(String fileName, int times) {
-        File file = new File(KApp.instance().getRootPath() + File.separator
-            + fileName + (times == 0 ? "" : "_" + times) + ".mp4");
+    private static String fileRename(String fileName, int times) {
+        File file;
+        if (times == 0) {
+            file = new File(KApp.instance().getRootPath() + File.separator
+                + fileName + ".mp4");
+        } else {
+            file = new File(KApp.instance().getRootPath() + File.separator
+                + fileName + "_" + times + ".mp4");
+        }
         if (file.exists()) {
             return fileRename(fileName, times + 1);
+        } else {
+            return file.getAbsolutePath();
+        }
+    }
+
+    /**
+     * @param dir      文件路径
+     * @param fileName 文件名(包含后缀名eg:aaa.txt)
+     * @param times    校验次数(外部调用传入0，递归调用自增）
+     * @return 新名字（包含路径）
+     * @apiNote 检查文件是否存在，存在则重命名
+     */
+    private static String fileRename(String dir, String fileName, int times) {
+        File file;
+        if (times == 0) {
+            file = new File(dir + File.separator + fileName);
+        } else {
+            String suffix = "." + getSuffix(fileName);
+            file = new File(dir + File.separator + fileName.replace(suffix, "") + "_" + times + suffix);
+        }
+        if (file.exists()) {
+            return fileRename(dir, fileName, times + 1);
         } else {
             return file.getAbsolutePath();
         }

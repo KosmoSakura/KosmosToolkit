@@ -1,11 +1,16 @@
 package cos.mos.utils.init.k;
 
 
+import android.os.Environment;
+
+import java.io.File;
+
 import androidx.multidex.MultiDexApplication;
+import cos.mos.utils.constant.KConfig;
+import cos.mos.utils.utils.ULog;
 import cos.mos.utils.utils.ULogBj;
 import cos.mos.utils.utils.media.USP;
 import cos.mos.utils.utils.ui.toast.UToast;
-import cos.mos.utils.constant.KConfig;
 
 /**
  * @Description: <p>
@@ -14,8 +19,9 @@ import cos.mos.utils.constant.KConfig;
  * @Email: KosmoSakura@gmail.com
  * @eg MultiDexApplication：解除Dex方法数量超过限制
  */
-public abstract class KApp extends MultiDexApplication {
+public class KApp extends MultiDexApplication {
     private static KApp instances;
+    private String rootPath;
 
     public static KApp instance() {
         return instances;
@@ -26,25 +32,24 @@ public abstract class KApp extends MultiDexApplication {
         super.onCreate();
         instances = this;
         initBase();
-        initApp();
     }
 
     private void initBase() {
         //鸿洋牌吐司
         UToast.init(this);
         //SharedPreferences默认表名
-        USP.instance().init(this, defaultSP());
+        USP.instance().init(this, "Kosmos");
         //Base url
-        KConfig.setBaseUrl(baseUrl());
+        KConfig.setBaseUrl("---");
         //Blankj封装的Log
         ULogBj.init(this)
-            .setLogSwitch(debugState())
-            .setConsoleSwitch(debugState())
-            .setGlobalTag(logTag())
+            .setLogSwitch(true)//日志开关
+            .setConsoleSwitch(true)//日志开关
+            .setGlobalTag("Kosmos")
             .setLogHeadSwitch(true)
             .setLog2FileSwitch(false)
             .setDir("")
-            .setFilePrefix(logTag())//文件前缀
+            .setFilePrefix("Kosmos")//日志默认Tag
             .setBorderSwitch(true)
             .setSingleTagSwitch(true)
             .setConsoleFilter(ULogBj.V)
@@ -53,30 +58,20 @@ public abstract class KApp extends MultiDexApplication {
             .setStackOffset(0);
     }
 
-    /**
-     * 初始化参数
-     */
-    protected abstract void initApp();
+    public String getRootPath() {
+        return rootPath;
+    }
 
-    /**
-     * @return 日志开关
-     */
-    protected abstract boolean debugState();
-
-    /**
-     * @return 日志默认Tag
-     */
-    protected abstract String logTag();
-
-    /**
-     * @return SharedPreferences 默认名字
-     */
-    protected abstract String defaultSP();
-
-    /**
-     * @return Base url
-     */
-    protected abstract String baseUrl();
-
-
+    public void initFiles() {
+        //判断sd卡是否存在
+        if (Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+            rootPath = Environment.getExternalStorageDirectory() + File.separator + "Sakura";
+        }
+        File flie = new File(rootPath);
+        //目录不存在就自动创建
+        if (!flie.exists()) {
+            boolean mkdirs = flie.mkdirs();
+            ULog.commonD("目录不存在，创建：" + mkdirs + "=" + rootPath);
+        }
+    }
 }

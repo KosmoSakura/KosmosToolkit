@@ -10,8 +10,8 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
+import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.java.UText;
-import cos.mos.utils.init.App;
 
 /**
  * @Description: wifi工具类
@@ -27,14 +27,14 @@ public class UWiFi {
 
     private static WifiManager getWifiMgr() {
         if (wifiMgr == null) {
-            wifiMgr = (WifiManager) App.instance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            wifiMgr = (WifiManager) KApp.instance().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
         return wifiMgr;
     }
 
     private static ConnectivityManager getConnectivityMgr() {
         if (connectivityMgr == null) {
-            connectivityMgr = (ConnectivityManager) App.instance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            connectivityMgr = (ConnectivityManager) KApp.instance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         }
         return connectivityMgr;
     }

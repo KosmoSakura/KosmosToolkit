@@ -25,7 +25,7 @@ public abstract class BaseActivity extends KActivity implements KContract {
     }
 
     @Override
-    public void rxDisposable(Disposable disposable) {
+    public void rxMvpDisposable(Disposable disposable) {
         if (compositeDisposable == null) {
             compositeDisposable = new CompositeDisposable();
         }

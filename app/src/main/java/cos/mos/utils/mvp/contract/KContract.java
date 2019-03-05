@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable;
  * @Email: KosmoSakura@gmail.com
  */
 public interface KContract {
-    void rxDisposable(Disposable disposable);
+    void rxMvpDisposable(Disposable disposable);
 
     KRequest getRequest();
 }

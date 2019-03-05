@@ -21,6 +21,6 @@ public class KPresenter {
     }
 
     protected void rxDisposable(Disposable disposable) {
-        contract.rxDisposable(disposable);
+        contract.rxMvpDisposable(disposable);
     }
 }

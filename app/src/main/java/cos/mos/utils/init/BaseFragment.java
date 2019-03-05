@@ -24,7 +24,7 @@ public abstract class BaseFragment extends KFragment implements KContract {
     }
 
     @Override
-    public void rxDisposable(Disposable disposable) {
+    public void rxMvpDisposable(Disposable disposable) {
         if (compositeDisposable == null) {
             compositeDisposable = new CompositeDisposable();
         }

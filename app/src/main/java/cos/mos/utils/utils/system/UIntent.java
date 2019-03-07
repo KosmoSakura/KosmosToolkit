@@ -7,9 +7,10 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import cos.mos.utils.init.k.KApp;
+import cos.mos.utils.utils.ULog;
 import cos.mos.utils.utils.ui.toast.UToast;
 
 
@@ -40,6 +41,7 @@ public class UIntent {
      * 去系统授权页面（悬浮窗权限）
      * 高级权限
      */
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public static void goSysOverlay() {
         Uri packageURI = Uri.parse("package:" + KApp.instance().getPackageName());
         start(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, packageURI));
@@ -49,6 +51,7 @@ public class UIntent {
      * 去系统授权页面（有权限查看使用情况的应用）
      * 高级权限
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static void goSysAdvanced() {
         start(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
     }
@@ -57,29 +60,12 @@ public class UIntent {
      * @param activity 页面
      * @param request  请求值
      * @apiNote 去系统授权页面（有权限查看使用情况的应用）
-     * * 高级权限-带返回值
+     * 高级权限-带返回值
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static void goSysAdvanced(Activity activity, int request) {
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         activity.startActivityForResult(intent, request);
-    }
-
-    /**
-     * 回到桌面
-     */
-    public static void goHome() {
-        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory(Intent.CATEGORY_HOME);
-        start(homeIntent);
-    }
-
-    /**
-     * 去无障碍授权页面
-     */
-    public static void goAssist() {
-        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        start(intent);
     }
 
     /**
@@ -105,7 +91,7 @@ public class UIntent {
         Intent intent = new Intent();
         try {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            Log.e("HLQ_Struggle", "******************当前手机型号为：" + Build.MANUFACTURER);
+            ULog.commonI("******************当前手机型号为：" + Build.MANUFACTURER);
             ComponentName componentName = null;
             switch (Build.MANUFACTURER) {
                 case "Xiaomi":  // 红米Note4测试通过
@@ -155,16 +141,8 @@ public class UIntent {
                     // 以上只是市面上主流机型，由于公司你懂的，所以很不容易才凑齐以上设备
                     // 针对于其他设备，我们只能调整当前系统app查看详情界面
                     // 在此根据用户手机当前版本跳转系统设置界面
-                    if (Build.VERSION.SDK_INT >= 9) {
-                        intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-                        intent.setData(Uri.fromParts("package", KApp.instance().getPackageName(), null));
-                    } else if (Build.VERSION.SDK_INT <= 8) {
-                        intent.setAction(Intent.ACTION_VIEW);
-                        intent.setClassName("com.android.settings",
-                            "com.android.settings.InstalledAppDetails");
-                        intent.putExtra("com.android.settings.ApplicationPkgName",
-                            KApp.instance().getPackageName());
-                    }
+                    intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                    intent.setData(Uri.fromParts("package", KApp.instance().getPackageName(), null));
                     break;
             }
             intent.setComponent(componentName);
@@ -174,6 +152,25 @@ public class UIntent {
             start(intent);
         }
     }
+
+    /**
+     * 回到桌面
+     */
+    public static void goHome() {
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory(Intent.CATEGORY_HOME);
+        start(homeIntent);
+    }
+
+    /**
+     * 去无障碍授权页面
+     */
+    public static void goAssist() {
+        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start(intent);
+    }
+
 
     /**
      * @param dir 视频地址

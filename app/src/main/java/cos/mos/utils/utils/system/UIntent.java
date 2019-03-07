@@ -17,8 +17,9 @@ import cos.mos.utils.utils.ui.toast.UToast;
  * @Author: Kosmos
  * @Date: 2018.12.17 15:16
  * @Email: KosmoSakura@gmail.com
- * @eg: 修改日期：2018年12月24日
- * @eg: 最新修改日期：2019年2月26日
+ * @eg: 2018.12.24:特殊权限页面跳转
+ * @eg: 2019.2.26:辅助通道页面跳转
+ * @eg: 2019.3.5:打开系统视频播放器
  */
 public class UIntent {
     private static void start(Intent intent) {

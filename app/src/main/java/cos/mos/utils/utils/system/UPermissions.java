@@ -10,6 +10,7 @@ import android.provider.Settings;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.ui.UDialog;
@@ -22,8 +23,10 @@ import io.reactivex.disposables.Disposable;
  * @Author: Kosmos
  * @Date: 2018.11.27 11:03
  * @Email: KosmoSakura@gmail.com
- * @eg: 修改日期：2019年2月15日 14:00
- * @eg: 最新修改日期：2019年2月28日
+ * @eg: 2018.12.19:辅助通道权限校验及申请
+ * @eg: 2019.2.15:重构基本框架
+ * @eg: 2019.2.28:重新封装权限申请逻辑
+ * @eg: 2019.3.7:权限校验添加系统api
  */
 public class UPermissions {
     private RxPermissions rxPermissions;
@@ -70,9 +73,22 @@ public class UPermissions {
 
     /**
      * @param pers 权限们
-     * @apiNote 校验是否有权限
+     * @apiNote 校验是否有权限（系统Api)
      */
     public boolean checkOnly(String... pers) {
+        for (String per : pers) {
+            if (ContextCompat.checkSelfPermission(KApp.instance(), per) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * @param pers 权限们
+     * @apiNote 校验是否有权限
+     */
+    public boolean checkOnlyRx(String... pers) {
         for (String per : pers) {
             if (!rxPermissions.isGranted(per)) {
                 return false;
@@ -90,7 +106,7 @@ public class UPermissions {
      * @apiNote 权限检查，没有申请
      */
     public void check(String notice, Listener listener, String... pers) {
-        if (checkOnly(pers)) {
+        if (checkOnlyRx(pers)) {
             if (listener != null) {
                 listener.permission(true);
             }

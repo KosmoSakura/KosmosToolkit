@@ -9,7 +9,7 @@ import cos.mos.utils.init.k.KApp;
  * @Author: Kosmos
  * @Date: 2018.11.26 11:27
  * @Email: KosmoSakura@gmail.com
- * @eg: 最新修改日期：2019年2月25日
+ * @eg: 2019.2.25:基本函数抽取
  */
 public class UScreen {
     private static final DisplayMetrics metric = KApp.instance().getResources().getDisplayMetrics();

@@ -11,6 +11,7 @@ import android.provider.Settings;
 import androidx.annotation.RequiresApi;
 import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.ULog;
+import cos.mos.utils.utils.java.UText;
 import cos.mos.utils.utils.ui.toast.UToast;
 
 
@@ -22,6 +23,7 @@ import cos.mos.utils.utils.ui.toast.UToast;
  * @eg: 2018.12.24:特殊权限页面跳转
  * @eg: 2019.2.26:辅助通道页面跳转
  * @eg: 2019.3.5:打开系统视频播放器
+ * @eg: 2019.3.7:分享文字
  */
 public class UIntent {
     private static void start(Intent intent) {
@@ -211,5 +213,25 @@ public class UIntent {
      */
     public static void addMediaLibrary(String dir, MediaScannerConnection.MediaScannerConnectionClient listener) {
         MediaScannerConnection.scanFile(KApp.instance(), new String[]{dir}, null, listener);
+    }
+
+    /**
+     * @param title   分享标题
+     * @param content 分享内容
+     * @apiNote 分享文字
+     */
+    public static void shareText(String title, String content) {
+        if (UText.isEmpty(title) || UText.isEmpty(content)) {
+            UToast.show("Data abnormity !");
+            return;
+        }
+        Intent share_intent = new Intent(Intent.ACTION_SEND);
+        share_intent.setType("text/plain");
+        share_intent.putExtra(Intent.EXTRA_SUBJECT, title);
+        share_intent.putExtra(Intent.EXTRA_TEXT, content);
+        //创建分享的Dialog
+        share_intent = Intent.createChooser(share_intent, title);
+        share_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start(share_intent);
     }
 }

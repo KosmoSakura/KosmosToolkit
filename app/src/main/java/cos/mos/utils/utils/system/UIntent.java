@@ -3,6 +3,7 @@ package cos.mos.utils.utils.system;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
@@ -194,5 +195,24 @@ public class UIntent {
      */
     public static void toAudio(String dir) {
         //
+    }
+
+    /**
+     * @param link 地址
+     * @apiNote 用默认浏览器打开
+     */
+    public static void toBrowser(String link) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start(intent);
+    }
+
+    /**
+     * @param dir      音频地址
+     * @param listener 链接开始、扫描结束回调监听
+     * @apiNote 更新媒体库
+     */
+    public static void addMediaLibrary(String dir, MediaScannerConnection.MediaScannerConnectionClient listener) {
+        MediaScannerConnection.scanFile(KApp.instance(), new String[]{dir}, null, listener);
     }
 }

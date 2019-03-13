@@ -1,6 +1,10 @@
 package cos.mos.utils.utils.system;
 
+import android.app.Activity;
+import android.os.Build;
 import android.util.DisplayMetrics;
+import android.view.Window;
+import android.view.WindowManager;
 
 import cos.mos.utils.init.k.KApp;
 
@@ -14,6 +18,24 @@ import cos.mos.utils.init.k.KApp;
 public class UScreen {
     private static final DisplayMetrics metric = KApp.instance().getResources().getDisplayMetrics();
     private static final float scale = metric.density;
+
+    /**
+     * @param activity Activity引用
+     * @param color    int型色值
+     * @apiNote 设置顶部状态栏、底部导航栏颜色
+     */
+    protected void setBarColor(Activity activity, int color) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = activity.getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(color);//顶部状态栏
+                window.setNavigationBarColor(color);//底部导航栏
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * @return 获取DisplayMetrics对象

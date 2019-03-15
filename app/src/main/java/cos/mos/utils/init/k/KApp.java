@@ -1,11 +1,11 @@
 package cos.mos.utils.init.k;
 
 
+import android.app.Application;
 import android.os.Environment;
 
 import java.io.File;
 
-import androidx.multidex.MultiDexApplication;
 import cos.mos.utils.constant.KConfig;
 import cos.mos.utils.utils.ULog;
 import cos.mos.utils.utils.ULogBj;
@@ -19,7 +19,7 @@ import cos.mos.utils.utils.ui.toast.UToast;
  * @Email: KosmoSakura@gmail.com
  * @eg MultiDexApplication：解除Dex方法数量超过限制
  */
-public class KApp extends MultiDexApplication {
+public class KApp extends Application {
     private static KApp instances;
     private String rootPath;
 

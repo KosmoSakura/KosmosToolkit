@@ -3,6 +3,7 @@ package cos.mos.utils.utils.system;
 import android.app.Activity;
 import android.os.Build;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -20,11 +21,22 @@ public class UScreen {
     private static final float scale = metric.density;
 
     /**
+     * @param view 目标控件
+     * @return 目标控件的绝对坐标 位置
+     */
+    public static int[] getAbs(View view) {
+        int[] location = new int[2];
+        view.getLocationInWindow(location); //获取在当前窗口内的绝对坐标，含toolBar
+        view.getLocationOnScreen(location);//获取在整个屏幕内的绝对坐标，含statusBar
+        return location;
+    }
+
+    /**
      * @param activity Activity引用
      * @param color    int型色值
      * @apiNote 设置顶部状态栏、底部导航栏颜色
      */
-    protected void setBarColor(Activity activity, int color) {
+    public static void setBarColor(Activity activity, int color) {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 Window window = activity.getWindow();

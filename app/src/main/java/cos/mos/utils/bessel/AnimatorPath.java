@@ -40,9 +40,9 @@ public class AnimatorPath {
      * @param y 终点的坐标
      * @apiNote 圆周运动（控件当前位置为起始点）
      */
-    public void circleTo(float x, float y) {
-        points.add(new PathPoint(PathCode.CIRCLE, x, y));
-    }
+//    public void circleTo(float x, float y) {
+//        points.add(new PathPoint(PathCode.CIRCLE, x, y));
+//    }
 
     /**
      * @param c1X 控制点的坐标

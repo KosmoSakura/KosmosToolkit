@@ -30,11 +30,11 @@ public class PathEvaluator implements TypeEvaluator<PathPoint> {
         else if (endValue.operation == PathCode.SECOND_CURVE) {
             x = oneMiunsT * oneMiunsT * startValue.endX + 2 * fraction * oneMiunsT * endValue.control1X + fraction * fraction * endValue.endX;
             y = oneMiunsT * oneMiunsT * startValue.endY + 2 * fraction * oneMiunsT * endValue.control1Y + fraction * fraction * endValue.endY;
-        } //圆周
+        }/* //圆周
         else if (endValue.operation == PathCode.CIRCLE) {
             x = (float) (startValue.endX + Math.sin(fraction) * (endValue.endX - startValue.endX));
             y = (float) (startValue.endY + Math.sin(fraction) * (endValue.endY - startValue.endY));
-        }//直线
+        }*///直线
         else if (endValue.operation == PathCode.LINE) {
             //x起始点+t*起始点和终点的距离
             x = startValue.endX + fraction * (endValue.endX - startValue.endX);

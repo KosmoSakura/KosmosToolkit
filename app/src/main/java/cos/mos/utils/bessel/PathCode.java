@@ -9,7 +9,7 @@ package cos.mos.utils.bessel;
 public interface PathCode {
     int MOVE = 0;//起始点操作
     int LINE = 1;//直线路径操作
-    int CIRCLE = 2;//圆周路径操作
+//    int CIRCLE = 2;//圆周路径操作
     int SECOND_CURVE = 3;//二阶贝塞尔曲线操作
     int THIRD_CURVE = 4;//三阶贝塞尔曲线操作
 }

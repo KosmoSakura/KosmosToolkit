@@ -12,7 +12,7 @@ import cos.mos.utils.widget.EasySwipeMenuLayout;
 import io.reactivex.annotations.Nullable;
 
 /**
- * @Description: <p>
+ * @Description: 侧滑删除
  * @Author: Kosmos
  * @Date: 2018.11.22 11:15
  * @Email: KosmoSakura@gmail.com

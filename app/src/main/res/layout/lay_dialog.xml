@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="40dp"
-        android:background="@drawable/shap_rim"
+        android:background="@drawable/arc_rim_dark"
         android:gravity="center_horizontal"
         android:orientation="vertical">
         <!--标题-->
@@ -60,7 +60,7 @@
                 android:id="@+id/dia_edt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/shap_rim"
+                android:background="@drawable/arc_rim_dark"
                 android:hint="发现新版本"
                 android:paddingBottom="5dp"
                 android:paddingLeft="10dp"

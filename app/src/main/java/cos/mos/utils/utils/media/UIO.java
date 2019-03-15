@@ -2,7 +2,9 @@ package cos.mos.utils.utils.media;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Environment;
+import android.os.StatFs;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -88,5 +90,68 @@ public class UIO {
     public static String getFileName(String path) {
         int separatorIndex = path.lastIndexOf("/");
         return (separatorIndex < 0) ? System.currentTimeMillis() + ".apk" : path.substring(separatorIndex + 1, path.length());
+    }
+
+    /**
+     * @return SD卡总大小
+     */
+    public static long getSDSize() {
+        return getFileSize(Environment.getExternalStorageDirectory().getAbsolutePath());
+    }
+
+    /**
+     * @return SD卡剩余大小
+     */
+    public static long getSDAvailable() {
+        return getFileAvailable(Environment.getExternalStorageDirectory().getAbsolutePath());
+    }
+
+    /**
+     * @param dir 路径
+     * @return 返回路径大小
+     */
+    public static long getFileSize(String dir) {
+        return new File(dir).getTotalSpace();//总空间
+    }
+
+    /**
+     * @param dir 路径
+     * @return 返回路径大小
+     */
+    public static long getFileAvailable(String dir) {
+        return new File(dir).getUsableSpace();//剩余空间
+    }
+
+    /**
+     * @param dir 路径
+     * @return 返回路径大小
+     */
+    public static long getBolockSize(String dir) {
+        StatFs fs = new StatFs(dir);
+        long totalBolocks;//总的block数量
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            totalBolocks = fs.getBlockCount();
+        } else {
+            totalBolocks = fs.getBlockCountLong();
+        }
+        long blockSize = fs.getBlockSize(); //单个block的大小
+        return totalBolocks * blockSize;//总空间
+    }
+
+    /**
+     * @param dir 路径
+     * @return 返回路径剩余空间大小
+     */
+    public static long getBolockAvailable(String dir) {
+        StatFs fs = new StatFs(dir);
+        long availableBolocks; //可用的blocks的数量
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            availableBolocks = fs.getAvailableBlocks();
+        } else {
+            availableBolocks = fs.getAvailableBlocksLong();
+        }
+
+        long blockSize = fs.getBlockSize(); //单个block的大小
+        return availableBolocks * blockSize;//剩余空间
     }
 }

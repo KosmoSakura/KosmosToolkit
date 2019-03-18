@@ -24,6 +24,7 @@ import cos.mos.utils.utils.ui.toast.UToast;
  * @eg: 2019.2.26:辅助通道页面跳转
  * @eg: 2019.3.5:打开系统视频播放器
  * @eg: 2019.3.7:分享文字
+ * @eg: 2019.3.18: 跳转应用商店
  */
 public class UIntent {
     private static void start(Intent intent) {
@@ -233,5 +234,31 @@ public class UIntent {
         share_intent = Intent.createChooser(share_intent, title);
         share_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         start(share_intent);
+    }
+
+    /**
+     * @apiNote 跳转当前应用的GooglePlay商店
+     * Google Play:com.android.vending
+     * 应用宝:com.tencent.android.qqdownloader
+     * 360手机助手:com.qihoo.appstore
+     * 百度手机助:com.baidu.appsearch
+     * 小米应用商店:com.xiaomi.market
+     * 豌豆荚:com.wandoujia.phoenix2
+     * 华为应用市场;com.huawei.appmarket
+     * 淘宝手机助手：com.taobao.appcenter
+     * 安卓市场：com.hiapk.marketpho
+     * 安智市场：cn.goapk.market
+     */
+    public static void toPlayStore(String pkgName) {
+        try {
+            if (UText.isEmpty(pkgName)) return;
+            Uri uri = Uri.parse("market://details?id=" + pkgName);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setPackage("com.android.vending");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            start(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

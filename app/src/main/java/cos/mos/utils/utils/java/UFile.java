@@ -18,8 +18,9 @@ import cos.mos.utils.init.k.KApp;
  * @Author: Kosmos
  * @Date: 2019.02.22 11:51
  * @Email: KosmoSakura@gmail.com
- * @eg: 修改日期：2019年2月34日
- * @eg: 最新修改日期：2019年3月5日
+ * @eg: 2019.2.25：重构
+ * @eg: 2019.3.5：文件重命名
+ * @eg: 2019.3.18:优化注释，添加新函数
  */
 public class UFile {
     /**
@@ -54,24 +55,6 @@ public class UFile {
         }
         // 目录此时为空，可以删除
         return dir.delete();
-    }
-
-    /**
-     * @param filePath 路径（a/b/c)、文件(a/b/c/aa.txt)
-     * @return 路径、文件是否存在
-     */
-    public static boolean isFileExist(String filePath) {
-        if (filePath == null) {
-            return false;
-        }
-        return new File(filePath).exists();
-    }
-
-    /**
-     * @return 判断 两个文件大小是否相等.
-     */
-    public static boolean isEqualSize(String path1, String path2) {
-        return new File(path1).length() == new File(path2).length();
     }
 
     /**
@@ -160,18 +143,37 @@ public class UFile {
     }
 
     /**
-     * @return 为空文件夹
+     * @param filePath 路径（a/b/c)、文件(a/b/c/aa.txt)
+     * @return 路径、文件是否存在
+     */
+    public static boolean isFileExist(String filePath) {
+        if (filePath == null) {
+            return false;
+        }
+        return new File(filePath).exists();
+    }
+
+    /**
+     * @return 判断 两个文件大小是否相等.
+     */
+    public static boolean isEqualSize(String path1, String path2) {
+        return new File(path1).length() == new File(path2).length();
+    }
+
+    /**
+     * @return 只有 空目录 会返回true
      */
     public static boolean isEmptyDir(File file) {
         return file.exists() && file.isDirectory() && file.listFiles().length <= 0;
     }
 
     /**
-     * @return 为空文件
+     * @return 只有 空文件 会返回true
      */
     public static boolean isEmptyFile(File file) {
         return file.exists() && !file.isDirectory() && file.length() <= 0;
     }
+
 
     /**
      * @param path 完整文件名（可以加路径eg1:ss.txt,eg2:a/b/c/ss.txt）
@@ -190,18 +192,35 @@ public class UFile {
         }
     }
 
+    /**
+     * @param dir 目录或文件(a/b/1.txt 或 a/b/c/)
+     * @return 父级(a / b 或 a / b)
+     * @apiNote 返回父级目录
+     */
+    public static String getParent(String dir) {
+        return new File(dir).getParent();
+    }
+
     public static void main(String[] args) {
-        String str1 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test";
+        String str1 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\";
         String str2 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\haha";
         String str3 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\haha\\123.tXt";
         String str4 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\heihei\\123.txt";
         String str5 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\123.tXt";
+        String str6 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\111.tXt";
 //        File file = new File(sss);
 //        System.out.println(file.getParent());
-        System.out.println(getSuffix(str1));
-        System.out.println(getSuffix(str2));
-        System.out.println(getSuffix(str3));
-        System.out.println(getSuffix(str4));
-        System.out.println(getSuffix(str5));
+//        System.out.println(isEmpty(new File(str1)));
+//        System.out.println(isEmpty(new File(str2)));
+//        System.out.println(isEmpty(new File(str3)));
+//        System.out.println(isEmpty(new File(str4)));
+//        System.out.println(isEmpty(new File(str5)));
+//        System.out.println(isEmpty(new File(str6)));
+        System.out.println("编号-1：" + getParent(str1));
+        System.out.println("编号-2：" + getParent(str2));
+        System.out.println("编号-3：" + getParent(str3));
+        System.out.println("编号-4：" + getParent(str4));
+        System.out.println("编号-5：" + getParent(str5));
+        System.out.println("编号-6：" + getParent(str6));
     }
 }

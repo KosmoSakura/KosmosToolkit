@@ -62,16 +62,6 @@ public class USDCard {
     }
 
 
-
-
-    /**
-     * 获取文件名
-     */
-    public static String getFileName(String path) {
-        int separatorIndex = path.lastIndexOf("/");
-        return (separatorIndex < 0) ? System.currentTimeMillis() + ".apk" : path.substring(separatorIndex + 1, path.length());
-    }
-
     /**
      * @return SD卡总大小
      */

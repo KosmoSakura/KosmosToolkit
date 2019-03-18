@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.app.FragmentActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
@@ -19,10 +20,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
-import androidx.fragment.app.FragmentActivity;
-import cos.mos.utils.retrofit.file.FileWrapper;
 import cos.mos.utils.init.Constant;
 import cos.mos.utils.mvp.KRequest;
+import cos.mos.utils.retrofit.file.FileWrapper;
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;

@@ -2,13 +2,12 @@ package cos.mos.utils.utils.ui.snackbar;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.ColorInt;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import java.lang.ref.WeakReference;
 
-import androidx.annotation.ColorInt;
 import cos.mos.utils.utils.java.UText;
 
 /**

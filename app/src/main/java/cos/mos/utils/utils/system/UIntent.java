@@ -7,8 +7,8 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 
-import androidx.annotation.RequiresApi;
 import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.ULog;
 import cos.mos.utils.utils.java.UText;

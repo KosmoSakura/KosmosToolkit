@@ -4,6 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -13,16 +16,13 @@ import com.liaoinstan.springview.widget.SpringView;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import cos.mos.utils.utils.ui.UDialog;
-import cos.mos.utils.utils.system.UPermissions;
 import cos.mos.utils.R;
 import cos.mos.utils.init.BaseActivity;
 import cos.mos.utils.mvp.adapter.AdapterImage;
 import cos.mos.utils.mvp.bean.ImageBean;
 import cos.mos.utils.mvp.contract.KOnFreshListener;
+import cos.mos.utils.utils.system.UPermissions;
+import cos.mos.utils.utils.ui.UDialog;
 
 public class MainActivity extends BaseActivity implements MainListener {
     private SpringView spv;

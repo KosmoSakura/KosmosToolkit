@@ -2,15 +2,14 @@ package cos.mos.utils.utils.ui.snackbar;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.ColorInt;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import java.lang.ref.WeakReference;
 
-import androidx.annotation.ColorInt;
-import androidx.core.content.ContextCompat;
 import cos.mos.utils.R;
 import cos.mos.utils.utils.java.UText;
 

@@ -7,6 +7,7 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
+import android.support.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Transformation;
@@ -16,7 +17,6 @@ import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 
 import java.security.MessageDigest;
 
-import androidx.annotation.NonNull;
 
 /**
  * @Description: 高斯模糊

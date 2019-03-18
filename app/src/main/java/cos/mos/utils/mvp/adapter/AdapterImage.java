@@ -1,6 +1,7 @@
 package cos.mos.utils.mvp.adapter;
 
 
+import android.support.annotation.Nullable;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -9,7 +10,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.List;
 
-import androidx.annotation.Nullable;
 import cos.mos.utils.R;
 import cos.mos.utils.mvp.bean.ImageBean;
 

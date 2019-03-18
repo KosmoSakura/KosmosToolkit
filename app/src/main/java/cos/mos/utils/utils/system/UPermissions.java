@@ -7,14 +7,14 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
 import cos.mos.utils.init.k.KApp;
-import cos.mos.utils.utils.ui.UDialog;
 import cos.mos.utils.utils.java.UText;
+import cos.mos.utils.utils.ui.UDialog;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

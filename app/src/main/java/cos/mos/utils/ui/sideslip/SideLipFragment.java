@@ -1,15 +1,16 @@
 package cos.mos.utils.ui.sideslip;
 
 
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import cos.mos.utils.R;
 import cos.mos.utils.dao.DbHelper;
 import cos.mos.utils.dao.UserBean;

@@ -1,8 +1,9 @@
 package cos.mos.utils.ui.pager_tab_frag;
 
-import androidx.core.content.ContextCompat;
-import cos.mos.utils.init.k.KFragment;
+import android.support.v4.content.ContextCompat;
+
 import cos.mos.utils.R;
+import cos.mos.utils.init.k.KFragment;
 
 /**
  * @Description: <p>

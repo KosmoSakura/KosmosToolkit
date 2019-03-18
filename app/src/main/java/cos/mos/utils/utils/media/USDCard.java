@@ -62,27 +62,7 @@ public class USDCard {
     }
 
 
-    /**
-     * @return 为空文件夹
-     */
-    public static boolean isEmptyDir(File file) {
-        return file.exists() && file.isDirectory() && file.listFiles().length <= 0;
-    }
 
-    /**
-     * @return 为空文件
-     */
-    public static boolean isEmptyFile(File file) {
-        return file.exists() && !file.isDirectory() && file.length() <= 0;
-    }
-
-    /**
-     * @param name 文件名
-     * @return 后缀名
-     */
-    public static String getSuffix(String name) {
-        return name.substring(name.indexOf(".") + 1).toLowerCase();
-    }
 
     /**
      * 获取文件名

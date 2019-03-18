@@ -1,12 +1,12 @@
 package cos.mos.utils.ui.pager_tab_frag;
 
 
-import com.google.android.material.tabs.TabLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-import cos.mos.utils.init.k.KActivity;
 import cos.mos.utils.R;
+import cos.mos.utils.init.k.KActivity;
 
 public class IconTextActivity extends KActivity {
     private TabLayout tl;

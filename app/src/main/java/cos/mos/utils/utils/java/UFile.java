@@ -75,23 +75,6 @@ public class UFile {
     }
 
     /**
-     * @param path 完整文件名（可以加路径eg1:ss.txt,eg2:a/b/c/ss.txt）
-     * @return 文件后缀
-     * @apiNote 获取文件后缀名
-     */
-    public static String getSuffix(String path) {
-        if (path == null) {
-            return "";
-        }
-        int index = path.lastIndexOf('.');
-        if (index > -1) {
-            return path.substring(index + 1);
-        } else {
-            return "";
-        }
-    }
-
-    /**
      * @param src 被复制文件的完整（路径+文件名+后缀名）
      * @param dst 复制到哪里（路径+文件名+后缀名）
      * @return 复制是否成功
@@ -176,9 +159,49 @@ public class UFile {
         }
     }
 
+    /**
+     * @return 为空文件夹
+     */
+    public static boolean isEmptyDir(File file) {
+        return file.exists() && file.isDirectory() && file.listFiles().length <= 0;
+    }
+
+    /**
+     * @return 为空文件
+     */
+    public static boolean isEmptyFile(File file) {
+        return file.exists() && !file.isDirectory() && file.length() <= 0;
+    }
+
+    /**
+     * @param path 完整文件名（可以加路径eg1:ss.txt,eg2:a/b/c/ss.txt）
+     * @return 文件后缀
+     * @apiNote 获取文件后缀名
+     */
+    public static String getSuffix(String path) {
+        if (path == null) {
+            return "";
+        }
+        int index = path.lastIndexOf('.');
+        if (index > -1) {
+            return path.substring(index + 1).toLowerCase();
+        } else {
+            return "";
+        }
+    }
+
     public static void main(String[] args) {
-        String sss = "C:\\Users\\AndroidCoder\\Desktop\\Sakura";
-        File file = new File(sss);
-        System.out.println(file.getParent());
+        String str1 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test";
+        String str2 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\haha";
+        String str3 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\haha\\123.tXt";
+        String str4 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\heihei\\123.txt";
+        String str5 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\123.tXt";
+//        File file = new File(sss);
+//        System.out.println(file.getParent());
+        System.out.println(getSuffix(str1));
+        System.out.println(getSuffix(str2));
+        System.out.println(getSuffix(str3));
+        System.out.println(getSuffix(str4));
+        System.out.println(getSuffix(str5));
     }
 }

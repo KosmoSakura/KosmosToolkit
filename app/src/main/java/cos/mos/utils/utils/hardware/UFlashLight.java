@@ -7,10 +7,10 @@ import android.hardware.Camera;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.Window;
 import android.view.WindowManager;
 
-import androidx.annotation.RequiresApi;
 import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.java.UText;
 

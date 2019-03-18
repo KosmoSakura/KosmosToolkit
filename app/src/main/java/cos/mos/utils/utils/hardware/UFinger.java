@@ -4,8 +4,8 @@ import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.CancellationSignal;
+import android.support.annotation.RequiresApi;
 
-import androidx.annotation.RequiresApi;
 import cos.mos.utils.init.k.KApp;
 
 

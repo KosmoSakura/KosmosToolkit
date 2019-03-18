@@ -1,12 +1,11 @@
 package cos.mos.utils.ui;
 
 import android.graphics.Bitmap;
+import android.support.design.widget.BottomSheetDialog;
 import android.view.View;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-
-import cos.mos.utils.init.k.KActivity;
 import cos.mos.utils.R;
+import cos.mos.utils.init.k.KActivity;
 
 /**
  * @Description: <p>

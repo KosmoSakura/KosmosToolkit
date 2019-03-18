@@ -1,12 +1,12 @@
 package cos.mos.utils.ui.pager_tab_frag;
 
 
-import com.google.android.material.tabs.TabLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-import cos.mos.utils.init.k.KActivity;
 import cos.mos.utils.R;
+import cos.mos.utils.init.k.KActivity;
 
 public class OnlyTextActivity extends KActivity {
 
@@ -17,7 +17,7 @@ public class OnlyTextActivity extends KActivity {
 
     @Override
     protected void init() {
-        TabLayout  tl = findViewById(R.id.wifi_tl);
+        TabLayout tl = findViewById(R.id.wifi_tl);
         ViewPager vp = findViewById(R.id.wifi_vp);
 
         Fragment[] fragmentArray = new Fragment[2];

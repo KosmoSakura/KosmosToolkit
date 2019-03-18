@@ -3,12 +3,12 @@ package cos.mos.utils.widget;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import cos.mos.utils.utils.ULogBj;
 import cos.mos.utils.R;
+import cos.mos.utils.utils.ULogBj;
 
 /**
  * @Description: 进度弹窗

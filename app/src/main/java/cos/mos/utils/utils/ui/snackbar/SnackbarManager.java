@@ -19,8 +19,7 @@ package cos.mos.utils.utils.ui.snackbar;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.support.design.widget.Snackbar;
 
 import java.lang.ref.WeakReference;
 

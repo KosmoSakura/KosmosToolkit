@@ -1,8 +1,9 @@
 package cos.mos.utils.ui;
 
+import android.support.v4.app.FragmentActivity;
+
 import java.util.List;
 
-import androidx.fragment.app.FragmentActivity;
 import cos.mos.utils.mvp.bean.ImageBean;
 
 

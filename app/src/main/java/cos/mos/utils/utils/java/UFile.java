@@ -1,4 +1,4 @@
-package cos.mos.utils.utils.media;
+package cos.mos.utils.utils.java;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -174,5 +174,11 @@ public class UFile {
         } else {
             return file.getAbsolutePath();
         }
+    }
+
+    public static void main(String[] args) {
+        String sss = "C:\\Users\\AndroidCoder\\Desktop\\Sakura";
+        File file = new File(sss);
+        System.out.println(file.getParent());
     }
 }

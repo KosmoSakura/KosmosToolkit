@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import java.util.concurrent.TimeUnit;
 
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder;
-import cos.mos.utils.utils.media.UIO;
+import cos.mos.utils.utils.media.USDCard;
 import cos.mos.utils.utils.java.UText;
 import cos.mos.utils.utils.ui.toast.UToast;
 import cos.mos.utils.init.k.KFragment;
@@ -123,7 +123,7 @@ public class QRGenerateFragment extends KFragment implements View.OnClickListene
             case R.id.gen_save:
                 if (bmp != null) {
                     UToast.show("Saving...");
-                    UIO.saveBitmap(bmp);
+                    USDCard.saveBitmap(bmp);
                     UToast.show("Saved tunder the 'QR_Code' folder!");//保存在QR_Code文件夹下
                 }
                 break;

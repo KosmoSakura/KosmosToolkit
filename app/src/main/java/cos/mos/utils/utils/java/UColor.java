@@ -1,4 +1,4 @@
-package cos.mos.utils.utils.media;
+package cos.mos.utils.utils.java;
 
 
 import android.graphics.Color;

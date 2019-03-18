@@ -14,12 +14,12 @@ import java.io.IOException;
 import cos.mos.utils.utils.java.UText;
 
 /**
- * @Description: <p>
+ * @Description: SD卡工具
  * @Author: Kosmos
  * @Date: 2018.10.30 20:38
  * @Email: KosmoSakura@gmail.com
  */
-public class UIO {
+public class USDCard {
     private static String SD_PATH;
 
     private static String getSdPath() {

@@ -98,6 +98,14 @@ public class UFile {
         }
     }
 
+    public static boolean fileRename(String oldName, String newName) {
+        try {
+            return new File(oldName).renameTo(new File(newName));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     /**
      * @param fileName 文件名(不包含后缀名）
      * @param times    校验次数(外部调用传入0，递归调用自增）

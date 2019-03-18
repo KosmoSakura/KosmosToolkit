@@ -98,6 +98,12 @@ public class UFile {
         }
     }
 
+    /**
+     * @param oldName 旧文件名绝对路径(eg:a/b/c/d.txt)
+     * @param newName 新文件名绝对路径(eg:a/b/c/e.txt)
+     * @return 是否成功
+     * @apiNote 重命名（原理和方法同Linux）
+     */
     public static boolean fileRename(String oldName, String newName) {
         try {
             return new File(oldName).renameTo(new File(newName));

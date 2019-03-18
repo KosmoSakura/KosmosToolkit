@@ -201,26 +201,19 @@ public class UFile {
         return new File(dir).getParent();
     }
 
-    public static void main(String[] args) {
-        String str1 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\";
-        String str2 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\haha";
-        String str3 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\haha\\123.tXt";
-        String str4 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\heihei\\123.txt";
-        String str5 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\123.tXt";
-        String str6 = "C:\\Users\\AndroidCoder\\Desktop\\Sakura\\test\\111.tXt";
-//        File file = new File(sss);
-//        System.out.println(file.getParent());
-//        System.out.println(isEmpty(new File(str1)));
-//        System.out.println(isEmpty(new File(str2)));
-//        System.out.println(isEmpty(new File(str3)));
-//        System.out.println(isEmpty(new File(str4)));
-//        System.out.println(isEmpty(new File(str5)));
-//        System.out.println(isEmpty(new File(str6)));
-        System.out.println("编号-1：" + getParent(str1));
-        System.out.println("编号-2：" + getParent(str2));
-        System.out.println("编号-3：" + getParent(str3));
-        System.out.println("编号-4：" + getParent(str4));
-        System.out.println("编号-5：" + getParent(str5));
-        System.out.println("编号-6：" + getParent(str6));
+    /**
+     * @param dir 路径
+     * @return 返回当前分区总空间大小
+     */
+    public static long getFileSize(String dir) {
+        return new File(dir).getTotalSpace();
+    }
+
+    /**
+     * @param dir 路径
+     * @return 返回当前分区可用空间大小
+     */
+    public static long getFileAvailable(String dir) {
+        return new File(dir).getUsableSpace();
     }
 }

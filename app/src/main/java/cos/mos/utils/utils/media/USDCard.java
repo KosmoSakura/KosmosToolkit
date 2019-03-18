@@ -66,35 +66,19 @@ public class USDCard {
      * @return SD卡总大小
      */
     public static long getSDSize() {
-        return getFileSize(Environment.getExternalStorageDirectory().getAbsolutePath());
+        return getBolockSize(Environment.getExternalStorageDirectory().getAbsolutePath());
     }
 
     /**
      * @return SD卡剩余大小
      */
     public static long getSDAvailable() {
-        return getFileAvailable(Environment.getExternalStorageDirectory().getAbsolutePath());
+        return getBolockAvailable(Environment.getExternalStorageDirectory().getAbsolutePath());
     }
 
     /**
      * @param dir 路径
-     * @return 返回路径大小
-     */
-    public static long getFileSize(String dir) {
-        return new File(dir).getTotalSpace();//总空间
-    }
-
-    /**
-     * @param dir 路径
-     * @return 返回路径大小
-     */
-    public static long getFileAvailable(String dir) {
-        return new File(dir).getUsableSpace();//剩余空间
-    }
-
-    /**
-     * @param dir 路径
-     * @return 返回路径大小
+     * @return 返回路径总大小
      */
     public static long getBolockSize(String dir) {
         StatFs fs = new StatFs(dir);
@@ -120,7 +104,6 @@ public class USDCard {
         } else {
             availableBolocks = fs.getAvailableBlocksLong();
         }
-
         long blockSize = fs.getBlockSize(); //单个block的大小
         return availableBolocks * blockSize;//剩余空间
     }

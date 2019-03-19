@@ -52,7 +52,7 @@ public class UBmpLoad {
     }
 
     public Bitmap decodeBmp(Resources res, int resId, int with, int height) {
-        // 先将inJustDecodeBounds设置为true，来获取图片大小
+        //inJustDecodeBounds设置为true，不获取图片，不分配内存，但会返回图片的高宽度信息
         getOption().inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, getOption());
         // 计算inSampleSize值

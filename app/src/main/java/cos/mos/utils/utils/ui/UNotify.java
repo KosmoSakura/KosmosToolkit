@@ -82,8 +82,7 @@ public class UNotify {
     public UNotify initIntent(String title, String msg, int icon, Class aClass) {
         createChannel();
         Intent intent = new Intent(KApp.instance(), aClass);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-            Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(KApp.instance(), 0,
             intent, 0);
         notify = new NotificationCompat.Builder(KApp.instance(), CHANNEL_ID)

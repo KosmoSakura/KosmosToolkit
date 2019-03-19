@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="0.1" encoding="utf-8"?>
+<litepal>
+    <!--数据库名称，默认以 .db 结尾,如未以此结尾,则自动添加。-->
+    <dbname value="comprehensive"/>
+    <!--数据库版本为1,每次数据库发生变动版本号必须+1-->
+    <version value="1"/>
+    <!--有几张表就在list之间写几个mapping-->
+    <!--list标签中的实体类都应该继承LitePalSupport这个类,这个千万别忘记-->
+    <list>
+        <mapping class="cos.mos.comprehensive.dao.IgnoreDB"/>
+    </list>
+    <!--storage 定义数据库文件存储的地方,可选 internal(内部) 和 external（外部）, 默认为 internal-->
+    <storage value="gpf/database"/>
+</litepal>

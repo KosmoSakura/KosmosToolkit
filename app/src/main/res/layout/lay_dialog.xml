@@ -90,7 +90,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="取消"
+                android:text="Cancel"
                 android:textColor="@color/gray_txt"
                 android:textSize="17sp"/>
             <!--取消和同意分割线-->
@@ -107,7 +107,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="确定"
+                android:text="Confirm"
                 android:textColor="@color/green_txt"
                 android:textSize="16sp"/>
         </LinearLayout>

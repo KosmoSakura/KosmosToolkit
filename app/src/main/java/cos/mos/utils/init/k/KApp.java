@@ -4,6 +4,8 @@ package cos.mos.utils.init.k;
 import android.app.Application;
 import android.os.Environment;
 
+import org.litepal.LitePal;
+
 import java.io.File;
 
 import cos.mos.utils.constant.KConfig;
@@ -32,6 +34,7 @@ public class KApp extends Application {
         super.onCreate();
         instances = this;
         initBase();
+        LitePal.initialize(this);
     }
 
     private void initBase() {

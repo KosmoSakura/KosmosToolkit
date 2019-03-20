@@ -12,11 +12,10 @@ import java.util.NoSuchElementException;
  * @Author: Kosmos
  * @Date: 2018年1月29日 16:04
  * @Email: KosmoSakura@gmail.com
- * @eg 最新修改日期:2018.11.22
- * 获取当前短/长日期
- * @eg 最新修改日期：2018.11.11.
- * setFirstDayOfWeek的失效，修复获取当前星期的天数方法
- * @eg: 最新修改日期：2018.10.31
+ * @eg 2018.10.31:重构
+ * @eg 2018.11.11:setFirstDayOfWeek的失效，修复获取当前星期的天数方法
+ * @eg 2018.11.22:获取当前短/长日期
+ * <p>
  * 默认的时间格式为：yyyy-MM-dd HH:mm:ss
  * 其他格式的时间需要自己传入相应的时间格式
  * 以下没有做特殊说明的时间格式都是：yyyy-MM-dd HH:mm:ss

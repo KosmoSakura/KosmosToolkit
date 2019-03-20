@@ -15,9 +15,10 @@ import java.util.regex.Pattern;
  * →→is：是某种特定字符
  * →→checkXX:校验类
  * →→fun：功能类
- * @eg: 修改日期：2018年09月12日 16:19
- * @eg: 修改日期：2018年12月26日
- * @eg: 最新修改日期：2019年2月28日
+ * @eg: 2018.9.12:转录
+ * @eg: 2018.12.26:重构
+ * @eg: 2019.2.28:Url判断
+ * @eg: 2019.3.20:新增几个正则校验
  */
 public class URegular {
 
@@ -62,39 +63,64 @@ public class URegular {
     /**
      * @apiNote true→不包含符号
      */
-    public static boolean checkSymbol(String phone) {
-        return phone.matches("^(?!_)(?!.*?_$)[a-zA-Z0-9_\\u4e00-\\u9fa5]+$");
+    public static boolean checkSymbol(String str) {
+        return str.matches("^(?!_)(?!.*?_$)[a-zA-Z0-9_\\u4e00-\\u9fa5]+$");
     }
 
     /**
      * @apiNote true→纯汉字
      */
-    public static boolean checkChineseCharacter(String name) {
-        return name.matches("^[\\u4e00-\\u9fa5]+$");
+    public static boolean checkChineseCharacter(String str) {
+        return str.matches("^[\\u4e00-\\u9fa5]+$");
     }
 
     /**
-     * @apiNote true→ 汉字 或 字母
+     * @apiNote true→ (汉字)||(字母)
      */
-    public static boolean checkChineseLetter(String name) {
-        return name.matches("^[a-zA-Z\\u4e00-\\u9fa5]+$");
+    public static boolean checkChineseLetter(String str) {
+        return str.matches("^[a-zA-Z\\u4e00-\\u9fa5]+$");
     }
 
     /**
-     * @apiNote true→字母 或 数字
+     * @apiNote true→(字母)||(数字)
      */
-    public static boolean checkLetterDigit(String password) {
-        return password.matches("^[A-Za-z0-9]+$");
+    public static boolean checkLetterDigit(String str) {
+        return str.matches("^[A-Za-z0-9]+$");
     }
 
     /**
-     * @apiNote true→汉字 或 字母 或 数字
+     * @apiNote true→(汉字)||(字母)||(数字)
      */
-    public static boolean checkChineseLetterDigit(String name) {
-        return name.matches("^[a-z0-9A-Z\\u4e00-\\u9fa5]+$");
+    public static boolean checkChineseLetterDigit(String str) {
+        return str.matches("^[a-z0-9A-Z\\u4e00-\\u9fa5]+$");
     }
 
-//--check校验类-------------------------------------------------------------------------------------------------------
+    /**
+     * @apiNote true→昵称可由：(中文)||(英文)||(数字)||("_")||("-")
+     */
+    public static boolean checkNickName(String nickName) {
+        return nickName.matches("^[_\\-a-zA-Z0-9\\u4e00-\\u9fa5]+$");
+    }
+
+    /**
+     * @param digit 一位或多位0-9之间的整数
+     * @apiNote true→(正整数)||(负整数)
+     */
+    public static boolean checkDigit(String digit) {
+        return digit.matches("-?[1-9]\\d+");
+    }
+
+
+    /**
+     * @param date 日期，格式：1992-09-03，或1992.09.03
+     * @apiNote true→是上述年月日
+     */
+    public static boolean checkDate(String date) {
+        String regex = "[1-9]{4}([-./])\\d{1,2}\\1\\d{1,2}";
+        return Pattern.matches(regex, date);
+    }
+
+//--check判断类-------------------------------------------------------------------------------------------------------
 
     /**
      * @apiNote true→是手机号码

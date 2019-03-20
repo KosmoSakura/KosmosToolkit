@@ -8,9 +8,9 @@ import java.util.Locale;
  * @Author: Kosmos
  * @Date: 2018.10.31 14:02
  * @Email: KosmoSakura@gmail.com
- * @eg: 修改日期：2018年11月29日 22:00
- * @eg: 修改日期：2019年2月22日
- * @eg: 最新修改日期：2019年2月25日
+ * @eg 2018.11.29:重构
+ * @eg 2019.2.22:分类
+ * @eg 2019.2.25:算法优化
  */
 public class UUnit {
 

@@ -18,7 +18,8 @@ import cos.mos.utils.utils.java.UText;
  * @Author: Kosmos
  * @Date: 2018.11.23 15:12
  * @Email: KosmoSakura@gmail.com
- * @eg: 最新修改日期：2018年11月25日 17:19
+ * @eg 2018.11.25 优化华为手机热点打开
+ * @eg 2019.3.21 重构
  */
 public class UWiFi {
     private static WifiManager wifiMgr;
@@ -82,28 +83,15 @@ public class UWiFi {
             getWifiMgr().setWifiEnabled(true);
         }
         WifiConfiguration localWifiConfiguration = new WifiConfiguration();
-        //公认的IEEE 802.11验证算法。
-        localWifiConfiguration.allowedAuthAlgorithms.clear();
-        localWifiConfiguration.allowedAuthAlgorithms.set(0);
-        //公认的的公共组密码。
-        localWifiConfiguration.allowedGroupCiphers.clear();
-        localWifiConfiguration.allowedGroupCiphers.set(2);
-        //公认的密钥管理方案。
-        localWifiConfiguration.allowedKeyManagement.clear();
-        localWifiConfiguration.allowedKeyManagement.set(1);
-        //密码为WPA。
-        localWifiConfiguration.allowedPairwiseCiphers.clear();
-        localWifiConfiguration.allowedPairwiseCiphers.set(1);
-        localWifiConfiguration.allowedPairwiseCiphers.set(2);
-        //公认的安全协议。
-        localWifiConfiguration.allowedProtocols.clear();
-        localWifiConfiguration.SSID = ("\"" + ssid + "\"");
-        localWifiConfiguration.preSharedKey = ("\"" + password + "\"");
+        localWifiConfiguration.SSID = "\"" + ssid + "\"";
+        localWifiConfiguration.preSharedKey = "\"" + password + "\"";
         //不广播其SSID的网络
-        localWifiConfiguration.hiddenSSID = true;
+//        localWifiConfiguration.hiddenSSID = true;
         //添加一个网络并连接
         int wcgID = getWifiMgr().addNetwork(localWifiConfiguration);
+        getWifiMgr().disconnect();
         getWifiMgr().enableNetwork(wcgID, true);
+        getWifiMgr().reconnect();
     }
 
     /**

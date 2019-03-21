@@ -10,10 +10,20 @@ import org.litepal.crud.LitePalSupport;
  * @Email: KosmoSakura@gmail.com
  */
 public class IgnoreDB extends LitePalSupport {
+    //自增id.这里为固定值
+    private long id;
     private String appName;
     @Column(unique = true, defaultValue = "unknown")
     private String pkgName;//唯一的，且默认值为unknown
     private int size;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public int getSize() {
         return size;

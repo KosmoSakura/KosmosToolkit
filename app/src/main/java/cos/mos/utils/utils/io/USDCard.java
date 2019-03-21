@@ -1,4 +1,4 @@
-package cos.mos.utils.utils.media;
+package cos.mos.utils.utils.io;
 
 import android.content.Context;
 import android.graphics.Bitmap;

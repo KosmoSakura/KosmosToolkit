@@ -1,5 +1,7 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
+#实体类一定不能混淆
+-keep public class cos.mos.utils.mvp.bean.**{*;}
 
 # 取消注释以保留用于调试堆栈跟踪的行号信息。
 #-keepattributes SourceFile,LineNumberTable
@@ -122,10 +124,6 @@
 }
 
 #---------定制化区域----------------------------------------------
-#--1.实体类---------------------------------
-#实体类一定不能混淆
--keep public class cos.mos.utils.mvp.bean.**{*;}
-
 #（可选）避免Log打印输出
 -assumenosideeffects class android.util.Log {
    public static *** v(...);

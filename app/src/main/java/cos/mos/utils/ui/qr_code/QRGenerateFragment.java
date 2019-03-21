@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import java.util.concurrent.TimeUnit;
 
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder;
-import cos.mos.utils.utils.media.USDCard;
+import cos.mos.utils.utils.io.USDCard;
 import cos.mos.utils.utils.java.UText;
 import cos.mos.utils.utils.ui.toast.UToast;
 import cos.mos.utils.init.k.KFragment;

@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import cos.mos.utils.init.k.KApp;
-import cos.mos.utils.utils.media.USP;
+import cos.mos.utils.utils.io.USP;
 
 /**
  * @Description: <p>

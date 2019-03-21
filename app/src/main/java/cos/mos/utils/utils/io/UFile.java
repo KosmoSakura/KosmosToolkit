@@ -1,4 +1,4 @@
-package cos.mos.utils.utils.java;
+package cos.mos.utils.utils.io;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

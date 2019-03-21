@@ -10,7 +10,7 @@ import android.os.LocaleList;
 import java.util.Locale;
 
 import cos.mos.utils.ui.MainActivity;
-import cos.mos.utils.utils.media.USP;
+import cos.mos.utils.utils.io.USP;
 
 /**
  * @Description: 语言切换工具

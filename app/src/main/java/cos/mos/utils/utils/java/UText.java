@@ -150,7 +150,7 @@ public class UText {
     }
 
     /**
-     * @param str 被校验的字符
+     * @param sequence 被校验的字符
      * @return 字符是否为空{@code true}: 空  {@code false}: 不为空
      * @apiNote (字符为null或长度为0均判定为空)
      */

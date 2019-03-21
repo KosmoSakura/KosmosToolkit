@@ -10,12 +10,12 @@ import android.webkit.URLUtil;
 
 import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
-import cos.mos.utils.utils.ui.UDialog;
-import cos.mos.utils.utils.java.UGson;
-import cos.mos.utils.utils.ULogBj;
-import cos.mos.utils.utils.java.UText;
-import cos.mos.utils.init.k.KFragment;
 import cos.mos.utils.R;
+import cos.mos.utils.init.k.KFragment;
+import cos.mos.utils.utils.ULogBj;
+import cos.mos.utils.utils.java.UGson;
+import cos.mos.utils.utils.java.UText;
+import cos.mos.utils.utils.ui.UDialog;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 
@@ -123,12 +123,19 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
                 title = "It's just plain text";
                 scanFlag = 4;
             }
-        }UDialog.getInstance(getActivity(), false, false)
-            .showTitleSelectWithTwobtn(title, result, (ss, dia) -> {
+        }
+        UDialog.builder(getActivity(), false)
+            .title(title)
+            .msg(result)
+            .cancelClick(dia -> {
+                dia.dismiss();
+                zxing.startSpot();
+            })
+            .build((result1, dia) -> {
                 switch (scanFlag) {
                     case 1://phone
                         Intent phone = new Intent(Intent.ACTION_DIAL);
-                        phone.setData(Uri.parse("tel:" + result));
+                        phone.setData(Uri.parse("tel:" + result1));
                         phone.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(phone);
                         getActivity().finish();
@@ -144,7 +151,7 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
                     case 3://url
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
-                        Uri content_url = Uri.parse(result);
+                        Uri content_url = Uri.parse(result1);
                         intent.setData(content_url);
                         startActivity(Intent.createChooser(intent, "Please select browser"));
                         getActivity().finish();
@@ -163,9 +170,6 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
                         break;
                 }
                 dia.dismiss();
-            }, dia -> {
-                dia.dismiss();
-                zxing.startSpot();
             });
     }
 

@@ -28,12 +28,13 @@ public class UGPS {
      * 跳转GPS设置界面
      */
     public static void openGPSSettings(Activity activity) {
-        UDialog.getInstance(activity, false, false)
-            .showNoticeWithOnebtn("Please open the location service",
-                "To Open", (result, dia) -> {
-                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    activity.startActivityForResult(intent, 5);
-                    dia.dismiss();
-                });
+        UDialog.builder(activity, false)
+            .msg("Please open the location service")
+            .button("To Open")
+            .build((result, dia) -> {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                activity.startActivityForResult(intent, 5);
+                dia.dismiss();
+            });
     }
 }

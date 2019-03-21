@@ -112,8 +112,10 @@ public class UPermissions {
             }
         } else {
             count++;
-            UDialog.getInstance(activity, false, false)
-                .showNoticeWithOnebtn(notice, "Agreed", (result, dia) -> {
+            UDialog.builder(activity, false)
+                .msg(notice)
+                .button("Agreed")
+                .build((result, dia) -> {
                     Disposable subscribe = rxPermissions.request(pers)
                         .subscribe(granted -> {
                             if (granted) {
@@ -127,13 +129,13 @@ public class UPermissions {
                                     }
                                 } else {
                                     if (count > maxNoticeCount) {
-                                        UDialog.getInstance(activity, false, false)
-                                            .showNoticeWithOnebtn(notice,
-                                                "To authorize", (result1, dia1) -> {
-                                                    UIntent.goSys();
-                                                    activity.finish();
-                                                });
-
+                                        UDialog.builder(activity, false)
+                                            .msg(notice)
+                                            .button("To authorize")
+                                            .build((result1, dia1) -> {
+                                                UIntent.goSys();
+                                                activity.finish();
+                                            });
                                     } else {
                                         check(notice, listener, pers);
                                     }

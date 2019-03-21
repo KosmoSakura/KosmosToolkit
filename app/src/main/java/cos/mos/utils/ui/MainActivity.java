@@ -76,15 +76,16 @@ public class MainActivity extends BaseActivity implements MainListener {
 
 
     private void toGoSystem() {
-        UDialog.getInstance(this, false, false)
-            .showNoticeWithOnebtn("We need the following permissions to make the program run properly",
-                "To authorize", (result, dia) -> {
-                    Uri packageURI = Uri.parse("package:" + getPackageName());
-                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        packageURI);
-                    startActivity(intent);
-                    finish();
-                });
+        UDialog.builder(this, false)
+        .msg("We need the following permissions to make the program run properly")
+        .button("To authorize")
+        .build((result, dia) -> {
+            Uri packageURI = Uri.parse("package:" + getPackageName());
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                packageURI);
+            startActivity(intent);
+            finish();
+        });
     }
 
     @Override

@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="40dp"
-        android:background="@drawable/arc_rim_dark"
+        android:background="@drawable/arc_full_dark"
         android:gravity="center_horizontal"
         android:orientation="vertical">
         <!--标题-->
@@ -19,16 +19,14 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:text="我是标题"
-            android:textColor="@color/green_txt"
-            android:textSize="18sp"
-            android:visibility="gone"/>
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
         <!--标题分割线-->
         <View
             android:id="@+id/dia_line_title"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/line"
-            android:visibility="gone"/>
+            android:background="@color/line"/>
 
         <!--中间内容-->
         <LinearLayout
@@ -44,7 +42,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
-                android:visibility="gone"/>
+                android:src="@mipmap/ic_launcher"/>
             <!--提示内容文本-->
             <TextView
                 android:id="@+id/dia_msg"
@@ -53,7 +51,7 @@
                 android:gravity="center_vertical"
                 android:minHeight="40dp"
                 android:text="正文文本正文文本正文文本正文文本"
-                android:textColor="@color/black_txt"
+                android:textColor="@color/white"
                 android:textSize="15sp"/>
             <!--输入框-->
             <EditText
@@ -66,9 +64,9 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="5dp"
-                android:textColor="@color/green_txt"
-                android:textSize="12sp"
-                android:visibility="gone"/>
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray_txt"
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <!--确认按钮分割线-->
@@ -81,7 +79,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal">
-
             <!--取消-->
             <TextView
                 android:id="@+id/dia_cancel"
@@ -108,7 +105,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="Confirm"
-                android:textColor="@color/green_txt"
+                android:textColor="@color/white"
                 android:textSize="16sp"/>
         </LinearLayout>
     </LinearLayout>

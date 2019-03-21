@@ -249,10 +249,9 @@ public class UIntent {
      * 安卓市场：com.hiapk.marketpho
      * 安智市场：cn.goapk.market
      */
-    public static void toPlayStore(String pkgName) {
+    public static void toPlayStore() {
         try {
-            if (UText.isEmpty(pkgName)) return;
-            Uri uri = Uri.parse("market://details?id=" + pkgName);
+            Uri uri = Uri.parse("market://details?id=" + KApp.instance().getPackageName());
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.setPackage("com.android.vending");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

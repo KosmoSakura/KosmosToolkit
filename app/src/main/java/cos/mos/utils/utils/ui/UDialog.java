@@ -111,14 +111,12 @@ public class UDialog extends Dialog {
     }
 
     /**
-     * @param confirm 确认按钮
-     * @param cancle  取消按钮
-     * @apiNote 不调用、或传入空 则不显示该区域
+     * @apiNote 显示两个默认按钮
      * 两个按钮
      */
-    public UDialog button(String confirm, String cancle) {
-        this.strConfirm = confirm;
-        this.strCancle = cancle;
+    public UDialog button() {
+        this.strConfirm = "Confirm";
+        this.strCancle = "Cancel";
         return this;
     }
 
@@ -129,6 +127,18 @@ public class UDialog extends Dialog {
      */
     public UDialog button(String confirm) {
         this.strConfirm = confirm;
+        return this;
+    }
+
+    /**
+     * @param confirm 确认按钮
+     * @param cancle  取消按钮
+     * @apiNote 不调用、或传入空 则不显示该区域
+     * 两个按钮
+     */
+    public UDialog button(String confirm, String cancle) {
+        this.strConfirm = confirm;
+        this.strCancle = cancle;
         return this;
     }
 
@@ -200,8 +210,8 @@ public class UDialog extends Dialog {
         if (!UText.isEmpty(strCancle) && !UText.isEmpty(strConfirm)) {
             cancel.setVisibility(View.VISIBLE);
             lineBottom.setVisibility(View.VISIBLE);
-            cancel.setText(UText.isNull(strCancle, "Cancel"));
-            confirm.setText(UText.isNull(strConfirm, "Confirm"));
+            cancel.setText(strCancle);
+            confirm.setText(strConfirm);
             cancel.setOnClickListener(v -> {
                 if (cancelClick == null) {
                     clear();

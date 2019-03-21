@@ -10,7 +10,8 @@
         <mapping class="cos.mos.comprehensive.dao.IgnoreDB"/>
     </list>
     <!--storage 定义数据库文件存储的地方,可选 internal(内部) 和 external（外部）, 默认为 internal-->
-    <!--gpf/database表示数据库存储在：根目录/gpf/database-->
+    <!--gpf/database表示数据库存储在：根目录/gpf/database，需要SD卡写入权限-->
     <!--<storage value="gpf/database"/>-->
+    <!--internal：内部，不需要SD卡写入权限-->
     <storage value="internal"/>
 </litepal>

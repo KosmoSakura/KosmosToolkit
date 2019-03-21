@@ -57,6 +57,22 @@ public class UDialog extends Dialog {
     }
 
     /**
+     * @apiNote 可以通过返回键、点击外面关闭
+     */
+    public static UDialog builder(Context context) {
+        return new UDialog(context, true);
+    }
+
+    /**
+     * @param msg 通知内容
+     * @apiNote 可以通过返回键、点击外面关闭
+     * 为了调用简单，集成通知内容
+     */
+    public static UDialog builder(Context context, String msg) {
+        return new UDialog(context, true).msg(msg);
+    }
+
+    /**
      * @param cancelable 是否可以通过返回键、点击外面关闭
      */
     public static UDialog builder(Context context, boolean cancelable) {

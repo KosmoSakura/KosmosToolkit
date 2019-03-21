@@ -12,7 +12,7 @@ import android.support.annotation.RequiresApi;
 import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.ULog;
 import cos.mos.utils.utils.java.UText;
-import cos.mos.utils.utils.ui.toast.UToast;
+import cos.mos.utils.utils.ui.toast.ToastUtil;
 
 
 /**
@@ -185,7 +185,7 @@ public class UIntent {
         try {
             start(intent);
         } catch (Exception e) {
-            UToast.show("No default player");
+            ToastUtil.show("No default player");
         }
     }
 
@@ -223,7 +223,7 @@ public class UIntent {
      */
     public static void shareText(String title, String content) {
         if (UText.isEmpty(title) || UText.isEmpty(content)) {
-            UToast.show("Data abnormity !");
+            ToastUtil.show("Data abnormity !");
             return;
         }
         Intent share_intent = new Intent(Intent.ACTION_SEND);

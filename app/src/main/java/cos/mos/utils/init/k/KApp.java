@@ -12,7 +12,7 @@ import cos.mos.utils.constant.KConfig;
 import cos.mos.utils.utils.ULog;
 import cos.mos.utils.utils.ULogBj;
 import cos.mos.utils.utils.io.USP;
-import cos.mos.utils.utils.ui.toast.UToast;
+import cos.mos.utils.utils.ui.toast.ToastUtil;
 
 /**
  * @Description: <p>
@@ -39,7 +39,7 @@ public class KApp extends Application {
 
     private void initBase() {
         //鸿洋牌吐司
-        UToast.init(this);
+        ToastUtil.init(this);
         //SharedPreferences默认表名
         USP.instance().init(this, "Kosmos");
         //Base url

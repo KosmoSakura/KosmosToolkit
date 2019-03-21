@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder;
 import cos.mos.utils.utils.io.USDCard;
 import cos.mos.utils.utils.java.UText;
-import cos.mos.utils.utils.ui.toast.UToast;
+import cos.mos.utils.utils.ui.toast.ToastUtil;
 import cos.mos.utils.init.k.KFragment;
 import cos.mos.utils.utils.listener.KTextWatcher;
 import cos.mos.utils.R;
@@ -122,9 +122,9 @@ public class QRGenerateFragment extends KFragment implements View.OnClickListene
                 break;
             case R.id.gen_save:
                 if (bmp != null) {
-                    UToast.show("Saving...");
+                    ToastUtil.show("Saving...");
                     USDCard.saveBitmap(bmp);
-                    UToast.show("Saved tunder the 'QR_Code' folder!");//保存在QR_Code文件夹下
+                    ToastUtil.show("Saved tunder the 'QR_Code' folder!");//保存在QR_Code文件夹下
                 }
                 break;
         }

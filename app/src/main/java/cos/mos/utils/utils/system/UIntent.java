@@ -13,6 +13,7 @@ import cos.mos.utils.init.k.KApp;
 import cos.mos.utils.utils.ULog;
 import cos.mos.utils.utils.java.UText;
 import cos.mos.utils.utils.ui.toast.ToastUtil;
+import cos.mos.utils.utils.ui.toast.UToast;
 
 
 /**
@@ -25,6 +26,7 @@ import cos.mos.utils.utils.ui.toast.ToastUtil;
  * @eg: 2019.3.5:打开系统视频播放器
  * @eg: 2019.3.7:分享文字
  * @eg: 2019.3.18: 跳转应用商店
+ * @eg 2019.3.21: 跳转邮箱、拨号等界面
  */
 public class UIntent {
     private static void start(Intent intent) {
@@ -198,16 +200,6 @@ public class UIntent {
     }
 
     /**
-     * @param link 地址
-     * @apiNote 用默认浏览器打开
-     */
-    public static void toBrowser(String link) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        start(intent);
-    }
-
-    /**
      * @param dir      音频地址
      * @param listener 链接开始、扫描结束回调监听
      * @apiNote 更新媒体库
@@ -259,5 +251,43 @@ public class UIntent {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * @param email 收件人地址
+     * @apiNote 打开邮件，并填入收件人
+     */
+    public static void toEmail(String email) {
+        try {
+            Intent data = new Intent(Intent.ACTION_SENDTO);
+            data.setData(Uri.parse("mailto:way.ping.li@gmail.com"));
+            data.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{email});
+            data.putExtra(Intent.EXTRA_SUBJECT, "This is a title");
+            data.putExtra(Intent.EXTRA_TEXT, "This is the content");
+            start(data);
+        } catch (Exception e) {
+            UToast.show("No mail client found");
+        }
+    }
+
+    /**
+     * @param link 地址
+     * @apiNote 用默认浏览器打开
+     */
+    public static void toBrowser(String link) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start(intent);
+    }
+
+    /**
+     * @param telephone 电话号
+     * @apiNote 打开拨号页面，并填入电话号
+     */
+    public static void toPhone(String telephone) {
+        Intent phone = new Intent(Intent.ACTION_DIAL);
+        phone.setData(Uri.parse("tel:" + telephone));
+        phone.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start(phone);
     }
 }

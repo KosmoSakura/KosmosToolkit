@@ -247,6 +247,13 @@ public static java.lang.String TABLENAME;
 #------------------------------其他小东西-----------------------------
 -keep class java.nio.file.** { *; }
 -keep class sun.misc.** { *; }
+#---------------------------------3.litepal------------------------
+-keep class org.litepal.** {
+     *;
+}
+-keep class * extends org.litepal.crud.LitePalSupport{
+     *;
+}
 #---------------------------------3.与js互相调用的类------------------------
 # 如果您的项目使用带有JS的WebView，请取消注释以下内容
 # 并为JavaScript接口指定完全限定的类名

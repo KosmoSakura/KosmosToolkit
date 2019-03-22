@@ -35,8 +35,7 @@
         android:gravity="center_horizontal"
         android:minHeight="70dp"
         android:orientation="vertical"
-        android:paddingLeft="14dp"
-        android:paddingRight="14dp">
+        android:padding="14dp">
         <!--图标-->
         <ImageView
             android:id="@+id/dia_icon"
@@ -50,18 +49,15 @@
             android:id="@+id/dia_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:minHeight="50dp"
             android:text="正文文本正文文本正文文本正文文本"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
+            android:textColor="@color/white"/>
         <!--输入框-->
         <EditText
             android:id="@+id/dia_edt"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/arc_rim_white"

@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:minHeight="50dp"
             android:text="正文文本正文文本正文文本正文文本"
             android:textColor="@color/white"

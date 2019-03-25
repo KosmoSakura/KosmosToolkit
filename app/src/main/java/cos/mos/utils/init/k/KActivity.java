@@ -55,7 +55,7 @@ public abstract class KActivity extends AppCompatActivity {
      */
     protected abstract void logic();
 
-    protected void rxDisposable(Disposable disposable) {
+    protected void rxJava(Disposable disposable) {
         if (compositeDisposable == null) {
             compositeDisposable = new CompositeDisposable();
         }

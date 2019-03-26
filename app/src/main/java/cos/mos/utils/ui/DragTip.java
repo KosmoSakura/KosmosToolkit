@@ -15,6 +15,7 @@ import cos.mos.utils.init.BaseActivity;
  * 关于目标View的设置：
  * 这里不存在目标View的设置，
  * onDrag只有拖拽到 所有设置了setOnDragListener的View区域时才会回调
+ * 且onDrag中的参数View，是设置OnDrag的View，而不是被拖拽的View
  */
 public class DragTip extends BaseActivity {
     private boolean inRight = false;

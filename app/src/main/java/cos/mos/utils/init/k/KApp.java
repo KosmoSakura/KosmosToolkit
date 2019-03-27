@@ -12,6 +12,7 @@ import cos.mos.utils.constant.KConfig;
 import cos.mos.utils.utils.ULog;
 import cos.mos.utils.utils.ULogBj;
 import cos.mos.utils.utils.io.USP;
+import cos.mos.utils.utils.media.audio.USoundSample;
 import cos.mos.utils.utils.ui.toast.ToastUtil;
 
 /**
@@ -35,6 +36,7 @@ public class KApp extends Application {
         instances = this;
         initBase();
         LitePal.initialize(this);
+        USoundSample.instance();
     }
 
     private void initBase() {

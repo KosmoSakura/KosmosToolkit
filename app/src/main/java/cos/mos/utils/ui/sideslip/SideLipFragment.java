@@ -49,7 +49,7 @@ public class SideLipFragment extends KFragment {
         adapter.openLoadAnimation();
         rv.setLayoutManager(new LinearLayoutManager(context));
         adapter.setEmptyView(R.layout.lay_empty, rv);
-        rv.addItemDecoration(new MyDividerDecoration(ContextCompat.getColor(context, R.color.bg_white),
+        rv.addItemDecoration(new MyDividerDecoration(ContextCompat.getColor(context, R.color.fun_bg_white),
             UScreen.dp2px(10), UScreen.dp2px(10), UScreen.dp2px(10)));
         rv.setAdapter(adapter);
     }

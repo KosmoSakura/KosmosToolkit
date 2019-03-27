@@ -25,7 +25,7 @@
         android:id="@+id/dia_line_top"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line"/>
+        android:background="@color/fun_line"/>
 
     <!--中间内容-->
     <LinearLayout
@@ -67,7 +67,7 @@
             android:paddingRight="10dp"
             android:paddingTop="5dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/gray_txt"
+            android:textColorHint="@color/fun_txt_gray"
             android:textSize="14sp"/>
     </LinearLayout>
 
@@ -76,7 +76,7 @@
         android:id="@+id/dia_line_middle"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line"/>
+        android:background="@color/fun_line"/>
     <!--确定按钮-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -92,14 +92,14 @@
             android:gravity="center"
             android:maxLines="1"
             android:text="Cancel"
-            android:textColor="@color/gray_txt"
+            android:textColor="@color/fun_txt_gray"
             android:textSize="17sp"/>
         <!--取消和同意分割线-->
         <View
             android:id="@+id/dia_line_bottom"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/line"/>
+            android:background="@color/fun_line"/>
         <!--同意-->
         <TextView
             android:id="@+id/dia_confirm"

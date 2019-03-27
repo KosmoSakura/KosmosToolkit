@@ -18,6 +18,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="no historical record"
-        android:textColor="@color/gray_txt"
+        android:textColor="@color/fun_txt_gray"
         android:textSize="14sp"/>
 </LinearLayout>

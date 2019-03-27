@@ -19,7 +19,7 @@ public class FragOne extends KFragment {
 
     @Override
     protected void init() {
-        findViewById(R.id.frag_bg).setBackgroundColor(ContextCompat.getColor(context, R.color.black_txt));
+        findViewById(R.id.frag_bg).setBackgroundColor(ContextCompat.getColor(context, R.color.fun_txt_black));
     }
 
     @Override

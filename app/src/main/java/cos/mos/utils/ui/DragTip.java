@@ -50,7 +50,7 @@ public class DragTip extends BaseActivity {
             return false;
         });
         /**
-         * View view：为当前操作对象（包括：被拖拽对象、和拖拽目标对象）
+         * View view：为当前操作对象（是影子进入的那个控件）
          * DragEvent event:
          * * event.getAction():当前拖拽状态
          * * event.getX()、getY()：拖拽对象的横纵坐标(区别于view.getX():被拖拽控件的坐标)

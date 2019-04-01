@@ -71,7 +71,7 @@ public class BottomSheetDialogSimple extends KActivity {
             diaBottom.setContentView(view);
             //调用setContentView方法之后
             BottomSheetBehavior behavior = BottomSheetBehavior.from((View) view.getParent());
-            behavior.setPeekHeight(UScreen.dp2px(500));//手动设置打开高度
+            behavior.setPeekHeight((int) UScreen.dp2px(500));//手动设置打开高度
             behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
                 @Override
                 public void onStateChanged(@NonNull View view, int newState) {

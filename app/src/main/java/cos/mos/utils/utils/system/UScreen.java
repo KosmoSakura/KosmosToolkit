@@ -60,8 +60,8 @@ public class UScreen {
      * @param pxValue 像素单位
      * @return dp单位
      */
-    public static int px2dp(float pxValue) {
-        return (int) (pxValue / scale + 0.5f);
+    public static float px2dp(float pxValue) {
+        return pxValue / scale + 0.5f;
     }
 
 
@@ -69,8 +69,8 @@ public class UScreen {
      * @param dpValue dp单位
      * @return 像素单位
      */
-    public static int dp2px(float dpValue) {
-        return (int) (dpValue * scale + 0.5f);
+    public static float dp2px(float dpValue) {
+        return dpValue * scale + 0.5f;
     }
 
     /**

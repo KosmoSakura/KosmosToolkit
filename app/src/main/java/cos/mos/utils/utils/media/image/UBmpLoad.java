@@ -51,7 +51,7 @@ public class UBmpLoad {
         return decodeBmp(res, resId, UScreen.dp2px(withDp), UScreen.dp2px(heightDp));
     }
 
-    public Bitmap decodeBmp(Resources res, int resId, int with, int height) {
+    public Bitmap decodeBmp(Resources res, int resId, float with, float height) {
         //inJustDecodeBounds设置为true，不获取图片，不分配内存，但会返回图片的高宽度信息
         getOption().inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, getOption());

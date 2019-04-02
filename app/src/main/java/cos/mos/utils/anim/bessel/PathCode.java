@@ -1,4 +1,4 @@
-package cos.mos.utils.bessel;
+package cos.mos.utils.anim.bessel;
 
 /**
  * @Description: 曲线类型常量

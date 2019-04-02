@@ -1,4 +1,4 @@
-package cos.mos.utils.bessel;
+package cos.mos.utils.anim.bessel;
 
 import android.content.Context;
 import android.graphics.Canvas;

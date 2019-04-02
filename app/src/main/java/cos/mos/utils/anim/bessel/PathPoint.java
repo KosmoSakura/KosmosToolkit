@@ -1,4 +1,4 @@
-package cos.mos.utils.bessel;
+package cos.mos.utils.anim.bessel;
 
 /**
  * @Description: 移动轨迹的坐标点

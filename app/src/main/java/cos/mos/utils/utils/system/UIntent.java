@@ -39,7 +39,9 @@ public class UIntent {
      */
     public static void goSys() {
         Uri packageURI = Uri.parse("package:" + KApp.instance().getPackageName());
-        start(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI));
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start(intent);
     }
 
     /**
@@ -49,7 +51,9 @@ public class UIntent {
     @RequiresApi(api = Build.VERSION_CODES.M)
     public static void goSysOverlay() {
         Uri packageURI = Uri.parse("package:" + KApp.instance().getPackageName());
-        start(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, packageURI));
+        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, packageURI);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start(intent);
     }
 
     /**
@@ -58,7 +62,9 @@ public class UIntent {
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static void goSysAdvanced() {
-        start(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start(intent);
     }
 
     /**
@@ -70,6 +76,7 @@ public class UIntent {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static void goSysAdvanced(Activity activity, int request) {
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivityForResult(intent, request);
     }
 
@@ -82,6 +89,7 @@ public class UIntent {
         Intent intent = new Intent();
         ComponentName comp = new ComponentName("com.android.settings",
             "com.android.settings.BackgroundApplicationsManager");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setComponent(comp);
         start(intent);
     }
@@ -183,6 +191,7 @@ public class UIntent {
      */
     public static void toVideo(String dir) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setDataAndType(Uri.parse(dir), "video/*");
         try {
             start(intent);
@@ -260,6 +269,7 @@ public class UIntent {
     public static void toEmail(String email) {
         try {
             Intent data = new Intent(Intent.ACTION_SENDTO);
+            data.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             data.setData(Uri.parse("mailto:way.ping.li@gmail.com"));
             data.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{email});
             data.putExtra(Intent.EXTRA_SUBJECT, "This is a title");

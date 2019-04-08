@@ -1,7 +1,7 @@
 package cos.mos.utils.utils.encrypt;
 
 /**
- * @Description: <p>
+ * @Description: MD5加密工具
  * @Author: Kosmos
  * @Date: 2019.04.08 15:24
  * @Email: KosmoSakura@gmail.com

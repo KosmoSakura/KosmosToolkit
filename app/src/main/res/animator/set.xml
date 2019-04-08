@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--对应AnimatorSet-->
+<set
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">
+    <objectAnimator
+        android:duration="2000"
+        android:propertyName="translationX"
+        android:repeatCount="-1"
+        android:repeatMode="reverse"
+        android:startOffset="1000"
+        android:valueTo="700f"/>
+    <objectAnimator
+        android:duration="2000"
+        android:propertyName="backgroundColor"
+        android:repeatCount="-1"
+        android:repeatMode="reverse"
+        android:startOffset="1000"
+        android:valueTo="#000"/>
+</set>

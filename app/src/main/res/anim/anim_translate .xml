@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+100%p 表示相对于父级
+100%相对于自身
+-->
+<translate
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="2000"
+    android:fromXDelta="-100%p"
+    android:fromYDelta="0"
+    android:toXDelta="100%p"
+    android:toYDelta="0"/>

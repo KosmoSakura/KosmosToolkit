@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+对应ValueAnimator.java
+android:valueTo 必须的，目标值
+android:valueFrom 必须的，起始值
+android:duration 持续时间单位ms，默认值300ms
+android:startOffset 调用start后延迟多少ms执行动画
+android:repeatCount 重复次数，0表示不重复，1表示重复一次，-1表示无限循环
+android:repeatMode reverse | restart 前者表示偶数次动画将动画起点当做终点，将终点当成起点，默认restart
+android:valueType intType | floatType(default)，当value为颜色时，不要设置该值
+-->
+<animator
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:interpolator="@android:interpolator/overshoot"
+    android:repeatCount="0"
+    android:repeatMode="reverse"
+    android:startOffset="1000"
+    android:valueFrom="0"
+    android:valueTo="300"
+    android:valueType="intType"/>

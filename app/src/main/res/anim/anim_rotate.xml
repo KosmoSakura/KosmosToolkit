@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+interpolator 指定动画的插值器
+accelerate_decelerate_interpolator - 加速-减速
+accelerate_interpolator 加速
+decelerate_interpolator 减速
+
+负数表示逆时针旋转 正数表示顺时针旋转
+
+pivotX相对于view的X坐标的开始位置
+pivotY相对于view的Y坐标的开始位置
+
+50% 相对尺寸 相对于自身的50%
+50%p 相对尺寸 相对于父容器的50%
+-->
+<rotate
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_loading"
+    android:duration="2000"
+    android:fromDegrees="0"
+    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:repeatCount="-1"
+    android:toDegrees="720"/>

@@ -2,7 +2,7 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 #实体类一定不能混淆
 -keep public class cos.mos.utils.mvp.bean.**{*;}
--keep public class cos.mos.utils.anim.bessel.Sample{*;}
+-keep public class cos.mos.utils.anim.bessel.PathSample{*;}
 
 # 取消注释以保留用于调试堆栈跟踪的行号信息。
 #-keepattributes SourceFile,LineNumberTable

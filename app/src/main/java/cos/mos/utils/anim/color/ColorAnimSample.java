@@ -6,7 +6,7 @@ import android.animation.ValueAnimator;
 import android.widget.TextView;
 
 /**
- * @Description: 颜色变化的属性动画
+ * @Description: 颜色变化的属性动画示例
  * @Author: Kosmos
  * @Date: 2019.04.02 15:06
  * @Email: KosmoSakura@gmail.com

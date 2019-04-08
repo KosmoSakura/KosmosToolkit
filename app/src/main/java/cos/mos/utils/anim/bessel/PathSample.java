@@ -5,14 +5,14 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 /**
- * @Description: 演示栗子
+ * @Description: 轨迹动画演示栗子
  * @Author: Kosmos
  * @Date: 2019.03.15 10:13
  * @Email: KosmoSakura@gmail.com
  * 注意：当前反射类不能混淆
- * -keep public class cos.mos.utils.anim.bessel.Sample{*;}
+ * -keep public class cos.mos.utils.anim.bessel.PathSample{*;}
  */
-public class Sample {
+public class PathSample {
     private AnimatorPath path;//轨迹动画路径
     private View vAnim;//动画 的目标控件
     private View cv;//这是一个参考控件，用于计算动画轨迹

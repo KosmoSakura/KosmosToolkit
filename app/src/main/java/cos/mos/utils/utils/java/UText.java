@@ -20,6 +20,8 @@ import java.util.List;
  * @eg: 2018.9.22:重载方法
  * @eg: 2018.11.27:重构
  * @eg: 2019.3.7:优化文字处理的执行效率
+ * @eg: 2019.4.8:优化重构变量
+ * @apiNote 本类中的空值判断：长度为0都为false
  */
 public class UText {
 
@@ -46,21 +48,21 @@ public class UText {
      * @apiNote String为空返回""
      */
     public static String isNull(String str) {
-        return isEmpty(str) ? "" : str;
+        return isNull(str, "");
     }
 
     /**
      * @apiNote String为空返回指定字符
      */
-    public static String isNull(String str, String defaul) {
+    public static String isNull(String str, final String defaul) {
         return isEmpty(str) ? defaul : str;
     }
 
-    public static String isNull(Editable str, String defaul) {
+    public static String isNull(Editable str, final String defaul) {
         return isEmpty(str) ? defaul : str.toString();
     }
 
-    public static String isNull(CharSequence str, String defaul) {
+    public static String isNull(CharSequence str, final String defaul) {
         return isEmpty(str) ? defaul : str.toString();
     }
 
@@ -78,7 +80,7 @@ public class UText {
      * @param defasult 缺省数字
      * @return 为空返回缺省数字
      */
-    public static long isNull(Long l, long defasult) {
+    public static long isNull(Long l, final long defasult) {
         return l == null ? defasult : l;
     }
 
@@ -94,7 +96,7 @@ public class UText {
      * @param defasult 缺省数字
      * @return 为空返回缺省数字
      */
-    public static float isNull(Float l, float defasult) {
+    public static float isNull(Float l, final float defasult) {
         return l == null ? defasult : l;
     }
 
@@ -110,7 +112,7 @@ public class UText {
      * @param defasult 缺省数字
      * @return 为空返回缺省数字
      */
-    public static int isNull(Integer integer, int defasult) {
+    public static int isNull(Integer integer, final int defasult) {
         return integer == null ? defasult : integer;
     }
 
@@ -177,14 +179,14 @@ public class UText {
      * @return 返回str长度，为空返回0
      */
     public static int getLength(String str) {
-        return isEmpty(str) ? 0 : str.length();
+        return str == null ? 0 : str.length();
     }
 
     /**
      * @return 返回str长度，为空返回指定值
      */
-    public static int getLength(String str, int defaultVelua) {
-        return isEmpty(str) ? defaultVelua : str.length();
+    public static int getLength(String str, final int defaul) {
+        return str == null ? defaul : str.length();
     }
 
     /**
@@ -230,7 +232,9 @@ public class UText {
                 return a.equals(b);
             } else {
                 for (int i = 0; i < length; i++) {
-                    if (a.charAt(i) != b.charAt(i)) return false;
+                    if (a.charAt(i) != b.charAt(i)) {
+                        return false;
+                    }
                 }
                 return true;
             }

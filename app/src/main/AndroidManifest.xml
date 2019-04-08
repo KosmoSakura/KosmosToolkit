@@ -22,6 +22,9 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
     <!--悬浮窗-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!--读取手机状态信息-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <!--查看当前运行中的应用-->
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"

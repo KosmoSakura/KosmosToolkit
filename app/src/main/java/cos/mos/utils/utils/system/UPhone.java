@@ -12,9 +12,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.Build;
-import android.os.Environment;
 import android.os.LocaleList;
-import android.os.StatFs;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
@@ -30,7 +28,6 @@ import java.net.SocketException;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.TimeZone;
-import java.util.concurrent.Callable;
 
 import cos.mos.utils.utils.java.UText;
 
@@ -58,7 +55,7 @@ public class UPhone {
                         for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
                             InetAddress inetAddress = enumIpAddr.nextElement();
                             if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
-                                return inetAddress.getHostAddress();
+                                return UText.isNull(inetAddress.getHostAddress());
                             }
                         }
                     }
@@ -70,7 +67,7 @@ public class UPhone {
             else if (info.getType() == ConnectivityManager.TYPE_WIFI) {
                 WifiManager wifiManager = (WifiManager) context.getApplicationContext()
                     .getSystemService(Context.WIFI_SERVICE);
-                return intToStrIP(wifiManager.getConnectionInfo().getIpAddress());//得到IPV4地址
+                return UText.isNull(intToStrIP(wifiManager.getConnectionInfo().getIpAddress()));//得到IPV4地址
             } else {
                 return "";
             }
@@ -120,13 +117,13 @@ public class UPhone {
      */
     public static String getSerialNumber(final Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            return UText.isNull(Build.SERIAL );
+            return UText.isNull(Build.SERIAL);
         } else {
             if (PackageManager.PERMISSION_GRANTED ==
                 ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE)) {
-                return Build.getSerial();
+                return UText.isNull(Build.getSerial());
             } else {
-                return Build.SERIAL;
+                return UText.isNull(Build.SERIAL);
             }
         }
     }
@@ -135,83 +132,59 @@ public class UPhone {
      * @return 获取手机厂商
      */
     public static String getDeviceBrand() {
-        return Build.BRAND;
+        return UText.isNull(Build.BRAND);
     }
 
     /**
      * @return 获取手机型号
      */
     public static String getSystemModel() {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                return Build.MODEL;
-            }
-        }));
+        return UText.isNull(Build.MODEL);
     }
 
+    /**
+     * @return 获取系统语言
+     */
     public static String getSystemLanguage() {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                Locale locale = null;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                    locale = LocaleList.getDefault().get(0);
-                else
-                    locale = Locale.getDefault();
-                return locale.getLanguage() + "-" + locale.getCountry();
-            }
-        }));
+        Locale locale;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            locale = LocaleList.getDefault().get(0);
+        else
+            locale = Locale.getDefault();
+        return locale.getLanguage() + "-" + locale.getCountry();
     }
 
 
+    /**
+     * @return 获取当前时区
+     */
     public static String getCurrentTimeZone() {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                TimeZone tz = TimeZone.getDefault();
-                String strTz = tz.getDisplayName(false, TimeZone.SHORT);
-                return strTz;
-            }
-        }));
+        TimeZone tz = TimeZone.getDefault();
+        if (tz == null) {
+            return "";
+        }
+        return UText.isNull(tz.getDisplayName(false, TimeZone.SHORT));
     }
 
     /**
      * @return 获取当前手机系统版本号
      */
     public static String getSystemVersion() {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                return Build.VERSION.RELEASE;
-            }
-        }));
+        return UText.isNull(Build.VERSION.RELEASE);
     }
 
+    /**
+     * @return 获取当前应用版本号
+     */
     public static String getVersionName(final Context context) {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                String versionName = "1.0.0";
-                try {
-                    PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-                    versionName = packageInfo.versionName;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return versionName;
-            }
-        }));
+        try {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            return UText.isNull(packageInfo.versionName, "1.0.0");
+        } catch (Exception e) {
+            return "1.0.0";
+        }
     }
 
-    public static String getApkVersion(final Context context) {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                return String.valueOf(context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode);
-            }
-        }));
-    }
 
     /**
      * @param ip Ip值
@@ -223,130 +196,99 @@ public class UPhone {
     }
 
     public static String getAndroidId(final Context context) {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-            }
-        }));
-    }
-
-    public static boolean isHasSimCard(final Context context) {
-        Boolean result = safetyFunction(new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-                TelephonyManager telMgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-                int simState = telMgr.getSimState();
-                boolean result = true;
-                switch (simState) {
-                    case TelephonyManager.SIM_STATE_ABSENT:
-                        result = false;
-                        break;
-                    case TelephonyManager.SIM_STATE_UNKNOWN:
-                        result = false;
-                        break;
-                }
-                return result;
-            }
-        });
-        return result != null && result;
+        return UText.isNull(Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID));
     }
 
     /**
-     * @param context
-     * @return 存储空间
+     * @return 手机是否安装了Sim卡
      */
-    public static String getRamTotalMemory(final Context context) {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                String path = Environment.getDataDirectory().getPath();
-                StatFs statFs = new StatFs(path);
-                long blockSize = statFs.getBlockSize();
-                long totalBlocks = statFs.getBlockCount();
-                long rom_length = totalBlocks * blockSize;
-                return String.valueOf(rom_length) + "byte";
-            }
-        }));
+    public static boolean isHasSimCard(final Context context) {
+        TelephonyManager telMgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (telMgr == null) {
+            return false;
+        }
+        switch (telMgr.getSimState()) {
+            case TelephonyManager.SIM_STATE_ABSENT:
+                return false;
+            case TelephonyManager.SIM_STATE_UNKNOWN:
+                return false;
+            default:
+                return true;
+        }
     }
 
     /**
-     * @param context
      * @return 运行内存
      */
     public static String getRomTotalMemory(final Context context) {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                try {
-                    boolean isStart = false;
-                    FileInputStream fis = new FileInputStream(new File("/proc/meminfo"));
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis));
-                    String memTotal = bufferedReader.readLine();
-                    StringBuffer sb = new StringBuffer();
-                    for (char c : memTotal.toCharArray()) {
-                        if (c >= '0' && c <= '9')
-                            isStart = true;
-                        if (isStart && c != ' ')
-                            sb.append(c);
-                    }
-                    return sb.toString();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return "";
-                }
-            }
-        }));
-    }
-
-    public static String getBatteryTemperature(final Context context) {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                Intent intent = new ContextWrapper(context.getApplicationContext()).registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-                return intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10 + "";
-            }
-        }));
-    }
-
-    public static String getBatteryLevel(final Context context) {
-        return wrapString(safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    BatteryManager batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
-                    return batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY) + "";
-                } else {
-                    Intent intent = new ContextWrapper(context.getApplicationContext()).registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-                    return (intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) * 100) / intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1) + "";
-                }
-            }
-        }));
-    }
-
-    public static String getBatteryStatus(final Context context) {
-        String result = safetyFunction(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                Intent intent = new ContextWrapper(context.getApplicationContext()).registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-                int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, 0);
-                return BatteryManager.BATTERY_STATUS_CHARGING == status ? "1" : "0";
-            }
-        });
-        return result == null ? "0" : result;
-    }
-
-    private static String wrapString(String source) {
-        return UText.isEmpty(source) ? "-2" : source;
-    }
-
-    private static <T> T safetyFunction(Callable<T> callable) {
         try {
-            return callable.call();
+            boolean isStart = false;
+            FileInputStream fis = new FileInputStream(new File("/proc/meminfo"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis));
+            String memTotal = bufferedReader.readLine();
+            StringBuilder sb = new StringBuilder();
+            for (char c : memTotal.toCharArray()) {
+                if (c >= '0' && c <= '9') {
+                    isStart = true;
+                }
+                if (isStart && c != ' ') {
+                    sb.append(c);
+                }
+            }
+            return sb.toString();
         } catch (Exception e) {
-            e.printStackTrace();
+            return "";
         }
-        return null;
+    }
+
+    /**
+     * @return 电池温度(摄氏度)
+     */
+    public static int getBatteryTemperature(final Context context) {
+        Intent intent = new ContextWrapper(context)
+            .registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        if (intent == null) {
+            return 0;
+        }
+        return intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10;
+    }
+
+    /**
+     * @return 电池等级（失败返回-1）
+     */
+    public static int getBatteryLevel(final Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            BatteryManager batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
+            if (batteryManager == null) {
+                return -1;
+            }
+            return batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+        } else {
+            Intent intent = new ContextWrapper(context).registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+            if (intent == null) {
+                return -1;
+            }
+            return (intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) * 100) /
+                intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+        }
+    }
+
+    /**
+     * @return 电池充电状态
+     * @apiNote 返回值==下面↓
+     * 充电状态:BatteryManager.BATTERY_STATUS_CHARGING
+     * 放电状态:BatteryManager.BATTERY_STATUS_DISCHARGING
+     * 未充电:BatteryManager.BATTERY_STATUS_NOT_CHARGING
+     * 充满电:BatteryManager.BATTERY_STATUS_FULL
+     * 未知状态:BatteryManager.BATTERY_STATUS_UNKNOWN
+     */
+    public static int getBatteryStatus(final Context context) {
+        Intent intent = new ContextWrapper(context)
+            .registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        if (intent == null) {
+            return 0;
+        }
+        return intent.getIntExtra(BatteryManager.EXTRA_STATUS, 0);
     }
 
 }

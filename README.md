@@ -1,8 +1,11 @@
 # KosmosUtils
-> 这个是我的工具和笔记库,这里有不少伪代码(笔记)，以及一下日常踩坑记录。项目是不能够直接跑起来的<br/>
-> 有时间我会把`Utils`部分部署成jitpack依赖<br/>
+> 这个是我的工具和笔记库,这里有不少伪代码(笔记)，以及一下日常踩坑记录。<br/>
+> 项目是不能够直接跑起来的，有时间我会把`Utils`部分部署成jitpack依赖<br/>
 > [详情见我的博客](https://blog.csdn.net/zull_kos_mos)
-
+https://github.com/KosmoSakura/Kosmos_Utils
+https://github.com/KosmoSakura/KosmosUtils
+Kosmos的工具包
+Kosmos
 ---
 
 #### 1.[Glide](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/glide)→相关工具

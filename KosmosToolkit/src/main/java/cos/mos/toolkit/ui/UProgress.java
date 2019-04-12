@@ -6,8 +6,8 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
+import cos.mos.toolkit.R;
 import cos.mos.toolkit.ULogBj;
-import cos.mos.utils.R;
 import io.reactivex.annotations.NonNull;
 
 /**

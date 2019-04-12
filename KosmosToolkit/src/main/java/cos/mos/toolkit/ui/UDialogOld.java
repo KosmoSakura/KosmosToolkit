@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
 import cos.mos.toolkit.java.UText;
 
 
@@ -48,7 +48,7 @@ public class UDialogOld {
     }
 
     private UDialogOld(Context context, boolean Cancelable, boolean outside) {
-        View view = LayoutInflater.from(context).inflate(R.layout.lay_dialog, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.dia_dialog, null);
         dialog = new Dialog(context, R.style.SakuraDialog);
         dialog.setCancelable(Cancelable);//是否可以通过返回键关闭
         dialog.setCanceledOnTouchOutside(outside);//是否可以点击外面关闭

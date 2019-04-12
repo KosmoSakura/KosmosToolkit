@@ -43,7 +43,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/lib_spinner"/>
         <!--提示内容文本-->
         <TextView
             android:id="@+id/dia_msg"

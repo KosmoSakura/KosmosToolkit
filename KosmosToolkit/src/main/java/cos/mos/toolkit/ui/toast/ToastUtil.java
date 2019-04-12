@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
 import cos.mos.toolkit.ui.toast.style.ToastBlackStyle;
 import cos.mos.toolkit.ui.toast.style.ToastQQStyle;
 import cos.mos.toolkit.ui.toast.style.ToastWhiteStyle;

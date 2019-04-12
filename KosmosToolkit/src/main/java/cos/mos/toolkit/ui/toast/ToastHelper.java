@@ -9,7 +9,7 @@ import android.provider.Settings;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
 
 
 /**

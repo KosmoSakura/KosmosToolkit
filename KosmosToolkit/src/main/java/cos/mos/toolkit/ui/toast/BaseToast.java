@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
 
 
 /**

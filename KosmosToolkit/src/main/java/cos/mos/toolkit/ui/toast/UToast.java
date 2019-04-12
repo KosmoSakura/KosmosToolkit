@@ -2,7 +2,7 @@ package cos.mos.toolkit.ui.toast;
 
 import android.widget.Toast;
 
-import cos.mos.toolkit.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
 
 
 /**

@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
 import cos.mos.toolkit.java.UText;
 
 
@@ -39,7 +39,7 @@ public class UDialog extends Dialog {
 
     private UDialog(Context context, boolean cancelable) {
         super(context, R.style.SakuraDialog);
-        setContentView(R.layout.lay_dialog);
+        setContentView(R.layout.dia_dialog);
         setCancelable(cancelable);//是否可以通过返回键关闭
         setCanceledOnTouchOutside(cancelable);//是否可以点击外面关闭
         getWindow().setBackgroundDrawableResource(R.color.T_all);

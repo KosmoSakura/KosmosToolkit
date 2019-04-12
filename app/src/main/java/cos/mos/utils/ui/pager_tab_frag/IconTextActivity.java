@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import cos.mos.utils.R;
-import cos.mos.utils.init.k.KActivity;
+import cos.mos.toolkit.init.KActivity;
 
 public class IconTextActivity extends KActivity {
     private TabLayout tl;

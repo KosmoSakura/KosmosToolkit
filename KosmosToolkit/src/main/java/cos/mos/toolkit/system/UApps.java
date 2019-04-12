@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Locale;
 
 import cos.mos.utils.constant.AppBean;
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.k.KApp;
 import cos.mos.toolkit.java.UText;
 import cos.mos.toolkit.java.UUnit;
 

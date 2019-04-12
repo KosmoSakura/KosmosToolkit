@@ -1,2 +1,5 @@
 <manifest package="cos.mos.toolkit"
-          xmlns:android="http://schemas.android.com/apk/res/android"/>
+          xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--指纹验证-->
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+</manifest>

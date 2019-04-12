@@ -11,7 +11,7 @@ import android.webkit.URLUtil;
 import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
 import cos.mos.utils.R;
-import cos.mos.utils.init.k.KFragment;
+import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.ULogBj;
 import cos.mos.toolkit.java.UGson;
 import cos.mos.toolkit.java.UText;

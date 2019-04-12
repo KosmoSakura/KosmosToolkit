@@ -14,7 +14,7 @@ import java.util.List;
 import cos.mos.utils.R;
 import cos.mos.utils.dao.DbHelper;
 import cos.mos.utils.dao.UserBean;
-import cos.mos.utils.init.k.KFragment;
+import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.ULogBj;
 import cos.mos.toolkit.java.UText;
 import cos.mos.toolkit.listener.KOnFreshListener;

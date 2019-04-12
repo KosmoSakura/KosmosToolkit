@@ -14,7 +14,7 @@ import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder;
 import cos.mos.toolkit.io.USDCard;
 import cos.mos.toolkit.java.UText;
 import cos.mos.toolkit.ui.toast.ToastUtil;
-import cos.mos.utils.init.k.KFragment;
+import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.listener.KTextWatcher;
 import cos.mos.utils.R;
 import io.reactivex.Observable;

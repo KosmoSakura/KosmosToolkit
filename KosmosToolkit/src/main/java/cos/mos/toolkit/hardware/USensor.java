@@ -8,7 +8,8 @@ import android.hardware.SensorManager;
 
 import java.util.List;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
+
 
 /**
  * @Description: 指南针辅助类：磁场放、方向等传感器工具

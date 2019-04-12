@@ -3,7 +3,7 @@ package cos.mos.toolkit.system;
 import android.content.Context;
 import android.os.PowerManager;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.k.KApp;
 
 
 /**

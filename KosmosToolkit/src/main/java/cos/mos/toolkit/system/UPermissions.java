@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.k.KApp;
 import cos.mos.toolkit.java.UText;
 import cos.mos.toolkit.ui.UDialog;
 import io.reactivex.disposables.CompositeDisposable;

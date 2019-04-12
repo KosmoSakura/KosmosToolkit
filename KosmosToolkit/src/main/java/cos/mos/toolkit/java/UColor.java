@@ -9,7 +9,8 @@ import android.support.annotation.IntRange;
 import android.support.annotation.Size;
 import android.support.v4.content.ContextCompat;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
+
 
 /**
  * @Description: 颜色工具类

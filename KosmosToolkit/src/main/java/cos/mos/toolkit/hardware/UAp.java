@@ -9,8 +9,8 @@ import android.support.annotation.RequiresApi;
 
 import java.lang.reflect.Method;
 
-import cos.mos.utils.init.k.KApp;
 import cos.mos.toolkit.ULog;
+import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.java.UText;
 
 /**
@@ -148,7 +148,7 @@ public class UAp {
      * 高于Android8.0 开启热点
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void openApSystemO(Callbak callbak) {
+    private void openApSystemO(final Callbak callbak) {
         if (isApOpen()) {
             if (!UText.isEmpty(sid) && !UText.isEmpty(pwd)) {
                 callbak.onConnected("", sid, pwd);

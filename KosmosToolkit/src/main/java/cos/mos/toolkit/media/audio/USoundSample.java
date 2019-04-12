@@ -3,8 +3,9 @@ package cos.mos.toolkit.media.audio;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
-import cos.mos.utils.R;
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.R;
+import cos.mos.toolkit.init.KApp;
+
 
 /**
  * @Description: 音频池工具

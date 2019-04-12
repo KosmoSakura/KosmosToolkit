@@ -11,7 +11,7 @@ import android.support.annotation.RequiresApi;
 import android.view.Window;
 import android.view.WindowManager;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.java.UText;
 
 /**

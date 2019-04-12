@@ -61,38 +61,16 @@ dependencies {
     // implementation-类似于private，子库依赖，仅自己可以调用→eg： implementation 'xx.xxx.xx.1.0.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //----------------------------------------------------------
-    //本家库----------------------------------------------------------
-    //    api 'androidx.multidex:multidex:2.0.1' //androidx-开启：MultiDexApplication
-    //    api 'androidx.appcompat:appcompat:1.0.2'//androidx
-//    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     //----------------------------------------------------------
     //第三方库----------------------------------------------------------
-    //RxJava
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.7'
-    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     //Retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    //网络请求
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    //解析json字符所用
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    //网络请求rxjava转换
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-    //Glide目前对androidx还没有完全兼容
-    //    implementation "com.android.support:support-annotations:28.0.0"
-    //    annotationProcessor "com.android.support:support-annotations:28.0.0"
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'//网络请求
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0' //解析json字符所用
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'    //网络请求rxjava转换
     //----------------------------------------------------------
     //其他库----------------------------------------------------------
     implementation 'com.github.chrisbanes:PhotoView:2.1.3'//大图查看
-    implementation 'com.liaoinstan.springview:library:1.5.1'//下拉刷新外壳
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44' //RecyclerView适配器
-    implementation 'org.greenrobot:eventbus:3.1.1' //Eventbus
-    implementation 'com.google.code.gson:gson:2.8.5'//Gson
     implementation 'me.jessyan:autosize:1.0.6'//今日头条屏幕适配方案
     //implementation 'com.hjq:toast:3.0' //鸿洋那个toast工具
     implementation 'org.greenrobot:greendao:3.2.2' //数据库

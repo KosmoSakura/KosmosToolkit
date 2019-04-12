@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
 
 
 /**

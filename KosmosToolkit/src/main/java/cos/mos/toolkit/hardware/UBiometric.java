@@ -4,7 +4,7 @@ import android.os.Build;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.support.v4.os.CancellationSignal;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
 
 
 /**

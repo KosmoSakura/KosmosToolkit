@@ -6,7 +6,7 @@ import android.os.Build;
 import android.os.CancellationSignal;
 import android.support.annotation.RequiresApi;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
 
 
 /**

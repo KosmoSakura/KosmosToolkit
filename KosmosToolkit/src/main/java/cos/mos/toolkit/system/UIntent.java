@@ -9,7 +9,7 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 
-import cos.mos.utils.init.k.KApp;
+import cos.mos.toolkit.init.k.KApp;
 import cos.mos.toolkit.ULog;
 import cos.mos.toolkit.java.UText;
 import cos.mos.toolkit.ui.toast.ToastUtil;

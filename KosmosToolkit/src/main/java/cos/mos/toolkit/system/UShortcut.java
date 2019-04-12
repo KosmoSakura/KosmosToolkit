@@ -9,8 +9,6 @@ import android.content.pm.ShortcutManager;
 import android.graphics.drawable.Icon;
 import android.os.Build;
 
-import cos.mos.utils.ui.MainActivity;
-
 
 /**
  * @Description: 创建桌面快捷方式
@@ -25,12 +23,13 @@ public class UShortcut {
      * @param activity Activity对象
      * @param name     快捷方式名称
      * @param iconRes  快捷方式图标(R.mipmap.icon
+     * @param aClass   点击快捷图标要进入的Activity，eg:MainActivity.class
      * @apiNote 添加桌面图标快捷方式
      * 8.0以下手机提示应用未安装：AndroidManifest的acitivity标签添加 android:exported="true"
      */
-    public static void addShortcut(Activity activity, String name, int iconRes) {
+    public static void addShortcut(Activity activity, String name, int iconRes, Class aClass) {
         //快捷方式图标点击动作
-        Intent actionIntent = new Intent(activity, MainActivity.class);
+        Intent actionIntent = new Intent(activity, aClass);
         actionIntent.setAction(Intent.ACTION_VIEW); //action必须设置，不然报错
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {

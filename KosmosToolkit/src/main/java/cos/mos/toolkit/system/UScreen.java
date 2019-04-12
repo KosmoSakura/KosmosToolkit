@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import cos.mos.toolkit.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
+
 
 /**
  * @Description: 屏幕信息

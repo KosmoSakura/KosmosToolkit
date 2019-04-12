@@ -9,7 +9,6 @@ import android.os.LocaleList;
 
 import java.util.Locale;
 
-import cos.mos.utils.ui.MainActivity;
 import cos.mos.toolkit.io.USP;
 
 /**
@@ -130,11 +129,12 @@ public class ULanguage {
     }
 
     /**
+     * @param aClass eg: MainActivity.class
      * @apiNote 重新启动Activity
      * <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
      */
-    public void reBoot(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
+    public void reBoot(Context context, Class aClass) {
+        Intent intent = new Intent(context, aClass);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
         android.os.Process.killProcess(android.os.Process.myPid());

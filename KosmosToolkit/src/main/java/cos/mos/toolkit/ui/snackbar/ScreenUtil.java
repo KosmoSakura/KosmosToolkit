@@ -12,7 +12,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
+
 
 /**
  * 获得屏幕相关的辅助类

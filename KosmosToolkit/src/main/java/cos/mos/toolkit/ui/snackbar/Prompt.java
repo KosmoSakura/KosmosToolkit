@@ -1,7 +1,7 @@
 package cos.mos.toolkit.ui.snackbar;
 
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
 
 public enum Prompt {
     /**

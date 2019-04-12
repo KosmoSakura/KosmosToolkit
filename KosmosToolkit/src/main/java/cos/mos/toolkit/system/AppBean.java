@@ -1,4 +1,4 @@
-package cos.mos.utils.constant;
+package cos.mos.toolkit.system;
 
 import android.graphics.drawable.Drawable;
 

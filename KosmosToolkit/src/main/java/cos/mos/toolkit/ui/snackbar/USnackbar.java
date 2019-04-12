@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import java.lang.ref.WeakReference;
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
 import cos.mos.toolkit.java.UText;
 
 
@@ -103,7 +103,7 @@ public class USnackbar {
                                          CharSequence action, View.OnClickListener listener) {
         base(getView(parent), text, duration, action, listener,
             ContextCompat.getColor(parent, R.color.white),
-            ContextCompat.getColor(parent, R.color.colorPrimaryDark),
+            ContextCompat.getColor(parent, R.color.fun_txt_black),
             ContextCompat.getColor(parent, R.color.white));
     }
 

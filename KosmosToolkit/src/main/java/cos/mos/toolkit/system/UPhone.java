@@ -36,11 +36,13 @@ import cos.mos.toolkit.java.UText;
  * @Author: Kosmos
  * @Date: 2019.04.08 13:50
  * @Email: KosmoSakura@gmail.com
+ * 需要权限：<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
  */
 public class UPhone {
 
     /**
      * @return 手机ip地址
+     * 权限：android.permission.ACCESS_NETWORK_STATE
      */
     public static String getIPAddress(final Context context) {
         NetworkInfo info = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE))

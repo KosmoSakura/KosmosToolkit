@@ -1,4 +1,4 @@
-package cos.mos.toolkit.media.image;
+package cos.mos.utils.utils;
 
 import android.Manifest;
 import android.app.WallpaperManager;

@@ -2,4 +2,9 @@
           xmlns:android="http://schemas.android.com/apk/res/android">
     <!--指纹验证-->
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <!-- 获取网络状态改变的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <!--读取手机状态信息-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 </manifest>

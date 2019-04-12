@@ -8,7 +8,8 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import cos.mos.toolkit.init.k.KApp;
+import cos.mos.toolkit.init.KApp;
+
 
 /**
  * @Description: Bitmap转换

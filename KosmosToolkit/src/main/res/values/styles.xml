@@ -2,10 +2,15 @@
 <resources>
     <!--背景全透明无边框 -->
     <style name="SakuraDialog" parent="android:style/Theme.Dialog">
+        <!--背景颜色及透明度-->
         <item name="android:windowBackground">@android:color/transparent</item>
+        <!--去除标题 -->
         <item name="android:windowNoTitle">true</item>
+        <!--去除边框-->
         <item name="android:windowFrame">@null</item>
+        <!--浮在activity之上-->
         <item name="android:windowIsFloating">true</item>
+        <!--模糊-->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
     <!--鸿洋toast-->

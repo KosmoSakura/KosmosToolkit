@@ -4,6 +4,7 @@
 > [详情见我的博客](https://blog.csdn.net/zull_kos_mos)
 
 ```gradle
+//版本：v0.2，还有点问题
 dependencies {
     implementation 'com.github.KosmoSakura:KosmosToolkit:-SNAPSHOT'
 }

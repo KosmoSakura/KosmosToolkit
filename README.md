@@ -1,6 +1,6 @@
 # KosmosUtils
 > 这个是我的工具和笔记库,这里有不少伪代码(笔记)，项目是不能够直接跑起来的
-> 有时间我会把`Utils`部分部署到jitpack依赖
+> 有时间我会把`Utils`部分部署成jitpack依赖
 > 我把平时用到的笔记和工具们抽取了出来，以及一下日常踩坑记录。[详情见我的博客](https://blog.csdn.net/zull_kos_mos)
 
 ---

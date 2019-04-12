@@ -12,7 +12,7 @@ import java.util.List;
 
 import cos.mos.utils.R;
 import cos.mos.utils.constant.AppBean;
-import cos.mos.utils.utils.java.UText;
+import cos.mos.toolkit.java.UText;
 
 /**
  * @Description: <p>

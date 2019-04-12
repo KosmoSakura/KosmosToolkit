@@ -1,6 +1,6 @@
 package cos.mos.utils.constant;
 
-import cos.mos.utils.utils.java.UText;
+import cos.mos.toolkit.java.UText;
 
 /**
  * @Description: <p>

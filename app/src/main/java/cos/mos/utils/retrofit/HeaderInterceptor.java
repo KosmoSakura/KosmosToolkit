@@ -3,7 +3,7 @@ package cos.mos.utils.retrofit;
 
 import java.io.IOException;
 
-import cos.mos.utils.utils.ULogBj;
+import cos.mos.toolkit.ULogBj;
 import cos.mos.utils.constant.KConfig;
 import okhttp3.Interceptor;
 import okhttp3.Request;

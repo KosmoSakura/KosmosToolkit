@@ -15,10 +15,10 @@ import cos.mos.utils.R;
 import cos.mos.utils.dao.DbHelper;
 import cos.mos.utils.dao.UserBean;
 import cos.mos.utils.init.k.KFragment;
-import cos.mos.utils.utils.ULogBj;
-import cos.mos.utils.utils.java.UText;
-import cos.mos.utils.utils.listener.KOnFreshListener;
-import cos.mos.utils.utils.system.UScreen;
+import cos.mos.toolkit.ULogBj;
+import cos.mos.toolkit.java.UText;
+import cos.mos.toolkit.listener.KOnFreshListener;
+import cos.mos.toolkit.system.UScreen;
 import cos.mos.utils.widget.list.MyDividerDecoration;
 
 /**

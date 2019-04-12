@@ -12,10 +12,10 @@ import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
 import cos.mos.utils.R;
 import cos.mos.utils.init.k.KFragment;
-import cos.mos.utils.utils.ULogBj;
-import cos.mos.utils.utils.java.UGson;
-import cos.mos.utils.utils.java.UText;
-import cos.mos.utils.utils.ui.UDialog;
+import cos.mos.toolkit.ULogBj;
+import cos.mos.toolkit.java.UGson;
+import cos.mos.toolkit.java.UText;
+import cos.mos.toolkit.ui.UDialog;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 

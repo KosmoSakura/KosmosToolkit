@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import cos.mos.utils.utils.java.UText;
+import cos.mos.toolkit.java.UText;
 import cos.mos.utils.constant.KConfig;
 import cos.mos.utils.mvp.bean.ResultBean;
 import cos.mos.utils.mvp.contract.KListMsgListener;

@@ -13,8 +13,8 @@ import cos.mos.utils.R;
 import cos.mos.utils.constant.AppBean;
 import cos.mos.utils.init.k.KActivity;
 import cos.mos.utils.ui.data.IgnoreAdapter;
-import cos.mos.utils.utils.system.UApps;
-import cos.mos.utils.utils.system.UScreen;
+import cos.mos.toolkit.system.UApps;
+import cos.mos.toolkit.system.UScreen;
 
 /**
  * @Description: <p>

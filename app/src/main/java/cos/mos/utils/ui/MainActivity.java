@@ -21,8 +21,8 @@ import cos.mos.utils.init.BaseActivity;
 import cos.mos.utils.mvp.adapter.AdapterImage;
 import cos.mos.utils.mvp.bean.ImageBean;
 import cos.mos.utils.mvp.contract.KOnFreshListener;
-import cos.mos.utils.utils.system.UPermissions;
-import cos.mos.utils.utils.ui.UDialog;
+import cos.mos.toolkit.system.UPermissions;
+import cos.mos.toolkit.ui.UDialog;
 
 public class MainActivity extends BaseActivity implements MainListener {
     private SpringView spv;

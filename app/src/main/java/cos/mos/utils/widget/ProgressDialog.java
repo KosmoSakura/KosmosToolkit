@@ -8,7 +8,7 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 
 import cos.mos.utils.R;
-import cos.mos.utils.utils.ULogBj;
+import cos.mos.toolkit.ULogBj;
 
 /**
  * @Description: 进度弹窗

@@ -26,5 +26,5 @@
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"
         app:tabSelectedTextColor="#b3b2d1"
-        app:tabTextColor="@color/black_txt"/>
+        app:tabTextColor="@color/fun_txt_black"/>
 </LinearLayout>

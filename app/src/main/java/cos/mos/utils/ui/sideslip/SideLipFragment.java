@@ -9,20 +9,16 @@ import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import cos.mos.utils.R;
-import cos.mos.utils.dao.DbHelper;
-import cos.mos.utils.dao.UserBean;
-import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.ULogBj;
-import cos.mos.toolkit.java.UText;
+import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.listener.KOnFreshListener;
 import cos.mos.toolkit.system.UScreen;
+import cos.mos.utils.R;
 import cos.mos.utils.widget.list.MyDividerDecoration;
 
 /**
- * @Description: 侧滑删除
+ * @Description: 侧滑删除示例
  * @Author: Kosmos
  * @Date: 2018.11.20 15:43
  * @Email: KosmoSakura@gmail.com
@@ -31,7 +27,7 @@ public class SideLipFragment extends KFragment {
     private SpringView spv;
     private RecyclerView rv;
     private SideLipAdapter adapter;
-    private ArrayList<UserBean> list;
+    private ArrayList<SideBean> list;
 
     @Override
     protected int layout() {
@@ -60,11 +56,10 @@ public class SideLipFragment extends KFragment {
             if (position < 0 || position > list.size()) {
                 return;
             }
-            UserBean bean = list.get(position);
+            SideBean bean = list.get(position);
             switch (view.getId()) {
                 case R.id.item_qr_right:
                     list.remove(position);
-                    DbHelper.deleteByBean(bean);
                     adapter.notifyItemRemoved(position);
                     break;
             }
@@ -87,10 +82,14 @@ public class SideLipFragment extends KFragment {
 
     private void refresh() {
         list.clear();
-        List<UserBean> userBeans = DbHelper.SearchAll();
-        if (!UText.isEmpty(userBeans)) {
-            ULogBj.commonD("-->" + userBeans.size());
-            list.addAll(userBeans);
+        //GreenDao依赖包在注释里
+//        List<SideBean> userBeans = DbHelper.SearchAll();
+//        if (!UText.isEmpty(userBeans)) {
+//            ULogBj.commonD("-->" + userBeans.size());
+//            list.addAll(userBeans);
+//        }
+        for (int i = 0; i < 10; i++) {
+            list.add(new SideBean());
         }
         adapter.notifyDataSetChanged();
     }

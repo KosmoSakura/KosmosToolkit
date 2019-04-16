@@ -55,7 +55,7 @@ import android.widget.TextView;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import cos.mos.utils.R;
+import cos.mos.toolkit.R;
 
 import static cos.mos.toolkit.ui.snackbar.AnimationUtils.FAST_OUT_SLOW_IN_INTERPOLATOR;
 

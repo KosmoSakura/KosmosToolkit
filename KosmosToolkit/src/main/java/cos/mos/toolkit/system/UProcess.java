@@ -112,9 +112,9 @@ public class UProcess {
      * @param receiverName 被检查接收器的类名
      * @param actionName   被检查接收器所注册的action（最好唯一）
      * @param pkgName      应用包名
-     * @return true:广播接收器存活
+     * @return true:广播接收器已经挂了
      */
-    public static boolean isReceiverRunning(Context context,
+    public static boolean isReceiverDie(Context context,
                                             String receiverName, String actionName, String pkgName) {
         Intent intent = new Intent();
         intent.setAction(actionName);
@@ -126,7 +126,7 @@ public class UProcess {
                 if (resolveInfos.get(index).activityInfo.packageName.trim().equals(pkgName)
                     && resolveInfos.get(index).activityInfo.name.contains(receiverName)
                     && ProcessUid == Process.myUid()) {
-                    return true;
+                    return false;
                 }
                 if (index == resolveInfos.size() - 1) {
                     ProcessUid = Process.myUid();

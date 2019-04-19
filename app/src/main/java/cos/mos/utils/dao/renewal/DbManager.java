@@ -8,7 +8,7 @@
 //import cos.mos.utils.init.Constant;
 //
 ///**
-// * @Description:GreenDao依赖包在注释里
+// * @Description: GreenDao依赖包在注释里
 // * @Author: Kosmos
 // * @Email: KosmoSakura@foxmail.com
 // * * @eg: 最新修改日期：2018年12月10日 22:00

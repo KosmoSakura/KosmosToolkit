@@ -4,6 +4,20 @@ local.properties
 google-services.json
 freeline_project_description.json
 freeline.py
+# IntelliJ生成配置
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
 
 # 忽略后缀
 *.apk
@@ -31,5 +45,4 @@ build/
 proguard/
 captures/
 freeline/
-proguard/
 sampledata/

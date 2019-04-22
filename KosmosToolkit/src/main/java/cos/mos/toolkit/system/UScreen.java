@@ -1,6 +1,8 @@
 package cos.mos.toolkit.system;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -20,6 +22,28 @@ import cos.mos.toolkit.init.KApp;
 public class UScreen {
     private static final DisplayMetrics metric = KApp.instance().getResources().getDisplayMetrics();
     private static final float scale = metric.density;
+
+    /**
+     * @return bp 截图
+     * @apiNote 获取当前屏幕截图，不包含状态栏
+     */
+    public static Bitmap getSnapShotNoBar(Activity activity) {
+        View view = activity.getWindow().getDecorView();
+        view.setDrawingCacheEnabled(true);
+        view.buildDrawingCache();
+        Bitmap bmp = view.getDrawingCache();
+        if (bmp == null) {
+            return null;
+        }
+        Rect frame = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+        int statusBarHeight = frame.top;
+        Bitmap bp = Bitmap.createBitmap(bmp, 0, statusBarHeight, bmp.getWidth(), bmp.getHeight() - statusBarHeight);
+        view.destroyDrawingCache();
+        view.setDrawingCacheEnabled(false);
+
+        return bp;
+    }
 
     /**
      * @param view 目标控件

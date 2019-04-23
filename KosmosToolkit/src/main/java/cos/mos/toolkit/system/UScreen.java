@@ -106,7 +106,7 @@ public class UScreen {
     }
 
     /**
-     * @return 高度（像素）
+     * @return 屏幕高度（像素）
      */
     public static int getScreenHeight() {
         return metric.heightPixels;

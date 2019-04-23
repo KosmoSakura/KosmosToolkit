@@ -245,7 +245,7 @@ public class UText {
     /**
      * @return 给字符添加下划线
      */
-    public static void getTextUnderLine(TextView t) {
+    public static void setTextUnderLine(TextView t) {
         t.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
         t.getPaint().setAntiAlias(true);//抗锯齿
     }

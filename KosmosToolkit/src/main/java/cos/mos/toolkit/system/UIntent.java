@@ -196,7 +196,7 @@ public class UIntent {
         try {
             start(intent);
         } catch (Exception e) {
-            ToastUtil.show("No default player");
+            UToast.show("No default player");
         }
     }
 

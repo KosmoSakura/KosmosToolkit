@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'org.greenrobot.greendao'
 //greendao {
 //    schemaVersion 1 //版本号,升级时叠加
@@ -60,6 +62,7 @@ dependencies {
     // api-类似于public，子库依赖，父库可以调用 库内api→eg： api 'xx.xxx.xx.1.0.0'
     // implementation-类似于private，子库依赖，仅自己可以调用→eg： implementation 'xx.xxx.xx.1.0.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //----------------------------------------------------------
     //----------------------------------------------------------
     //第三方库----------------------------------------------------------

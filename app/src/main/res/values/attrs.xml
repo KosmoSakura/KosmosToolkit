@@ -9,4 +9,101 @@
         <attr name="canLeftSwipe" format="boolean"/>
         <attr name="fraction" format="float"/>
     </declare-styleable>
+    <!--带动画的RatingBar-->
+    <declare-styleable name="KRatingBar">
+        <attr name="star_width" format="dimension"/>
+        <attr name="star_height" format="dimension"/>
+        <attr name="starMax" format="integer"/>
+        <attr name="rating" format="integer"/>
+        <attr name="starEmpty" format="reference"/>
+        <attr name="starFill" format="reference"/>
+    </declare-styleable>
+    <!--设置集成Bar-->
+    <declare-styleable name="SettingBar">
+        <attr name="name" format="string"/>
+        <attr name="value" format="string"/>
+        <attr name="describe" format="string"/>
+        <attr name="state" format="boolean"/>
+        <attr name="onlyShow" format="boolean"/>
+        <attr name="canPick" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="KBubbleSeekBar">
+        <!--渐变色号，用_分割-->
+        <attr name="bsb_colors" format="string"/>
+        <!--是否显示刻度，默认：true-->
+        <attr name="bsb_marks" format="boolean"/>
+        <!--min < max, 默认值: 0.0f-->
+        <attr name="bsb_min" format="float|reference"/>
+        <!--min <max，默认值：100.0f-->
+        <attr name="bsb_max" format="float|reference"/>
+        <!--实时进度值，默认值：min-->
+        <attr name="bsb_progress" format="float|reference"/>
+        <!--支持浮动类型-->
+        <attr name="bsb_is_float_type" format="boolean"/>
+        <!--右侧轨道的高度（在拇指右侧），默认值：2dp-->
+        <attr name="bsb_track_size" format="dimension|reference"/>
+        <!--左侧轨道的高度（在拇指的左侧），默认：比右侧轨道的高度高2dp-->
+        <attr name="bsb_second_track_size" format="dimension|reference"/>
+        <!--拇指半径，默认：比左轨道高度高2dp-->
+        <attr name="bsb_thumb_radius" format="dimension|reference"/>
+        <!--拖动时的拇指半径，默认值：左轨道高度的2倍-->
+        <attr name="bsb_thumb_radius_on_dragging" format="dimension|reference"/>
+        <!--右轨道的颜色，默认：R.color.colorPrimary-->
+        <attr name="bsb_track_color" format="color|reference"/>
+        <!--左轨道的颜色，默认：R.color.colorAccent-->
+        <attr name="bsb_second_track_color" format="color|reference"/>
+        <!--拇指颜色，默认：与左轨道颜色相同-->
+        <attr name="bsb_thumb_color" format="color|reference"/>
+        <!--整个进度的份额（最大 - 最小），默认值：10-->
+        <attr name="bsb_section_count" format="integer|reference"/>
+        <!--是否显示分界点，默认值：false-->
+        <attr name="bsb_show_section_mark" format="boolean"/>
+        <!--自动滚动到最近的section_mark或不，默认值：false-->
+        <attr name="bsb_auto_adjust_section_mark" format="boolean"/>
+        <!--是否显示部分文本，默认值：false-->
+        <attr name="bsb_show_section_text" format="boolean"/>
+        <!--section-text的文本大小，默认值：14sp-->
+        <attr name="bsb_section_text_size" format="dimension|reference"/>
+        <!--section-text的文本颜色，默认：与right-track的颜色相同-->
+        <attr name="bsb_section_text_color" format="color|reference"/>
+        <!--section-text相对于track，sides，bottom_sides，below_section_mark，default：sides的文本位置-->
+        <attr name="bsb_section_text_position">
+            <enum name="sides" value="0"/>
+            <enum name="bottom_sides" value="1"/>
+            <enum name="below_section_mark" value="2"/>
+        </attr>
+        <!--两个section-text的间隔，默认值：1-->
+        <attr name="bsb_section_text_interval" format="integer"/>
+        <!--在拇指下显示实时进度 - 文本，默认值：false-->
+        <attr name="bsb_show_thumb_text" format="boolean"/>
+        <!--进度文本的文本大小，默认值：14sp-->
+        <attr name="bsb_thumb_text_size" format="dimension|reference"/>
+        <!--progress-text的文本颜色，默认：与left-track的颜色相同-->
+        <attr name="bsb_thumb_text_color" format="color|reference"/>
+        <!--在float中显示bubble-progress，默认值为false-->
+        <attr name="bsb_show_progress_in_float" format="boolean"/>
+        <!--触摸轨道上的任意位置以快速移动，默认值：false-->
+        <attr name="bsb_touch_to_seek" format="boolean"/>
+        <!--一步一步地寻找，进展是离散的，默认：false-->
+        <attr name="bsb_seek_step_section" format="boolean"/>
+        <!--按section移动，进度可能不是线性的，默认值：false-->
+        <attr name="bsb_seek_by_section" format="boolean"/>
+        <!--气泡颜色，默认：与左轨道颜色相同-->
+        <attr name="bsb_bubble_color" format="color|reference"/>
+        <!--bubble-progress的文本大小，默认值：14sp-->
+        <attr name="bsb_bubble_text_size" format="dimension|reference"/>
+        <!--t文字颜色 bubble-progress, default: #ffffffff-->
+        <attr name="bsb_bubble_text_color" format="color|reference"/>
+        <!--动画持续时间，默认值：200ms-->
+        <attr name="bsb_anim_duration" format="integer"/>
+        <!--bubble显示所有时间，默认值：false-->
+        <attr name="bsb_always_show_bubble" format="boolean"/>
+        <!--气泡前的延迟持续时间始终显示，默认值：200ms-->
+        <attr name="bsb_always_show_bubble_delay" format="integer"/>
+        <!--隐藏气泡，默认值：false-->
+        <attr name="bsb_hide_bubble" format="boolean"/>
+        <!--从右到左，默认：false-->
+        <attr name="bsb_rtl" format="boolean"/>
+        <attr name="android:enabled"/>
+    </declare-styleable>
 </resources>

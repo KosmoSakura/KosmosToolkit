@@ -59,6 +59,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".widget.SampleActivity"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".ui.pager_tab_frag.OnlyTextActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".ui.pager_tab_frag.IconTextActivity"

@@ -21,7 +21,6 @@ import cos.mos.toolkit.init.KApp;
  */
 public class UScreen {
     private static final DisplayMetrics metric = KApp.instance().getResources().getDisplayMetrics();
-    private static final float scale = metric.density;
 
     /**
      * @return bp 截图
@@ -83,21 +82,42 @@ public class UScreen {
     }
 
     /**
-     * @param pxValue 像素单位
-     * @return dp单位
+     * @return Px单位转dp单位
      */
     public static float px2dp(float pxValue) {
-        return pxValue / scale + 0.5f;
+        return pxValue / metric.density + 0.5f;
     }
 
 
     /**
-     * @param dpValue dp单位
-     * @return 像素单位
+     * @return dp单位转Px单位
      */
     public static float dp2px(float dpValue) {
-        return dpValue * scale + 0.5f;
+        return dpValue * metric.density + 0.5f;
     }
+
+    /**
+     * @return Sp单位转Px单位
+     */
+    public static float sp2px(float sp) {
+        return metric.scaledDensity * sp + 0.5f;
+    }
+
+    /**
+     * @return Sp单位转Px单位
+     */
+    public static float px2sp(float px) {
+        return px / metric.scaledDensity + 0.5f;
+    }
+
+    /**
+     * @param sp sp单位
+     * @return 像素单位
+     */
+//    static int sp2px(int sp) {
+//        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp,
+//            Resources.getSystem().getDisplayMetrics());
+//    }
 
     /**
      * @return 屏幕宽度（像素）

@@ -16,13 +16,13 @@ import com.liaoinstan.springview.widget.SpringView;
 import java.util.ArrayList;
 import java.util.List;
 
+import cos.mos.toolkit.system.UPermissions;
+import cos.mos.toolkit.ui.UDialog;
 import cos.mos.utils.R;
 import cos.mos.utils.init.BaseActivity;
 import cos.mos.utils.mvp.adapter.AdapterImage;
 import cos.mos.utils.mvp.bean.ImageBean;
 import cos.mos.utils.mvp.contract.KOnFreshListener;
-import cos.mos.toolkit.system.UPermissions;
-import cos.mos.toolkit.ui.UDialog;
 
 public class MainActivity extends BaseActivity implements MainListener {
     private SpringView spv;

@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.single;
+package cos.mos.utils.widget.clip;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,7 +15,7 @@ import cos.mos.utils.R;
 
 
 /**
- * @Description: <p>
+ * @Description: 视频裁剪条
  * @Author: Kosmos
  * @Date: 2019.02.16 15:29
  * @Email: KosmoSakura@gmail.com
@@ -23,7 +23,7 @@ import cos.mos.utils.R;
 public class VideoClipBar extends View {
     private int baseColor;
     private Bitmap bmpLeft, bmpRight, bmpTop;//图标的图片
-    private final int BarHeight = UScreen.dp2px(10);//条条的宽度
+    private final float BarHeight = UScreen.dp2px(10);//条条的宽度
     private final float minLength = UScreen.dp2px(5);//最小剪切长度
     private float lineStart = 0;//线（进度条） 开始的位置
     private float lineEnd = getWidth();//线（进度条）的结束位置

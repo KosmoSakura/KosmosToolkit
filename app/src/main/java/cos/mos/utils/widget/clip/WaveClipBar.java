@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.single;
+package cos.mos.utils.widget.clip;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -17,23 +17,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Vector;
 
-import cos.mos.mediacut.R;
-import cos.mos.mediacut.utils.UUnit;
-import cos.mos.mediacut.utils.media.audio.WavFile;
-import cos.mos.mediacut.utils.media.audio.WavFileException;
+import cos.mos.toolkit.java.UUnit;
+import cos.mos.toolkit.system.UScreen;
+import cos.mos.utils.R;
+
 
 /**
- * @Description: <p>
+ * @Description: 波形裁剪条
  * @Author: Kosmos
  * @Date: 2019.02.16 15:29
  * @Email: KosmoSakura@gmail.com
  */
 public class WaveClipBar extends View {
     public static final int READ_FRAME_COUNT = 100;
-    private final int offset5 = UUnit.dp2px(5);//偏移量
-    private final int offset10 = UUnit.dp2px(10);//偏移量
-    private final int offset20 = UUnit.dp2px(20);//偏移量
-    private final int offset30 = UUnit.dp2px(30);//偏移量
+    private final float offset5 = UScreen.dp2px(5);//偏移量
+    private final float offset10 = UScreen.dp2px(10);//偏移量
+    private final float offset20 = UScreen.dp2px(20);//偏移量
+    private final float offset30 = UScreen.dp2px(30);//偏移量
     private InputStream inputStream;
     private Vector<Float> yAxis = new Vector<>(0);
     private boolean firstDraw = true;

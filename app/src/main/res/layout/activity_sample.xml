@@ -11,6 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <cos.mos.utils.widget.clip.WaveClipBar
+        android:id="@+id/au_clip"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#1C2327"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        kosmos:waveBaseColor="#E5E8EC"
+        kosmos:waveClipColor="#7C4DB6AC"/>
+
+    <cos.mos.utils.widget.clip.VideoClipBar
+        android:id="@+id/vu_clip"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        kosmos:waveBaseColor="@color/colorBase"/>
+
     <cos.mos.utils.widget.single.KRatingBar
         android:id="@+id/rating_bar"
         android:layout_width="match_parent"

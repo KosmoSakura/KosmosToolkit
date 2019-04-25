@@ -12,19 +12,19 @@ import android.widget.TextView
  * @Date: 2019.04.23 13:25
  * @Email: KosmoSakura@gmail.com
  */
-object UText {
+object UKText {
     /**
      * isNull: 校验为空返回指定字符，默认""
      */
     fun isNull(tv: TextView?, defaul: String = ""): String {
         return if (tv != null) {
-            if (UText.isEmpty(tv.text)) defaul else tv.text.toString()
+            if (UKText.isEmpty(tv.text)) defaul else tv.text.toString()
         } else defaul
     }
 
     fun isNull(str: String?, defaul: String = ""): String {
         return if (str != null) {
-            if (UText.isEmpty(str)) defaul else str
+            if (UKText.isEmpty(str)) defaul else str
         } else {
             return defaul
         }
@@ -32,7 +32,7 @@ object UText {
 
     fun isNull(str: Editable?, defaul: String = ""): String {
         return if (str != null) {
-            if (UText.isEmpty(str)) defaul else str.toString()
+            if (UKText.isEmpty(str)) defaul else str.toString()
         } else {
             return defaul
         }
@@ -61,7 +61,7 @@ object UText {
     }
 
     fun isEmpty(tv: TextView?): Boolean {
-        return if (tv == null) true else UText.isEmpty(tv.text.toString())
+        return if (tv == null) true else UKText.isEmpty(tv.text.toString())
     }
 
     fun isEmpty(sequence: CharSequence?): Boolean {

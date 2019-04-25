@@ -6,7 +6,7 @@ package cos.mos.utils.ukotlin
  * @Date: 2019.04.23 16:01
  * @Email: KosmoSakura@gmail.com
  */
-object UUnit {
+object UKUnit {
     fun sizeFormatbit(size: Float): String {
         val kiloByte = size / 1024
         if (kiloByte < 1) {

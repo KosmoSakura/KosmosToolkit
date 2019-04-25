@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.single;
+package cos.mos.utils.widget.chart;
 
 import android.content.Context;
 import android.graphics.Canvas;

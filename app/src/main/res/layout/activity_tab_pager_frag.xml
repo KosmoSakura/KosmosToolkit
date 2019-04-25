@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <com.google.android.material.tabs.TabLayout
+    <android.support.design.widget.TabLayout
         android:id="@+id/wifi_tl"
         android:layout_width="match_parent"
         android:layout_height="66dp"

@@ -9,9 +9,10 @@ import org.litepal.crud.LitePalSupport;
  * @Date: 2019.03.19 18:25
  * @Email: KosmoSakura@gmail.com
  */
-public class IgnoreDB extends LitePalSupport {
+public class KeepDB extends LitePalSupport {
     //自增id.这里为固定值
     private long id;
+    private String name;
     private String appName;
     @Column(unique = true, defaultValue = "unknown")
     private String pkgName;//唯一的，且默认值为unknown
@@ -23,6 +24,14 @@ public class IgnoreDB extends LitePalSupport {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getSize() {

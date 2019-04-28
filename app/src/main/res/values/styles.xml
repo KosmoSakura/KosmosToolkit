@@ -5,7 +5,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
     <!--底部弹出的dialog-->
     <style name="TransparentBottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/SheetStyle</item>

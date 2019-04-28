@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <!--
+    android:max：设置进度的最大值。
+    android:progress:设置当前第一进度值。
+    android:secondaryProgress：设置当前第二进度值。
+    android:visibility：设置是否显示，默认显示。-->
+<!--
+    @android:style/Widget.ProgressBar.Horizontal：水平进度条（可以显示刻度，常用）。
+    @android:style/Widget.ProgressBar.Small：小进度条。
+    @android:style/Widget.ProgressBar.Large：大进度条。
+    @android:style/Widget.ProgressBar.Inverse：不断跳跃、旋转画面的进度条。
+    @android:style/Widget.ProgressBar.Large.Inverse:不断跳跃、旋转动画的大进度条。
+    @android:style/Widget.ProgressBar.Small.Inverse：不断跳跃、旋转动画的小进度条。-->
+<!--<ProgressBar
+    style="@android:style/Widget.ProgressBar.Horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="10dp"
+    android:progress="60"
+    android:progressDrawable="@drawable/layer_progress"/>-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="5dip" />
+            <gradient
+                android:startColor="#ff9d9e9d"
+                android:centerColor="#ff5a5d5a"
+                android:centerY="0.75"
+                android:endColor="#ff747674"
+                android:angle="270"
+                />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+                <gradient
+                    android:startColor="#80ffd300"
+                    android:centerColor="#80ffb600"
+                    android:centerY="0.75"
+                    android:endColor="#a0ffcb00"
+                    android:angle="270"
+                    />
+            </shape>
+        </clip>
+    </item>
+
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+                <gradient
+                    android:startColor="#ffffd300"
+                    android:centerColor="#ffffb600"
+                    android:centerY="0.75"
+                    android:endColor="#ffffcb00"
+                    android:angle="270"
+                    />
+            </shape>
+        </clip>
+    </item>
+</layer-list>
+

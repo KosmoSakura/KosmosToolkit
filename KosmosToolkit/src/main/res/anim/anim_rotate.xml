@@ -15,7 +15,7 @@ pivotY相对于view的Y坐标的开始位置
 -->
 <rotate
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/ic_loading"
+    android:drawable="@drawable/lib_spinner"
     android:duration="2000"
     android:fromDegrees="0"
     android:interpolator="@android:anim/accelerate_decelerate_interpolator"

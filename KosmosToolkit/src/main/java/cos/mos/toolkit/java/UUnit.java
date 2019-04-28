@@ -21,21 +21,21 @@ public class UUnit {
     public static String sizeFormatbit(float size) {
         float kiloByte = size / 1024;
         if (kiloByte < 1) {
-            return fotmatMax(size) + "\tB";
+            return formatTwo(size) + "\tB";
         }
         float megaByte = kiloByte / 1024;
         if (megaByte < 1) {
-            return fotmatMax(kiloByte) + "\tKB";
+            return formatTwo(kiloByte) + "\tKB";
         }
         float gigaByte = megaByte / 1024;
         if (gigaByte < 1) {
-            return fotmatMax(megaByte) + "\tMB";
+            return formatTwo(megaByte) + "\tMB";
         }
         float teraBytes = gigaByte / 1024;
         if (teraBytes < 1) {
-            return fotmatMax(gigaByte) + "\tGB";
+            return formatTwo(gigaByte) + "\tGB";
         }
-        return fotmatMax(teraBytes) + "\tTB";
+        return formatTwo(teraBytes) + "\tTB";
     }
 
     /**
@@ -45,29 +45,29 @@ public class UUnit {
     public static String sizeFormatbitTime(float millisecond) {
         float second = millisecond / 1000;
         if (second < 1) {
-            return fotmatMax(millisecond) + "ms";
+            return formatTwo(millisecond) + "ms";
         }
         float min = second / 60;
         if (min < 1) {
-            return fotmatMax(second) + "s";
+            return formatTwo(second) + "s";
         }
         float h = min / 60;
         if (h < 1) {
-            return fotmatMax(min) + "min";
+            return formatTwo(min) + "min";
         }
         float day = h / 24;
         if (day < 1) {
-            return fotmatMax(h) + "h";
+            return formatTwo(h) + "h";
         }
         float mon = day / 30;
         if (mon < 1) {
-            return fotmatMax(day) + "D";
+            return formatTwo(day) + "D";
         }
         float year = mon / 12;
         if (year < 1) {
-            return fotmatMax(mon) + "M";
+            return formatTwo(mon) + "M";
         }
-        return fotmatMax(year) + "Y";
+        return formatTwo(year) + "Y";
     }
 
     /**
@@ -107,11 +107,10 @@ public class UUnit {
     /**
      * @param digit 输入
      * @return 2位有效小数
-     * 最优先使用
+     * 截断2位以上的小数(最优先使用
      */
-    private static float fotmatMax(float digit) {
-        int n = (int) (digit * 100f);//截断2位以上的小数
-        return (float) n / 100f;
+    private static float formatTwo(float digit) {
+        return (int) (digit * 100f) / 100f;
     }
 
     /**

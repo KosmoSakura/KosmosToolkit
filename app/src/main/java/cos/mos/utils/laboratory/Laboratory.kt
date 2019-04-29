@@ -7,7 +7,7 @@ package cos.mos.utils.laboratory
  * @Email: KosmoSakura@gmail.com
  */
 fun main(args: Array<String>) {
-    test2()
+    test3()
 }
 
 fun test1() {
@@ -29,4 +29,12 @@ fun test2() {
         }
     }
     print("\n结束循环")
+}
+
+fun test3() {
+    val list = arrayListOf<String>("a", "b", "c")
+    for (index in list.indices) {
+        println("第$index 个是${list[index]}")
+    }
+
 }

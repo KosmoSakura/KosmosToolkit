@@ -41,7 +41,7 @@ public class FragmentBroadCast extends KFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        broadcastMgr.unregisterReceiver(receiver)
+        broadcastMgr.unregisterReceiver(receiver);
     }
 
     @Override

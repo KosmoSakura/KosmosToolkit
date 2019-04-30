@@ -50,7 +50,9 @@ public class BottomSheetDialogSimple extends KActivity {
             diaBottom.setContentView(view);
         }
         if (diaBottom.isShowing()) {
-            diaBottom.hide();
+            diaBottom.dismiss();
+            //hide不会修改isShowing()状态
+//            diaBottom.hide();
         } else {
             diaBottom.show();
         }

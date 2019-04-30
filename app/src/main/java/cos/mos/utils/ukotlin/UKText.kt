@@ -1,13 +1,10 @@
 package cos.mos.utils.ukotlin
 
-import android.graphics.Paint
 import android.text.Editable
-import android.text.Html
-import android.text.Spanned
 import android.widget.TextView
 
 /**
- * @Description:字符工具类
+ * @Description:字符校验类
  * @Author: Kosmos
  * @Date: 2019.04.23 13:25
  * @Email: KosmoSakura@gmail.com
@@ -91,31 +88,4 @@ object UKText {
     fun isEmpty(list: List<Any>?): Boolean {
         return list?.isEmpty() ?: true
     }
-
-    /**
-     * 给字符添加下划线
-     */
-    @JvmStatic
-    fun setTextUnderLine(tv: TextView) {
-        tv.paint.flags = Paint.UNDERLINE_TEXT_FLAG//下划线
-        tv.paint.isAntiAlias = true//抗锯齿
-    }
-
-    /**
-     * @return 给字符添加下划线
-     */
-    @JvmStatic
-    fun getTextUnderLine(str: String): Spanned = Html.fromHtml("<u>$str</u>")
-
-    /**
-     * @return 文本加粗
-     */
-    @JvmStatic
-    fun getTextBold(str: String): Spanned = Html.fromHtml("<b>$str</b>")
-
-    /**
-     * @return 文本斜体
-     */
-    @JvmStatic
-    fun getTextItalic(str: String): Spanned = Html.fromHtml("<i>$str</i>")
 }

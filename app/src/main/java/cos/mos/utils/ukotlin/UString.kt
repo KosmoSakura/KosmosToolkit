@@ -30,14 +30,21 @@ object UString {
      * @return 6.0
      * */
     fun calculat(str: String): Float {
-        //+ - +
-        val symbol = str.split(Regex("[0-9]")).filter { it != "" }
-        val digits = str.split(Regex("[+\\-*/]"))
+        var text = str
+        var diff = 1f
+        if ("+-/*".contains(str[0])) {
+            if (str[0] == '-') {
+                diff = -1f
+            }
+            text = str.substring(1, str.length)
+        }
+        val symbol = text.split(Regex("[0-9.]")).filter { it != "" }
+        val digits = text.split(Regex("[+\\-*/]")).filter { it != "" }
         var calculat = 0f
         //5 6 2 1
         for (index in digits.indices) {
             if (index == 0) {
-                calculat = digits[index].toFloat()
+                calculat = digits[index].toFloat() * diff
             } else {
                 when (symbol[index - 1]) {
                     "+" -> {

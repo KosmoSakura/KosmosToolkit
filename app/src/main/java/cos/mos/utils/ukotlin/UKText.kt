@@ -57,7 +57,7 @@ object UKText {
     fun isEmpty(digit: Boolean?, defaul: Boolean = false): Boolean = digit ?: defaul
 
     fun isEmpty(str: String?): Boolean {
-        return str == null || str.isEmpty() || str.trim() == "" || str.equals("null", ignoreCase = false)
+        return str == null || str.isEmpty() || str.equals("null", ignoreCase = false)
     }
 
     fun isEmpty(tv: TextView?): Boolean {
@@ -84,10 +84,12 @@ object UKText {
      * @return 给字符添加下划线
      */
     fun getTextUnderLine(str: String): Spanned = Html.fromHtml("<u>$str</u>")
+
     /**
      * @return 文本加粗
      */
     fun getTextBold(str: String): Spanned = Html.fromHtml("<b>$str</b>")
+
     /**
      * @return 文本斜体
      */

@@ -27,7 +27,9 @@ object UKDate {
     /**
      * @return 当前日期:yyyy-MM-dd HH:mm:ss
      */
+    @JvmStatic
     fun getDateNow(format: String = FORMAT_DEFAULT): String = dateToStr(Date(), format)
 
+    @JvmStatic
     fun dateToStr(date: Date, format: String): String = SimpleDateFormat(format, Locale.getDefault()).format(date)
 }

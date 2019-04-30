@@ -21,6 +21,7 @@ object UKScreen {
      * 目标控件的绝对坐标 位置
      * @param view 目标控件
      * */
+    @JvmStatic
     fun getAbs(view: View): IntArray {
         val location = IntArray(2)
         view.getLocationInWindow(location) //获取在当前窗口内的绝对坐标，含toolBar
@@ -33,6 +34,7 @@ object UKScreen {
      * @param color int型色值
      * @return 设置顶部状态栏、底部导航栏颜色(只能在Activity内部调用)
      * */
+    @JvmStatic
     fun setBarColor(activity: Activity, color: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
@@ -50,37 +52,44 @@ object UKScreen {
     /**
      * @return 获取DisplayMetrics对象
      * */
+    @JvmStatic
     fun getDisPlayMetrics(): DisplayMetrics = metric
 
     /**
      * @param pxValue 像素单位
      * @return dp单位
      * */
+    @JvmStatic
     fun px2dp(pxValue: Float): Float = pxValue / scale + 0.5f
 
     /**
      * @param dpValue dp单位
      * @return  像素单位
      * */
+    @JvmStatic
     fun dp2Px(dpValue: Float): Float = dpValue * scale + 0.5f
 
     /**
      *@return 屏幕宽度（像素）
      * */
+    @JvmStatic
     fun getScreenWidth(): Int = metric.widthPixels
 
     /**
      *@return 屏幕高度（像素）
      * */
+    @JvmStatic
     fun getScreenHeight(): Int = metric.heightPixels
 
     /**
      * @return 屏幕密度(0.75 / 1.0 / 1.5)
      */
+    @JvmStatic
     fun getDensity(): Float = metric.density
 
     /**
      * @return 屏幕密度DPI(120 / 160 / 240)
      */
+    @JvmStatic
     fun getDensityDpi(): Int = metric.densityDpi
 }

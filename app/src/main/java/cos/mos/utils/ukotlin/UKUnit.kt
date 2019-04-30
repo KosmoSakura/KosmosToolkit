@@ -7,6 +7,7 @@ package cos.mos.utils.ukotlin
  * @Email: KosmoSakura@gmail.com
  */
 object UKUnit {
+    @JvmStatic
     fun sizeFormatbit(size: Float): String {
         val kiloByte = size / 1024
         if (kiloByte < 1) {
@@ -27,6 +28,7 @@ object UKUnit {
         return fotmatMax(teraBytes).toString() + "\tTB"
     }
 
+    @JvmStatic
     fun sizeFormatbitTime(millisecond: Float): String {
         val second = millisecond / 1000
         if (second < 1) {
@@ -59,17 +61,20 @@ object UKUnit {
      * @return 2位有效小数
      * 最优先使用
      */
+    @JvmStatic
     fun fotmatMax(digit: Float): Float = (digit * 100f).toInt() / 100f
 
     /**
      * @param celsius 摄氏度
      * @return 华氏度
      */
+    @JvmStatic
     fun cToF(celsius: Float): Float = 9 * celsius / 5 + 32
 
     /**
      * @param fahrenheit 华氏度
      * @return 摄氏度
      */
+    @JvmStatic
     fun fToC(fahrenheit: Float): Float = (fahrenheit - 32) * 5 / 9
 }

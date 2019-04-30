@@ -25,6 +25,7 @@ object UKIntent {
      * 去系统授权页面
      * 普通权限
      * */
+    @JvmStatic
     fun goSystem() {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                 Uri.parse("package:" + KApp.instance().packageName))
@@ -36,6 +37,7 @@ object UKIntent {
      * 去系统授权页面（悬浮窗权限）
      * 高级权限
      */
+    @JvmStatic
     @RequiresApi(api = Build.VERSION_CODES.M)
     fun goSysOverlay() {
         val intent =
@@ -48,6 +50,7 @@ object UKIntent {
      * 去系统授权页面（有权限查看使用情况的应用）
      * 高级权限
      */
+    @JvmStatic
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     fun goSysAdvanced() {
         val intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
@@ -61,6 +64,7 @@ object UKIntent {
      * @apiNote 去系统授权页面（有权限查看使用情况的应用）
      * 高级权限-带返回值
      */
+    @JvmStatic
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     fun goSysAdvanced(activity: Activity, request: Int) {
         val intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
@@ -73,6 +77,7 @@ object UKIntent {
      * 高级权限
      * 注意，很多国外的手机没有这个页面，直接跳过去会崩
      */
+    @JvmStatic
     fun goSysBKG() {
         val intent = Intent()
         val comp = ComponentName("com.android.settings", "com.android.settings.BackgroundApplicationsManager")
@@ -87,6 +92,7 @@ object UKIntent {
      * 注意，很多国外的手机没有这个页面，直接跳过去会崩
      * 数据来自：https://blog.csdn.net/gxp1182893781/article/details/78027863
      */
+    @JvmStatic
     fun goSysBKGAda() {
         var intent = Intent()
         try {
@@ -149,6 +155,7 @@ object UKIntent {
     /**
      * 回到桌面
      * */
+    @JvmStatic
     fun goHome() {
         val homeIntent = Intent(Intent.ACTION_MAIN)
         homeIntent.addCategory(Intent.CATEGORY_HOME)
@@ -158,6 +165,7 @@ object UKIntent {
     /**
      * 去无障碍授权页面
      */
+    @JvmStatic
     fun goAssist() {
         val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -168,6 +176,7 @@ object UKIntent {
      * @param dir 视频地址
      * @apiNote 打开系统视频播放器
      */
+    @JvmStatic
     fun toVideo(dir: String) {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -185,6 +194,7 @@ object UKIntent {
      * @param listener 链接开始、扫描结束回调监听
      * @apiNote 更新媒体库
      */
+    @JvmStatic
     fun addMediaLibrary(dir: String, listener: MediaScannerConnection.MediaScannerConnectionClient) {
         MediaScannerConnection.scanFile(KApp.instance(), arrayOf(dir), null, listener)
     }
@@ -194,6 +204,7 @@ object UKIntent {
      * @param content 分享内容
      *@apiNote 分享文字
      */
+    @JvmStatic
     fun shareText(title: String, content: String) {
         if (UKText.isEmpty(title) || UKText.isEmpty(content)) {
             UKToast.show("Data abnormity !")
@@ -222,6 +233,7 @@ object UKIntent {
      * 安卓市场：com.hiapk.marketpho
      * 安智市场：cn.goapk.market
      */
+    @JvmStatic
     fun toPlayStore() {
         try {
             val uri = Uri.parse("market://details?id=" + KApp.instance().packageName)
@@ -238,6 +250,7 @@ object UKIntent {
      * @param email 收件人地址
      * @apiNote 打开邮件，并填入收件人
      */
+    @JvmStatic
     fun toEmail(email: String) {
         try {
             val data = Intent(Intent.ACTION_SENDTO)
@@ -257,6 +270,7 @@ object UKIntent {
      * @param link 地址
      * @apiNote 用默认浏览器打开
      */
+    @JvmStatic
     fun toBrowser(link: String) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -267,6 +281,7 @@ object UKIntent {
      * @param telephone 电话号
      * @apiNote 打开拨号页面，并填入电话号
      */
+    @JvmStatic
     fun toPhone(telephone: String) {
         val phone = Intent(Intent.ACTION_DIAL)
         phone.data = Uri.parse("tel:$telephone")

@@ -243,6 +243,14 @@ public class UText {
     }
 
     /**
+     * @param str "1967+2356-433*12/66"
+     * @return [1967],[2356],[433],[12],[66]
+     */
+    public static String[] split(String str) {
+        return str.split("[+\\-*/]");
+    }
+
+    /**
      * @return 给字符添加下划线
      */
     public static void setTextUnderLine(TextView t) {

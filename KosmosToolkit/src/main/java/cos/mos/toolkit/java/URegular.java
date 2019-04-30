@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
  */
 public class URegular {
 
-
     private static InputFilter emojiFilter = new InputFilter() {
         Pattern emoji = Pattern.compile(
             "[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]",

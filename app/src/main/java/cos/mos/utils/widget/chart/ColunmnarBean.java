@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Email:ZeroProject@foxmail.com
  * Events:
  */
-public class ColunmnarDto implements Serializable {
+public class ColunmnarBean implements Serializable {
     private float humidity;//
     private int color = -1;//
     private int txt_color = -1;
@@ -19,7 +19,7 @@ public class ColunmnarDto implements Serializable {
     private int id;
 
 
-    public ColunmnarDto(int id, float humidity, int color, int txt_color, String name) {
+    public ColunmnarBean(int id, float humidity, int color, int txt_color, String name) {
         this.id = id;
         this.humidity = humidity;
         this.color = color;
@@ -27,10 +27,10 @@ public class ColunmnarDto implements Serializable {
         this.name = name;
     }
 
-    public ColunmnarDto() {
+    public ColunmnarBean() {
     }
 
-    public ColunmnarDto(float humidity, int color, String name) {
+    public ColunmnarBean(float humidity, int color, String name) {
         this.humidity = humidity;
         this.color = color;
         this.name = name;

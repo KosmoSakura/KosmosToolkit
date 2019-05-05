@@ -29,7 +29,7 @@ import cos.mos.utils.R;
  */
 public class ColumnarChart extends View {
 
-    private List<ColunmnarDto> list;
+    private List<ColunmnarBean> list;
     private int totle;
     private float tb = 15;
     private String charts_name;//表名
@@ -44,7 +44,7 @@ public class ColumnarChart extends View {
         list = new ArrayList<>();
     }
 
-    public void setList(List<ColunmnarDto> lis) {
+    public void setList(List<ColunmnarBean> lis) {
         this.list.clear();
         this.list.addAll(lis);
         totle = 0;
@@ -59,7 +59,7 @@ public class ColumnarChart extends View {
         invalidate();
     }
 
-    public void setList(List<ColunmnarDto> lis, String charts_name) {
+    public void setList(List<ColunmnarBean> lis, String charts_name) {
         this.list.clear();
         this.list.addAll(lis);
         this.charts_name = charts_name;
@@ -104,7 +104,7 @@ public class ColumnarChart extends View {
 
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
-                ColunmnarDto dto = list.get(i);
+                ColunmnarBean dto = list.get(i);
                 drawRectf(canvas, dto, i);
 
             }
@@ -113,7 +113,7 @@ public class ColumnarChart extends View {
     }
 
 
-    public void drawRectf(Canvas c, ColunmnarDto dto, int i) {
+    public void drawRectf(Canvas c, ColunmnarBean dto, int i) {
         //绘制矩形
         float left_right = tb * 3.0f;//间距
         float w = getWidth() * 0.02f + 40;//X轴起始点
@@ -193,7 +193,7 @@ public class ColumnarChart extends View {
             float y = event.getY();
             boolean isOut = true;
             for (int i = 0; i < list.size(); i++) {
-                ColunmnarDto dto = list.get(i);
+                ColunmnarBean dto = list.get(i);
                 float l = dto.getL();
                 float r = dto.getR();
                 float t = dto.getTop();
@@ -222,7 +222,7 @@ public class ColumnarChart extends View {
     }
 
     public interface ItemSelect {
-        void onItemSelect(ColunmnarDto dto);
+        void onItemSelect(ColunmnarBean dto);
     }
 
     private ItemSelect itemSelect;

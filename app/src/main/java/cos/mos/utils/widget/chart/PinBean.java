@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Email:ZeroProject@foxmail.com
  * Events:
  */
-public class PinDto implements Serializable {
+public class PinBean implements Serializable {
     private float humidity;
     private int color = -1;
     private int txt_color = -1;
@@ -19,20 +19,20 @@ public class PinDto implements Serializable {
     private float y;
     private int id;
 
-    public PinDto(float humidity, int color, String name) {
+    public PinBean(float humidity, int color, String name) {
         this.humidity = humidity;
         this.color = color;
         this.name = name;
     }
 
-    public PinDto(int id, float humidity, int color, String name) {
+    public PinBean(int id, float humidity, int color, String name) {
         this.id = id;
         this.humidity = humidity;
         this.color = color;
         this.name = name;
     }
 
-    public PinDto() {
+    public PinBean() {
     }
 
     public int getId() {

@@ -1,10 +1,13 @@
 package cos.mos.utils.widget;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
 
 import cos.mos.toolkit.ULog;
 import cos.mos.utils.R;
 import cos.mos.utils.init.BaseActivity;
+import cos.mos.utils.widget.chart.LineBean;
+import cos.mos.utils.widget.chart.LineChart;
 import cos.mos.utils.widget.clip.VideoClipBar;
 import cos.mos.utils.widget.clip.WaveClipBar;
 import cos.mos.utils.widget.single.KRatingBar;
@@ -22,6 +25,7 @@ public class SampleActivity extends BaseActivity {
     }
 
     private KRatingBar bar;
+    private LineChart lineChart;
     private VideoClipBar videoBar;
     private WaveClipBar seekbar;
 
@@ -30,6 +34,7 @@ public class SampleActivity extends BaseActivity {
         bar = findViewById(R.id.rating_bar);
         videoBar = findViewById(R.id.vu_clip);
         seekbar = findViewById(R.id.au_clip);
+        lineChart = findViewById(R.id.tbShow);
         try {
             seekbar.setAudio(new FileInputStream("音频路径"), 11, 10);
         } catch (Exception e) {
@@ -39,6 +44,16 @@ public class SampleActivity extends BaseActivity {
 
     @Override
     protected void logic() {
+        ArrayList<LineBean> list = new ArrayList<>();
+        list.add(new LineBean(1, 233f));
+        list.add(new LineBean(2, 233f));
+        list.add(new LineBean(3, 233f));
+        list.add(new LineBean(4, 233f));
+        list.add(new LineBean(5, 233f));
+        lineChart.setChartsDescribe("表描述")
+            .setName("属性1描述", "属性2描述")
+            .setData(list)
+            .show();
         bar.setStarEmpty(R.drawable.ic_android)
             .setStarFill(R.drawable.ic_loading)
             .setStarMax(5)

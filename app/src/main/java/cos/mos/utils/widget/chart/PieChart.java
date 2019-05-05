@@ -30,7 +30,7 @@ import cos.mos.utils.R;
  */
 public class PieChart extends View {
 
-    private List<PinDto> list;
+    private List<PinBean> list;
     private float totle = 100;
     private RectF normalOval;//未选择区域
     private RectF selectOval;//选中区域
@@ -59,7 +59,7 @@ public class PieChart extends View {
         paint.setTextSize(22f);//字体大小
     }
 
-    public void setList(List<PinDto> lis) {
+    public void setList(List<PinBean> lis) {
         this.list.clear();
         this.list.addAll(lis);
         totle = 0;
@@ -72,7 +72,7 @@ public class PieChart extends View {
         invalidate();
     }
 
-    public void setList(List<PinDto> lis, String charts_name) {
+    public void setList(List<PinBean> lis, String charts_name) {
         this.list.clear();
         this.list.addAll(lis);
         this.charts_name = charts_name;
@@ -149,7 +149,7 @@ public class PieChart extends View {
             float start = 0;
 
             for (int i = 0; i < list.size(); i++) {
-                PinDto dto = list.get(i);
+                PinBean dto = list.get(i);
                 paint.setColor(dto.getColor());//圆弧颜色
 
                 float hum = dto.getHumidity() / totle * 360;
@@ -289,7 +289,7 @@ public class PieChart extends View {
                         radius = (int) (Math.atan((x - ox) / (oy - y)) * 180 / Math.PI + 270);
                     }
                     for (int i = 0; i < list.size(); i++) {
-                        PinDto dto = list.get(i);
+                        PinBean dto = list.get(i);
                         if (dto.getX() <= radius && dto.getY() >= radius) {
                             selectId = dto.getId();
                             if (itemSelect != null) {
@@ -318,7 +318,7 @@ public class PieChart extends View {
     }
 
     public interface ItemSelect {
-        void onItemSelect(PinDto dto);
+        void onItemSelect(PinBean dto);
     }
 
     private ItemSelect itemSelect;

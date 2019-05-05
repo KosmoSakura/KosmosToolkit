@@ -39,4 +39,8 @@
         kosmos:star_height="32dp"
         kosmos:star_width="32dp"/>
 
+    <cos.mos.utils.widget.chart.LineChart
+        android:id="@+id/tbShow"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"/>
 </FrameLayout>

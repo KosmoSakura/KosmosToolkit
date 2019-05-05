@@ -180,7 +180,7 @@ public class UDialog extends Dialog {
      * @apiNote 不调用、或传入空 则自动处理
      * 开始构建对话框
      */
-    public void build(ConfirmClick confirmClick) {
+    public void build(final ConfirmClick confirmClick) {
         //标题
         TextView title = findViewById(R.id.dia_title);
         View lineTop = findViewById(R.id.dia_line_top);

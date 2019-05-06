@@ -11,7 +11,7 @@ import java.util.*
  * @Date: 2019.05.06 15:43
  * @Email: KosmoSakura@gmail.com
  */
-object UGson {
+object KtGson {
     private var gson: Gson? = null
 
     init {

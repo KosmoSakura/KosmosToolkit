@@ -115,7 +115,7 @@ class UkHttp private constructor() {
     }
 
 
-    //todo 问题并没有解决
+    //todo 泛型擦除问题并没有解决
     @Throws(JSONException::class)
     private fun <T> convert(listener: KtHttpListener<T>, body: String) {
         val root = JSONObject(body)

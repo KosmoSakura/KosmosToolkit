@@ -8,8 +8,8 @@ import java.util.List;
 
 import cos.mos.toolkit.ULogBj;
 import cos.mos.toolkit.java.UText;
-import cos.mos.utils.retrofit.file.FileProgressCallback;
-import cos.mos.utils.retrofit.file.FileWrapper;
+import cos.mos.utils.net.retrofit.file.FileProgressCallback;
+import cos.mos.utils.net.retrofit.file.FileWrapper;
 import cos.mos.utils.widget.ProgressDialog;
 import cos.mos.utils.init.UHttp;
 import cos.mos.utils.mvp.KPresenter;

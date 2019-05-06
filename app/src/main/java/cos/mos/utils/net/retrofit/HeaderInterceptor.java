@@ -1,4 +1,4 @@
-package cos.mos.utils.retrofit;
+package cos.mos.utils.net.retrofit;
 
 
 import java.io.IOException;

@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutionException;
 
 import cos.mos.utils.init.Constant;
 import cos.mos.utils.mvp.KRequest;
-import cos.mos.utils.retrofit.file.FileWrapper;
+import cos.mos.utils.net.retrofit.file.FileWrapper;
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;

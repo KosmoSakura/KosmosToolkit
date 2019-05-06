@@ -1,7 +1,7 @@
 package cos.mos.utils.init;
 
 import cos.mos.toolkit.init.KActivity;
-import cos.mos.utils.retrofit.HostWrapper;
+import cos.mos.utils.net.retrofit.HostWrapper;
 import cos.mos.utils.mvp.KRequest;
 import cos.mos.utils.mvp.contract.KContract;
 import io.reactivex.disposables.CompositeDisposable;

@@ -1,4 +1,4 @@
-package cos.mos.utils.retrofit.file;
+package cos.mos.utils.net.retrofit.file;
 
 
 import cos.mos.utils.constant.KConfig;

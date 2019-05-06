@@ -10,6 +10,8 @@ import java.lang.ref.WeakReference
  * @Author: Kosmos
  * @Date: 2019.05.06 17:29
  * @Email: KosmoSakura@gmail.com
+ *  <uses-permission android:name="android.permission.INTERNET"/>
+ * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
  */
 class KtNet private constructor() {
 

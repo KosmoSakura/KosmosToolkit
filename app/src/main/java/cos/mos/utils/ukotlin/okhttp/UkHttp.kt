@@ -2,10 +2,12 @@ package cos.mos.utils.ukotlin.okhttp
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import cos.mos.toolkit.java.UText
 import cos.mos.utils.net.okhttp.UNet
 import okhttp3.*
 import org.json.JSONException
+import org.json.JSONObject
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
@@ -113,26 +115,31 @@ class UkHttp private constructor() {
     }
 
 
+    //todo 问题并没有解决
     @Throws(JSONException::class)
     private fun <T> convert(listener: KtHttpListener<T>, body: String) {
-//        val root = JSONObject(body)
-//        //外围字段
-//        val code = root.getInt("Code")
-//        val msg = root.getString("msg")
-//        val json = root.getString("data")
-//        //服务器成功返回码
-//        if (code == 0) {
-//            try {
-//                listener.success(KtGson.toParseList(json, cls))
-//            } catch (e: Exception) {
-//                try {
+        val root = JSONObject(body)
+        //外围字段
+        val code = root.getInt("Code")
+        val msg = root.getString("msg")
+        val json = root.getString("data")
+        //服务器成功返回码
+        if (code == 0) {
+            try {
+//                val list: ArrayList<T> = gson.fromJson(json, object : TypeToken<List<T>>() {}.type)
+                listener.success(gson.fromJson(json, object : TypeToken<List<T>>() {}.type))
+//                listener.success(KtGson.toParseList(json, TypeToken<List<T>>() {}.type))
+            } catch (e: Exception) {
+                try {
+//                    val bean: T = gson.fromJson(json, object : TypeToken<T>() {}.type)
+                    listener.success(gson.fromJson(json, object : TypeToken<T>() {}.type))
 //                    listener.success(KtGson.toParseObj(json, cls))
-//                } catch (e1: Exception) {
-//                    listener.failure(null, e1, "解析失败", code)
-//                }
-//            }
-//        } else {
-//            listener.failure(null, null, msg, code)
-//        }
+                } catch (e1: Exception) {
+                    listener.failure(null, e1, "解析失败", code)
+                }
+            }
+        } else {
+            listener.failure(null, null, msg, code)
+        }
     }
 }

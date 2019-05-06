@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import java.lang.ref.WeakReference;
+
 import cos.mos.utils.init.App;
 
 /**
@@ -17,46 +19,46 @@ import cos.mos.utils.init.App;
  */
 public class UNet {
     private static UNet net;
-    private Context cont;
+    private WeakReference<Context> ref;
     private ConnectivityManager netMgr;
 
-    private UNet(Context context) {
-        this.cont = context;
+    private UNet() {
+
     }
 
     public static UNet instance(Context context) {
         if (net == null) {
-            net = new UNet(context);
+            net = new UNet();
         }
+        net.ref = new WeakReference<>(context);
         return net;
     }
 
     public static UNet instance() {
         if (net == null) {
-            net = new UNet(null);
+            net = new UNet();
         }
         return net;
     }
 
     private ConnectivityManager mgr() {
         if (netMgr == null) {
-            if (cont == null) {
-                netMgr = (ConnectivityManager) App.instance().getSystemService(Context.CONNECTIVITY_SERVICE);
+            if (ref != null && ref.get() != null) {
+                netMgr = (ConnectivityManager) ref.get().getSystemService(Context.CONNECTIVITY_SERVICE);
+                ref.clear();
             } else {
-                netMgr = (ConnectivityManager) cont.getSystemService(Context.CONNECTIVITY_SERVICE);
+                netMgr = (ConnectivityManager) App.instance().getSystemService(Context.CONNECTIVITY_SERVICE);
             }
         }
         return netMgr;
     }
 
     /**
-     * @return 当前手机是否有正确连接网络
+     * @return 当前是否为有网络可以使用（链接）
      */
-    public boolean WhetherConnectNet(Context context) {
-        ConnectivityManager mgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (mgr != null && mgr.getActiveNetworkInfo() != null)
-            return mgr.getActiveNetworkInfo().isAvailable();
-        return false;
+    public boolean isNetCanlinked() {
+        NetworkInfo info = mgr().getActiveNetworkInfo();
+        return info != null && info.isAvailable();
     }
 
     /**

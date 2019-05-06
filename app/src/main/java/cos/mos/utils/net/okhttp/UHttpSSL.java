@@ -16,7 +16,6 @@ import javax.net.ssl.SSLSession;
 
 import cos.mos.toolkit.io.UFile;
 import cos.mos.toolkit.java.UText;
-import cos.mos.utils.net.okhttp.cache.OkHttpClientManager;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Call;
@@ -67,7 +66,7 @@ public class UHttpSSL {
 
     public static UHttpSSL instance(Class classType) {
         if (httpSSL == null) {
-            synchronized (OkHttpClientManager.class) {
+            synchronized (UHttpSSL.class) {
                 if (httpSSL == null) {
                     httpSSL = new UHttpSSL();
                 }
@@ -84,6 +83,10 @@ public class UHttpSSL {
      * @apiNote 异步Post
      */
     public void postAsyn(String url, String params, final HttpListener listener) {
+        if (!UNet.instance().isNetConnected()) {
+            listener.failure(null, null, "网络不可用", NetState.NetworkDislink);
+            return;
+        }
         connection(listener, new Request.Builder()
             .url(url)
             .addHeader("key", "value")
@@ -97,6 +100,10 @@ public class UHttpSSL {
      * @apiNote 异步Get
      */
     public void getAsyn(String url, final HttpListener listener) {
+        if (!UNet.instance().isNetConnected()) {
+            listener.failure(null, null, "网络不可用", NetState.NetworkDislink);
+            return;
+        }
         connection(listener, new Request.Builder()
             .url(url)
             .addHeader("key", "value")
@@ -111,6 +118,10 @@ public class UHttpSSL {
      * @apiNote 上传文件
      */
     public void fileUpload(String url, File[] files, final String form, final HttpListener listener) {
+        if (!UNet.instance().isNetConnected()) {
+            listener.failure(null, null, "网络不可用", NetState.NetworkDislink);
+            return;
+        }
         MultipartBody.Builder builder = new MultipartBody.Builder()
             .setType(MultipartBody.FORM)
             .addFormDataPart("allowSuffix", "jpg,png,bmp,jpeg,zip,rar,doc,mp4")
@@ -133,6 +144,10 @@ public class UHttpSSL {
      * @apiNote 上传下载
      */
     public void fileDownload(String url, File dir, final HttpListener<String> listener) {
+        if (!UNet.instance().isNetConnected()) {
+            listener.failure(null, null, "网络不可用", NetState.NetworkDislink);
+            return;
+        }
         final Request request = new Request.Builder()
             .url(url)
             .build();
@@ -140,7 +155,7 @@ public class UHttpSSL {
             .enqueue(new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    listener.failure(call.request(), e, "请求失败", -1);
+                    listener.failure(call.request(), e, "请求失败", NetState.HttpError);
                 }
 
                 @Override
@@ -180,7 +195,7 @@ public class UHttpSSL {
             .enqueue(new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    listener.failure(call.request(), e, "请求失败", -1);
+                    listener.failure(call.request(), e, "请求失败", NetState.HttpError);
                 }
 
                 @Override

@@ -59,6 +59,10 @@ public class UHttp {
      * @apiNote 异步Post
      */
     public void postAsyn(String url, String params, final HttpListener listener) {
+        if (!UNet.instance().isNetConnected()) {
+            listener.failure(null, null, "网络不可用", NetState.NetworkDislink);
+            return;
+        }
         connection(listener, new Request.Builder()
             .url(url)
             .addHeader("key", "value")
@@ -72,6 +76,10 @@ public class UHttp {
      * @apiNote 异步Get
      */
     public void getAsyn(String url, final HttpListener listener) {
+        if (!UNet.instance().isNetConnected()) {
+            listener.failure(null, null, "网络不可用", NetState.NetworkDislink);
+            return;
+        }
         connection(listener, new Request.Builder()
             .url(url)
             .addHeader("key", "value")
@@ -86,7 +94,7 @@ public class UHttp {
             .enqueue(new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    listener.failure(call.request(), e, "请求失败", -1);
+                    listener.failure(call.request(), e, "请求失败", NetState.HttpError);
                 }
 
                 @Override

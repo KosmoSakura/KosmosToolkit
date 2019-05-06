@@ -1,7 +1,5 @@
 package cos.mos.utils.ukotlin.okhttp
 
-import okhttp3.Request
-
 /**
  * @Description:
  * @Author: Kosmos
@@ -9,7 +7,7 @@ import okhttp3.Request
  * @Email: KosmoSakura@gmail.com
  */
 interface KtHttpListener<T> {
-    fun failure(request: Request?, e: Exception?, describe: String, code: Int)
+    fun failure(describe: String, code: Int)
 
     fun success(response: T)
 }

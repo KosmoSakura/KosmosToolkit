@@ -28,6 +28,9 @@ object KtGson {
         return gson.toJson(bean)
     }
 
+
+
+    inline fun <reified T> Gson.fromJson(json: String) = fromJson(json, T::class.java)
     /**
      * @return 返回一个实体类对象 JsonSyntaxException
      */

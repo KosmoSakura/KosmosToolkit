@@ -61,7 +61,7 @@ class UkHttp private constructor() {
      */
     fun post(url: String, params: String, listener: KtHttpListener<*>) {
         if (!KtNet.instance().isNetConnected()) {
-            listener.failure(null, null, "网络不可用", NetworkDislink)
+            listener.failure("网络不可用", NetworkDislink)
             return
         }
         connection(listener, Request.Builder()
@@ -78,7 +78,7 @@ class UkHttp private constructor() {
      */
     fun getAsyn(url: String, listener: KtHttpListener<*>) {
         if (!UNet.instance().isNetConnected) {
-            listener.failure(null, null, "网络不可用", NetworkDislink)
+            listener.failure("网络不可用", NetworkDislink)
             return
         }
         connection(listener, Request.Builder()
@@ -91,7 +91,7 @@ class UkHttp private constructor() {
         client.newCall(request)
             .enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
-                    listener.failure(call.request(), e, "请求失败", HttpError)
+                    listener.failure("请求失败", HttpError)
                 }
 
                 override fun onResponse(call: Call, response: Response) {
@@ -101,14 +101,14 @@ class UkHttp private constructor() {
                             try {
                                 convert(listener, body.string())
                             } catch (e: Exception) {
-                                listener.failure(call.request(), null, "ResponseBody为空", 200)
+                                listener.failure("ResponseBody为空", 200)
                             }
 
                         } else {
-                            listener.failure(call.request(), null, "ResponseBody为空", 200)
+                            listener.failure("ResponseBody为空", 200)
                         }
                     } else {
-                        listener.failure(call.request(), null, "Code不等于200", response.code())
+                        listener.failure("Code不等于200", response.code())
                     }
                 }
             })
@@ -135,11 +135,11 @@ class UkHttp private constructor() {
                     listener.success(gson.fromJson(json, object : TypeToken<T>() {}.type))
 //                    listener.success(KtGson.toParseObj(json, cls))
                 } catch (e1: Exception) {
-                    listener.failure(null, e1, "解析失败", code)
+                    listener.failure("解析失败", code)
                 }
             }
         } else {
-            listener.failure(null, null, msg, code)
+            listener.failure(msg, code)
         }
     }
 }

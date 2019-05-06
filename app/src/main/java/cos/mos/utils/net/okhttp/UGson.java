@@ -1,4 +1,4 @@
-package cos.mos.toolkit.java;
+package cos.mos.utils.net.okhttp;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,7 +9,7 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 
 /**
- * @Description: <p>
+ * @Description: Gson解析
  * @Author: Kosmos
  * @Date: 2018年10月08日 16:30
  * @Email: KosmoSakura@foxmail.com
@@ -39,17 +39,16 @@ public class UGson {
     /**
      * @return 返回一个实体类对象 JsonSyntaxException
      */
-    public static <T> T toParse(String jsonString, Class<T> cls) {
-        return gson.fromJson(jsonString, cls);
+    public static <T> T toParseObj(String json, Class<T> cls) {
+        return gson.fromJson(json, cls);
     }
 
     /**
      * @return 返回一个列表 JsonSyntaxException
      */
-    public static <T> ArrayList<T> toParses(String jsonString, Class<T> cls) {
+    public static <T> ArrayList<T> toParseList(String json, Class<T> cls) {
         ArrayList<T> list = new ArrayList<>();
-        JsonArray array = new JsonParser().parse(jsonString).getAsJsonArray();
-
+        JsonArray array = new JsonParser().parse(json).getAsJsonArray();
         for (final JsonElement elem : array) {
             list.add(gson.fromJson(elem, cls));
         }
@@ -58,17 +57,17 @@ public class UGson {
 
 
     /**
-     * @param list 待转换列表
+     * @param list<A> 待转泛型列表
      * @param cls  目标类型Class
-     * @param <T>  目标泛型
+     * @param <B>  目标泛型
      * @return 返回一个转换类型的列表
      */
-    public static <T> ArrayList<T> toParseNew(ArrayList list, Class<T> cls) {
-        ArrayList<T> dtoList = new ArrayList<>();
+    public static <B> ArrayList<B> toParseNew(ArrayList list, Class<B> cls) {
+        ArrayList<B> dtoList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             Object object = list.get(i);
             String json = gson.toJson(object);
-            T dto = gson.fromJson(json, cls);
+            B dto = gson.fromJson(json, cls);
             dtoList.add(dto);
         }
         return dtoList;

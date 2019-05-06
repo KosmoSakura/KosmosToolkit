@@ -11,7 +11,7 @@ import android.widget.TextView
  * @Date: 2019.04.30 19:34
  * @Email: KosmoSakura@gmail.com
  */
-object UString {
+object KtString {
     internal var aa: Array<String>? = null
     internal var bb: IntArray? = null
     /**

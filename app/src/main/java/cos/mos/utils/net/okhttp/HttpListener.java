@@ -11,5 +11,5 @@ import okhttp3.Request;
 public interface HttpListener<T> {
     void failure(Request request, Exception e, String describe, int code);
 
-    void success(Request request, String response);
+    void success(T response);
 }

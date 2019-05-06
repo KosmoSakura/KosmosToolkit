@@ -16,7 +16,7 @@ import cos.mos.toolkit.init.KApp
  * @Date: 2019.04.23 13:10
  * @Email: KosmoSakura@gmail.com
  */
-object UKIntent {
+object KtIntent {
     private fun start(intent: Intent) {
         KApp.instance().startActivity(intent)
     }
@@ -97,7 +97,7 @@ object UKIntent {
         var intent = Intent()
         try {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            UKLog.commonI("******************当前手机型号为：" + Build.MANUFACTURER)
+            KtLog.commonI("******************当前手机型号为：" + Build.MANUFACTURER)
             var componentName: ComponentName? = null
             when (Build.MANUFACTURER) {
                 "Xiaomi"  // 红米Note4测试通过
@@ -184,7 +184,7 @@ object UKIntent {
         try {
             start(intent)
         } catch (e: Exception) {
-            UKToast.show("No default player")
+            KtToast.show("No default player")
         }
     }
 
@@ -206,8 +206,8 @@ object UKIntent {
      */
     @JvmStatic
     fun shareText(title: String, content: String) {
-        if (UKText.isEmpty(title) || UKText.isEmpty(content)) {
-            UKToast.show("Data abnormity !")
+        if (KtText.isEmpty(title) || KtText.isEmpty(content)) {
+            KtToast.show("Data abnormity !")
             return
         }
         var shareIntent = Intent(Intent.ACTION_SEND)
@@ -261,7 +261,7 @@ object UKIntent {
             data.putExtra(Intent.EXTRA_TEXT, "This is the content")
             start(data)
         } catch (e: Exception) {
-            UKToast.show("No mail client found")
+            KtToast.show("No mail client found")
         }
 
     }

@@ -171,7 +171,7 @@ public class VideoClipBar extends View {
      * @apiNote -1为极左极右
      */
     public void setCursor(float cursor) {
-//        UKLog.commonE("【百分比：" + cursor * (lineEnd - lineStart) + "】" +
+//        KtLog.commonE("【百分比：" + cursor * (lineEnd - lineStart) + "】" +
 //            "\n图宽：" + bmpWidth / 2 + "\n【LR：" + xLeft + "-" + xRight);
         xTop = cursor * (lineEnd - lineStart) + bmpWidth;
         if (xTop < (xLeft + bmpWidth)) {
@@ -184,7 +184,7 @@ public class VideoClipBar extends View {
         } else {
             xTop = xTop - bmpWidth / 2;
         }
-//        UKLog.commonI("cursor:" + cursor + ",xTop:" + xTop + "【】【】LR：" + xLeft + "++" + xRight);
+//        KtLog.commonI("cursor:" + cursor + ",xTop:" + xTop + "【】【】LR：" + xLeft + "++" + xRight);
         invalidate();
     }
 

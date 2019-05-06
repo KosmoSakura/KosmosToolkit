@@ -14,7 +14,7 @@ import cos.mos.toolkit.init.KApp
  * @Date: 2019.04.24 15:18
  * @Email: KosmoSakura@gmail.com
  */
-object UKColor {
+object KtColor {
     /**
      * @param color eg：-4253158
      * @return eg：-4253158

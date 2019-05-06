@@ -9,21 +9,21 @@ import android.widget.TextView
  * @Date: 2019.04.23 13:25
  * @Email: KosmoSakura@gmail.com
  */
-object UKText {
+object KtText {
     /**
      * isNull: 校验为空返回指定字符，默认""
      */
     @JvmStatic
     fun isNull(tv: TextView?, defaul: String = ""): String {
         return if (tv != null) {
-            if (UKText.isEmpty(tv.text)) defaul else tv.text.toString()
+            if (KtText.isEmpty(tv.text)) defaul else tv.text.toString()
         } else defaul
     }
 
     @JvmStatic
     fun isNull(str: String?, defaul: String = ""): String {
         return if (str != null) {
-            if (UKText.isEmpty(str)) defaul else str
+            if (KtText.isEmpty(str)) defaul else str
         } else {
             return defaul
         }
@@ -32,7 +32,7 @@ object UKText {
     @JvmStatic
     fun isNull(str: Editable?, defaul: String = ""): String {
         return if (str != null) {
-            if (UKText.isEmpty(str)) defaul else str.toString()
+            if (KtText.isEmpty(str)) defaul else str.toString()
         } else {
             return defaul
         }
@@ -76,7 +76,7 @@ object UKText {
 
     @JvmStatic
     fun isEmpty(tv: TextView?): Boolean {
-        return if (tv == null) true else UKText.isEmpty(tv.text.toString())
+        return if (tv == null) true else KtText.isEmpty(tv.text.toString())
     }
 
     @JvmStatic

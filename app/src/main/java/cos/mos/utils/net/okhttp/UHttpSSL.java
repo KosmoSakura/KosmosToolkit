@@ -1,11 +1,14 @@
 package cos.mos.utils.net.okhttp;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
@@ -29,7 +32,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * @Description:
+ * @Description: SSL请求
  * @Author: Kosmos
  * @Date: 2019.05.06 10:01
  * @Email: KosmoSakura@gmail.com
@@ -37,6 +40,7 @@ import okhttp3.ResponseBody;
 public class UHttpSSL {
     private static UHttpSSL httpSSL;
     private OkHttpClient client;
+    private Class cls;//泛型
 
     private UHttpSSL() {
         Cache cache = new Cache(new File("网络缓存路径"), 10240 * 1024);
@@ -61,7 +65,7 @@ public class UHttpSSL {
             .build();
     }
 
-    public static UHttpSSL instance() {
+    public static UHttpSSL instance(Class classType) {
         if (httpSSL == null) {
             synchronized (OkHttpClientManager.class) {
                 if (httpSSL == null) {
@@ -69,6 +73,7 @@ public class UHttpSSL {
                 }
             }
         }
+        httpSSL.cls = classType;
         return httpSSL;
     }
 
@@ -127,7 +132,7 @@ public class UHttpSSL {
      * @param listener 回调
      * @apiNote 上传下载
      */
-    public void fileDownload(String url, File dir, final HttpListener listener) {
+    public void fileDownload(String url, File dir, final HttpListener<String> listener) {
         final Request request = new Request.Builder()
             .url(url)
             .build();
@@ -140,7 +145,6 @@ public class UHttpSSL {
 
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) {
-
                     ResponseBody body = response.body();
                     if (body != null) {
                         InputStream is;
@@ -157,12 +161,12 @@ public class UHttpSSL {
                             fos.flush();
                             is.close();
                             fos.close();
-                            listener.success(request, file.getAbsolutePath());
+                            listener.success(file.getAbsolutePath());
                         } catch (Exception e) {
-                            listener.failure(response.request(), e, "保存异常",  response.code());
+                            listener.failure(response.request(), e, "保存异常", response.code());
                         }
                     } else {
-                        listener.failure(response.request(), null, "ResponseBody为空",  response.code());
+                        listener.failure(response.request(), null, "ResponseBody为空", response.code());
                     }
                 }
             });
@@ -185,7 +189,7 @@ public class UHttpSSL {
                         ResponseBody body = response.body();
                         if (body != null) {
                             try {
-                                convert(body.string());
+                                convert(listener, body.string());
                             } catch (Exception e) {
                                 listener.failure(call.request(), null, "ResponseBody为空", 200);
                             }
@@ -199,8 +203,28 @@ public class UHttpSSL {
             });
     }
 
-    private void convert(final String body) {
-
+    private void convert(final HttpListener listener, final String body) throws JSONException {
+        final JSONObject root = new JSONObject(body);
+        //外围字段
+        final int code = root.getInt("Code");
+        final String msg = root.getString("msg");
+        final String json = root.getString("data");
+        //服务器成功返回码
+        if (code == 0) {
+            try {
+                final ArrayList arrayList = UGson.toParseList(json, cls);
+                listener.success(arrayList);
+            } catch (Exception e) {
+                try {
+                    Object object = UGson.toParseObj(json, cls);
+                    listener.success(object);
+                } catch (Exception e1) {
+                    listener.failure(null, e1, "解析失败", code);
+                }
+            }
+        } else {
+            listener.failure(null, null, msg, code);
+        }
     }
 
     /**

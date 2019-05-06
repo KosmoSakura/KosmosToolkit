@@ -84,7 +84,7 @@ public class SideLipFragment extends KFragment {
         list.clear();
         //GreenDao依赖包在注释里
 //        List<SideBean> userBeans = DbHelper.SearchAll();
-//        if (!UKText.isEmpty(userBeans)) {
+//        if (!KtText.isEmpty(userBeans)) {
 //            ULogBj.commonD("-->" + userBeans.size());
 //            list.addAll(userBeans);
 //        }

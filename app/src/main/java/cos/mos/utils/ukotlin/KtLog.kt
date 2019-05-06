@@ -9,7 +9,7 @@ import android.util.Log
  * @Date: 2019.04.23 11:21
  * @Email: KosmoSakura@gmail.com
  */
-object UKLog {
+object KtLog {
     @JvmStatic
     fun commonD(str: String,tag: String = "Kosmos") {
         Log.d(tag, str)

@@ -13,7 +13,7 @@ import cos.mos.toolkit.init.KApp
  * @Date: 2019.04.22 21:30
  * @Email: KosmoSakura@gmail.com
  */
-object UKScreen {
+object KtScreen {
     private val metric = KApp.instance().resources.displayMetrics
     private val scale = metric.density
 

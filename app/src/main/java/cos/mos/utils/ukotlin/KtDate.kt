@@ -9,7 +9,7 @@ import java.util.*
  * @Date: 2019.04.23 16:09
  * @Email: KosmoSakura@gmail.com
  */
-object UKDate {
+object KtDate {
     private val intSECOND = 0x00// 秒
     private val intMINUTE = 0x0001// 分钟
     private val intHOUR = 0x0002// 小时

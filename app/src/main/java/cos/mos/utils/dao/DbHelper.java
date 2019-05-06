@@ -2,7 +2,7 @@
 //
 //import java.util.List;
 //
-//import cos.mos.toolkit.java.UKText;
+//import cos.mos.toolkit.java.KtText;
 //import cos.mos.utils.dao.gen.UserBeanDao;
 //import cos.mos.utils.dao.renewal.DbManager;
 //
@@ -18,7 +18,7 @@
 //     * 增
 //     */
 //    public static void insert(String url, String thumb, long id) {
-//        if (UKText.isEmpty(url) || id < 0) {
+//        if (KtText.isEmpty(url) || id < 0) {
 //            return;
 //        }
 //        UserBean bean = new UserBean();

@@ -13,7 +13,7 @@ import cn.bingoogolapple.qrcode.zxing.ZXingView;
 import cos.mos.utils.R;
 import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.ULogBj;
-import cos.mos.toolkit.java.UGson;
+import cos.mos.utils.net.okhttp.UGson;
 import cos.mos.toolkit.java.UText;
 import cos.mos.toolkit.ui.UDialog;
 
@@ -111,7 +111,7 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
             scanFlag = 3;
         } else {
             try {
-                bean = UGson.toParse(result, WifiBean.class);
+                bean = UGson.toParseObj(result, WifiBean.class);
                 if (bean == null) {
                     title = "It's just plain text";
                     scanFlag = 4;

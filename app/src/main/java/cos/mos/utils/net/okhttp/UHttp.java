@@ -165,13 +165,13 @@ public class UHttp {
     private final Runnable runSuccess = new Runnable() {
         @Override
         public void run() {
-            success(response);
+            listener.success(response);
         }
     };
     private final Runnable runFail = new Runnable() {
         @Override
         public void run() {
-            failure(describe, code);
+            listener.failure(describe, code);
         }
     };
 }

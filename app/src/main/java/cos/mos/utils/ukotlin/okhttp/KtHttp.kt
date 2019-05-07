@@ -1,5 +1,7 @@
 package cos.mos.utils.ukotlin.okhttp
 
+import android.os.Handler
+import android.os.Looper
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -20,6 +22,11 @@ import java.util.concurrent.TimeUnit
 class KtHttp private constructor() {
     private var client: OkHttpClient = OkHttpClient()
     private val gson: Gson
+    private val delivery = Handler(Looper.getMainLooper())
+    private lateinit var listener: KtHttpListener
+    private var describe: String = ""
+    private var code: Int = 0
+    private var response: Any? = null
 
     companion object {
         const val NetworkDislink = -1//网络不可用
@@ -59,12 +66,13 @@ class KtHttp private constructor() {
      * @param listener 回调
      * @apiNote 异步Post
      */
-    fun post(url: String, params: String, listener: KtHttpListener<*>) {
+    fun post(url: String, params: String, listener: KtHttpListener) {
+        this.listener = listener
         if (!KtNet.instance().isNetConnected()) {
-            listener.failure("网络不可用", NetworkDislink)
+            failure("网络不可用", NetworkDislink)
             return
         }
-        connection(listener, Request.Builder()
+        connection(Request.Builder()
             .url(url)
             .addHeader("key", "value")
             .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), UText.isNull(params)))
@@ -76,22 +84,23 @@ class KtHttp private constructor() {
      * @param listener 回调
      * @apiNote 异步Get
      */
-    fun getAsyn(url: String, listener: KtHttpListener<*>) {
+    fun getAsyn(url: String, listener: KtHttpListener) {
+        this.listener = listener
         if (!UNet.instance().isNetConnected) {
-            listener.failure("网络不可用", NetworkDislink)
+            failure("网络不可用", NetworkDislink)
             return
         }
-        connection(listener, Request.Builder()
+        connection(Request.Builder()
             .url(url)
             .addHeader("key", "value")
             .build())
     }
 
-    private fun connection(listener: KtHttpListener<*>, request: Request) {
+    private fun connection(request: Request) {
         client.newCall(request)
             .enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
-                    listener.failure("请求失败", HttpError)
+                    failure("请求失败", HttpError)
                 }
 
                 override fun onResponse(call: Call, response: Response) {
@@ -99,16 +108,17 @@ class KtHttp private constructor() {
                         val body = response.body()
                         if (body != null) {
                             try {
-                                convert(listener, body.string())
+//                                convert("")
+//                                convert(body.string())
                             } catch (e: Exception) {
-                                listener.failure("ResponseBody为空", 200)
+                                failure("ResponseBody为空", 200)
                             }
 
                         } else {
-                            listener.failure("ResponseBody为空", 200)
+                            failure("ResponseBody为空", 200)
                         }
                     } else {
-                        listener.failure("Code不等于200", response.code())
+                        failure("Code不等于200", response.code())
                     }
                 }
             })
@@ -117,7 +127,7 @@ class KtHttp private constructor() {
 
     //todo 泛型擦除问题并没有解决
     @Throws(JSONException::class)
-    private fun <T> convert(listener: KtHttpListener<T>, body: String) {
+    private fun <T> convert(body: String) {
         val root = JSONObject(body)
         //外围字段
         val code = root.getInt("Code")
@@ -127,19 +137,33 @@ class KtHttp private constructor() {
         if (code == 0) {
             try {
 //                val list: ArrayList<T> = gson.fromJson(json, object : TypeToken<List<T>>() {}.type)
-                listener.success(gson.fromJson(json, object : TypeToken<List<T>>() {}.type))
-//                listener.success(KtGson.toParseList(json, TypeToken<List<T>>() {}.type))
+                success(gson.fromJson(json, object : TypeToken<List<T>>() {}.type))
+//              success(KtGson.toParseList(json, TypeToken<List<T>>() {}.type))
             } catch (e: Exception) {
                 try {
 //                    val bean: T = gson.fromJson(json, object : TypeToken<T>() {}.type)
-                    listener.success(gson.fromJson(json, object : TypeToken<T>() {}.type))
-//                    listener.success(KtGson.toParseObj(json, cls))
+                    success(gson.fromJson(json, object : TypeToken<T>() {}.type))
+//                  success(KtGson.toParseObj(json, cls))
                 } catch (e1: Exception) {
-                    listener.failure("解析失败", code)
+                    failure("解析失败", code)
                 }
             }
         } else {
-            listener.failure(msg, code)
+            failure(msg, code)
         }
     }
+
+    private fun failure(describe: String, code: Int) {
+        this.describe = describe
+        this.code = code
+        delivery.post(runFail)
+    }
+
+    private fun success(response: Any) {
+        this.response = response
+        delivery.post(runSuccess)
+    }
+
+    private val runSuccess = Runnable { listener.success(response) }
+    private val runFail = Runnable { listener.failure(describe, code) }
 }

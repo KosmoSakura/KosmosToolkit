@@ -17,19 +17,19 @@ import java.util.concurrent.TimeUnit
  * @Date: 2019.05.06 16:08
  * @Email: KosmoSakura@gmail.com
  */
-class UkHttp private constructor() {
+class KtHttp private constructor() {
     private var client: OkHttpClient = OkHttpClient()
     private val gson: Gson
 
     companion object {
         const val NetworkDislink = -1//网络不可用
         const val HttpError = -2//Http请求失败
-        private var http: UkHttp? = null
+        private var http: KtHttp? = null
         private var cls: Class<*>? = null//泛型
 
-        fun instance(cls: Class<*>): UkHttp {
+        fun instance(cls: Class<*>): KtHttp {
             if (http == null) {
-                http = UkHttp()
+                http = KtHttp()
             }
             this.cls = cls
             return http!!

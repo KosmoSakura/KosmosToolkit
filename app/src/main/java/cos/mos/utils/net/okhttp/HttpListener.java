@@ -1,7 +1,5 @@
 package cos.mos.utils.net.okhttp;
 
-import okhttp3.Request;
-
 /**
  * @Description:
  * @Author: Kosmos
@@ -9,7 +7,7 @@ import okhttp3.Request;
  * @Email: KosmoSakura@gmail.com
  */
 public interface HttpListener<T> {
-    void failure(Request request, Exception e, String describe, int code);
+    void failure(String describe, int code);
 
     void success(T response);
 }

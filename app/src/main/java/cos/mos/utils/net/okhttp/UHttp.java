@@ -1,5 +1,8 @@
 package cos.mos.utils.net.okhttp;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,6 +31,11 @@ public class UHttp {
     private static UHttp http;
     private OkHttpClient client;
     private Class cls;//泛型
+    private final Handler delivery = new Handler(Looper.getMainLooper());
+    private HttpListener listener;
+    private String describe;
+    private int code;
+    private Object response;
 
     private UHttp() {
         client = new OkHttpClient();
@@ -59,11 +67,12 @@ public class UHttp {
      * @apiNote 异步Post
      */
     public void postAsyn(String url, String params, final HttpListener listener) {
+        this.listener = listener;
         if (!UNet.instance().isNetConnected()) {
-            listener.failure(null, null, "网络不可用", NetState.NetworkDislink);
+            failure("网络不可用", NetState.NetworkDislink);
             return;
         }
-        connection(listener, new Request.Builder()
+        connection(new Request.Builder()
             .url(url)
             .addHeader("key", "value")
             .post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), UText.isNull(params)))
@@ -76,11 +85,12 @@ public class UHttp {
      * @apiNote 异步Get
      */
     public void getAsyn(String url, final HttpListener listener) {
+        this.listener = listener;
         if (!UNet.instance().isNetConnected()) {
-            listener.failure(null, null, "网络不可用", NetState.NetworkDislink);
+            failure("网络不可用", NetState.NetworkDislink);
             return;
         }
-        connection(listener, new Request.Builder()
+        connection(new Request.Builder()
             .url(url)
             .addHeader("key", "value")
             .build());
@@ -89,12 +99,12 @@ public class UHttp {
     /**
      * @apiNote 执行请求
      */
-    private void connection(final HttpListener listener, final Request request) {
+    private void connection(final Request request) {
         client.newCall(request)
             .enqueue(new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    listener.failure(call.request(), e, "请求失败", NetState.HttpError);
+                    failure("请求失败", NetState.HttpError);
                 }
 
                 @Override
@@ -103,21 +113,21 @@ public class UHttp {
                         ResponseBody body = response.body();
                         if (body != null) {
                             try {
-                                convert(listener, body.string());
+                                convert(body.string());
                             } catch (Exception e) {
-                                listener.failure(call.request(), null, "ResponseBody为空", 200);
+                                failure("ResponseBody为空", 200);
                             }
                         } else {
-                            listener.failure(call.request(), null, "ResponseBody为空", 200);
+                            failure("ResponseBody为空", 200);
                         }
                     } else {
-                        listener.failure(call.request(), null, "Code不等于200", response.code());
+                        failure("Code不等于200", response.code());
                     }
                 }
             });
     }
 
-    private void convert(final HttpListener listener, final String body) throws JSONException {
+    private void convert(final String body) throws JSONException {
         final JSONObject root = new JSONObject(body);
         //外围字段
         final int code = root.getInt("Code");
@@ -127,17 +137,41 @@ public class UHttp {
         if (code == 0) {
             try {
                 final ArrayList arrayList = UGson.toParseList(json, cls);
-                listener.success(arrayList);
+                success(arrayList);
             } catch (Exception e) {
                 try {
                     Object object = UGson.toParseObj(json, cls);
-                    listener.success(object);
+                    success(object);
                 } catch (Exception e1) {
-                    listener.failure(null, e1, "解析失败", code);
+                    failure("解析失败", code);
                 }
             }
         } else {
-            listener.failure(null, null, msg, code);
+            failure(msg, code);
         }
     }
+
+    private void failure(final String describe, final int code) {
+        this.describe = describe;
+        this.code = code;
+        delivery.post(runFail);
+    }
+
+    private void success(final Object response) {
+        this.response = response;
+        delivery.post(runSuccess);
+    }
+
+    private final Runnable runSuccess = new Runnable() {
+        @Override
+        public void run() {
+            success(response);
+        }
+    };
+    private final Runnable runFail = new Runnable() {
+        @Override
+        public void run() {
+            failure(describe, code);
+        }
+    };
 }

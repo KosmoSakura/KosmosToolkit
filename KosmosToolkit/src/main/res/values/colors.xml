@@ -7,6 +7,7 @@
     <color name="T_dark">#e0000000</color>
     <color name="T_mini_black">#bd000000</color>
     <color name="T_mini_gay">#bda1a1a1</color>
+    <color name="T_green">#653DAD6E</color>
     <color name="T_mini_blue">#ac39acc2</color>
     <!--功能色值-->
     <color name="fun_bg_white">#f5f5f5</color>

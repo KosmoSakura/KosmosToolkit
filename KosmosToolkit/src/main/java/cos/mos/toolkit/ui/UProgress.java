@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import cos.mos.toolkit.R;
 import cos.mos.toolkit.ULogBj;
-import io.reactivex.annotations.NonNull;
 
 /**
  * @Description: 原生转圈进度条
@@ -24,7 +23,7 @@ public class UProgress {
     private UProgress() {
     }
 
-    public static UProgress getInstance() {
+    public static UProgress instance() {
         if (instance == null) {
             synchronized (UProgress.class) {
                 if (instance == null) {
@@ -81,7 +80,7 @@ public class UProgress {
     private class MyDialog extends Dialog {
         private TextView tv;
 
-        MyDialog(@NonNull Context context) {
+        MyDialog(Context context) {
             super(context, R.style.SakuraDialog);
             setContentView(R.layout.dia_progress);
             setCancelable(false);
@@ -93,11 +92,10 @@ public class UProgress {
         }
 
         @Override
-        public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
-                    dismiss();
-                    return true;
+        public boolean onKeyDown(int keyCode, KeyEvent event) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                dismiss();
+                return true;
             }
             return super.onKeyDown(keyCode, event);
         }

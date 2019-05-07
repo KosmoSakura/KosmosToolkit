@@ -2,6 +2,8 @@ package cos.mos.utils.ukotlin.okhttp.sample
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.os.Handler
+import android.os.Looper
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import cos.mos.utils.init.KApp
@@ -23,6 +25,11 @@ import java.util.concurrent.TimeUnit
 class KtLoad private constructor() {
     private var client = OkHttpClient()
     private val gson: Gson
+    private val delivery = Handler(Looper.getMainLooper())
+    private lateinit var listener: KtHttpListener<RateBean>
+    private var describe: String = ""
+    private var code: Int = 0
+    private var response: RateBean? = null
 
     companion object {
         const val NetworkDislink = -1//网络不可用
@@ -67,13 +74,14 @@ class KtLoad private constructor() {
         return info != null && info.isConnected
     }
 
-    fun  get(from: String, to: String, listener: KtHttpListener<RateBean>) {
+    fun get(from: String, to: String, listener: KtHttpListener<RateBean>) {
+        this.listener = listener
         if (!isNetConnected()) {
-            listener.failure("网络不可用", NetworkDislink)
+            failure("网络不可用", NetworkDislink)
             return
         }
         client.newCall(Request.Builder()
-            .url("https://api.u9zw.com/exchange-rate/get-exchange-rate?from=$from&to=$to")
+            .url("com/exchange-rate/get-exchange-rate?from=$from&to=$to")
             .build())
             .enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
@@ -81,38 +89,50 @@ class KtLoad private constructor() {
                         val body = response.body()
                         if (body != null) {
                             try {
-                                convert(listener, body.string())
+                                convert(body.string())
                             } catch (e: Exception) {
-                                listener.failure("解析失败", 200)
+                                failure("解析失败", 200)
                             }
 
                         } else {
-                            listener.failure("ResponseBody为空", 200)
+                            failure("ResponseBody为空", 200)
                         }
                     } else {
-                        listener.failure("Code不等于200", response.code())
+                        failure("Code不等于200", response.code())
                     }
                 }
 
                 override fun onFailure(call: Call?, e: IOException) {
-                    listener.failure("请求失败", HttpError)
+                    failure("请求失败", HttpError)
                 }
             })
     }
 
     @Throws(JSONException::class)
-    private fun  convert(listener: KtHttpListener<RateBean>, body: String) {
+    private fun convert(body: String) {
         val root = JSONObject(body)
         val code = root.getInt("code")
         val json = root.getString("data")
         //服务器成功返回码
         if (code == 0) {
-            listener.success(Gson().fromJson(json))
+          success(Gson().fromJson(json))
 //            listener.success(gson.fromJson(json, RateBean::class.java))
         } else {
-            listener.failure(root.getString("msg"), code)
+          failure(root.getString("msg"), code)
         }
     }
+    private fun failure(describe: String, code: Int) {
+        this.describe = describe
+        this.code = code
+        delivery.post(runFail)
+    }
 
+    private fun success(response: RateBean) {
+        this.response = response
+        delivery.post(runSuccess)
+    }
+
+    private val runSuccess = Runnable { listener.success(response) }
+    private val runFail = Runnable { listener.failure(describe, code) }
     inline fun <reified T> Gson.fromJson(json: String) = fromJson(json, T::class.java)
 }

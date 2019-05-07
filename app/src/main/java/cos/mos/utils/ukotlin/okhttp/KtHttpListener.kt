@@ -6,8 +6,8 @@ package cos.mos.utils.ukotlin.okhttp
  * @Date: 2019.05.06 15:39
  * @Email: KosmoSakura@gmail.com
  */
-interface KtHttpListener {
+interface KtHttpListener<T> {
     fun failure(describe: String, code: Int)
 
-    fun success(response: Any?)
+    fun success(response: T?)
 }

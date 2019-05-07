@@ -11,6 +11,9 @@ import android.widget.LinearLayout;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 
+/**
+ * 网格布局
+ */
 public class MySpaceDecoration extends RecyclerView.ItemDecoration {
 
     private int space;

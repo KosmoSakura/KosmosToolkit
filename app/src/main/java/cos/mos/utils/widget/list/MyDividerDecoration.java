@@ -13,6 +13,9 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 
+/**
+ * 竖直列表布局
+ */
 public class MyDividerDecoration extends RecyclerView.ItemDecoration {
     private ColorDrawable mColorDrawable;
     private int mHeight;

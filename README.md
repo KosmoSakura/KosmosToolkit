@@ -38,12 +38,7 @@ dependencies {
 | showNoAction     | 显示不带action的通知 |                    |
 | showNoColor      | 显示默认颜色的通知   |                    |
 
-
-#### 3.[UToast](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/toasts)
-
-> 基于鸿洋牌的[ToastUtils](https://github.com/getActivity/ToastUtils)封装
-
-#### 4.[UColor](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UColor.java)→颜色工具类
+#### 3.[UColor](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UColor.java)→颜色工具类
 
 | 方法                            | 描述                        |
 | ------------------------------- | --------------------------- |
@@ -55,7 +50,7 @@ dependencies {
 
 
 
-#### 5.[UDate](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UDate.java)
+#### 4.[UDate](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UDate.java)
 
 > 时间日期处理,以及平时在处理日期时的踩坑修复
 
@@ -76,7 +71,7 @@ dependencies {
 
 
 
-#### 6.[UKeyboard](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UKeyboard.java)→键盘输入工具类
+#### 5.[UKeyboard](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UKeyboard.java)→键盘输入工具类
 
 | 方法           | 描述                         |
 | -------------- | ---------------------------- |
@@ -86,7 +81,7 @@ dependencies {
 | hideForce      | 强制隐藏键盘                 |
 
 
-#### 7.[ULog](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/ULog.java)
+#### 6.[ULog](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/ULog.java)
 
 > 基于[Blankj](https://github.com/Blankj/AndroidUtilCode)的工具重构
 
@@ -101,7 +96,7 @@ dependencies {
 
 
 
-#### 8.[URegular](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)→正则表达式相关工具
+#### 7.[URegular](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)→正则表达式相关工具
 
 | 方法                   | 描述                                  |
 | ---------------------- | ------------------------------------- |
@@ -119,7 +114,7 @@ dependencies {
 | formIDCardNo           | 隐藏身份证号中间N位                   |
 | formBankCard           | 银行卡号每隔四位增加一个空格          |
 
-#### 9.[USP](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)→SharedPreferences工具
+#### 8.[USP](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/URegular.java)→SharedPreferences工具
 
 | 方法                  | 描述                       |
 | --------------------- | -------------------------- |
@@ -135,7 +130,7 @@ dependencies {
 
 
 
-#### 10.[UText](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UText.java)→文字、字符相关工具
+#### 9.[UText](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UText.java)→文字、字符相关工具
 
 | 方法                                 | 描述                           | 重载传入                                                     |
 | ------------------------------------ | ------------------------------ | ------------------------------------------------------------ |
@@ -155,7 +150,7 @@ dependencies {
 
 
 
-#### 11.[UUnit](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UUnit.java)→单位换算工具类
+#### 10.[UUnit](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UUnit.java)→单位换算工具类
 
 > 单位换算：像素<->dp、摄氏度<->华氏度、字符串版本号换算、字节换算.
 
@@ -168,14 +163,14 @@ dependencies {
 | cToF                             | 摄氏度转华氏度                                               |
 | fToC                             | 反过来                                                       |
 
-#### 12.[UGPS](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UGPS.java)→GPS工具
+#### 11.[UGPS](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UGPS.java)→GPS工具
 
 |方法名   | 描述   |
 | ----------- | ----------- |
 | isGPSOpne | GPS是否打开 |
 | openGPSSettings | 跳转GPS设置界面 |
 
-#### 13.[UWiFi](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UWiFi.java)→wifi工具类
+#### 12.[UWiFi](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UWiFi.java)→wifi工具类
 
 |方法名   | 描述   |
 | ----------- | ----------- |
@@ -185,7 +180,7 @@ dependencies {
 |toLinkedWifi | 打开wifi并连接，区分3种加密方式|
 | jumpToWifiSetting | 跳转到wifi设置页面|
 
-#### 14.[UAp](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UAp.java)→wifi热点工具类
+#### 13.[UAp](https://github.com/KosmoSakura/KosmosUtils/blob/master/app/src/main/java/cos/mos/utils/tool/UAp.java)→wifi热点工具类
 
 |    方法名  | 描述  |
 | ------------- | -------------------- |
@@ -196,7 +191,7 @@ dependencies {
 |closeAp|关闭热点（通过反射）|
 |openAp|打开热点(解决Android 8.0反射失效的情况）|
 |isSystemO|当前系统是否高于8.0|
-#### 15.[USensor ](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/USensor.java)→指南针辅助类：磁场放、方向等传感器工具
+#### 14.[USensor ](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/USensor.java)→指南针辅助类：磁场放、方向等传感器工具
 
 > 指南针功能辅助类
 
@@ -207,7 +202,7 @@ dependencies {
 | clear                                    | 资源清理，注销监听   |
 | private static final int sensitivity= 6; | 变化灵敏度，数值越小，变化月灵敏 |
 
-#### 16.[UPermissions](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UPermissions.java)→权限工具
+#### 15.[UPermissions](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/UPermissions.java)→权限工具
 
 > 基于RxPermissions
 

@@ -21,6 +21,7 @@ import cos.mos.toolkit.init.KApp;
  * @eg: 2019.2.25：重构
  * @eg: 2019.3.5：文件重命名
  * @eg: 2019.3.18:优化注释，添加新函数
+ * @eg: 2019.5.8:优化递归删除
  */
 public class UFile {
     /**
@@ -47,15 +48,28 @@ public class UFile {
      * @apiNote 递归删除目录下的所有文件及子目录下所有文件
      */
     public static boolean deleteDir(File dir) {
+        if (dir == null) return false;
+        if (!dir.exists()) return true;
         if (dir.isDirectory()) {
-            String[] children = dir.list();
-            for (String aChildren : children) {
-                return deleteDir(new File(dir, aChildren));
+            File[] files = dir.listFiles();
+            for (File file : files) {
+                if (file.isFile()) {
+                    if (!file.delete()) return false;
+                } else if (file.isDirectory()) {
+                    if (!deleteDir(file)) return false;
+                }
             }
+//            String[] children = dir.list();
+//            for (String aChildren : children) {
+//                return deleteDir(new File(dir, aChildren));
+//            }
+        } else {
+            return false;
         }
         // 目录此时为空，可以删除
         return dir.delete();
     }
+
 
     /**
      * @param src 被复制文件的完整（路径+文件名+后缀名）

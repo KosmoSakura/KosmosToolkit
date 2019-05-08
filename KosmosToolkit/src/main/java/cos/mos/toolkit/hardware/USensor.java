@@ -17,6 +17,7 @@ import cos.mos.toolkit.init.KApp;
  * @Date: 2018.11.30 11:49
  * @Email: KosmoSakura@gmail.com
  * @eg 栗子
+ * @eg 2019.5.8：优化传感器校验
  * 1.检查
  * USensor.instance().support()
  * 2.注册监听→onResume()

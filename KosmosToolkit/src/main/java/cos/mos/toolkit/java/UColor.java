@@ -18,6 +18,7 @@ import cos.mos.toolkit.init.KApp;
  * @Date: 2017年4月5日
  * @Email: KosmoSakura@gmail.com
  * @eg: 2019.3.13:基于Color类算法优化
+ * @eg: 2019.5.8:argb颜色处理
  */
 public class UColor {
     private UColor() {

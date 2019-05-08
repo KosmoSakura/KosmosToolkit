@@ -11,10 +11,18 @@ dependencies {
 ```
 ---
 
-#### 1.[Glide](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/glide)→相关工具
+#### 1.[UBmp](https://github.com/KosmoSakura/KosmosUtils/blob/master/kosmoslibrary/src/main/java/cos/mos/library/utils/glide)→相关工具
 
 | 分类         | 功能              |
 | ------------ | ----------------- |
+|bmp2Bytes|bmp->byte数组|
+|bytes2bmp|byte数组->bmp|
+|drawable2Bmp|Drawable->bmp |
+|bmp2Drawable| bitmap->Drawable|
+|resId2Bmp|resId->bmp|
+|resId2Drawable|resId->Drawable|
+|resId2Bmp(resId,w,h)|resId->Drawable指定宽高|
+|||
 | UGlideSimple | Glide普通使用     |
 | UGlideDisk   | Glide内存磁盘方面 |
 | UGlideEffect | Glide特效方面     |

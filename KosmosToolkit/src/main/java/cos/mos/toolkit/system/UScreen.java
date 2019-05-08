@@ -20,7 +20,7 @@ import cos.mos.toolkit.init.KApp;
  * @eg: 2019.2.25:基本函数抽取
  */
 public class UScreen {
-    private static final DisplayMetrics metric = KApp.instance().getResources().getDisplayMetrics();
+    private static final DisplayMetrics metrics = KApp.instance().getResources().getDisplayMetrics();
 
     /**
      * @return bp 截图
@@ -78,14 +78,14 @@ public class UScreen {
      * @return 获取DisplayMetrics对象
      */
     public static DisplayMetrics getDisPlayMetrics() {
-        return metric;
+        return metrics;
     }
 
     /**
      * @return Px单位转dp单位
      */
     public static float px2dp(float pxValue) {
-        return pxValue / metric.density + 0.5f;
+        return pxValue / metrics.density + 0.5f;
     }
 
 
@@ -93,21 +93,21 @@ public class UScreen {
      * @return dp单位转Px单位
      */
     public static float dp2px(float dpValue) {
-        return dpValue * metric.density + 0.5f;
+        return dpValue * metrics.density + 0.5f;
     }
 
     /**
      * @return Sp单位转Px单位
      */
     public static float sp2px(float sp) {
-        return metric.scaledDensity * sp + 0.5f;
+        return metrics.scaledDensity * sp + 0.5f;
     }
 
     /**
      * @return Sp单位转Px单位
      */
     public static float px2sp(float px) {
-        return px / metric.scaledDensity + 0.5f;
+        return px / metrics.scaledDensity + 0.5f;
     }
 
     /**
@@ -120,17 +120,31 @@ public class UScreen {
 //    }
 
     /**
+     * @return px单位转Pt单位
+     */
+    public static float px2Pt(float px) {
+        return px * 72 / metrics.xdpi + 0.5f;
+    }
+
+    /**
+     * @return px单位转Pt单位
+     */
+    public static float pt2Px(float pt) {
+        return pt * metrics.xdpi / 72f + 0.5f;
+    }
+
+    /**
      * @return 屏幕宽度（像素）
      */
     public static int getScreenWidth() {
-        return metric.widthPixels;
+        return metrics.widthPixels;
     }
 
     /**
      * @return 屏幕高度（像素）
      */
     public static int getScreenHeight() {
-        return metric.heightPixels;
+        return metrics.heightPixels;
     }
 
 
@@ -138,14 +152,14 @@ public class UScreen {
      * @return 屏幕密度(0.75 / 1.0 / 1.5)
      */
     public static float getDensity() {
-        return metric.density;
+        return metrics.density;
     }
 
     /**
      * @return 屏幕密度DPI(120 / 160 / 240)
      */
     public static int getDensityDpi() {
-        return metric.densityDpi;
+        return metrics.densityDpi;
     }
 
 }

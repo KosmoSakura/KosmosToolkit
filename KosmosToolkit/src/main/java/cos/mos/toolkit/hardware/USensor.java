@@ -42,14 +42,31 @@ import cos.mos.toolkit.init.KApp;
 public class USensor implements SensorEventListener {
     private static USensor sensor;
     private SensorManager sorMgr;//传感器管理
+    private Sensor magnetic; //地磁传感器
+    private Sensor accelerometer; //加速度传感器
     private float[] accelerometerValues = new float[3];
     private float[] magneticFieldValues = new float[3];
     private DegreeListener listener;
+    private int support = 0;//一切正常=0，无传感器=-1，不支持加速度传感器=1，不支持地磁传感器=2
 
     private USensor() {
         if (sorMgr == null) {
             //传感器管理
             sorMgr = (SensorManager) KApp.instance().getSystemService(Context.SENSOR_SERVICE);
+            if (sorMgr == null) {
+                support = -1;//无传感器=-1
+                return;
+            }
+            //加速度传感器
+            accelerometer = sorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            //地磁传感器
+            magnetic = sorMgr.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+            if (accelerometer == null) {
+                support = 1;//不支持加速度传感器=1
+            }
+            if (magnetic == null) {
+                support = 2;//不支持地磁传感器=2
+            }
         }
     }
 
@@ -66,9 +83,12 @@ public class USensor implements SensorEventListener {
 
     /**
      * @return 支持方向地磁传感器
+     * 一切正常=0，无传感器=-1，不支持加速度传感器=1，不支持地磁传感器=2
      */
-    public boolean support() {
-        return sorMgr != null;
+    public int support() {
+        if (sorMgr == null) {
+            return -1;
+        } else return support;
     }
 
     /**
@@ -80,13 +100,16 @@ public class USensor implements SensorEventListener {
 
     public void setDegreeListener(DegreeListener listener) {
         this.listener = listener;
-        //加速度传感器
-        Sensor accelerometer = sorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        //地磁传感器
-        Sensor magnetic = sorMgr.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        if (sorMgr == null) {
+            return;
+        }
         //注册监听
-        sorMgr.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
-        sorMgr.registerListener(this, magnetic, SensorManager.SENSOR_DELAY_GAME);
+        if (accelerometer != null) {
+            sorMgr.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
+        }
+        if (magnetic != null) {
+            sorMgr.registerListener(this, magnetic, SensorManager.SENSOR_DELAY_GAME);
+        }
     }
 
     /**

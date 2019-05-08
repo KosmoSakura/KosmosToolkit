@@ -71,7 +71,7 @@ public class KPieChart extends View {
 
     public KPieChart setMainColor(int color) {
         this.color1 = color;
-        this.color2 = UColor.ColorLighter(color);
+        this.color2 = UColor.lighter(color);
         return this;
     }
 

@@ -29,7 +29,7 @@ public class UColor {
      * @return eg：-4253158
      * @apiNote 颜色更浅一点(R, G, B分别加40 ）
      */
-    public static int ColorLighter(@ColorInt int color) {
+    public static int lighter(@ColorInt int color) {
         int red = ((color & 0xff0000) >> 16) + 40;
         int green = ((color & 0x00ff00) >> 8) + 40;
         int blue = (color & 0x0000ff) + 40;
@@ -42,8 +42,7 @@ public class UColor {
         if (blue > 255) {
             blue = 255;
         }
-        System.out.println("R:" + red + ",G:" + green + ",B:" + blue);
-        return RgbToInt(red, green, blue);
+        return rgb(red, green, blue);
     }
 
     /**
@@ -51,7 +50,7 @@ public class UColor {
      * @return eg：-4253158
      * @apiNote 颜色更深一点(R, G, B分别减40 ）
      */
-    public static int ColorDeeper(@ColorInt int color) {
+    public static int deeper(@ColorInt int color) {
         int red = ((color & 0xff0000) >> 16) - 40;
         int green = ((color & 0x00ff00) >> 8) - 40;
         int blue = (color & 0x0000ff) - 40;
@@ -64,7 +63,7 @@ public class UColor {
         if (blue < 0) {
             blue = 0;
         }
-        return RgbToInt(red, green, blue);
+        return rgb(red, green, blue);
     }
 
     /**
@@ -72,22 +71,22 @@ public class UColor {
      * @return int型颜色eg：-4253158
      * @apiNote 颜色反转
      */
-    public static int ColorFilter(int color) {
-        return RgbToInt(255 - ((color & 0xff0000) >> 16), 255 - ((color & 0x00ff00) >> 8), 255 - (color & 0x0000ff));
+    public static int filter(int color) {
+        return rgb(255 - ((color & 0xff0000) >> 16), 255 - ((color & 0x00ff00) >> 8), 255 - (color & 0x0000ff));
     }
 
     /**
      * @return 随机生成一个带alpha通道的颜色
      */
-    public static int getColorRandom() {
-        return getColorRandom(true);
+    public static int random() {
+        return random(true);
     }
 
     /**
      * @param supportAlpha 是否带alpha通道
      * @return 随机生成一个颜色
      */
-    public static int getColorRandom(final boolean supportAlpha) {
+    public static int random(final boolean supportAlpha) {
         int high = supportAlpha ? (int) (Math.random() * 0x100) << 24 : 0xFF000000;
         return high | (int) (Math.random() * 0x1000000);
     }
@@ -103,20 +102,20 @@ public class UColor {
     /**
      * @param color int型颜色eg：-4253158
      * @param alpha alpha (0-255)
-     * @return 带alpha通道的int型颜色
+     * @return 给int型颜色添加alpha通道
      */
-    public static int getColorAlpha(@ColorInt final int color,
-                                    @IntRange(from = 0x0, to = 0xFF) int alpha) {
+    public static int addAlpha(@ColorInt final int color,
+                               @IntRange(from = 0x0, to = 0xFF) int alpha) {
         return (color & 0x00ffffff) | ((int) (alpha * 255.0f + 0.5f) << 24);
     }
 
     /**
      * @param color int型颜色eg：-4253158
-     * @param alpha alpha
-     * @return 带alpha通道的int型颜色
+     * @param alpha alpha(0-1)
+     * @return 给int型颜色添加alpha通道
      */
-    public static int getColorAlpha(@ColorInt final int color,
-                                    @FloatRange(from = 0, to = 1) float alpha) {
+    public static int addAlpha(@ColorInt final int color,
+                               @FloatRange(from = 0, to = 1) float alpha) {
         return (color & 0x00ffffff) | ((int) (alpha * 255.0f + 0.5f) << 24);
     }
 
@@ -124,9 +123,9 @@ public class UColor {
      * @return eg：-4253158
      * @apiNote RGB颜色转化为int
      */
-    public static int RgbToInt(@IntRange(from = 0, to = 255) int red,
-                               @IntRange(from = 0, to = 255) int green,
-                               @IntRange(from = 0, to = 255) int blue) {
+    public static int rgb(@IntRange(from = 0, to = 255) int red,
+                          @IntRange(from = 0, to = 255) int green,
+                          @IntRange(from = 0, to = 255) int blue) {
         return 0xff000000 | (red << 16) | (green << 8) | blue;
     }
 
@@ -134,10 +133,18 @@ public class UColor {
      * @return eg：-4253158
      * @apiNote 将RGB颜色转化为int 带透明度
      */
-    public static int RgbToInt(@IntRange(from = 0, to = 255) int alpha,
-                               @IntRange(from = 0, to = 255) int red,
-                               @IntRange(from = 0, to = 255) int green,
-                               @IntRange(from = 0, to = 255) int blue) {
+    public static int rgb(@IntRange(from = 0, to = 255) int alpha,
+                          @IntRange(from = 0, to = 255) int red,
+                          @IntRange(from = 0, to = 255) int green,
+                          @IntRange(from = 0, to = 255) int blue) {
+        return (alpha << 24) | (red << 16) | (green << 8) | blue;
+    }
+
+    @ColorInt
+    public static int argb(@IntRange(from = 0, to = 255) int alpha,
+                           @IntRange(from = 0, to = 255) int red,
+                           @IntRange(from = 0, to = 255) int green,
+                           @IntRange(from = 0, to = 255) int blue) {
         return (alpha << 24) | (red << 16) | (green << 8) | blue;
     }
 

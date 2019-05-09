@@ -18,6 +18,9 @@ import java.util.concurrent.TimeUnit
  * @Author: Kosmos
  * @Date: 2019.05.06 16:08
  * @Email: KosmoSakura@gmail.com
+ * 三星等手机UnknownServiceException网络安全错误解决：
+ * AndroidManifest.xml->Application ->添加属性
+ * android:networkSecurityConfig="@xml/security_config"
  */
 class KtHttp private constructor() {
     private var client: OkHttpClient = OkHttpClient()

@@ -38,6 +38,9 @@ import okhttp3.ResponseBody;
  * @Author: Kosmos
  * @Date: 2019.05.06 10:01
  * @Email: KosmoSakura@gmail.com
+ * 三星等手机UnknownServiceException网络安全错误解决：
+ * AndroidManifest.xml->Application ->添加属性
+ * android:networkSecurityConfig="@xml/security_config"
  */
 public class UHttpSSL {
     private static UHttpSSL httpSSL;

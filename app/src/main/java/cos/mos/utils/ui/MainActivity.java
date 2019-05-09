@@ -20,9 +20,9 @@ import cos.mos.toolkit.system.UPermissions;
 import cos.mos.toolkit.ui.UDialog;
 import cos.mos.utils.R;
 import cos.mos.utils.init.BaseActivity;
-import cos.mos.utils.mvp.adapter.AdapterImage;
 import cos.mos.utils.mvp.bean.ImageBean;
 import cos.mos.utils.mvp.contract.KOnFreshListener;
+import cos.mos.utils.widget.list.AdapterImage;
 
 public class MainActivity extends BaseActivity implements MainListener {
     private SpringView spv;
@@ -46,6 +46,8 @@ public class MainActivity extends BaseActivity implements MainListener {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         adapterImage = new AdapterImage(listImage, dm.widthPixels / 3);
         adapterImage.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
+        //水平列表
+//        new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         //使用瀑布流布局,第一个参数 spanCount 列数,第二个参数 orentation 排列方向
         rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         rv.setAdapter(adapterImage);
@@ -58,11 +60,11 @@ public class MainActivity extends BaseActivity implements MainListener {
         new UPermissions(this)
             .check("我要权限，给我权限", new UPermissions.Listener() {
 
-            @Override
-            public void permission(boolean hasPermission) {
-                spv.callFreshDelay();
-            }
-        }, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA);
+                @Override
+                public void permission(boolean hasPermission) {
+                    spv.callFreshDelay();
+                }
+            }, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA);
         spv.setListener(new KOnFreshListener() {
             @Override
             public void onRefresh() {
@@ -77,15 +79,15 @@ public class MainActivity extends BaseActivity implements MainListener {
 
     private void toGoSystem() {
         UDialog.builder(this, false)
-        .msg("We need the following permissions to make the program run properly")
-        .button("To authorize")
-        .build((result, dia) -> {
-            Uri packageURI = Uri.parse("package:" + getPackageName());
-            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                packageURI);
-            startActivity(intent);
-            finish();
-        });
+            .msg("We need the following permissions to make the program run properly")
+            .button("To authorize")
+            .build((result, dia) -> {
+                Uri packageURI = Uri.parse("package:" + getPackageName());
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                    packageURI);
+                startActivity(intent);
+                finish();
+            });
     }
 
     @Override

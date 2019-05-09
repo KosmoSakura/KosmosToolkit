@@ -12,7 +12,7 @@ import java.util.List;
 import cos.mos.utils.R;
 import cos.mos.toolkit.system.AppBean;
 import cos.mos.toolkit.init.KActivity;
-import cos.mos.utils.ui.data.IgnoreAdapter;
+import cos.mos.utils.widget.list.IgnoreAdapter;
 import cos.mos.toolkit.system.UApps;
 import cos.mos.toolkit.system.UScreen;
 

@@ -69,15 +69,16 @@ public class LineChart extends View {
     }
 
     public LineChart setData(ArrayList<LineBean> list) {
-        if (list == null) {
-            return this;
-        }
-        this.list = list;
-        length = list.size();
         max = 0f;
         min = 0f;
         totle = 0f;
         average = 0f;
+        length = 0;
+        if (list == null || list.isEmpty()) {
+            return this;
+        }
+        this.list = list;
+        length = list.size();
         float value;
         for (LineBean bean : list) {
             value = bean.getValue();
@@ -122,7 +123,7 @@ public class LineChart extends View {
         canvas.drawLine(0f, startY, w, startY, paint);
         canvas.drawLine(0f, endY, w, endY, paint);
         float textY = h - padding;
-        if (list != null) {
+        if (list != null && !list.isEmpty()) {
             LineBean bean;
             int key;
             float value;
@@ -135,7 +136,7 @@ public class LineChart extends View {
                 }
                 key = bean.getKey();
                 value = bean.getValue();
-                x = w * i / (length) + TS5;
+                x = w * i / length + TS5;
                 y = endY - diff * (value - min) / (max - min);
                 if (i == 0) {
                     path.reset();

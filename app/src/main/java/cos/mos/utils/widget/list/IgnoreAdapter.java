@@ -1,4 +1,4 @@
-package cos.mos.utils.ui.data;
+package cos.mos.utils.widget.list;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package cos.mos.utils.mvp.adapter;
+package cos.mos.utils.widget.list;
 
 
 import android.support.annotation.Nullable;

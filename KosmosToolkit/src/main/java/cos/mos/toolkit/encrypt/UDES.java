@@ -18,15 +18,25 @@ public class UDES {
     private static final String KEY = "12345678";
     private static final String ALGORITHM_DES = "DES/CBC/PKCS5Padding";
 
+//    public static void main(String[] args) {
+//        String encrypt = encrypt("DES加密解密", "asv123+++");
+//        System.out.println("加密：" + encrypt);
+//        System.out.println("解密：" + decrypt(encrypt, "asv123+++"));
+//    }
+
     /**
      * @param str 明文
      * @param pwd 加密私钥，长度不能够小于8位
      * @return 加密后的字节数组，一般结合Base64编码使用
      * @apiNote DES算法，加密
      */
-    public static String encode(String str, String pwd) {
-        if (str == null)
-            return null;
+    public static String encrypt(String str, String pwd) {
+        if (pwd == null || pwd.length() < 8) {
+            throw new UnsupportedOperationException("私钥长度不能够小于8位");
+        }
+        if (str == null) {
+            return "";
+        }
         try {
             DESKeySpec dks = new DESKeySpec(pwd.getBytes());
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
@@ -48,7 +58,7 @@ public class UDES {
      * @return 解密后的字节数组
      * @apiNote DES算法，解密
      */
-    public static String decode(String str, String key) {
+    public static String decrypt(String str, String key) {
         if (str == null)
             return "";
         try {

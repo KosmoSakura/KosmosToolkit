@@ -19,8 +19,8 @@ public class UMD5 {
      * @param str 明文
      * @return MD5加盐加密（默认盐）
      */
-    public static String encode(String str) {
-        return encode(str, "&%5123***&&%%$$#@");
+    public static String encrypt(String str) {
+        return encrypt(str, "&%5123***&&%%$$#@");
     }
 
     /**
@@ -28,7 +28,7 @@ public class UMD5 {
      * @param salt 传入盐
      * @return MD5加盐加密
      */
-    public static String encode(String str, String salt) {
+    public static String encrypt(String str, String salt) {
         MessageDigest md;//指定算法名称的信息摘要
         try {
             md = MessageDigest.getInstance("MD5");

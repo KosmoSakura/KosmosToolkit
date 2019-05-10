@@ -38,7 +38,7 @@ public class PtBase64 {
     /**
      * @return 编码
      */
-    public static String encode(byte[] data) {
+    static String encode(byte[] data) {
         StringBuilder sb = new StringBuilder();
         int len = data.length;
         int i = 0;
@@ -72,7 +72,7 @@ public class PtBase64 {
     /**
      * @return 解码
      */
-    public static byte[] decode(String str) throws UnsupportedEncodingException {
+    static byte[] decode(String str) throws UnsupportedEncodingException {
         StringBuilder sb = new StringBuilder();
         byte[] data = str.getBytes("US-ASCII");
         int len = data.length;

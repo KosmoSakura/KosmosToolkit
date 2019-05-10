@@ -19,12 +19,19 @@ public class UAES {
     private static final String KEY_ALGORITHM = "AES";
     private static final String DEFAULT_CIPHER_ALGORITHM = "AES/ECB/PKCS5Padding";//默认的加密算法
 
+//    public static void main(String[] args) {
+//        String encrypt = encrypt("AES加密解密", "asv1234");
+//        System.out.println("加密：" + encrypt);
+//        System.out.println("解密："+decrypt(encrypt,"asv1234"));
+//    }
+
     /**
      * @param str 明文
      * @param pwd 密钥
      * @return 密文
+     * @apiNote 加密
      */
-    public static String encode(String str, String pwd) {
+    public static String encrypt(String str, String pwd) {
         try {
             Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);//密码器
             byte[] byteContent = str.getBytes("utf-8");
@@ -40,8 +47,9 @@ public class UAES {
      * @param str 密文
      * @param pwd 密钥
      * @return 明文
+     * @apiNote 解密
      */
-    public static String decode(String str, String pwd) {
+    public static String decrypt(String str, String pwd) {
         try {
             //实例化
             Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);

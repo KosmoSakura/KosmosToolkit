@@ -55,8 +55,8 @@ public class UDate {
      * Calendar.WEEK_OF_YEAR：--打印->6<--现在是一个年中的第几周
      * Calendar.MONTH：--打印->1<--月份获取需要 +1，那么，赋值时需要 -1
      */
-    public static void main(String[] args) {
-        System.out.println(getDayOfWeek(new Date()));
+//    public static void main(String[] args) {
+//        System.out.println(getDayOfWeek(new Date()));
 //        System.out.println("输入日期所在周的周一:" + getMonday("2018-11-11 00:00:00"));
 //        System.out.println("输入日期所在周的周七:" + getSunday("2018-11-11 00:00:00"));
 //        System.out.println("1-起始时间--------------------------------------------");
@@ -86,7 +86,7 @@ public class UDate {
 //        System.out.println("3-天天级：" + longToReadEasy(DAY * 3 + HOUR * 6 + MINUTE * 12 + SECOND * 33 + 563));
 //        System.out.println("3-月月级：" + longToReadEasy(MONTH * 2 + DAY * 3 + HOUR * 6 + MINUTE * 12 + SECOND * 33 + 563));
 //        System.out.println("3-年年级：" + longToReadEasy(YEAR * 4 + MONTH * 2 + DAY * 3 + HOUR * 6 + MINUTE * 12 + SECOND * 33 + 563));
-    }
+//    }
 
     /**
      * @return 当前日期:yyyy-MM-dd HH:mm:ss

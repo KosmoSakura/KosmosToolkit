@@ -12,11 +12,11 @@ import java.util.List;
  * @Email: KosmoSakura@gmail.com
  */
 public class USort {
-    public static void main(String[] args) {
-        sortInt();//int排序
-        sortBoolean();//boolean排序
-        sortStr();//String排序
-    }
+//    public static void main(String[] args) {
+//        sortInt();//int排序
+//        sortBoolean();//boolean排序
+//        sortStr();//String排序
+//    }
 
 
     /**

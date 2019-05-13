@@ -2,11 +2,14 @@ package cos.mos.toolkit.init;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import cos.mos.toolkit.media.image.UBmpLoad;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -54,6 +57,10 @@ public abstract class KActivity extends AppCompatActivity {
      * 填充逻辑部分 include
      */
     protected abstract void logic();
+
+    protected void setBackground(ImageView iBg, @DrawableRes int id) {
+        iBg.setImageBitmap(UBmpLoad.getInstance().loadBG(getResources(), id));
+    }
 
     protected void rxJava(Disposable disposable) {
         if (compositeDisposable == null) {

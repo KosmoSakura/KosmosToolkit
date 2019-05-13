@@ -238,7 +238,7 @@ public class UIntent {
     }
 
     /**
-     * @apiNote 跳转当前应用的GooglePlay商店
+     * @apiNote 跳转当前应用的GooglePlay商店 评分
      * Google Play:com.android.vending
      * 应用宝:com.tencent.android.qqdownloader
      * 360手机助手:com.qihoo.appstore
@@ -252,8 +252,8 @@ public class UIntent {
      */
     public static void toPlayStore() {
         try {
-            Uri uri = Uri.parse("market://details?id=" + KApp.instance().getPackageName());
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("market://details?id=" + KApp.instance().getPackageName()));
             intent.setPackage("com.android.vending");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             start(intent);

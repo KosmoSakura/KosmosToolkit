@@ -1,11 +1,12 @@
 package cos.mos.utils.ukotlin
 
+import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.support.annotation.ColorInt
 import android.support.annotation.ColorRes
 import android.support.annotation.IntRange
 import android.support.annotation.Size
-import android.support.v4.content.ContextCompat
 import cos.mos.toolkit.init.KApp
 
 /**
@@ -13,6 +14,7 @@ import cos.mos.toolkit.init.KApp
  * @Author: Kosmos
  * @Date: 2019.04.24 15:18
  * @Email: KosmoSakura@gmail.com
+ * @eg: 2019.5.13:获取颜色本地化
  */
 object KtColor {
     /**
@@ -89,7 +91,21 @@ object KtColor {
      * @return int型颜色
      */
     @JvmStatic
-    fun getColor(@ColorRes id: Int): Int = ContextCompat.getColor(KApp.instance(), id)
+    fun getColor(@ColorRes id: Int, context: Context? = null): Int {
+        return if (context == null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                KApp.instance().getColor(id)
+            } else {
+                KApp.instance().resources.getColor(id)
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                context.getColor(id)
+            } else {
+                context.resources.getColor(id)
+            }
+        }
+    }
 
     /**
      * @param color int型颜色eg：-4253158

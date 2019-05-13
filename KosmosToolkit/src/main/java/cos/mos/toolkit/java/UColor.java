@@ -1,13 +1,14 @@
 package cos.mos.toolkit.java;
 
 
+import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.FloatRange;
 import android.support.annotation.IntRange;
 import android.support.annotation.Size;
-import android.support.v4.content.ContextCompat;
 
 import cos.mos.toolkit.init.KApp;
 
@@ -19,6 +20,7 @@ import cos.mos.toolkit.init.KApp;
  * @Email: KosmoSakura@gmail.com
  * @eg: 2019.3.13:基于Color类算法优化
  * @eg: 2019.5.8:argb颜色处理
+ * @eg: 2019.5.13:获取颜色本地化
  */
 public class UColor {
     private UColor() {
@@ -97,7 +99,19 @@ public class UColor {
      * @return int型颜色
      */
     public static int getColor(@ColorRes int id) {
-        return ContextCompat.getColor(KApp.instance(), id);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return KApp.instance().getColor(id);
+        } else {
+            return KApp.instance().getResources().getColor(id);
+        }
+    }
+
+    public static int getColor(@ColorRes int id, Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getColor(id);
+        } else {
+            return context.getResources().getColor(id);
+        }
     }
 
     /**

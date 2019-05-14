@@ -24,17 +24,17 @@ public class UUnit {
         }
         float megaByte = kiloByte / 1000;
         if (megaByte < 1) {
-            return formatTwo(kiloByte) + "K " + units;
+            return formatTwo(kiloByte) + " K" + units;
         }
         float gigaByte = megaByte / 1024;
         if (gigaByte < 1) {
-            return formatTwo(megaByte) + "M " + units;
+            return formatTwo(megaByte) + " M" + units;
         }
         float teraBytes = gigaByte / 1024;
         if (teraBytes < 1) {
-            return formatTwo(gigaByte) + "G " + units;
+            return formatTwo(gigaByte) + " G" + units;
         }
-        return formatTwo(teraBytes) + "T " + units;
+        return formatTwo(teraBytes) + " T" + units;
     }
 
     /**

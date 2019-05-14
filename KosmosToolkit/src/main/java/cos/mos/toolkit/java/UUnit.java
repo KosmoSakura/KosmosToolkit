@@ -13,6 +13,29 @@ import java.util.Locale;
  * @eg 2019.2.25:算法优化
  */
 public class UUnit {
+    /**
+     * @param units 单位：Hz
+     * @return 格式化十进制单位
+     */
+    public static String unitsFormat(float digit, String units) {
+        float kiloByte = digit / 1000;
+        if (kiloByte < 1) {
+            return formatTwo(digit) + units;
+        }
+        float megaByte = kiloByte / 1000;
+        if (megaByte < 1) {
+            return formatTwo(kiloByte) + "K " + units;
+        }
+        float gigaByte = megaByte / 1024;
+        if (gigaByte < 1) {
+            return formatTwo(megaByte) + "M " + units;
+        }
+        float teraBytes = gigaByte / 1024;
+        if (teraBytes < 1) {
+            return formatTwo(gigaByte) + "G " + units;
+        }
+        return formatTwo(teraBytes) + "T " + units;
+    }
 
     /**
      * @param size 单位：字节
@@ -111,6 +134,10 @@ public class UUnit {
      */
     private static float formatTwo(float digit) {
         return (int) (digit * 100f) / 100f;
+    }
+
+    private static double formatTwo(double digit) {
+        return (int) (digit * 100d) / 100d;
     }
 
     /**

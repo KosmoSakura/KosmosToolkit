@@ -29,7 +29,7 @@ public class UVibrate {
      * @param repeate 震动的次数，-1不重复，非-1为从pattern的指定下标开始重复
      * @apiNote 复杂的震动
      */
-    public static Vibrator vComplicated(Context context, long[] pattern, int repeate) {
+    public static Vibrator vComplicated(Context context, int repeate, long... pattern) {
         Vibrator vibrator = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
         vibrator.vibrate(pattern, repeate);
         return vibrator;

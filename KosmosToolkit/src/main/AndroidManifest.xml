@@ -7,4 +7,6 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <!--读取手机状态信息-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
 </manifest>

@@ -39,7 +39,6 @@ public class USoundSample {
     }
 
     /**
-     * @param index musicId中的下标
      * @apiNote soundPool.load加载需要时间，成功之后才能播放
      * 所以我在app你们初始化
      */

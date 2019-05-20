@@ -101,6 +101,17 @@ public class BottomSheetDialogSimple extends KActivity {
 
     /**
      * BottomSheetDialog+Listview的滑动冲突问题
+     * <p>
+     * 适用于：ListView、ScrollView等
+     * ------------------------------------
+     * View.canScrollVertically(-1)
+     * 检查这个视图是否可以在某个方向上垂直滚动:
+     * 1.负数表示检查向上滚动，正数表示检查向下滚动。
+     * 2.true:表示是否能滚动,false表示已经滚动到头
+     * ------------------------------------
+     * requestDisallowInterceptTouchEvent
+     * 1.是ViewGroup类中的一个公用方法，参数是一个boolean值
+     * 2.true:子view处理触摸事件，断绝父View的念头
      */
     private void showDialog3() {
         List<AppBean> list = UApps.instance().getAppList();
@@ -114,11 +125,10 @@ public class BottomSheetDialogSimple extends KActivity {
             listView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    if (!listView.canScrollVertically(-1)) {
-                        //canScrollVertically(-1)的值表示是否能向下滚动，false表示已经滚动到顶部
-                        listView.requestDisallowInterceptTouchEvent(false);
-                    } else {
+                    if (listView.canScrollVertically(-1)) {
                         listView.requestDisallowInterceptTouchEvent(true);
+                    } else {
+                        listView.requestDisallowInterceptTouchEvent(false);
                     }
                     return false;
                 }

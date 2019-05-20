@@ -74,6 +74,26 @@ public class UString {
         return Html.fromHtml("<i>" + str + "</i>");
     }
 
+    private void setHtml(TextView textView, String html) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            textView.setText(Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            textView.setText(Html.fromHtml(html));
+        }
+    }
+
+    /**
+     * @param text1      字符1
+     * @param textColor1 字符1颜色
+     * @param text2      字符2
+     * @param textColor2 字符2颜色
+     * @param space      分隔符
+     */
+    private Spanned insertHtml(String text1, String textColor1, String text2, String textColor2, String space) {
+        return Html.fromHtml("<font color= '" + textColor1 + "'>" + text1 + "</font> " + space +
+            "<font color= '" + textColor2 + "'>" + "<big>" + text2 + "</big></font><br/>");
+    }
+
     /**
      * @param t             TextView
      * @param color         将要单色设置的颜色

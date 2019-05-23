@@ -1,8 +1,10 @@
 package cos.mos.toolkit.media.audio;
 
 import android.content.Context;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Build;
 import android.util.SparseIntArray;
 
 /**
@@ -45,9 +47,20 @@ public class USound {
      * int load(String path, int priority)：从path 对应的文件去加载声音。
      */
     public void load(Context context, int... res) {
-        soundPool = new SoundPool(res.length,//允许同时存在的声音数量
-            AudioManager.STREAM_SYSTEM,//声音流的类型，有：STREAM_RING、STREAM_MUSIC,一般都是使用后者
-            0);//质量
+        if (soundPool == null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                AudioAttributes localAudioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+                soundPool = new SoundPool.Builder().setAudioAttributes(localAudioAttributes).setMaxStreams(1).build();
+            } else {
+                soundPool = new SoundPool(res.length,//允许同时存在的声音数量
+                    AudioManager.STREAM_MUSIC,//声音流的类型，有：STREAM_RING、STREAM_MUSIC,一般都是使用后者
+                    0);//质量
+            }
+        }
+        musicId.clear();
         for (int index = 0; index < res.length; index++) {
             musicId.put(index, soundPool.load(context, res[index], 1));
         }
@@ -79,5 +92,12 @@ public class USound {
                 }
             }
         });
+    }
+
+    public void clear() {
+        if (soundPool != null) {
+            soundPool.release();
+            soundPool = null;
+        }
     }
 }

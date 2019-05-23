@@ -1,7 +1,9 @@
 package cos.mos.toolkit.media.audio;
 
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Build;
 
 import cos.mos.toolkit.R;
 import cos.mos.toolkit.init.KApp;
@@ -32,9 +34,17 @@ public class USoundSample {
 
     private SoundPool getPool() {
         if (soundPool == null) {
-            soundPool = new SoundPool(1, AudioManager.STREAM_SYSTEM, 0);
-            soundId = soundPool.load(KApp.instance(), R.raw.voice_end, 1);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                AudioAttributes localAudioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+                soundPool = new SoundPool.Builder().setAudioAttributes(localAudioAttributes).setMaxStreams(1).build();
+            } else {
+                soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+            }
         }
+        soundId = soundPool.load(KApp.instance(), R.raw.voice_end, 1);
         return soundPool;
     }
 

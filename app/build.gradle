@@ -56,6 +56,24 @@ android {
         disable 'GoogleAppIndexingWarning'
         disable 'MissingTranslation'
     }
+    def appName = "应用名"
+    android.applicationVariants.all { cos ->
+        cos.outputs.each { mos ->
+            if (mos.outputFileName.endsWith("apk")) {
+                if (cos.buildType.name == 'debug') {
+                    def date = new Date().format("yyyy.MM.dd", TimeZone.getTimeZone("GMT+08"))
+                    //路径为：应用根目录\app\build\intermediates\instant-run-apk\debug\
+                    mos.outputFileName = new File("/", "${appName}_${date}.apk")
+//                    println("debug-输出路径： ${mos.outputFileName}")
+                } else {
+                    def date = new Date().format("yyyy.MM.dd-HHmm", TimeZone.getTimeZone("GMT+08"))
+                    //路径为：打包时选择的目录/
+                    mos.outputFileName = new File("/", "${appName}_${date}.apk")
+//                    println("Release-输出路径： ${mos.outputFileName}")
+                }
+            }
+        }
+    }
 }
 
 dependencies {

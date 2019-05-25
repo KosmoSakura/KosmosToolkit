@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import cos.mos.utils.R;
-import cos.mos.toolkit.system.AppBean;
 import cos.mos.toolkit.java.UText;
+import cos.mos.toolkit.system.AppBean;
+import cos.mos.utils.R;
 
 /**
  * @Description: <p>

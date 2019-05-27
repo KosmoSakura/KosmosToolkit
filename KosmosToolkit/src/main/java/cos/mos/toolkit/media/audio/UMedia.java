@@ -15,7 +15,7 @@ import java.util.Random;
  */
 public class UMedia {
     private static UMedia sound;
-    private MediaPlayer mMediaPlayer;
+    private MediaPlayer player;
     private boolean isPlaying = false;//当前是否正在播放音频
     private Random random = new Random();
     private boolean lock;
@@ -39,8 +39,8 @@ public class UMedia {
      * @param msec 毫秒
      */
     public void seekTo(int msec) {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.seekTo(msec);
+        if (player != null) {
+            player.seekTo(msec);
         }
     }
 
@@ -52,14 +52,14 @@ public class UMedia {
         lock = true;
         if (!isPlaying) {
             //目前MediaPlayer不播放音频
-            if (mMediaPlayer == null) {
+            if (player == null) {
                 startPlaying(); //从头开始
             } else {
-                resumePlaying(); //恢复当前暂停的媒体播放器
+                resume(); //恢复当前暂停的媒体播放器
             }
         } else {
             // 暂停
-            pausePlaying();
+            pause();
         }
         SystemClock.sleep(1000);
         lock = false;
@@ -69,15 +69,15 @@ public class UMedia {
         if (dirAudio == null) {
             return;
         }
-        mMediaPlayer = new MediaPlayer();
+        player = new MediaPlayer();
         try {
-            mMediaPlayer.setDataSource(dirAudio);
-            mMediaPlayer.prepare();
-            mMediaPlayer.setOnPreparedListener(mp -> mMediaPlayer.start());
+            player.setDataSource(dirAudio);
+            player.prepare();
+            player.setOnPreparedListener(mp -> player.start());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mMediaPlayer.setOnCompletionListener(mp -> stopPlaying());
+        player.setOnCompletionListener(mp -> stop());
         //保持屏幕打开
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
@@ -87,15 +87,15 @@ public class UMedia {
             return;
         }
         //设置mediaPlayer从音频文件的progress开始
-        mMediaPlayer = new MediaPlayer();
+        player = new MediaPlayer();
         try {
-            mMediaPlayer.setDataSource(dirAudio);
-            mMediaPlayer.prepare();
-            mMediaPlayer.seekTo(progress);
-            mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            player.setDataSource(dirAudio);
+            player.prepare();
+            player.seekTo(progress);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    stopPlaying();
+                    stop();
                 }
             });
         } catch (IOException e) {
@@ -105,25 +105,25 @@ public class UMedia {
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
-    private void pausePlaying() {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.pause();
+    public void pause() {
+        if (player != null) {
+            player.pause();
         }
     }
 
-    private void resumePlaying() {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.start();
+    public void resume() {
+        if (player != null) {
+            player.start();
         }
     }
 
-    private void stopPlaying() {
+    private void stop() {
         dirAudio = null;
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
-            mMediaPlayer.reset();
-            mMediaPlayer.release();
-            mMediaPlayer = null;
+        if (player != null) {
+            player.stop();
+            player.reset();
+            player.release();
+            player = null;
         }
         isPlaying = !isPlaying;
 //        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

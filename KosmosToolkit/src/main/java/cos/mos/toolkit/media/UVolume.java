@@ -119,26 +119,24 @@ public class UVolume {
 
     /**
      * @param streamType 音量分类
-     * @apiNote 保持不变音量, 主要用于向用户展示当前的音量
+     * @param direction  调整方向
+     * @apiNote direction取值
+     * AudioManager.ADJUST_LOWER：减少一格音量
+     * AudioManager.ADJUST_RAISE：增加一格音量
+     * AudioManager.ADJUST_SAME：保持不变音量, 主要用于向用户展示当前的音量
      */
-    public void setVolumeShow(int streamType) {
-        setVolume(streamType, AudioManager.ADJUST_SAME);
-    }
-
-    /**
-     * @param streamType 音量分类
-     * @apiNote 增加一格音量
-     */
-    public void setVolumeRaise(int streamType) {
-        setVolume(streamType, AudioManager.ADJUST_RAISE);
-    }
-
-    /**
-     * @param streamType 音量分类
-     * @apiNote 减少一格音量
-     */
-    public void setVolumeLower(int streamType) {
-        setVolume(streamType, AudioManager.ADJUST_LOWER);
+    public void setAdjust(int streamType, int direction) {
+        switch (streamType) {
+            case AudioManager.STREAM_MUSIC://音乐播放、媒体音量
+            case AudioManager.STREAM_RING://电话铃声
+            case AudioManager.STREAM_VOICE_CALL://通话
+            case AudioManager.STREAM_SYSTEM://系统声音
+            case AudioManager.STREAM_ALARM://闹钟、警报
+            case AudioManager.STREAM_NOTIFICATION://顶部状态栏通知、Notification
+            case AudioManager.STREAM_DTMF://双音多频
+                getMgr().adjustStreamVolume(streamType, direction, AudioManager.FLAG_SHOW_UI);
+                break;
+        }
     }
 
     /**
@@ -151,12 +149,13 @@ public class UVolume {
 
     /**
      * @param streamType 音量分类
-     * @param volume     音量
-     * @apiNote 附加参数
-     * AudioManager.FLAG_PLAY_SOUND | AudioManager.FLAG_SHOW_UI:
-     * 改变音量时是否播放声音|改变音量显示音量条（=按音量键出现的那）
+     * @param volume     音量∈[min,max],超出无效
+     * @apiNote 附加参数（用 | 链接）
+     * AudioManager.FLAG_SHOW_UI:改变音量显示音量条（=按音量键出现的那）
+     * AudioManager.FLAG_PLAY_SOUND：改变音量时是否播放声音
+     * AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE：隐藏音量条
      */
-    private void setVolume(int streamType, int volume) {
+    public void setVolume(int streamType, int volume) {
         switch (streamType) {
             case AudioManager.STREAM_MUSIC://音乐播放、媒体音量
             case AudioManager.STREAM_RING://电话铃声

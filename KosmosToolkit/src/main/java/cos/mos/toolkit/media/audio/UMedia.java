@@ -1,10 +1,8 @@
 package cos.mos.toolkit.media.audio;
 
 import android.media.MediaPlayer;
-import android.os.SystemClock;
 
 import java.io.IOException;
-import java.util.Random;
 
 
 /**
@@ -17,7 +15,6 @@ public class UMedia {
     private static UMedia sound;
     private MediaPlayer player;
     private boolean isPlaying = false;//当前是否正在播放音频
-    private Random random = new Random();
     private boolean lock;
     private String dirAudio;
 
@@ -61,8 +58,6 @@ public class UMedia {
             // 暂停
             pause();
         }
-        SystemClock.sleep(1000);
-        lock = false;
     }
 
     private void startPlaying() {
@@ -126,6 +121,7 @@ public class UMedia {
             player = null;
         }
         isPlaying = !isPlaying;
+        lock = false;
 //        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 

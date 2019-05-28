@@ -47,7 +47,6 @@
     <cos.mos.utils.widget.CircleBar
         android:layout_width="110dp"
         android:layout_height="110dp"
-        kosmos:direction="top"
         kosmos:inside_color="#ffffff"
         kosmos:max_progress="100"
         kosmos:outside_color="#ea5413"

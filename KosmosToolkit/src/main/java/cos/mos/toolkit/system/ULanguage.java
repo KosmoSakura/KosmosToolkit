@@ -131,7 +131,7 @@ public class ULanguage {
     /**
      * @param aClass eg: MainActivity.class
      * @apiNote 重新启动Activity
-     * <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+     * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.KILL_BACKGROUND_PROCESSES" />
      */
     public void reBoot(Context context, Class aClass) {
         Intent intent = new Intent(context, aClass);

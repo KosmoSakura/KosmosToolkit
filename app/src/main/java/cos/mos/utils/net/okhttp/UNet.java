@@ -14,8 +14,8 @@ import cos.mos.utils.init.App;
  * @Date: 2019.05.06 10:09
  * @Email: KosmoSakura@gmail.com
  * 权限
- * <uses-permission android:name="android.permission.INTERNET"/>
- * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+ * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.INTERNET"/>
+ * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.ACCESS_NETWORK_STATE" />
  */
 public class UNet {
     private static UNet net;

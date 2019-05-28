@@ -8,7 +8,7 @@ import android.os.Vibrator;
  * @Author: Kosmos
  * @Date: 2019.05.16 20:14
  * @Email: KosmoSakura@gmail.com
- * 权限：  <uses-permission android:name="android.permission.VIBRATE"/>
+ * 权限：  <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.VIBRATE"/>
  */
 public class UVibrate {
 

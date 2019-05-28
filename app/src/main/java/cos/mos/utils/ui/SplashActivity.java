@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        Handler().postDelayed({
 //            //检测权限
-//            checkPermissions(Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//            checkPermissions(Manifest.cos.mos.utils.ui.permission.RECORD_AUDIO, Manifest.cos.mos.utils.ui.permission.WRITE_EXTERNAL_STORAGE)
 //        }, 200)
         checkPermissions(Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 //        wayTwo();

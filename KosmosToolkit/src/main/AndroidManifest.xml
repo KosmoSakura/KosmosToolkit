@@ -1,13 +1,13 @@
 <manifest package="cos.mos.toolkit"
           xmlns:android="http://schemas.android.com/apk/res/android">
     <!--指纹验证-->
-    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.USE_FINGERPRINT"/>
     <!-- 获取网络状态改变的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.ACCESS_NETWORK_STATE"/>
+    <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.CHANGE_NETWORK_STATE"/>
     <!--读取手机状态信息-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.READ_PHONE_STATE"/>
     <!-- 震动 -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.VIBRATE"/>
+    <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.MODIFY_AUDIO_SETTINGS"/>
 </manifest>

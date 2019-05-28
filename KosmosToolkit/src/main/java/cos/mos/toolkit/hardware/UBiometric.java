@@ -12,7 +12,7 @@ import cos.mos.toolkit.init.KApp;
  * @Author: Kosmos
  * @Date: 2018.12.18 15:56
  * @Email: KosmoSakura@gmail.com
- * 权限（不用动态申请）： <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+ * 权限（不用动态申请）： <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.USE_FINGERPRINT"/>
  */
 public class UBiometric {
     private static UBiometric instance;

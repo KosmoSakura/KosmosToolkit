@@ -121,13 +121,13 @@ object KtIntent {
                     // 针对魅族，我们只能通过魅族内置手机管家去设置自启动，
                     // 所以我在这里直接跳转到魅族内置手机管家界面，具体结果请看图
                     componentName =
-                            ComponentName.unflattenFromString("com.meizu.safe" + "/.permission.PermissionMainActivity")
+                            ComponentName.unflattenFromString("com.meizu.safe" + "/.cos.mos.utils.ui.permission.PermissionMainActivity")
                 "OPPO"  // OPPO R8205测试通过
                 -> {
                     componentName = ComponentName.unflattenFromString(
-                            "com.oppo.safe" + "/.permission.startup.StartupAppListActivity")
+                            "com.oppo.safe" + "/.cos.mos.utils.ui.permission.startup.StartupAppListActivity")
                     val intentOppo = Intent()
-                    intentOppo.setClassName("com.oppo.safe/.permission.startup", "StartupAppListActivity")
+                    intentOppo.setClassName("com.oppo.safe/.cos.mos.utils.ui.permission.startup", "StartupAppListActivity")
                     if (KApp.instance().packageManager.resolveActivity(intentOppo, 0) == null) {
                         componentName = ComponentName.unflattenFromString(
                                 "com.coloros.safecenter" + "/.startupapp.StartupAppListActivity")

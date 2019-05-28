@@ -27,9 +27,27 @@
         <attr name="onlyShow" format="boolean"/>
         <attr name="canPick" format="boolean"/>
     </declare-styleable>
+    <!--音频波形图-->
     <declare-styleable name="WaveClipBar">
         <attr name="waveClipColor" format="color"/>
         <attr name="waveBaseColor" format="color"/>
+    </declare-styleable>
+    <!--圆形进度条-->
+    <declare-styleable name="CircleBar">
+        <attr name="outside_color" format="color"/>
+        <attr name="outside_radius" format="dimension"/>
+        <attr name="inside_color" format="color"/>
+        <attr name="progress_text_color" format="color"/>
+        <attr name="progress_text_size" format="dimension"/>
+        <attr name="progress_width" format="dimension"/>
+        <attr name="max_progress" format="integer"/>
+        <attr name="progress" format="float"/>
+        <attr name="direction">
+            <enum name="left" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="right" value="2"/>
+            <enum name="bottom" value="3"/>
+        </attr>
     </declare-styleable>
     <declare-styleable name="KBubbleSeekBar">
         <!--渐变色号，用_分割-->

@@ -43,4 +43,16 @@
         android:id="@+id/tbShow"
         android:layout_width="match_parent"
         android:layout_height="270dp"/>
+
+    <cos.mos.utils.widget.CircleBar
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        kosmos:direction="top"
+        kosmos:inside_color="#ffffff"
+        kosmos:max_progress="100"
+        kosmos:outside_color="#ea5413"
+        kosmos:outside_radius="40dp"
+        kosmos:progress="10"
+        kosmos:progress_text_size="30dp"
+        kosmos:progress_width="4dp"/>
 </FrameLayout>

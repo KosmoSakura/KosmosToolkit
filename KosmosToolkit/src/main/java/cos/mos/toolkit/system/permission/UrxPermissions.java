@@ -1,4 +1,4 @@
-package cos.mos.toolkit.system;
+package cos.mos.toolkit.system.permission;
 
 import android.app.AppOpsManager;
 import android.content.Context;
@@ -14,6 +14,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.java.UText;
+import cos.mos.toolkit.system.UIntent;
 import cos.mos.toolkit.ui.UDialog;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -28,14 +29,14 @@ import io.reactivex.disposables.Disposable;
  * @eg: 2019.2.28:重新封装权限申请逻辑
  * @eg: 2019.3.7:权限校验添加系统api
  */
-public class UPermissions {
+public class UrxPermissions {
     private RxPermissions rxPermissions;
     private static CompositeDisposable compositeDisposable;
     private FragmentActivity activity;
     private int count;
     private int maxNoticeCount = 2;//弹窗最大弹出次数
 
-    public UPermissions(FragmentActivity activity) {
+    public UrxPermissions(FragmentActivity activity) {
         this.activity = activity;
         rxPermissions = new RxPermissions(activity);
         count = 0;
@@ -55,7 +56,7 @@ public class UPermissions {
      *            当次数为1，则响应式弹出通知
      * @apiNote 用户体验优化
      */
-    public UPermissions setMaxNoticeCount(int max) {
+    public UrxPermissions setMaxNoticeCount(int max) {
         maxNoticeCount = max;
         return this;
     }

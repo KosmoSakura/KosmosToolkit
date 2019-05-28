@@ -16,7 +16,7 @@ import com.liaoinstan.springview.widget.SpringView;
 import java.util.ArrayList;
 import java.util.List;
 
-import cos.mos.toolkit.system.UPermissions;
+import cos.mos.toolkit.system.permission.UrxPermissions;
 import cos.mos.toolkit.ui.UDialog;
 import cos.mos.utils.R;
 import cos.mos.utils.init.BaseActivity;
@@ -57,8 +57,8 @@ public class MainActivity extends BaseActivity implements MainListener {
 
     @Override
     protected void logic() {
-        new UPermissions(this)
-            .check("我要权限，给我权限", new UPermissions.Listener() {
+        new UrxPermissions(this)
+            .check("我要权限，给我权限", new UrxPermissions.Listener() {
 
                 @Override
                 public void permission(boolean hasPermission) {

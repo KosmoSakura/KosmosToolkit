@@ -11,7 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
-import cos.mos.toolkit.system.UPermissions;
+import cos.mos.toolkit.system.permission.UrxPermissions;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -57,8 +57,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void wayTwo() {
-        new UPermissions(this)
-            .check("理由", new UPermissions.Listener() {
+        new UrxPermissions(this)
+            .check("理由", new UrxPermissions.Listener() {
                 @Override
                 public void permission(boolean hasPermission) {
                     if (hasPermission) {

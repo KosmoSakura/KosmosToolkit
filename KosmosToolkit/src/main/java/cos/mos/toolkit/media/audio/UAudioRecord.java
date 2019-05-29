@@ -82,7 +82,7 @@ public class UAudioRecord {
     private String getFileName() {
         if (fileName == null) {
             DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
-            fileName = dateFormat.format(new Date());
+            fileName = dateFormat.format(new Date()) + ".pcm";
         }
         return fileName;
     }
@@ -107,7 +107,7 @@ public class UAudioRecord {
             AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, minBufferSize);
 
         final byte[] data = new byte[minBufferSize];
-        final File file = new File(checkDirCache(), getFileName() + ".pcm");
+        final File file = new File(checkDirCache(), getFileName());
 
         recorder.startRecording();
         isRecording = true;
@@ -174,7 +174,7 @@ public class UAudioRecord {
             minBufferSize, AudioTrack.MODE_STREAM, AudioManager.AUDIO_SESSION_ID_GENERATE);
         audioTrack.play();
 
-        File file = new File(checkDirCache(), getFileName() + ".pcm");
+        File file = new File(checkDirCache(), getFileName());
         try {
             fileInputStream = new FileInputStream(file);
             new Thread(new Runnable() {

@@ -35,12 +35,17 @@ import static org.greenrobot.eventbus.EventBus.TAG;
  * @Date: 2019.05.29 14:05
  * @Email: KosmoSakura@gmail.com
  * 录音-》保存为wav
+ * ---------------------------------------------
  * 权限：
  * Manifest.permission.RECORD_AUDIO
  * Manifest.permission.WRITE_EXTERNAL_STORAGE
+ * ---------------------------------------------
+ * AudioRecord(基于字节流录音)
+ * 优点：可以实现语音的实时处理，进行边录边播，对音频的实时处理。
+ * 缺点：输出的是PCM的语音数据，如果保存成音频文件是不能被播放器播放的。要用到AudioTrack这个去进行处理。
  */
-public class URecord {
-    private AudioRecord audioRecord;
+public class UAudioRecord {
+    private AudioRecord recorder;
     private AudioTrack audioTrack;
     private byte[] audioData;
     private FileInputStream fileInputStream;
@@ -98,13 +103,13 @@ public class URecord {
     public void startRecord() {
         final int minBufferSize = AudioRecord.getMinBufferSize(44100,
             AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
-        audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, 44100,
+        recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, 44100,
             AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, minBufferSize);
 
         final byte[] data = new byte[minBufferSize];
         final File file = new File(checkDirCache(), getFileName() + ".pcm");
 
-        audioRecord.startRecording();
+        recorder.startRecording();
         isRecording = true;
         // pcm数据无法直接播放，保存为WAV格式。
         new Thread(new Runnable() {
@@ -119,7 +124,7 @@ public class URecord {
 
                 if (null != os) {
                     while (isRecording) {
-                        int read = audioRecord.read(data, 0, minBufferSize);
+                        int read = recorder.read(data, 0, minBufferSize);
                         // 如果读取音频数据没有出现错误，就将数据写入到文件
                         if (AudioRecord.ERROR_INVALID_OPERATION != read) {
                             try {
@@ -142,10 +147,10 @@ public class URecord {
     public void stopRecord() {
         isRecording = false;
         // 释放资源
-        if (null != audioRecord) {
-            audioRecord.stop();
-            audioRecord.release();
-            audioRecord = null;
+        if (null != recorder) {
+            recorder.stop();
+            recorder.release();
+            recorder = null;
             fileName = null;
             //recordingThread = null;
         }

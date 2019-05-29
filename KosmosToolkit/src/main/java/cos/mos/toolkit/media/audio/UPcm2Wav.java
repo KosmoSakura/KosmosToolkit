@@ -56,9 +56,7 @@ public class UPcm2Wav {
             out = new FileOutputStream(outFilename);
             totalAudioLen = in.getChannel().size();
             totalDataLen = totalAudioLen + 36;
-
-            writeWaveFileHeader(out, totalAudioLen, totalDataLen,
-                longSampleRate, channels, byteRate);
+            writeWaveFileHeader(out, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
             while (in.read(data) != -1) {
                 out.write(data);
             }

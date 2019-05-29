@@ -43,6 +43,7 @@ public class UMediaRecorder {
         }
         return instance;
     }
+
     /**
      * @return 保存根目录路径
      */
@@ -76,11 +77,21 @@ public class UMediaRecorder {
         return fileName;
     }
 
+    /**
+     * 输出格式：
+     * 1.MediaRecorder.OutputFormat.MPEG_4：
+     * 输出的文件将是一个MPEG_4文件。可能同时包含音频和视频轨。
+     * 2.MediaRecorder.OutputFormat.RAW_AMR：
+     * 输出一个没有任何容器类型的原始文件。只支持音频且音频编码要求为AMR_NB
+     * 3.MediaRecorder.OutputFormat.THREE_GPP：
+     * 3gp格式、H263视频、ARM音频编码(扩展名.3gp)。可能包含音频和视频轨。
+     */
     public void toStart() {
+        toStop();
         recorder = new MediaRecorder();
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);//从麦克风采集
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); //保存文件为MP4格式
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);//通用的AAC编码格式
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);//从麦克风采集（必须在setOutputFormat之前调用）
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); //输出格式：MP4
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);//编码格式：AAC
         recorder.setAudioChannels(1);//1(mono) , 2(stereo)
         recorder.setAudioSamplingRate(44100);//所有android系统都支持的适中采样的频率
         recorder.setAudioEncodingBitRate(96000);//设置音质频率(192000
@@ -96,8 +107,12 @@ public class UMediaRecorder {
 
     public void toStop() {
         if (recorder != null) {
-            recorder.stop();
-            recorder.release();
+            try {
+                recorder.stop();
+                recorder.release();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             recorder = null;
             long diff = System.currentTimeMillis() - startTime;
             if (diff < 1000) {

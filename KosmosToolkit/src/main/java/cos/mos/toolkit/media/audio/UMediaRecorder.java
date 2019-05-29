@@ -15,7 +15,8 @@ import java.util.Locale;
  * @Author: Kosmos
  * @Date: 2019.05.29 15:01
  * @Email: KosmoSakura@gmail.com
- * 录音-》保存为??
+ * 1.录音-》保存为m4a
+ * 2.丢子线程去
  * ---------------------------------------------
  * MediaRecorder(基于文件录音)
  * 已集成了录音，编码，压缩等，支持少量的音频格式文件。
@@ -26,7 +27,7 @@ public class UMediaRecorder {
     private static UMediaRecorder instance;
     private MediaRecorder recorder;
     //保存目录
-    private String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/WavRecorder/";
+    private String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/M4aRecorder/";
     private String fileName;//保存文件的名字
     private long startTime = 0;
 
@@ -47,7 +48,7 @@ public class UMediaRecorder {
     /**
      * @return 保存根目录路径
      */
-    public String checkDir() {
+    private String checkDir() {
         File file = new File(dir);
         if (!file.exists()) {
             file.mkdir();
@@ -56,20 +57,9 @@ public class UMediaRecorder {
     }
 
     /**
-     * @return 保存根缓存目录路径
-     */
-    public String checkDirCache() {
-        File file = new File(dir + "/.cache/");
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        return file.getAbsolutePath();
-    }
-
-    /**
      * @return 文件名字
      */
-    private String getFileName() {
+    public String getFileName() {
         if (fileName == null) {
             DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
             fileName = dateFormat.format(new Date()) + ".m4a";
@@ -105,7 +95,7 @@ public class UMediaRecorder {
         }
     }
 
-    public void toStop() {
+    public long toStop() {
         if (recorder != null) {
             try {
                 recorder.stop();
@@ -114,10 +104,14 @@ public class UMediaRecorder {
                 e.printStackTrace();
             }
             recorder = null;
+            fileName = null;
             long diff = System.currentTimeMillis() - startTime;
             if (diff < 1000) {
                 //录音时间小于1秒
             }
+            return diff;
+        } else {
+            return 0;
         }
     }
 }

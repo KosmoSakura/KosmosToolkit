@@ -34,7 +34,8 @@ import static org.greenrobot.eventbus.EventBus.TAG;
  * @Author: Kosmos
  * @Date: 2019.05.29 14:05
  * @Email: KosmoSakura@gmail.com
- * 录音-》保存为wav
+ * 1.录音-》保存为wav
+ * 2.丢子线程去
  * ---------------------------------------------
  * 权限：
  * Manifest.permission.RECORD_AUDIO

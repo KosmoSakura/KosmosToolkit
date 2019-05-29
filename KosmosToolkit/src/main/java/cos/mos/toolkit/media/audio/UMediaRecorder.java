@@ -27,7 +27,7 @@ public class UMediaRecorder {
     private static UMediaRecorder instance;
     private MediaRecorder recorder;
     //保存目录
-    private String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/M4aRecorder/";
+    private String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "M4aRecorder" + File.separator;
     private String fileName;//保存文件的名字
     private long startTime = 0;
 

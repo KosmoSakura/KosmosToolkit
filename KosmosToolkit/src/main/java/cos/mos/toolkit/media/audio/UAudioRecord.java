@@ -52,7 +52,7 @@ public class UAudioRecord {
     private FileInputStream fileInputStream;
     private boolean isRecording;
     //保存目录
-    private String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/WavRecorder/";
+    private String dir = Environment.getExternalStorageDirectory().getAbsolutePath()  + File.separator+ "WavRecorder" + File.separator;
     private String fileName;//保存文件的名字
 
     /**
@@ -70,7 +70,7 @@ public class UAudioRecord {
      * @return 保存根缓存目录路径
      */
     public String checkDirCache() {
-        File file = new File(dir + "/.cache/");
+        File file = new File(dir  + File.separator+ ".cache" + File.separator);
         if (!file.exists()) {
             file.mkdirs();
         }

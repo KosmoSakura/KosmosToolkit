@@ -45,70 +45,61 @@ import static org.greenrobot.eventbus.EventBus.TAG;
  * 优点：可以实现语音的实时处理，进行边录边播，对音频的实时处理。
  * 缺点：输出的是PCM的语音数据，如果保存成音频文件是不能被播放器播放的。要用到AudioTrack这个去进行处理。
  */
-public class UAudioRecord {
+public class UAudioRecord extends Thread {
     private AudioRecord recorder;
     private AudioTrack audioTrack;
     private byte[] audioData;
     private FileInputStream fileInputStream;
     private boolean isRecording;
-    //保存目录
-    private String dir = Environment.getExternalStorageDirectory().getAbsolutePath()  + File.separator+ "WavRecorder" + File.separator;
-    private String fileName;//保存文件的名字
+    //保存目录+名字
+    private String dirWave, dirPcm;
 
-    /**
-     * @return 保存根目录路径
-     */
-    public String checkDir() {
-        File file = new File(dir);
-        if (!file.exists()) {
-            file.mkdir();
-        }
-        return file.getAbsolutePath();
+    public String getDirWave() {
+        return dirWave;
     }
 
     /**
-     * @return 保存根缓存目录路径
+     * 保存根目录路径
      */
-    public String checkDirCache() {
-        File file = new File(dir  + File.separator+ ".cache" + File.separator);
+    private void checkDir() {
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "WavRecorder" + File.separator);
         if (!file.exists()) {
             file.mkdirs();
         }
-        return file.getAbsolutePath();
-    }
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+        String name = dateFormat.format(new Date());
+        //保存根目录路径
+        dirWave = file.getAbsolutePath() + File.separator + name + ".pcm";
+        //保存根缓存目录路径
 
-    /**
-     * @return 文件名字
-     */
-    private String getFileName() {
-        if (fileName == null) {
-            DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
-            fileName = dateFormat.format(new Date()) + ".pcm";
-        }
-        return fileName;
     }
 
     /**
      * @param pcmFileAbsolute 源文件绝对路径
-     * @param wavName         目标文件名字
      */
-    public void toConvert(String pcmFileAbsolute, String wavName) {
+    public void toConvert(String pcmFileAbsolute) {
         UPcm2Wav pcmToWavUtil = new UPcm2Wav();
-        pcmToWavUtil.pcmToWav(pcmFileAbsolute, checkDir() + wavName);
+        pcmToWavUtil.pcmToWav(pcmFileAbsolute, dirWave);
     }
 
+    @Override
+    public void run() {
+        toStop();
+        checkDir();
+        toStart();
+    }
 
     /**
      * 开始录音
      */
-    public void startRecord() {
+    public void toStart() {
         final int minBufferSize = AudioRecord.getMinBufferSize(44100,
             AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
         recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, 44100,
             AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, minBufferSize);
 
         final byte[] data = new byte[minBufferSize];
-        final File file = new File(checkDirCache(), getFileName());
+        final File file = new File(dirPcm);
 
         recorder.startRecording();
         isRecording = true;
@@ -145,14 +136,13 @@ public class UAudioRecord {
         }).start();
     }
 
-    public void stopRecord() {
+    public void toStop() {
         isRecording = false;
         // 释放资源
-        if (null != recorder) {
+        if (recorder != null) {
             recorder.stop();
             recorder.release();
             recorder = null;
-            fileName = null;
             //recordingThread = null;
         }
     }

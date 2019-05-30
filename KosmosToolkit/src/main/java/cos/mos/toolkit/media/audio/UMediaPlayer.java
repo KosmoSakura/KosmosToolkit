@@ -11,25 +11,25 @@ import java.io.IOException;
  * @Date: 2018.11.30 16:47
  * @Email: KosmoSakura@gmail.com
  */
-public class UMedia {
-    private static UMedia sound;
+public class UMediaPlayer {
+    private static UMediaPlayer sound;
     private MediaPlayer player;
     private boolean isPlaying = false;//当前是否正在播放音频
     private boolean lock;
     private String dirAudio;
 
-    public static UMedia instance() {
+    public static UMediaPlayer instance() {
         if (sound == null) {
-            synchronized (UMedia.class) {
+            synchronized (UMediaPlayer.class) {
                 if (sound == null) {
-                    sound = new UMedia();
+                    sound = new UMediaPlayer();
                 }
             }
         }
         return sound;
     }
 
-    private UMedia() {
+    private UMediaPlayer() {
     }
 
     /**

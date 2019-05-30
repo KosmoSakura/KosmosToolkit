@@ -23,48 +23,32 @@ import java.util.Locale;
  * 优点：封装度很高，操作简单
  * 缺点：无法实现实时处理音频，输出的音频格式少
  */
-public class UMediaRecorder {
-    private static UMediaRecorder instance;
+public class UMediaRecorder extends Thread {
     private MediaRecorder recorder;
-    //保存目录
-    private String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "M4aRecorder" + File.separator;
-    private String fileName;//保存文件的名字
+    private String dirs;//保存文件的路径+名字
     private long startTime = 0;
 
-    private UMediaRecorder() {
-    }
-
-    public static UMediaRecorder instance() {
-        if (instance == null) {
-            synchronized (UMedia.class) {
-                if (instance == null) {
-                    instance = new UMediaRecorder();
-                }
-            }
-        }
-        return instance;
-    }
-
     /**
-     * @return 保存根目录路径
+     * 保存根目录路径
      */
-    private String checkDir() {
-        File file = new File(dir);
+    private void checkDir() {
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "M4aRecorder" + File.separator);
         if (!file.exists()) {
             file.mkdir();
         }
-        return file.getAbsolutePath();
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+        dirs = file.getAbsolutePath() + File.separator + dateFormat.format(new Date()) + ".m4a";
     }
 
-    /**
-     * @return 文件名字
-     */
-    public String getFileName() {
-        if (fileName == null) {
-            DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
-            fileName = dateFormat.format(new Date()) + ".m4a";
-        }
-        return fileName;
+    public String getDirs() {
+        return dirs;
+    }
+
+    @Override
+    public void run() {
+        toStop();
+        checkDir();
+        toStart();
     }
 
     /**
@@ -76,8 +60,7 @@ public class UMediaRecorder {
      * 3.MediaRecorder.OutputFormat.THREE_GPP：
      * 3gp格式、H263视频、ARM音频编码(扩展名.3gp)。可能包含音频和视频轨。
      */
-    public void toStart() {
-        toStop();
+    private void toStart() {
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);//从麦克风采集（必须在setOutputFormat之前调用）
         recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); //输出格式：MP4
@@ -85,7 +68,7 @@ public class UMediaRecorder {
         recorder.setAudioChannels(1);//1(mono) , 2(stereo)
         recorder.setAudioSamplingRate(44100);//所有android系统都支持的适中采样的频率
         recorder.setAudioEncodingBitRate(96000);//设置音质频率(192000
-        recorder.setOutputFile(checkDir() + getFileName());//文件录音的位置
+        recorder.setOutputFile(dirs);//文件录音的位置
         startTime = System.currentTimeMillis();
         try {
             recorder.prepare();
@@ -104,7 +87,6 @@ public class UMediaRecorder {
                 e.printStackTrace();
             }
             recorder = null;
-            fileName = null;
             long diff = System.currentTimeMillis() - startTime;
             if (diff < 1000) {
                 //录音时间小于1秒

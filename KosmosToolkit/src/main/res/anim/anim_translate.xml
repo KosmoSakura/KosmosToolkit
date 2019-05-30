@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-100%p 表示相对于父级
-100%相对于自身
--->
+ fromXDelta x轴起始位置
+ toXDelta X轴结束位置
+ fromYDelta y轴起始位置
+ toYDelta y轴结束位置
+ 100%p 表示相对于父级
+ 100%相对于自身-->
 <translate
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="2000"

@@ -55,7 +55,7 @@ public class FrameSample {
     }
 
     /**
-     * @param animation 停止
+     * 停止
      */
     private void stop() {
         AnimationDrawable animation = (AnimationDrawable) view.getDrawable();

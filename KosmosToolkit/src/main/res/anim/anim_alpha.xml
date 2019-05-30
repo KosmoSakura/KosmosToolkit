@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+fromAlpha 起始透明度 0为完全透明 1为不透明 0~1之间的浮点值
+toAlpha 结束透明度
+duration 动画运行时间 单位毫秒-->
+<alpha
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="2000"
+    android:fromAlpha="0"
+    android:repeatCount="-1"
+    android:toAlpha="1"/>

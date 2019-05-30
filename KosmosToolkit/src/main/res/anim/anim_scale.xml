@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+浮点值 表示倍数 自身几倍
+ fromXScale 动画在X轴以自身几倍伸缩开始
+ toXScale 动画在X轴以自身几倍伸缩结束
+ fromYScale 动画在Y轴以自身几倍伸缩开始
+ toYScale 动画在Y轴以自身几倍伸缩结束
+ pivotX 动画相对于控件自身的X坐标的开始位置
+ pivotY 动画相对于控件自身的Y坐标的开始位置
+ 0% 0% 表示控件左上角 为0，0原点坐标-->
+<scale
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromXScale="0.1"
+    android:fromYScale="0.1"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:toXScale="1"
+    android:toYScale="1"/>

@@ -1,4 +1,4 @@
-package cos.mos.utils.init;
+package cos.mos.utils.net.retrofit;
 
 
 import java.io.BufferedInputStream;
@@ -10,6 +10,7 @@ import java.io.OutputStream;
 
 import cos.mos.toolkit.java.UText;
 import cos.mos.utils.constant.KConfig;
+import cos.mos.utils.init.Constant;
 import cos.mos.utils.mvp.bean.ResultBean;
 import cos.mos.utils.mvp.contract.KListMsgListener;
 import io.reactivex.Observable;

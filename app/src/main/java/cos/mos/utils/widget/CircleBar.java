@@ -10,6 +10,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -23,15 +24,14 @@ import cos.mos.utils.R;
  * @Email: KosmoSakura@gmail.com
  */
 public class CircleBar extends View {
-
-    private int outsideColor;    //进度的颜色
-    private float outsideRadius;    //外圆半径大小
-    private int insideColor;    //背景颜色
-    private int progressTextColor;   //圆环内文字颜色
-    private float progressTextSize;    //圆环内文字大小
-    private float progressWidth;    //圆环的宽度
-    private int maxProgress;    //最大进度
-    private float progress;    //当前进度
+    private int outsideColor;//进度的颜色
+    private float outsideRadius;//外圆半径大小
+    private int insideColor;//背景颜色
+    private int progressTextColor;//圆环内文字颜色
+    private float progressTextSize;//圆环内文字大小
+    private float progressWidth;//圆环的宽度
+    private int maxProgress;//最大进度
+    private float progress;//当前进度
 
     private Paint paint;
     private Rect rect;
@@ -75,20 +75,21 @@ public class CircleBar extends View {
         super.onDraw(canvas);
         int circlePoint = getWidth() / 2;
         //第一步:画背景(即内层圆)
-        paint.setColor(insideColor); //设置圆的颜色
-        paint.setStyle(Paint.Style.STROKE); //设置空心
-        paint.setStrokeWidth(progressWidth); //设置圆的宽度
-        paint.setAntiAlias(true);  //消除锯齿
-        canvas.drawCircle(circlePoint, circlePoint, outsideRadius, paint); //画出圆
+        paint.setColor(insideColor);//设置圆的颜色
+        paint.setStyle(Paint.Style.STROKE);//设置空心
+        paint.setStrokeWidth(progressWidth);//设置圆的宽度
+        paint.setAntiAlias(true);//消除锯齿
+        canvas.drawCircle(circlePoint, circlePoint, outsideRadius, paint);//画出圆
 
         //第二步:画进度(圆弧)
-        paint.setColor(outsideColor);  //设置进度的颜色
+        paint.setColor(outsideColor);//设置进度的颜色
         //用于定义的圆弧的形状和大小的界限
         oval.left = circlePoint - outsideRadius;
         oval.top = circlePoint - outsideRadius;
         oval.right = circlePoint + outsideRadius;
         oval.bottom = circlePoint + outsideRadius;
-        canvas.drawArc(oval, 270.0f, 360 * (progress / maxProgress), false, paint);  //根据进度画圆弧
+        //根据进度画圆弧
+        canvas.drawArc(oval, 270.0f, 360 * (progress / maxProgress), false, paint);
 
         //第三步:画圆环内百分比文字
         paint.setColor(progressTextColor);
@@ -128,54 +129,6 @@ public class CircleBar extends View {
         return (int) ((progress / maxProgress) * 100) + "%";
     }
 
-    public int getOutsideColor() {
-        return outsideColor;
-    }
-
-    public void setOutsideColor(int outsideColor) {
-        this.outsideColor = outsideColor;
-    }
-
-    public float getOutsideRadius() {
-        return outsideRadius;
-    }
-
-    public void setOutsideRadius(float outsideRadius) {
-        this.outsideRadius = outsideRadius;
-    }
-
-    public int getInsideColor() {
-        return insideColor;
-    }
-
-    public void setInsideColor(int insideColor) {
-        this.insideColor = insideColor;
-    }
-
-    public int getProgressTextColor() {
-        return progressTextColor;
-    }
-
-    public void setProgressTextColor(int progressTextColor) {
-        this.progressTextColor = progressTextColor;
-    }
-
-    public float getProgressTextSize() {
-        return progressTextSize;
-    }
-
-    public void setProgressTextSize(float progressTextSize) {
-        this.progressTextSize = progressTextSize;
-    }
-
-    public float getProgressWidth() {
-        return progressWidth;
-    }
-
-    public void setProgressWidth(float progressWidth) {
-        this.progressWidth = progressWidth;
-    }
-
     public synchronized int getMaxProgress() {
         return maxProgress;
     }
@@ -200,22 +153,49 @@ public class CircleBar extends View {
         if (progress > maxProgress) {
             progress = maxProgress;
         }
-        startAnim(progress);
+        this.progress = progress;
+        postInvalidate();
     }
 
-    private void startAnim(float startProgress) {
-        ValueAnimator animator = ObjectAnimator.ofFloat(0, startProgress);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                CircleBar.this.progress = (float) animation.getAnimatedValue();
-                postInvalidate();
-            }
-        });
-        animator.setStartDelay(500);
-        animator.setDuration(2000);
-        animator.setInterpolator(new LinearInterpolator());
-        animator.start();
+    private ValueAnimator animator;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (animator == null) {
+                    animator = ObjectAnimator.ofFloat(0, maxProgress);
+                    animator.addUpdateListener(animation -> {
+                        float value = (float) animation.getAnimatedValue();
+                        if (value > 100) {
+                            progress = 100;
+                            animator.cancel();
+                            animator = null;
+                            if (listener != null) {
+                                listener.onPressed(false);
+                            }
+                        } else {
+                            progress = value;
+                        }
+                        postInvalidate();
+                    });
+                    animator.setDuration(2000);
+                    animator.setInterpolator(new LinearInterpolator());
+                    animator.start();
+                    if (listener != null) {
+                        listener.onPressed(true);
+                    }
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                animator.cancel();
+                animator = null;
+                if (listener != null) {
+                    listener.onPressed(false);
+                }
+                break;
+        }
+        return true;
     }
 
     private float density = -1;
@@ -225,5 +205,18 @@ public class CircleBar extends View {
             density = getContext().getResources().getDisplayMetrics().density;
         }
         return dp * density + 0.5f;
+    }
+
+    private pressedListener listener;
+
+    /**
+     * 按住
+     */
+    public interface pressedListener {
+        void onPressed(boolean pressed);
+    }
+
+    public void setListener(pressedListener listener) {
+        this.listener = listener;
     }
 }

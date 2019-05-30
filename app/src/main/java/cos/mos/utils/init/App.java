@@ -5,7 +5,7 @@ import org.litepal.LitePal;
 import cos.mos.toolkit.ULogBj;
 import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.io.USP;
-import cos.mos.toolkit.media.audio.USoundSample;
+import cos.mos.toolkit.media.audio.USampleSound;
 import cos.mos.toolkit.ui.toast.ToastUtil;
 import cos.mos.utils.constant.KConfig;
 
@@ -42,6 +42,6 @@ public class App extends KApp {
         //数据库初始化
         LitePal.initialize(this);
         //音频池初始化
-        USoundSample.instance();
+        USampleSound.instance();
     }
 }

@@ -7,15 +7,30 @@ package cos.mos.toolkit.media.audio;
  * @Email: KosmoSakura@gmail.com
  */
 public class USample {
+    private URecorderMedia media;
 
     public void MediaSample() {
         //录音
-        UMediaRecorder recorder = new UMediaRecorder();
-        recorder.start();
+        media = new URecorderMedia();
+        media.start();
         //停止
-        if (recorder != null) {
-            recorder.toStop();
-            recorder = null;
+        if (media != null) {
+            media.toStop();
+            media = null;
         }
     }
+
+    private URecorderAudio audio;
+
+    public void AudioSample() {
+        //录音
+        audio = new URecorderAudio();
+        audio.start();
+        //停止
+        if (audio != null) {
+            audio.toStop();
+            audio = null;
+        }
+    }
+
 }

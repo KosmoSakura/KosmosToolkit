@@ -14,11 +14,14 @@ import java.io.IOException;
  * @Email: KosmoSakura@gmail.com
  */
 public class UPcm2Wav {
-    private int mBufferSize = AudioFormat.ENCODING_PCM_16BIT;//缓存的音频大小
-    private int mSampleRate = 44100;//采样率
-    private int mChannel = AudioFormat.CHANNEL_IN_MONO;//声道数
+    private int bufferSize;//缓存的音频大小
+    private int sampleRate;//采样率
+    private int channel;//声道数
 
     public UPcm2Wav() {
+        this.sampleRate = 44100;
+        this.channel = AudioFormat.CHANNEL_IN_MONO;
+        this.bufferSize = AudioFormat.ENCODING_PCM_16BIT;
     }
 
     /**
@@ -31,9 +34,9 @@ public class UPcm2Wav {
      *                   AudioFormat.ENCODING_PCM_FLOAT
      */
     public UPcm2Wav(int sampleRate, int channel, int encoding) {
-        this.mSampleRate = sampleRate;
-        this.mChannel = channel;
-        this.mBufferSize = AudioRecord.getMinBufferSize(mSampleRate, mChannel, encoding);
+        this.sampleRate = sampleRate;
+        this.channel = channel;
+        this.bufferSize = AudioRecord.getMinBufferSize(this.sampleRate, this.channel, encoding);
     }
 
 
@@ -47,10 +50,10 @@ public class UPcm2Wav {
         FileOutputStream out;
         long totalAudioLen;
         long totalDataLen;
-        long longSampleRate = mSampleRate;
-        int channels = mChannel == AudioFormat.CHANNEL_IN_MONO ? 1 : 2;
-        long byteRate = 16 * mSampleRate * channels / 8;
-        byte[] data = new byte[mBufferSize];
+        long longSampleRate = sampleRate;
+        int channels = channel == AudioFormat.CHANNEL_IN_MONO ? 1 : 2;
+        long byteRate = 16 * sampleRate * channels / 8;
+        byte[] data = new byte[bufferSize];
         try {
             in = new FileInputStream(inFilename);
             out = new FileOutputStream(outFilename);
@@ -72,8 +75,7 @@ public class UPcm2Wav {
      * 加入wav文件头
      */
     private void writeWaveFileHeader(FileOutputStream out, long totalAudioLen, long totalDataLen,
-                                     long longSampleRate, int channels, long byteRate)
-        throws IOException {
+                                     long longSampleRate, int channels, long byteRate) throws IOException {
         byte[] header = new byte[44];
         // RIFF/WAVE header
         header[0] = 'R';

@@ -23,7 +23,7 @@ import java.util.Locale;
  * 优点：封装度很高，操作简单
  * 缺点：无法实现实时处理音频，输出的音频格式少
  */
-public class UMediaRecorder extends Thread {
+public class URecorderMedia extends Thread {
     private MediaRecorder recorder;
     private String dirs;//保存文件的路径+名字
     private long startTime = 0;

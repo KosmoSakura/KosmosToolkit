@@ -12,7 +12,7 @@ import java.nio.ByteBuffer;
  * @Email: KosmoSakura@gmail.com
  * 原博客地址： https://blog.csdn.net/xzj80927/article/details/83180422
  */
-public class UWavClip {
+public class UClipWav {
     /**
      * @param sourcefile 源文件（128kbps比特率：wav）
      * @param targetfile 输出路径（输出格式：wav）

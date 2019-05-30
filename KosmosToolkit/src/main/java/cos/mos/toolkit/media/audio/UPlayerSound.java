@@ -13,25 +13,25 @@ import android.util.SparseIntArray;
  * @Date: 2018.11.30 16:47
  * @Email: KosmoSakura@gmail.com
  */
-public class USoundPool {
-    private static USoundPool sound;
+public class UPlayerSound {
+    private static UPlayerSound sound;
     private SoundPool soundPool;
     private SparseIntArray musicId = new SparseIntArray();
 
 
     //单例模式
-    public static USoundPool instance() {
+    public static UPlayerSound instance() {
         if (sound == null) {
-            synchronized (USoundPool.class) {
+            synchronized (UPlayerSound.class) {
                 if (sound == null) {
-                    sound = new USoundPool();
+                    sound = new UPlayerSound();
                 }
             }
         }
         return sound;
     }
 
-    private USoundPool() {
+    private UPlayerSound() {
         //加载音频文件
 //        int soundId = soundPool.load(context, R.raw.voice_end, 1);
 //        soundPool.load(context, R.raw.voice_move, 1);

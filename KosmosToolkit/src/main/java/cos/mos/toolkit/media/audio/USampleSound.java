@@ -15,20 +15,20 @@ import cos.mos.toolkit.init.KApp;
  * @Date: 2018.11.30 16:47
  * @Email: KosmoSakura@gmail.com
  */
-public class USoundSample {
-    private static USoundSample sound;
+public class USampleSound {
+    private static USampleSound sound;
     private SoundPool soundPool;
     private int soundId;
 
 
-    public static USoundSample instance() {
+    public static USampleSound instance() {
         if (sound == null) {
-            sound = new USoundSample();
+            sound = new USampleSound();
         }
         return sound;
     }
 
-    private USoundSample() {
+    private USampleSound() {
         getPool();
     }
 

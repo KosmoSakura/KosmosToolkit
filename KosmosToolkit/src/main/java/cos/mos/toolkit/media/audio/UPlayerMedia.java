@@ -11,29 +11,29 @@ import java.io.IOException;
  * @Date: 2018.11.30 16:47
  * @Email: KosmoSakura@gmail.com
  */
-public class UMediaPlayer {
-    private static UMediaPlayer sound;
+public class UPlayerMedia {
+    private static UPlayerMedia sound;
     private MediaPlayer player;
     private boolean isPlaying = false;//当前是否正在播放音频
-    private boolean lock;
     private String dirAudio;
 
-    public static UMediaPlayer instance() {
+    public static UPlayerMedia instance() {
         if (sound == null) {
-            synchronized (UMediaPlayer.class) {
+            synchronized (UPlayerMedia.class) {
                 if (sound == null) {
-                    sound = new UMediaPlayer();
+                    sound = new UPlayerMedia();
                 }
             }
         }
         return sound;
     }
 
-    private UMediaPlayer() {
+    private UPlayerMedia() {
     }
 
     /**
      * @param msec 毫秒
+     * @apiNote 跳转播放
      */
     public void seekTo(int msec) {
         if (player != null) {
@@ -41,29 +41,32 @@ public class UMediaPlayer {
         }
     }
 
-    public void play(String dirAudio) {
-        if (lock) {
-            return;
-        }
+    /**
+     * 自动播放（内部判断流程）
+     */
+    public void toPlayAuto(String dirAudio) {
         this.dirAudio = dirAudio;
-        lock = true;
         if (!isPlaying) {
             //目前MediaPlayer不播放音频
             if (player == null) {
-                startPlaying(); //从头开始
+                toPlay(dirAudio); //从头开始
             } else {
-                resume(); //恢复当前暂停的媒体播放器
+                toResume(); //恢复当前暂停的媒体播放器
             }
         } else {
             // 暂停
-            pause();
+            toPause();
         }
     }
 
-    private void startPlaying() {
+    /**
+     * 播放
+     */
+    private void toPlay(String dirAudio) {
         if (dirAudio == null) {
             return;
         }
+        this.dirAudio = dirAudio;
         player = new MediaPlayer();
         try {
             player.setDataSource(dirAudio);
@@ -72,12 +75,15 @@ public class UMediaPlayer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        player.setOnCompletionListener(mp -> stop());
+        player.setOnCompletionListener(mp -> toStop());
         //保持屏幕打开
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
-    private void prepareMediaPlayerFromPoint(int progress) {
+    /**
+     * 从某一个点开始播放
+     */
+    private void toPlayBySeek(int progress) {
         if (dirAudio == null) {
             return;
         }
@@ -90,7 +96,7 @@ public class UMediaPlayer {
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    stop();
+                    toStop();
                 }
             });
         } catch (IOException e) {
@@ -100,19 +106,28 @@ public class UMediaPlayer {
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
-    public void pause() {
+    /**
+     * 暂停
+     */
+    public void toPause() {
         if (player != null) {
             player.pause();
         }
     }
 
-    public void resume() {
+    /**
+     * 恢复播放
+     */
+    public void toResume() {
         if (player != null) {
             player.start();
         }
     }
 
-    private void stop() {
+    /**
+     * 停止
+     */
+    private void toStop() {
         dirAudio = null;
         if (player != null) {
             player.stop();
@@ -121,7 +136,6 @@ public class UMediaPlayer {
             player = null;
         }
         isPlaying = !isPlaying;
-        lock = false;
 //        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 

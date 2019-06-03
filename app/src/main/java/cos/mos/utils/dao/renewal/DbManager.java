@@ -2,7 +2,7 @@
 //
 //import android.database.sqlite.SQLiteDatabase;
 //
-//import cos.mos.toolkit.init.KApp;
+//import cos.mos.toolkit.init.KtApp;
 //import cos.mos.utils.dao.gen.DaoMaster;
 //import cos.mos.utils.dao.gen.DaoSession;
 //import cos.mos.utils.init.Constant;
@@ -21,7 +21,7 @@
 //
 //
 //    private DbManager() {
-//        mDevOpenHelper = new DaoMaster.DevOpenHelper(KApp.instance(), Constant.DB_NAME);
+//        mDevOpenHelper = new DaoMaster.DevOpenHelper(KtApp.instance(), Constant.DB_NAME);
 //        getDaoMaster();
 //        getDaoSession();
 //    }
@@ -65,7 +65,7 @@
 //        if (null == mDaoMaster) {
 //            synchronized (DbManager.class) {
 //                if (null == mDaoMaster) {
-//                    RenewalHelper helper = new RenewalHelper(KApp.instance(), Constant.DB_NAME, null);
+//                    RenewalHelper helper = new RenewalHelper(KtApp.instance(), Constant.DB_NAME, null);
 //                    mDaoMaster = new DaoMaster(helper.getWritableDatabase());
 //                }
 //            }

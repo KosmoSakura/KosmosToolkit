@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import cos.mos.utils.initial.KApp
+import cos.mos.utils.initial.KtApp
 import cos.mos.utils.ukotlin.okhttp.KtHttpListener
 import okhttp3.*
 import org.json.JSONException
@@ -26,7 +26,7 @@ class KtLoad private constructor() {
     private var client = OkHttpClient()
     private val gson: Gson
     private val delivery = Handler(Looper.getMainLooper())
-    private lateinit var listener: KtHttpListener<RateBean>
+    private lateinit var listener: KtHttpListener
     private var describe: String = ""
     private var code: Int = 0
     private var response: RateBean? = null
@@ -64,7 +64,7 @@ class KtLoad private constructor() {
     private var netMgr: ConnectivityManager? = null
     private fun mgr(): ConnectivityManager {
         if (netMgr == null) {
-            netMgr = KApp.instance().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            netMgr = KtApp.instance().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         }
         return netMgr!!
     }
@@ -74,7 +74,7 @@ class KtLoad private constructor() {
         return info != null && info.isConnected
     }
 
-    fun get(from: String, to: String, listener: KtHttpListener<RateBean>) {
+    fun get(from: String, to: String, listener: KtHttpListener) {
         this.listener = listener
         if (!isNetConnected()) {
             failure("网络不可用", NetworkDislink)
@@ -115,12 +115,13 @@ class KtLoad private constructor() {
         val json = root.getString("data")
         //服务器成功返回码
         if (code == 0) {
-          success(Gson().fromJson(json))
+            success(Gson().fromJson(json))
 //            listener.success(gson.fromJson(json, RateBean::class.java))
         } else {
-          failure(root.getString("msg"), code)
+            failure(root.getString("msg"), code)
         }
     }
+
     private fun failure(describe: String, code: Int) {
         this.describe = describe
         this.code = code

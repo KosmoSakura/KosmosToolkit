@@ -5,16 +5,17 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ListView;
 
 import java.util.List;
 
-import cos.mos.utils.R;
-import cos.mos.toolkit.system.AppBean;
 import cos.mos.toolkit.init.KActivity;
-import cos.mos.utils.widget.list.IgnoreAdapter;
+import cos.mos.toolkit.system.AppBean;
 import cos.mos.toolkit.system.UApps;
 import cos.mos.toolkit.system.UScreen;
+import cos.mos.utils.R;
+import cos.mos.utils.widget.list.IgnoreAdapter;
 
 /**
  * @Description: <p>
@@ -39,6 +40,24 @@ public class BottomSheetDialogSimple extends KActivity {
     }
 
     private BottomSheetDialog diaBottom;
+
+    private void showDialogTime() {
+        if (diaBottom == null) {
+            View view = View.inflate(context, R.layout.dia_time, null);
+            DatePicker picker = view.findViewById(R.id.dia_time_picker);
+
+            view.findViewById(R.id.dia_time_confitm).setOnClickListener(v -> {
+                String time = picker.getYear() + "-" + (picker.getMonth() + 1) + "-" + picker.getDayOfMonth();
+            });
+            diaBottom = new BottomSheetDialog(context, R.style.TransparentBottomSheetStyle);
+            diaBottom.setContentView(view);
+        }
+        if (diaBottom.isShowing()) {
+            diaBottom.dismiss();
+        } else {
+            diaBottom.show();
+        }
+    }
 
     /**
      * 最简单的用法

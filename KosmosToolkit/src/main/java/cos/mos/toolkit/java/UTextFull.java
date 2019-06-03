@@ -17,7 +17,20 @@ import java.util.List;
  * @eg: 2019.4.8:优化重构变量
  * @apiNote 本类中的空值判断：长度为0都为false
  */
-public class UText {
+public class UTextFull {
+
+    /**
+     * @apiNote 递归：移除list中为null的元素
+     */
+    public static void nullClear(List list) {
+        if (list.contains(null)) {
+            list.remove(null);
+            if (list.contains(null)) {
+                nullClear(list);
+            }
+        }
+    }
+
     /**
      * @apiNote TextView为空返回""
      */
@@ -139,5 +152,63 @@ public class UText {
      */
     public static boolean isEmpty(CharSequence sequence) {
         return sequence == null || sequence.length() == 0;
+    }
+    //------------------------------------------------------------------------------------------------
+
+    /**
+     * @apiNote 获取数组长度(为空返回0)
+     */
+    public static int getSize(String[] arr) {
+        return arr == null ? 0 : arr.length;
+    }
+
+    /**
+     * @return 获取list长度(为空返回0)
+     */
+    public static int getSize(List list) {
+        return list == null ? 0 : list.size();
+    }
+
+    /**
+     * @return 返回str长度，为空返回0
+     */
+    public static int getLength(String str) {
+        return str == null ? 0 : str.length();
+    }
+
+    /**
+     * @return 返回str长度，为空返回指定值
+     */
+    public static int getLength(String str, final int defaul) {
+        return str == null ? defaul : str.length();
+    }
+
+    /**
+     * @return 文本控件内容长度，为空返回0
+     */
+    public static int getLength(TextView tv) {
+        return isEmpty(tv) ? 0 : tv.length();
+    }
+
+    /**
+     * @return {@code true}: 相等<br>{@code false}: 不相等
+     * @apiNote 判断两字符是否相等
+     */
+    public static boolean equals(CharSequence a, CharSequence b) {
+        if (a == b) return true;
+        int length;
+        if (a != null && b != null && (length = a.length()) == b.length()) {
+            if (a instanceof String && b instanceof String) {
+                return a.equals(b);
+            } else {
+                for (int i = 0; i < length; i++) {
+                    if (a.charAt(i) != b.charAt(i)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
     }
 }

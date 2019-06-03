@@ -1,6 +1,8 @@
 package cos.mos.toolkit.init;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
@@ -58,8 +60,18 @@ public abstract class KActivity extends AppCompatActivity {
      */
     protected abstract void logic();
 
-    protected void setBackground(ImageView iBg, @DrawableRes int id) {
+    protected void setBackgrounds(ImageView iBg, int id) {
         iBg.setImageBitmap(UBmpLoad.getInstance().loadBG(getResources(), id));
+    }
+
+    private BitmapFactory.Options opt;
+
+    protected void setBackground(ImageView iBg, int id) {
+        if (opt == null) {
+            opt = new BitmapFactory.Options();
+            opt.inPreferredConfig = Bitmap.Config.RGB_565;
+        }
+        iBg.setImageBitmap(BitmapFactory.decodeStream(getResources().openRawResource(id), null, opt));
     }
 
     protected void rxJava(Disposable disposable) {

@@ -18,8 +18,9 @@
     </style>
 
     <!--App启动页-->
-    <style name="StartAppTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/layer_image</item>
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/layer_splash</item>
     </style>
 
     <!--今日头条适配对话框-->

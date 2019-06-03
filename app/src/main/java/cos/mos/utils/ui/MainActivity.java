@@ -19,7 +19,7 @@ import java.util.List;
 import cos.mos.toolkit.system.permission.UrxPermissions;
 import cos.mos.toolkit.ui.UDialog;
 import cos.mos.utils.R;
-import cos.mos.utils.init.BaseActivity;
+import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.mvp.bean.ImageBean;
 import cos.mos.utils.mvp.contract.KOnFreshListener;
 import cos.mos.utils.widget.list.AdapterImage;

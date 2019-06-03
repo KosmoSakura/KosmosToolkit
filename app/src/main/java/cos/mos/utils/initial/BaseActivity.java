@@ -1,6 +1,6 @@
-package cos.mos.utils.init;
+package cos.mos.utils.initial;
 
-import cos.mos.toolkit.init.KFragment;
+import cos.mos.toolkit.init.KActivity;
 import cos.mos.utils.net.retrofit.HostWrapper;
 import cos.mos.utils.mvp.KRequest;
 import cos.mos.utils.mvp.contract.KContract;
@@ -8,15 +8,16 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 /**
- * @Description: base
+ * @Description: <p>
  * @Author: Kosmos
- * @Date: 2018年08月02日 15:01
+ * @Date: 2018年08月02日 13:17
  * @Email: KosmoSakura@gmail.com
  */
-public abstract class BaseFragment extends KFragment implements KContract {
+public abstract class BaseActivity extends KActivity implements KContract {
     private KRequest rs;
 
-    protected KRequest getServes() {
+    @Override
+    public KRequest getRequest() {
         if (rs == null) {
             rs = HostWrapper.with().create(KRequest.class);
         }

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 
-import cos.mos.utils.init.KFragment;
+import cos.mos.utils.initial.KFragment;
 
 /**
  * @Description: Fragment广播

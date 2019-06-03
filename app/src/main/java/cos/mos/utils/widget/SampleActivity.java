@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import cos.mos.toolkit.ULog;
 import cos.mos.utils.R;
-import cos.mos.utils.init.BaseActivity;
+import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.widget.chart.LineBean;
 import cos.mos.utils.widget.chart.LineChart;
 import cos.mos.utils.widget.clip.VideoClipBar;

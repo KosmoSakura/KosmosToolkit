@@ -4,7 +4,7 @@ import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 
-import cos.mos.utils.init.BaseActivity;
+import cos.mos.utils.initial.BaseActivity;
 
 /**
  * @Description: 拖拽示例

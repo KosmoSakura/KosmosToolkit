@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import cos.mos.utils.init.KApp
+import cos.mos.utils.initial.KApp
 import cos.mos.utils.ukotlin.okhttp.KtHttpListener
 import okhttp3.*
 import org.json.JSONException

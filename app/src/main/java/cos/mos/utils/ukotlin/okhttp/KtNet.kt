@@ -2,7 +2,7 @@ package cos.mos.utils.ukotlin.okhttp
 
 import android.content.Context
 import android.net.ConnectivityManager
-import cos.mos.utils.init.App
+import cos.mos.utils.initial.App
 import java.lang.ref.WeakReference
 
 /**

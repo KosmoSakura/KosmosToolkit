@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 import java.lang.ref.WeakReference;
 
-import cos.mos.utils.init.App;
+import cos.mos.utils.initial.App;
 
 /**
  * @Description: 网络状态

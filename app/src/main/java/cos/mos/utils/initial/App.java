@@ -1,4 +1,4 @@
-package cos.mos.utils.init;
+package cos.mos.utils.initial;
 
 import org.litepal.LitePal;
 

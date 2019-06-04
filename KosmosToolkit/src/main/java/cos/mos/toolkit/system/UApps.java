@@ -186,7 +186,7 @@ public class UApps {
 //        long length = new File(dir).length();
 //        float size = length * 1f / 1024 / 1024;
 //        return new DecimalFormat("#0.0").format(size) + "MB";
-        return UUnit.sizeFormatbit(new File(dir).length());
+        return UUnit.formatBit(new File(dir).length());
     }
 
     /**

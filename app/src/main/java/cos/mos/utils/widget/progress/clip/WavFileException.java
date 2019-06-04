@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.clip;
+package cos.mos.utils.widget.progress.clip;
 
 public class WavFileException extends Exception {
     public WavFileException() {

@@ -8,8 +8,8 @@ import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.widget.chart.LineBean;
 import cos.mos.utils.widget.chart.LineChart;
-import cos.mos.utils.widget.clip.VideoClipBar;
-import cos.mos.utils.widget.clip.WaveClipBar;
+import cos.mos.utils.widget.progress.clip.VideoClipBar;
+import cos.mos.utils.widget.progress.clip.WaveClipBar;
 import cos.mos.utils.widget.single.KRatingBar;
 
 /**

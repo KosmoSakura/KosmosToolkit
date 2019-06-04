@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.bubble;
+package cos.mos.utils.widget.progress.bubble;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.clip;
+package cos.mos.utils.widget.progress.clip;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -247,7 +247,7 @@ public class WaveClipBar extends View {
     }
 
     private String fotmatMax(int digit) {
-        return UUnit.sizeFormatbitTime(duration * 1f / digit);
+        return UUnit.formatTime(duration * 1f / digit);
     }
 
     @Override

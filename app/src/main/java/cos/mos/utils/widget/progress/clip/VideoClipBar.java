@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.clip;
+package cos.mos.utils.widget.progress.clip;
 
 import android.content.Context;
 import android.content.res.TypedArray;

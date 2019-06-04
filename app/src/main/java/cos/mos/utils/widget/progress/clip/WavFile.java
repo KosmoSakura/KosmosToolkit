@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.clip;// Wav file IO class
+package cos.mos.utils.widget.progress.clip;// Wav file IO class
 
 import java.io.*;
 

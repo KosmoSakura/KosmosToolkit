@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <cos.mos.utils.widget.clip.WaveClipBar
+    <cos.mos.utils.widget.progress.clip.WaveClipBar
         android:id="@+id/au_clip"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -21,7 +21,7 @@
         kosmos:waveBaseColor="#E5E8EC"
         kosmos:waveClipColor="#7C4DB6AC"/>
 
-    <cos.mos.utils.widget.clip.VideoClipBar
+    <cos.mos.utils.widget.progress.clip.VideoClipBar
         android:id="@+id/vu_clip"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="270dp"/>
 
-    <cos.mos.utils.widget.CircleBar
+    <cos.mos.utils.widget.progress.CircleBar
         android:layout_width="110dp"
         android:layout_height="110dp"
         kosmos:inside_color="#ffffff"

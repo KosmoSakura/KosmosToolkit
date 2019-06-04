@@ -1,4 +1,4 @@
-package cos.mos.utils.widget;
+package cos.mos.utils.widget.progress;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;

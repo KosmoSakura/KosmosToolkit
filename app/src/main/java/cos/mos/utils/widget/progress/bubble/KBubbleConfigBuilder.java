@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.bubble;
+package cos.mos.utils.widget.progress.bubble;
 
 import android.support.annotation.ColorInt;
 import android.support.annotation.IntRange;

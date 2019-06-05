@@ -68,7 +68,6 @@ public class WaveBar extends View {
     /**
      * 叠加方式：
      * Paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP))
-     * 如果：图A覆盖在图B字上==>源图:图A,目标图:图B
      * ---------------------------------
      * 1.ADD:饱和相加,对图像饱和度进行相加
      * 2.CLEAR:清除图像
@@ -88,8 +87,8 @@ public class WaveBar extends View {
      * 1.SRC:只显示源图像
      * 2.SRC_ATOP:两图相交处绘制【上层图】,不相交处绘制【下层图】,效果受两图alpha影响
      * 3.SRC_IN:只在两图相交处绘制【上层图】
-     * 5.SRC_OUT:只在两图不相交处绘制【上层图】，相交处根据目标图像的对应地方的alpha进行过滤，目标图:不透明=>完全过滤,全透明=>不过滤
-     * 6.SRC_OVER:将源图像放在目标图像上方
+     * 4.SRC_OUT:只在两图不相交处绘制【上层图】，相交处根据目标图像的对应地方的alpha进行过滤，目标图:不透明=>完全过滤,全透明=>不过滤
+     * 5.SRC_OVER:将源图像放在目标图像上方
      * ===========================================
      * setLayerType():硬件加速
      * 1.LAYER_TYPE_SOFTWARE

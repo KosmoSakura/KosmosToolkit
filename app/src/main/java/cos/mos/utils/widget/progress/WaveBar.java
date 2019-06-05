@@ -110,6 +110,9 @@ public class WaveBar extends View {
         paintDst.setAntiAlias(true);
         paintDst.setDither(true);
         paintDst.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+        paintDst.setTextAlign(Paint.Align.CENTER);
+        paintDst.setStyle(Paint.Style.FILL);
+        paintDst.setTextSize(textSize);
         setLayerType(LAYER_TYPE_HARDWARE, null);
         setWillNotDraw(true);//一开始不要onDraw()
         delivery.postDelayed(runnable, 100);//自循环
@@ -148,14 +151,11 @@ public class WaveBar extends View {
         path.lineTo(0, height);
         path.close();
         paintDst.setColor(waveColor);
-        paintDst.setStyle(Paint.Style.FILL);
         canvas.drawPath(path, paintDst);
         canvas.restore();//取出原来所保存的状态
 
         if (!UText.isEmpty(currentText)) {
             paintDst.setColor(textColor);
-            paintDst.setTextSize(textSize);
-            paintDst.setTextAlign(Paint.Align.CENTER);
             canvas.drawText(currentText, width >> 1, height >> 1, paintDst);
         }
     }

@@ -1,13 +1,21 @@
 package cos.mos.utils.widget;
 
+import android.animation.ValueAnimator;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Random;
 
 import cos.mos.toolkit.ULog;
+import cos.mos.toolkit.system.UScreen;
 import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.widget.chart.LineBean;
 import cos.mos.utils.widget.chart.LineChart;
+import cos.mos.utils.widget.progress.WaveBar;
 import cos.mos.utils.widget.progress.clip.VideoClipBar;
 import cos.mos.utils.widget.progress.clip.WaveClipBar;
 import cos.mos.utils.widget.single.KRatingBar;
@@ -28,7 +36,7 @@ public class SampleActivity extends BaseActivity {
     private LineChart lineChart;
     private VideoClipBar videoBar;
     private WaveClipBar seekbar;
-
+    private WaveBar wpv;
     @Override
     protected void init() {
         bar = findViewById(R.id.rating_bar);
@@ -44,6 +52,14 @@ public class SampleActivity extends BaseActivity {
 
     @Override
     protected void logic() {
+        lineChartSample();
+        ratingBarSample();
+        videoClipSample();
+        waveClipSample();
+        waveBarSample();
+    }
+
+    private void lineChartSample() {
         ArrayList<LineBean> list = new ArrayList<>();
         list.add(new LineBean(1, 233f));
         list.add(new LineBean(2, 233f));
@@ -54,6 +70,9 @@ public class SampleActivity extends BaseActivity {
             .setName("属性1描述", "属性2描述")
             .setData(list)
             .show();
+    }
+
+    private void ratingBarSample() {
         bar.setStarEmpty(R.drawable.ic_android)
             .setStarFill(R.drawable.ic_loading)
             .setStarMax(5)
@@ -64,6 +83,9 @@ public class SampleActivity extends BaseActivity {
                     ULog.commonD("感谢您的" + rating + "个星星");
                 }
             }).runAnim();
+    }
+
+    private void videoClipSample() {
         videoBar.setCursor(1);//整体长度的百分比
         videoBar.reset();//重置
         videoBar.setonRangeListener(new VideoClipBar.RangeListener() {
@@ -77,6 +99,9 @@ public class SampleActivity extends BaseActivity {
                 //当播放指针到达右边游标
             }
         });
+    }
+
+    private void waveClipSample() {
         seekbar.setCursor(1);//整体长度的百分比
         seekbar.setPoint(-1, -1);//左游标位置百分比
         seekbar.setonRangeListener(new WaveClipBar.RangeListener() {
@@ -90,5 +115,32 @@ public class SampleActivity extends BaseActivity {
                 //当播放指针到达右边游标
             }
         });
+    }
+
+    private void waveBarSample() {
+        wpv = findViewById(R.id.st3_wpv);
+        wpv.setText(ContextCompat.getColor(this, R.color.white), UScreen.dp2px(40))
+            .setWaveColor(ContextCompat.getColor(this, R.color.fun_txt_pink))
+            .setSpeed(10)//8
+            .setMaxProgress(100)
+            .build();
+        wpv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wpv.clear();
+                startAnim(new Random().nextInt(100));
+            }
+        });
+    }
+
+    private void startAnim(int max) {
+        ValueAnimator animator = ValueAnimator.ofInt(0, max);
+        animator.addUpdateListener(animation -> {
+            int value = (int) animation.getAnimatedValue();
+            wpv.setProgress(value, value + "%");
+        });
+        animator.setDuration(3000);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.start();
     }
 }

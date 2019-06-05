@@ -54,4 +54,10 @@
         kosmos:progress="10"
         kosmos:progress_text_size="30dp"
         kosmos:progress_width="4dp"/>
+
+    <cos.mos.utils.widget.progress.WaveBar
+        android:id="@+id/st3_wpv"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/ic_heart"/>
 </FrameLayout>

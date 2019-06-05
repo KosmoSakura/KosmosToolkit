@@ -15,7 +15,7 @@ import cos.mos.utils.R;
 
 
 /**
- * @Description: 2个区域的饼状图
+ * @Description: 折线图
  * @Author: Kosmos
  * @Date: 2019.03.12 14:43
  * @Email: KosmoSakura@gmail.com

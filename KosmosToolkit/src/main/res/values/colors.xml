@@ -19,6 +19,8 @@
     <color name="fun_txt_black_light">#494949</color>
     <color name="fun_txt_green">#7ECB9A</color>
     <color name="fun_txt_yellow">#cfbfae</color>
+    <color name="fun_txt_pink">#EB8DB6</color>
+    <color name="fun_txt_blue">#39acc2</color>
     <color name="fun_txt_orange">#ffe4ac75</color>
 
     <!--常规颜色值-->

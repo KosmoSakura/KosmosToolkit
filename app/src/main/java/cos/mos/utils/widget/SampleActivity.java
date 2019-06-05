@@ -11,10 +11,12 @@ import java.util.Random;
 
 import cos.mos.toolkit.ULog;
 import cos.mos.toolkit.system.UScreen;
+import cos.mos.toolkit.ui.toast.UToast;
 import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.widget.chart.LineBean;
 import cos.mos.utils.widget.chart.LineChart;
+import cos.mos.utils.widget.progress.ScanningBar;
 import cos.mos.utils.widget.progress.WaveBar;
 import cos.mos.utils.widget.progress.clip.VideoClipBar;
 import cos.mos.utils.widget.progress.clip.WaveClipBar;
@@ -37,12 +39,15 @@ public class SampleActivity extends BaseActivity {
     private VideoClipBar videoBar;
     private WaveClipBar seekbar;
     private WaveBar wpv;
+    private ScanningBar sv1;
+
     @Override
     protected void init() {
         bar = findViewById(R.id.rating_bar);
         videoBar = findViewById(R.id.vu_clip);
         seekbar = findViewById(R.id.au_clip);
         lineChart = findViewById(R.id.tbShow);
+        sv1 = findViewById(R.id.st2_f1);
         try {
             seekbar.setAudio(new FileInputStream("音频路径"), 11, 10);
         } catch (Exception e) {
@@ -57,6 +62,22 @@ public class SampleActivity extends BaseActivity {
         videoClipSample();
         waveClipSample();
         waveBarSample();
+        scanningBarample();
+    }
+
+    private void scanningBarample() {
+        sv1.setImages(R.drawable.ic_fingerprint_font,
+            R.drawable.ic_fingerprint_bar, R.drawable.ic_fingerprint_mask);
+        sv1.setOnStateListener(new ScanningBar.StateListener() {
+            @Override
+            public void state(boolean done) {
+                if (done) {
+                    UToast.show("成功");
+                } else {
+                    ULog.commonD("失败");
+                }
+            }
+        });
     }
 
     private void lineChartSample() {

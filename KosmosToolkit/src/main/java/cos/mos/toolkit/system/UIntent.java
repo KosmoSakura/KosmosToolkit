@@ -11,8 +11,6 @@ import android.support.annotation.RequiresApi;
 
 import cos.mos.toolkit.ULog;
 import cos.mos.toolkit.init.KApp;
-import cos.mos.toolkit.java.UText;
-import cos.mos.toolkit.ui.toast.ToastUtil;
 import cos.mos.toolkit.ui.toast.UToast;
 
 
@@ -215,26 +213,6 @@ public class UIntent {
      */
     public static void addMediaLibrary(String dir, MediaScannerConnection.MediaScannerConnectionClient listener) {
         MediaScannerConnection.scanFile(KApp.instance(), new String[]{dir}, null, listener);
-    }
-
-    /**
-     * @param title   分享标题
-     * @param content 分享内容
-     * @apiNote 分享文字
-     */
-    public static void shareText(String title, String content) {
-        if (UText.isEmpty(title) || UText.isEmpty(content)) {
-            ToastUtil.show("Data abnormity !");
-            return;
-        }
-        Intent share_intent = new Intent(Intent.ACTION_SEND);
-        share_intent.setType("text/plain");
-        share_intent.putExtra(Intent.EXTRA_SUBJECT, title);
-        share_intent.putExtra(Intent.EXTRA_TEXT, content);
-        //创建分享的Dialog
-        share_intent = Intent.createChooser(share_intent, title);
-        share_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        start(share_intent);
     }
 
     /**

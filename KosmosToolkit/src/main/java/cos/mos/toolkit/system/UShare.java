@@ -1,9 +1,12 @@
 package cos.mos.toolkit.system;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.MediaStore;
 
-import cos.mos.toolkit.init.KApp;
+import java.io.IOException;
+
 import cos.mos.toolkit.java.UText;
 import cos.mos.toolkit.ui.toast.ToastUtil;
 
@@ -14,16 +17,12 @@ import cos.mos.toolkit.ui.toast.ToastUtil;
  * @Email: KosmoSakura@gmail.com
  */
 public class UShare {
-    private static void start(Intent intent) {
-        KApp.instance().startActivity(intent);
-    }
-
     /**
      * @param title   分享标题
      * @param content 分享内容
      * @apiNote 分享文字
      */
-    public static void shareText(String title, String content) {
+    public static void shareText(String title, String content, Context context) {
         if (UText.isEmpty(title) || UText.isEmpty(content)) {
             ToastUtil.show("Data abnormity !");
             return;
@@ -35,20 +34,27 @@ public class UShare {
         //创建分享的Dialog
         share_intent = Intent.createChooser(share_intent, title);
         share_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        start(share_intent);
+        context.startActivity(share_intent);
     }
 
     /**
-     * @param title 分享标题
-     * @param imgPath 图片地址
+     * @param title   分享标题
+     * @param content 分享内容
+     * @param imgPath 图片绝对地址
+     * @apiNote 图文分享路径
+     * UBmpCreate.createByCache()
+     * imgPath= UBmpCreate.bmpSave()
      */
-    public static void shareImage(String title, String imgPath) {
-        Intent share_intent = new Intent();
-        share_intent.setAction(Intent.ACTION_SEND);//设置分享行为
-        share_intent.setType("image/*");//设置分享内容的类型
-        share_intent.putExtra(Intent.EXTRA_STREAM, Uri.parse(imgPath));
-        //创建分享的Dialog
-        share_intent = Intent.createChooser(share_intent, title);
-        start(share_intent);
+    public static void shareImage(String title, String content, String imgPath, Context context) throws IOException {
+        String imageUri = MediaStore.Images.Media
+            .insertImage(context.getContentResolver(), imgPath,
+                "share_image", "share_image");
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, content);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(imageUri));
+        shareIntent.setType("image/*");
+        context.startActivity(Intent.createChooser(shareIntent, title));
+//        context.startActivity(shareIntent);//不带标题
     }
 }

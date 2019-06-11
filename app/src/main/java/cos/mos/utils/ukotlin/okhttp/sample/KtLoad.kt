@@ -19,8 +19,8 @@ import java.util.concurrent.TimeUnit
  * @Author: Kosmos
  * @Date: 2019.05.06 20:16
  * @Email: KosmoSakura@gmail.com
- * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.INTERNET"/>
- * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.ACCESS_NETWORK_STATE" />
+ * <uses-permission android:name="android.permission.INTERNET"/>
+ * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
  */
 class KtLoad private constructor() {
     private var client = OkHttpClient()

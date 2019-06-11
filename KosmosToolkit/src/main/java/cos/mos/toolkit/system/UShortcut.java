@@ -15,8 +15,8 @@ import android.os.Build;
  * @Author: Kosmos
  * @Date: 2019.03.19 13:25
  * @Email: KosmoSakura@gmail.com
- * <uses-cos.mos.utils.ui.permission android:name="com.android.launcher.cos.mos.utils.ui.permission.INSTALL_SHORTCUT"/>
- * <uses-cos.mos.utils.ui.permission android:name="com.android.launcher.cos.mos.utils.ui.permission.UNINSTALL_SHORTCUT"/>
+ * <uses-permission android:name="com.android.launcher.cos.mos.utils.ui.permission.INSTALL_SHORTCUT"/>
+ * <uses-permission android:name="com.android.launcher.cos.mos.utils.ui.permission.UNINSTALL_SHORTCUT"/>
  */
 public class UShortcut {
     /**

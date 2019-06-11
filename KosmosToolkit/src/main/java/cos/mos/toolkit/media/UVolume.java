@@ -17,7 +17,7 @@ import cos.mos.toolkit.init.KApp;
  * 关于音量设置：
  * 因为音量是一个相对单位，每台设备的相对系数都可能不同。
  * 所以，如果想要设置一台手机的音量，需要以手机返回的最值音量作为参考
- * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.MODIFY_AUDIO_SETTINGS"/>
+ * <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
  */
 public class UVolume {
     private AudioManager audioMgr;

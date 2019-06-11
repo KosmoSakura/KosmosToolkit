@@ -20,14 +20,14 @@ import cos.mos.toolkit.java.UText;
  * @Email: KosmoSakura@gmail.com
  * * 通过WifiManager获取ssid
  * * 这种方式获取 需要2个权限
- * * * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.ACCESS_FINE_LOCATION"/>
- * * * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.ACCESS_COARSE_LOCATION"/>
+ * * * <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+ * * * <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
  * * * Manifest.cos.mos.utils.ui.permission.ACCESS_FINE_LOCATION
  * * * Manifest.cos.mos.utils.ui.permission.ACCESS_COARSE_LOCATION
  * 打开wifi需要权限
- * * * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.CHANGE_NETWORK_STATE" />
- * * * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.CHANGE_WIFI_STATE" />
- * * * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.ACCESS_WIFI_STATE" />
+ * * * <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+ * * * <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+ * * * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
  * 最新修改日期：2018年11月25日 17:19
  * @eg 2018.11.25 优化华为手机热点打开
  * @eg 2019.3.21 重构

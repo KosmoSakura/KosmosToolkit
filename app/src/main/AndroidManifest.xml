@@ -6,8 +6,7 @@
     <uses-permission android:name="android.permission.SET_WALLPAPER"/>
     <!--相机-->
     <uses-permission android:name="android.permission.CAMERA"/>
-    <!--允许访问震动权限-->
-    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <!--允许访问闪光灯的权限-->
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <!--SD卡写入权限-->

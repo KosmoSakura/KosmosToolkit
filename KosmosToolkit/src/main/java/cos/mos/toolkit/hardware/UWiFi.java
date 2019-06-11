@@ -43,8 +43,8 @@ public class UWiFi {
     /**
      * 通过WifiManager获取ssid
      * 这种方式获取 需要2个权限
-     * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.ACCESS_FINE_LOCATION"/>
-     * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.ACCESS_COARSE_LOCATION"/>
+     * <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+     * <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
      * Manifest.cos.mos.utils.ui.permission.ACCESS_FINE_LOCATION
      * Manifest.cos.mos.utils.ui.permission.ACCESS_COARSE_LOCATION
      */

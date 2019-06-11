@@ -63,7 +63,7 @@ public class UrxPermissions {
 
     /**
      * @return 是否有悬浮窗权限
-     * <uses-cos.mos.utils.ui.permission android:name="android.cos.mos.utils.ui.permission.SYSTEM_ALERT_WINDOW"/>
+     * <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
      */
     public static boolean checkOverlay() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

@@ -1,22 +1,4 @@
 <resources>
-    <!--基本主题-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-    <!--底部弹出的dialog-->
-    <style name="TransparentBottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/SheetStyle</item>
-    </style>
-    <!--底部弹出的dialog-->
-    <style name="SheetStyle" parent="android:Widget">
-        <item name="android:background">@color/T_all</item>
-        <item name="behavior_peekHeight">400dp</item>
-        <item name="behavior_hideable">true</item>
-        <item name="behavior_skipCollapsed">false</item>
-    </style>
-
     <!--App启动页-->
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowFullscreen">true</item>

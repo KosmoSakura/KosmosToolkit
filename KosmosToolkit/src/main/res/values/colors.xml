@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorBase">#1ebaba</color>
     <!--透明颜色-->
     <color name="T_light">#b0000000</color>
     <color name="T_all">#00000000</color>

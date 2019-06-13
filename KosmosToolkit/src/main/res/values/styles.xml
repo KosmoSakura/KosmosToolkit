@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--基本主题-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--ActionBar背景色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--ActionBar文字颜色-->
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <!--顶部栏深色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--EditText输入线，指针，checkbox,seekbar等的颜色-->
+        <item name="colorAccent">@color/white</item>
+        <!--背景色-->
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <!--其他属性见values_v21-->
+    </style>
+    <!--底部弹出的dialog-->
+    <style name="TransparentBottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/SheetStyle</item>
+    </style>
+    <!--底部弹出的dialog-->
+    <style name="SheetStyle" parent="android:Widget">
+        <item name="android:background">@color/T_all</item>
+        <item name="behavior_peekHeight">400dp</item>
+        <item name="behavior_hideable">true</item>
+        <item name="behavior_skipCollapsed">false</item>
+    </style>
     <!--背景全透明无边框 -->
     <style name="SakuraDialog" parent="android:style/Theme.Dialog">
         <!--背景颜色及透明度-->
@@ -17,5 +42,11 @@
     <style name="ToastAnimation" parent="@android:style/Animation.Toast">
         <!--<item name="android:windowEnterAnimation">@anim/toast_enter</item>-->
         <!--<item name="android:windowExitAnimation">@anim/toast_exit</item>-->
+    </style>
+
+    <!--EditText默认线颜色，激活，未被激活-->
+    <style name="EditTextLine" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@android:color/holo_orange_dark</item>
     </style>
 </resources>

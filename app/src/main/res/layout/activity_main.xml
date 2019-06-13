@@ -39,5 +39,5 @@
         android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:background="@null"
-        android:textCursorDrawable="@drawable/cursor_gray"/>
+        android:textCursorDrawable="@drawable/edt_cursor_gray"/>
 </FrameLayout>

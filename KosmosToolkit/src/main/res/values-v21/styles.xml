@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--ActionBar背景色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--ActionBar文字颜色-->
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <!--顶部栏深色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--EditText输入线，指针，checkbox,seekbar等的颜色-->
+        <item name="colorAccent">@color/white</item>
+        <!--背景色-->
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <!--顶部栏颜色-->
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <!--底部栏颜色-->
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+    </style>
+</resources>

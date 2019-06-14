@@ -55,7 +55,7 @@
         kosmos:progress_text_size="30dp"
         kosmos:progress_width="4dp"/>
 
-    <cos.mos.utils.widget.progress.WaveBar
+    <cos.mos.utils.widget.progress.WaveShapeBar
         android:id="@+id/st3_wpv"
         android:layout_width="250dp"
         android:layout_height="250dp"
@@ -76,5 +76,37 @@
             android:id="@+id/st2_f1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/st3_wpv_lay"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:background="@drawable/ic_ht_1">
+
+        <View
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_ht_3"/>
+
+        <com.duang.love_match.widget.LineBar
+            android:id="@+id/st3_line"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_ht_3"/>
+
+        <TextView
+            android:id="@+id/st3_text"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_ht_2"
+            android:gravity="center_horizontal"
+            android:paddingTop="40dp"
+            android:text="70"
+            android:textColor="@color/white"
+            android:textSize="40sp"/>
     </FrameLayout>
 </FrameLayout>

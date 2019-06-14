@@ -26,7 +26,7 @@ import cos.mos.toolkit.java.UText;
  * 基于fanrunqi的WaveProgressView修改
  * https://github.com/piratch/WaveProgressView
  */
-public class WaveBar extends View {
+public class WaveShapeBar extends View {
     private int width, height;//控件宽高
     private Path path;
     private Paint paintDst;
@@ -51,15 +51,15 @@ public class WaveBar extends View {
     };
 
 
-    public WaveBar(Context context) {
+    public WaveShapeBar(Context context) {
         this(context, null, 0);
     }
 
-    public WaveBar(Context context, AttributeSet attrs) {
+    public WaveShapeBar(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public WaveBar(Context context, AttributeSet attrs, int defStyle) {
+    public WaveShapeBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         build();
     }
@@ -207,23 +207,23 @@ public class WaveBar extends View {
         setProgress(progress, (int) ((progress / maxProgress) * 1000f) / 10f + "%");
     }
 
-    public WaveBar setMaxProgress(int maxProgress) {
+    public WaveShapeBar setMaxProgress(int maxProgress) {
         this.maxProgress = maxProgress;
         return this;
     }
 
-    public WaveBar setText(int textColor, float textSize) {
+    public WaveShapeBar setText(int textColor, float textSize) {
         this.textColor = textColor;
         this.textSize = textSize;
         return this;
     }
 
-    public WaveBar setWaveColor(int waveColor) {
+    public WaveShapeBar setWaveColor(int waveColor) {
         this.waveColor = waveColor;
         return this;
     }
 
-    public WaveBar setSpeed(int speed) {
+    public WaveShapeBar setSpeed(int speed) {
         this.speed = speed;
         return this;
     }

@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AnimationUtils;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -15,8 +16,9 @@ import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.widget.chart.LineBean;
 import cos.mos.utils.widget.chart.LineChart;
+import cos.mos.utils.widget.progress.LineBar;
 import cos.mos.utils.widget.progress.ScanningBar;
-import cos.mos.utils.widget.progress.WaveBar;
+import cos.mos.utils.widget.progress.WaveShapeBar;
 import cos.mos.utils.widget.progress.clip.VideoClipBar;
 import cos.mos.utils.widget.progress.clip.WaveClipBar;
 import cos.mos.utils.widget.single.KRatingBar;
@@ -37,8 +39,10 @@ public class SampleActivity extends BaseActivity {
     private LineChart lineChart;
     private VideoClipBar videoBar;
     private WaveClipBar seekbar;
-    private WaveBar wpv;
+    private WaveShapeBar wpv;
     private ScanningBar sv1;
+    private LineBar lneb;
+    private View lnebInner;
 
     @Override
     protected void init() {
@@ -47,6 +51,8 @@ public class SampleActivity extends BaseActivity {
         seekbar = findViewById(R.id.au_clip);
         lineChart = findViewById(R.id.tbShow);
         sv1 = findViewById(R.id.st2_f1);
+        lneb = findViewById(R.id.st3_line);
+        lnebInner = findViewById(R.id.st3_text);
         try {
             seekbar.setAudio(new FileInputStream("音频路径"), 11, 10);
         } catch (Exception e) {
@@ -60,8 +66,17 @@ public class SampleActivity extends BaseActivity {
         ratingBarSample();
         videoClipSample();
         waveClipSample();
-        waveBarSample();
         scanningBarample();
+        waveShapBarSample();
+
+        lneb.start();
+        lneb.setCompleteListener(new LineBar.CompleteListener() {
+            @Override
+            public void complete() {
+                lnebInner.setVisibility(View.VISIBLE);
+                lnebInner.startAnimation(AnimationUtils.loadAnimation(context, R.anim.anim_scale));
+            }
+        });
     }
 
     private void scanningBarample() {
@@ -137,7 +152,7 @@ public class SampleActivity extends BaseActivity {
         });
     }
 
-    private void waveBarSample() {
+    private void waveShapBarSample() {
         wpv = findViewById(R.id.st3_wpv);
         wpv.setText(ContextCompat.getColor(this, R.color.white), UScreen.dp2px(40))
             .setWaveColor(ContextCompat.getColor(this, R.color.fun_txt_pink))

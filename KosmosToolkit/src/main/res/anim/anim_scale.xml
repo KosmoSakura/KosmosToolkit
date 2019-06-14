@@ -10,6 +10,8 @@
  0% 0% 表示控件左上角 为0，0原点坐标-->
 <scale
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="500"
+    android:fillAfter="true"
     android:fromXScale="0.1"
     android:fromYScale="0.1"
     android:pivotX="50%"

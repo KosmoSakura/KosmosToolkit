@@ -5,10 +5,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
+import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+
+import java.lang.reflect.Method;
 
 /**
  * @Description: 键盘输入工具类
@@ -17,8 +20,31 @@ import android.widget.EditText;
  * @Email: KosmoSakura@gmail.com
  * @eg: 修改日期：2018年09月24日 16:19
  * @eg: 最新修改日期：2019年2月28日
+ * @eg: 2019.6.14:Edittext键盘控制
  */
 public class UKeyboard {
+    /**
+     * Edittext仅保留点击事件（木有键盘，木有光标）
+     */
+    public void disableKeyboardAll(EditText editText) {
+        editText.clearFocus();
+        editText.setInputType(InputType.TYPE_NULL);
+    }
+
+    /**
+     * 禁止Edittext弹出软件盘，光标依然正常显示。
+     */
+    public static void disableKeyboard(EditText editText) {
+        Class<EditText> cls = EditText.class;
+        try {
+            Method method = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
+            method.setAccessible(true);
+            method.invoke(editText, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @return true:软键盘已经显示
      * @apiNote 是否显示软件盘

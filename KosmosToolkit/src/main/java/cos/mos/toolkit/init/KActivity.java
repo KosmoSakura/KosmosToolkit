@@ -3,14 +3,16 @@ package cos.mos.toolkit.init;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import org.greenrobot.eventbus.EventBus;
 
-import cos.mos.toolkit.media.image.UBmpLoad;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -59,18 +61,37 @@ public abstract class KActivity extends AppCompatActivity {
      */
     protected abstract void logic();
 
-    protected void setBackgrounds(ImageView iBg, int id) {
-        iBg.setImageBitmap(UBmpLoad.getInstance().loadBG(getResources(), id));
-    }
-
     private BitmapFactory.Options opt;
 
-    protected void setBackground(ImageView iBg, int id) {
+    /**
+     * @param iBg 大图控件
+     * @param id  图片id
+     */
+    protected void setBigImage(ImageView iBg, int id) {
         if (opt == null) {
             opt = new BitmapFactory.Options();
             opt.inPreferredConfig = Bitmap.Config.RGB_565;
         }
         iBg.setImageBitmap(BitmapFactory.decodeStream(getResources().openRawResource(id), null, opt));
+    }
+
+    /**
+     * @param colorTop    顶部颜色
+     * @param colorBottom 底部颜色
+     * @apiNote 设置顶部状态栏、底部导航栏颜色(只能在Activity内部调用)
+     */
+    protected void setBarColor(int colorTop, int colorBottom) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = this.getWindow();
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(colorTop);//顶部状态栏
+                window.setNavigationBarColor(colorBottom);//底部导航栏
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     protected void rxJava(Disposable disposable) {

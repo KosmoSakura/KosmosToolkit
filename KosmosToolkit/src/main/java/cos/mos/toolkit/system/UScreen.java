@@ -56,18 +56,19 @@ public class UScreen {
     }
 
     /**
-     * @param activity Activity引用
-     * @param color    int型色值
+     * @param activity    Activity引用
+     * @param colorTop    顶部颜色
+     * @param colorBottom 底部颜色
      * @apiNote 设置顶部状态栏、底部导航栏颜色(只能在Activity内部调用)
      */
-    public static void setBarColor(Activity activity, int color) {
+    public static void setBarColor(Activity activity, int colorTop, int colorBottom) {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 Window window = activity.getWindow();
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(color);//顶部状态栏
-                window.setNavigationBarColor(color);//底部导航栏
+                window.setStatusBarColor(colorTop);//顶部状态栏
+                window.setNavigationBarColor(colorBottom);//底部导航栏
             }
         } catch (Exception e) {
             e.printStackTrace();

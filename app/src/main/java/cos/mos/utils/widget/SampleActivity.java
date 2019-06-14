@@ -11,7 +11,6 @@ import java.util.Random;
 
 import cos.mos.toolkit.ULog;
 import cos.mos.toolkit.system.UScreen;
-import cos.mos.toolkit.ui.toast.UToast;
 import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.widget.chart.LineBean;
@@ -66,16 +65,16 @@ public class SampleActivity extends BaseActivity {
     }
 
     private void scanningBarample() {
-        sv1.setImages(R.drawable.ic_fingerprint_font,
+        //反向扫描
+        sv1.setImages(true, R.drawable.ic_fingerprint_font_f,
+            R.drawable.ic_fingerprint_bar_f, R.drawable.ic_fingerprint_mask_f);
+        //正向扫描
+        sv1.setImages(false, R.drawable.ic_fingerprint_font,
             R.drawable.ic_fingerprint_bar, R.drawable.ic_fingerprint_mask);
         sv1.setOnStateListener(new ScanningBar.StateListener() {
             @Override
-            public void state(boolean done) {
-                if (done) {
-                    UToast.show("成功");
-                } else {
-                    ULog.commonD("失败");
-                }
+            public void state(int done) {
+                //done -1：失败，1：成功（手指松开），0：成功（手指未松开）
             }
         });
     }

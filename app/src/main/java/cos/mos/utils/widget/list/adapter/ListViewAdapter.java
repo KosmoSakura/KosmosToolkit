@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.list;
+package cos.mos.utils.widget.list.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,11 +20,11 @@ import cos.mos.utils.R;
  * @Date: 2019.03.19 16:51
  * @Email: KosmoSakura@gmail.com
  */
-public class IgnoreAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter {
     private List<AppBean> list;
     private Context context;
 
-    public IgnoreAdapter(List<AppBean> list, Context context) {
+    public ListViewAdapter(List<AppBean> list, Context context) {
         this.list = list;
         this.context = context;
     }

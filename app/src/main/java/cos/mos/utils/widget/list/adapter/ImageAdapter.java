@@ -19,10 +19,10 @@ import cos.mos.utils.mvp.bean.ImageBean;
  * @Date: 2018.11.14 10:27
  * @Email: KosmoSakura@gmail.com
  */
-public class AdapterImage extends BaseQuickAdapter<ImageBean, BaseViewHolder> {
+public class ImageAdapter extends BaseQuickAdapter<ImageBean, BaseViewHolder> {
     private int width;
 
-    public AdapterImage(@Nullable List<ImageBean> data, int width) {
+    public ImageAdapter(@Nullable List<ImageBean> data, int width) {
         super(R.layout.item_image, data);
         this.width = width;
     }

@@ -40,11 +40,6 @@ public class USP {
         editor = sp.edit();
     }
 
-    public void putLong(String key, long value) {
-        editor.putLong(key, value);
-        editor.apply();
-    }
-
     public void putString(String key, String value) {
         editor.putString(key, value);
         editor.apply();
@@ -60,6 +55,20 @@ public class USP {
         editor.apply();
     }
 
+    public void putFloat(String key, float value) {
+        editor.putFloat(key, value);
+        editor.apply();
+    }
+
+    public void putLong(String key, long value) {
+        editor.putLong(key, value);
+        editor.apply();
+    }
+
+    public float getFloat(String key) {
+        return sp.getFloat(key, -1f);
+    }
+
     public long getLong(String key, long value) {
         return sp.getLong(key, value);
     }
@@ -69,7 +78,7 @@ public class USP {
     }
 
     public String getString(String key) {
-        return sp.getString(key, "");
+        return getString(key, "");
     }
 
     public String getString(String key, String value) {

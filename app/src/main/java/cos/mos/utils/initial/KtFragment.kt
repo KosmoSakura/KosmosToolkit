@@ -14,8 +14,9 @@ import android.view.ViewGroup
  * @Date: 2019.04.23 16:57
  * @Email: KosmoSakura@gmail.com
  */
-abstract class KFragment : Fragment() {
+abstract class KtFragment : Fragment() {
     private lateinit var contentView: View
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         contentView = inflater.inflate(layout(), container, false)
         return contentView

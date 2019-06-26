@@ -20,7 +20,9 @@ public abstract class BroadCastFragment extends KFragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             //收到广播
-            onKReceive();
+            if (intent != null) {
+                onKReceive(intent);
+            }
         }
     };
 
@@ -53,6 +55,7 @@ public abstract class BroadCastFragment extends KFragment {
 
     protected abstract IntentFilter doCast();
 
-    protected void onKReceive() {
+    protected void onKReceive(Intent intent) {
+
     }
 }

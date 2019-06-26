@@ -27,10 +27,12 @@ public abstract class BroadCastFragment extends KFragment {
 
     @Override
     protected void init() {
-        if (doCast()) {
+        IntentFilter filter = doCast();
+        if (filter != null) {
             //Fragment注册广播
             broadcastMgr = LocalBroadcastManager.getInstance(context);
-            broadcastMgr.registerReceiver(receiver, new IntentFilter("to_do_again"));
+            filter.addAction("固定action");
+            broadcastMgr.registerReceiver(receiver, filter);
         }
     }
 
@@ -49,7 +51,7 @@ public abstract class BroadCastFragment extends KFragment {
         }
     }
 
-    protected abstract boolean doCast();
+    protected abstract IntentFilter doCast();
 
     protected void onKReceive() {
     }

@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="10dp"
     android:progress="60"
-    android:progressDrawable="@drawable/layer_progress"/>-->
+    android:progressDrawable="@drawable/bar_progress"/>-->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
         <shape>

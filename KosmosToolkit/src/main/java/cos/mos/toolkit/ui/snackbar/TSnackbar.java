@@ -373,7 +373,7 @@ final class TSnackbar {
      * @return TSnackbar
      */
     public TSnackbar addIconProgressLoading(int resource_id, boolean left, boolean right) {
-        Drawable drawable = mContext.getResources().getDrawable(R.drawable.layer_rotate);
+        Drawable drawable = mContext.getResources().getDrawable(R.drawable.bar_rotate);
         if (resource_id > 0) {
             drawable = mContext.getResources().getDrawable(resource_id);
         }

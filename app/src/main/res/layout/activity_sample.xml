@@ -109,4 +109,18 @@
             android:textColor="@color/white"
             android:textSize="40sp"/>
     </FrameLayout>
+
+    <cos.mos.utils.widget.chart.ColumnarChartScroller
+        android:id="@+id/tb_cht"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        kosmos:bar_color="#3b8be3"
+        kosmos:bar_interval="20dp"
+        kosmos:bar_width="20dp"
+        kosmos:bottom_line_color="#3b8be3"
+        kosmos:bottom_text_color="#3b8be3"
+        kosmos:bottom_text_size="12dp"
+        kosmos:threshold_color="#5dc6e7"
+        kosmos:top_text_color="#3b8be3"
+        kosmos:top_text_size="12dp"/>
 </FrameLayout>

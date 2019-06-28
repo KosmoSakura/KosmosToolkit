@@ -8,12 +8,15 @@ import android.view.animation.AnimationUtils;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import cos.mos.toolkit.ULog;
 import cos.mos.toolkit.system.UScreen;
 import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
+import cos.mos.utils.widget.chart.ColumnarChartScroller;
+import cos.mos.utils.widget.chart.ColumnarChartScrollerBean;
 import cos.mos.utils.widget.chart.LineBean;
 import cos.mos.utils.widget.chart.LineChart;
 import cos.mos.utils.widget.progress.LineBar;
@@ -35,6 +38,7 @@ public class SampleActivity extends BaseActivity {
         return R.layout.activity_sample;
     }
 
+    private ColumnarChartScroller columnarChartScroller;
     private KRatingBar bar;
     private LineChart lineChart;
     private VideoClipBar videoBar;
@@ -53,6 +57,7 @@ public class SampleActivity extends BaseActivity {
         sv1 = findViewById(R.id.st2_f1);
         lneb = findViewById(R.id.st3_line);
         lnebInner = findViewById(R.id.st3_text);
+        columnarChartScroller = findViewById(R.id.tb_cht);
         try {
             seekbar.setAudio(new FileInputStream("音频路径"), 11, 10);
         } catch (Exception e) {
@@ -63,6 +68,7 @@ public class SampleActivity extends BaseActivity {
     @Override
     protected void logic() {
         lineChartSample();
+        columnarChartScroller();
         ratingBarSample();
         videoClipSample();
         waveClipSample();
@@ -77,6 +83,16 @@ public class SampleActivity extends BaseActivity {
                 lnebInner.startAnimation(AnimationUtils.loadAnimation(context, R.anim.anim_scale));
             }
         });
+    }
+
+    private void columnarChartScroller() {
+        List<ColumnarChartScrollerBean> all = new ArrayList<>();
+        all.add(new ColumnarChartScrollerBean(1600, "6.29"));
+        all.add(new ColumnarChartScrollerBean(2000, "6.30"));
+        all.add(new ColumnarChartScrollerBean(1200, "6.31"));
+        all.add(new ColumnarChartScrollerBean(443, "7.1"));
+        all.add(new ColumnarChartScrollerBean(3000, "7.2"));
+        columnarChartScroller.setBarChartData(all, 1500);
     }
 
     private void scanningBarample() {

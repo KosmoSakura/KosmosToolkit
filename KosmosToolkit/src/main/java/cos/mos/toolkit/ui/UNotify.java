@@ -4,11 +4,14 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 
+import cos.mos.toolkit.R;
 import cos.mos.toolkit.init.KApp;
 
 
@@ -31,6 +34,38 @@ import cos.mos.toolkit.init.KApp;
  * .setSmallIcon(R.drawable.ic_launcher);//设置通知小ICON
  */
 public class UNotify {
+    /**
+     * Service的onCreate中通知
+     */
+    private abstract class SampleService extends Service {
+        public static final int NOTICE_ID = 10010;
+
+        @Override
+        public int onStartCommand(Intent intent, int flags, int startId) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE))
+                    .createNotificationChannel(new NotificationChannel(CHANNEL_ID, CHANNEL_NAME,
+                        NotificationManager.IMPORTANCE_DEFAULT));
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+                builder.setSmallIcon(R.drawable.lib_error);
+                startForeground(NOTICE_ID, builder.build());
+            } else {
+                startForeground(NOTICE_ID, new Notification());
+            }
+            new Thread(() -> {
+                SystemClock.sleep(1000);
+                stopForeground(true);
+                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                manager.cancel(NOTICE_ID);
+            }).start();
+
+            //返回START_STICKY，当Service进程被kill后，系统会尝试重新创建这个Service
+            //保留Service的状态为开始状态，但不保留传递的Intent对象
+            //onStartCommand 方法一定会被重新调用
+            return START_STICKY;
+        }
+    }
+
     private static NotificationManager notifyMgr = (NotificationManager) KApp.instance().getSystemService(Context.NOTIFICATION_SERVICE);
     private static final String CHANNEL_ID = "SAKURA_RUN";
     private static final String CHANNEL_NAME = "SAKURA_NAME";

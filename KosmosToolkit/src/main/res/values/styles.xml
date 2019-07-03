@@ -49,4 +49,13 @@
         <item name="colorControlNormal">@android:color/darker_gray</item>
         <item name="colorControlActivated">@android:color/holo_orange_dark</item>
     </style>
+    <style name="Theme.picker" parent="android:Theme.Holo.Light">
+        <item name="android:editTextStyle">@style/Widget.EditText.White</item>
+    </style>
+
+    <style name="Widget.EditText.White" parent="@android:style/Widget.EditText">
+        <!--这里是设置颜色和大小的地方-->
+        <item name="android:textColor">@color/fun_txt_black</item>
+        <item name="android:textSize">30sp</item>
+    </style>
 </resources>

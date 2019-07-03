@@ -15,7 +15,7 @@ import cos.mos.toolkit.system.AppBean;
 import cos.mos.toolkit.system.UApps;
 import cos.mos.toolkit.system.UScreen;
 import cos.mos.utils.R;
-import cos.mos.utils.widget.list.IgnoreAdapter;
+import cos.mos.utils.widget.list.adapter.ListViewAdapter;
 
 /**
  * @Description: <p>
@@ -116,7 +116,7 @@ public class BottomSheetDialogSimple extends KActivity {
         }
     }
 
-    private IgnoreAdapter adapter;
+    private ListViewAdapter adapter;
 
     /**
      * BottomSheetDialog+Listview的滑动冲突问题
@@ -138,7 +138,7 @@ public class BottomSheetDialogSimple extends KActivity {
             View view = View.inflate(context, R.layout.dia_wifi_code, null);
             diaBottom = new BottomSheetDialog(context, R.style.TransparentBottomSheetStyle);
             ListView listView = view.findViewById(R.id.ig_list);
-            adapter = new IgnoreAdapter(list, this);
+            adapter = new ListViewAdapter(list, this);
             listView.setAdapter(adapter);
             diaBottom.setContentView(view);
             listView.setOnTouchListener(new View.OnTouchListener() {

@@ -26,52 +26,52 @@
     <color name="fun_txt_pink">#EB8DB6</color>
     <color name="fun_txt_blue">#39acc2</color>
     <color name="fun_txt_orange">#ffe4ac75</color>
-
-    <!--常规颜色值-->
-    <!--黑白灰-->
+    <!--基础色号-->
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="red">#d0021b</color>
+    <color name="orange">#f5a623</color>
+    <color name="yellow">#f8e71c</color>
+    <color name="brown">#8d4100</color>
+    <color name="green">#7ed321</color>
+    <color name="blue">#02a9fd</color>
+    <color name="purple">#9917ca</color>
+    <color name="pink">#ffa4d7</color>
+    <!--补充色号-->
+    <!--黑白灰-->
     <color name="black_light">#333333</color>
     <color name="gray">#bebebe</color>
     <color name="gray_light">#8a8788</color>
     <color name="gray_deep">#656565</color>
     <!--红-->
-    <color name="red">#d0021b</color>
     <color name="red_deep">#ff0000</color>
     <color name="red_dark">#600606</color>
     <color name="red_light">#bf3d3d</color>
     <!--橙-->
-    <color name="orange">#f5a623</color>
     <color name="orange_deep">#ff5400</color>
     <color name="orange_dark">#9c450c</color>
     <color name="orange_light">#e19559</color>
     <!--黄-->
-    <color name="yellow">#f8e71c</color>
     <color name="yellow_deep">#fffd00</color>
     <color name="yellow_dark">#baaf09</color>
     <color name="yellow_light">#d9d03b</color>
     <!--褐-->
-    <color name="brown">#8d4100</color>
     <color name="brown_deep">#8b572a</color>
     <color name="brown_dark">#663102</color>
     <color name="brown_light">#c98b59</color>
     <!--绿-->
-    <color name="green">#7ed321</color>
     <color name="green_deep">#13ff00</color>
     <color name="green_dark">#078203</color>
     <color name="green_light">#5fff00</color>
     <!--蓝-->
-    <color name="blue">#02a9fd</color>
     <color name="blue_deep">#0016ff</color>
     <color name="blue_dark">#003e87</color>
     <color name="blue_light">#12e0d9</color>
     <!--紫-->
-    <color name="purple">#9917ca</color>
     <color name="purple_deep">#c200ff</color>
     <color name="purple_dark">#651085</color>
     <color name="purple_light">#bb17e0</color>
     <!--粉-->
-    <color name="pink">#ffa4d7</color>
     <color name="pink_deep">#ffa4bd</color>
     <color name="pink_dark">#a3758f</color>
     <color name="pink_light">#ffa2ef</color>

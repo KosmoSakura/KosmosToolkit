@@ -4,8 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridView;
 
-import com.rato.tianyi.basic.utils.ScreenUtil;
-
 
 public class NoScrollGridView extends GridView {
 
@@ -28,11 +26,11 @@ public class NoScrollGridView extends GridView {
 
     @Override
     public void setHorizontalSpacing(int horizontalSpacing) {
-        super.setHorizontalSpacing(ScreenUtil.getScalePxValue(horizontalSpacing));
+        super.setHorizontalSpacing(horizontalSpacing);
     }
 
     @Override
     public void setVerticalSpacing(int verticalSpacing) {
-        super.setVerticalSpacing(ScreenUtil.getScalePxValue(verticalSpacing));
+        super.setVerticalSpacing(verticalSpacing);
     }
 }

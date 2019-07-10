@@ -35,12 +35,7 @@ public class TransformCircle extends BitmapTransformation {
         int y = (source.getHeight() - size) / 2;
 
         Bitmap squared = Bitmap.createBitmap(source, x, y, size, size);
-
         Bitmap result = pool.get(size, size, Bitmap.Config.ARGB_8888);
-        if (result == null) {
-            result = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
-        }
-
         Canvas canvas = new Canvas(result);
         Paint paint = new Paint();
         paint.setShader(new BitmapShader(squared, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));

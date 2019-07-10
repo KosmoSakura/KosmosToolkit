@@ -1,4 +1,4 @@
-package cos.mos.utils.ui.sideslip;
+package cos.mos.utils.widget.list;
 
 /**
  * @Description: <p>

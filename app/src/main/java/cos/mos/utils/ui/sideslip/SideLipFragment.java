@@ -16,6 +16,8 @@ import cos.mos.toolkit.listener.KOnFreshListener;
 import cos.mos.toolkit.system.UScreen;
 import cos.mos.utils.R;
 import cos.mos.utils.widget.list.MyDividerDecoration;
+import cos.mos.utils.widget.list.SideBean;
+import cos.mos.utils.widget.list.adapter.SideLipAdapter;
 
 /**
  * @Description: 侧滑删除示例

@@ -22,13 +22,13 @@ import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.mvp.bean.ImageBean;
 import cos.mos.utils.mvp.contract.KOnFreshListener;
-import cos.mos.utils.widget.list.AdapterImage;
+import cos.mos.utils.widget.list.ImageAdapter;
 
 public class MainActivity extends BaseActivity implements MainListener {
     private SpringView spv;
     private RecyclerView rv;
     private MainPresenter presenter;
-    private AdapterImage adapterImage;
+    private ImageAdapter adapterImage;
     private ArrayList<ImageBean> listImage;
 
     @Override
@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity implements MainListener {
         presenter = new MainPresenter(this, this);
         listImage = new ArrayList<>();
         DisplayMetrics dm = getResources().getDisplayMetrics();
-        adapterImage = new AdapterImage(listImage, dm.widthPixels / 3);
+        adapterImage = new ImageAdapter(listImage, dm.widthPixels / 3);
         adapterImage.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
         //水平列表
 //        new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);

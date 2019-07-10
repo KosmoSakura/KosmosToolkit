@@ -1,4 +1,4 @@
-package cos.mos.utils.ui.sideslip;
+package cos.mos.utils.widget.list.adapter;
 
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -8,6 +8,7 @@ import java.util.List;
 
 import cos.mos.utils.R;
 import cos.mos.utils.widget.EasySwipeMenuLayout;
+import cos.mos.utils.widget.list.SideBean;
 import io.reactivex.annotations.Nullable;
 
 /**

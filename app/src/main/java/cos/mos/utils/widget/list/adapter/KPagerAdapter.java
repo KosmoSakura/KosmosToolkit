@@ -1,4 +1,4 @@
-package cos.mos.utils.ui.pager_tab_frag;
+package cos.mos.utils.widget.list.adapter;
 
 
 import android.support.v4.app.Fragment;

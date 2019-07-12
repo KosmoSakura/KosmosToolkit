@@ -123,4 +123,17 @@
         kosmos:threshold_color="#5dc6e7"
         kosmos:top_text_color="#3b8be3"
         kosmos:top_text_size="12dp"/>
+    <cos.mos.utils.widget.progress.AudioBar
+        android:id="@+id/aubar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+       kosmos:base_color="#ffffff"
+       kosmos:cover_color="#ff2b81"
+       kosmos:line_padding="5dp"
+       kosmos:line_with="2dp"
+       kosmos:max_progress="100"
+       kosmos:progress="45"/>
 </FrameLayout>

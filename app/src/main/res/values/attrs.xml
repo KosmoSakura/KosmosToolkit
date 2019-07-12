@@ -55,6 +55,19 @@
         <attr name="max_progress" format="integer"/>
         <attr name="progress" format="float"/>
     </declare-styleable>
+    <!--音频播放条-->
+    <declare-styleable name="AudioBar">
+        <!--底色-->
+        <attr name="base_color" format="color"/>
+        <!--覆盖色-->
+        <attr name="cover_color" format="color"/>
+        <!--间距-->
+        <attr name="line_padding" format="dimension"/>
+        <!--线宽-->
+        <attr name="line_with" format="dimension"/>
+        <attr name="progress" format="float"/>
+        <attr name="max_progress" format="float"/>
+    </declare-styleable>
     <declare-styleable name="KBubbleSeekBar">
         <!--渐变色号，用_分割-->
         <attr name="bsb_colors" format="string"/>

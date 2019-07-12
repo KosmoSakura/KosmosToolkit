@@ -19,6 +19,7 @@ import cos.mos.utils.widget.chart.ColumnarChartScroller;
 import cos.mos.utils.widget.chart.ColumnarChartScrollerBean;
 import cos.mos.utils.widget.chart.LineBean;
 import cos.mos.utils.widget.chart.LineChart;
+import cos.mos.utils.widget.progress.AudioBar;
 import cos.mos.utils.widget.progress.LineBar;
 import cos.mos.utils.widget.progress.ScanningBar;
 import cos.mos.utils.widget.progress.WaveShapeBar;
@@ -47,9 +48,11 @@ public class SampleActivity extends BaseActivity {
     private ScanningBar sv1;
     private LineBar lneb;
     private View lnebInner;
+    private AudioBar auBar;
 
     @Override
     protected void init() {
+        auBar = findViewById(R.id.aubar);
         bar = findViewById(R.id.rating_bar);
         videoBar = findViewById(R.id.vu_clip);
         seekbar = findViewById(R.id.au_clip);

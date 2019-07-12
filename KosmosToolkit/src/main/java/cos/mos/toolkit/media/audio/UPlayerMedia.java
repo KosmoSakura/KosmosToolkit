@@ -12,24 +12,9 @@ import java.io.IOException;
  * @Email: KosmoSakura@gmail.com
  */
 public class UPlayerMedia {
-    private static UPlayerMedia sound;
     private MediaPlayer player;
     private boolean isPlaying = false;//当前是否正在播放音频
-    private String dirAudio;
-
-    public static UPlayerMedia instance() {
-        if (sound == null) {
-            synchronized (UPlayerMedia.class) {
-                if (sound == null) {
-                    sound = new UPlayerMedia();
-                }
-            }
-        }
-        return sound;
-    }
-
-    private UPlayerMedia() {
-    }
+    private String url;
 
     /**
      * @param msec 毫秒
@@ -42,14 +27,15 @@ public class UPlayerMedia {
     }
 
     /**
-     * 自动播放（内部判断流程）
+     * @param dirAudio 地址
+     * @apiNote 修改播放音频
      */
-    public void toPlayAuto(String dirAudio) {
-        this.dirAudio = dirAudio;
+    public void audioChange(String dirAudio) {
+        this.url = dirAudio;
         if (!isPlaying) {
             //目前MediaPlayer不播放音频
             if (player == null) {
-                toPlay(dirAudio); //从头开始
+                newPlay(dirAudio); //从头开始
             } else {
                 toResume(); //恢复当前暂停的媒体播放器
             }
@@ -62,11 +48,11 @@ public class UPlayerMedia {
     /**
      * 播放
      */
-    private void toPlay(String dirAudio) {
+    public void newPlay(String dirAudio) {
         if (dirAudio == null) {
             return;
         }
-        this.dirAudio = dirAudio;
+        this.url = dirAudio;
         player = new MediaPlayer();
         try {
             player.setDataSource(dirAudio);
@@ -84,13 +70,13 @@ public class UPlayerMedia {
      * 从某一个点开始播放
      */
     private void toPlayBySeek(int progress) {
-        if (dirAudio == null) {
+        if (url == null) {
             return;
         }
         //设置mediaPlayer从音频文件的progress开始
         player = new MediaPlayer();
         try {
-            player.setDataSource(dirAudio);
+            player.setDataSource(url);
             player.prepare();
             player.seekTo(progress);
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -128,7 +114,7 @@ public class UPlayerMedia {
      * 停止
      */
     private void toStop() {
-        dirAudio = null;
+        url = null;
         if (player != null) {
             player.stop();
             player.reset();

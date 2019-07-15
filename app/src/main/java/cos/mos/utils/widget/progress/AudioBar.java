@@ -97,7 +97,7 @@ public class AudioBar extends View {
             }
             canvas.drawLine(lx, (h - ly) / 2, lx, (h + ly) / 2, paint);
             flag++;
-            if (flag > 7) {
+            if (flag > 6) {
                 flag = 0;
             }
             lx += padding;

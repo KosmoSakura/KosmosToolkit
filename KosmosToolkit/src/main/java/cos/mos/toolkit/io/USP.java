@@ -3,8 +3,6 @@ package cos.mos.toolkit.io;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.Map;
-
 /**
  * @Description: SharedPreferences工具
  * @Author: Kosmos
@@ -32,9 +30,6 @@ public class USP {
         return instance;
     }
 
-    /**
-     * 在Application里面初始化
-     */
     public void init(Context context, String spName) {
         sp = context.getSharedPreferences(spName, Context.MODE_PRIVATE);
         editor = sp.edit();
@@ -91,75 +86,5 @@ public class USP {
 
     public boolean getBoolean(String key, boolean value) {
         return sp.getBoolean(key, value);
-    }
-
-    /**
-     * 存入Object，自动判断类型
-     */
-    public void put(String key, Object object) {
-        if (object instanceof String) {
-            editor.putString(key, (String) object);
-        } else if (object instanceof Integer) {
-            editor.putInt(key, (Integer) object);
-        } else if (object instanceof Boolean) {
-            editor.putBoolean(key, (Boolean) object);
-        } else if (object instanceof Float) {
-            editor.putFloat(key, (Float) object);
-        } else if (object instanceof Long) {
-            editor.putLong(key, (Long) object);
-        } else {
-            editor.putString(key, object.toString());
-        }
-//        boolean commit = editor.commit();
-        editor.apply();
-    }
-
-    /**
-     * 取出Object，，自动判断类型
-     */
-    public Object get(String key, Object defaultObject) {
-        if (defaultObject instanceof String) {
-            return sp.getString(key, (String) defaultObject);
-        } else if (defaultObject instanceof Integer) {
-            return sp.getInt(key, (Integer) defaultObject);
-        } else if (defaultObject instanceof Boolean) {
-            return sp.getBoolean(key, (Boolean) defaultObject);
-        } else if (defaultObject instanceof Float) {
-            return sp.getFloat(key, (Float) defaultObject);
-        } else if (defaultObject instanceof Long) {
-            return sp.getLong(key, (Long) defaultObject);
-        } else {
-            return sp.getString(key, null);
-        }
-    }
-
-    /**
-     * 删除某一key对应的值
-     */
-    public void remove(String key) {
-        editor.remove(key);
-        editor.commit();
-    }
-
-    /**
-     * 清空SharedPreferences
-     */
-    public void clear() {
-        editor.clear();
-        editor.commit();
-    }
-
-    /**
-     * 查询某个key是否存在
-     */
-    public Boolean contain(String key) {
-        return sp.contains(key);
-    }
-
-    /**
-     * 返回所有的键值对
-     */
-    public Map<String, ?> getAll() {
-        return sp.getAll();
     }
 }

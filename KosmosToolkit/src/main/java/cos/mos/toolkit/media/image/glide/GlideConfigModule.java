@@ -28,7 +28,7 @@ import java.io.File;
 public final class GlideConfigModule extends AppGlideModule {
     @Override
     public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
-        int memoryCacheSizeBytes = 1024 * 1024 * 20; // 20mb
+        int memoryCacheSizeBytes = 1024 * 1024 * 20; //20mb
         int diskCacheSizeBytes = 1024 * 1024 * 100;  //100 MB
         builder.setMemoryCache(new LruResourceCache(memoryCacheSizeBytes))
             .setDiskCache(new InternalCacheDiskCacheFactory(context, diskCacheSizeBytes));

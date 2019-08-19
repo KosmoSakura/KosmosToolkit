@@ -47,11 +47,11 @@
     <cos.mos.utils.widget.progress.CircleBar
         android:layout_width="110dp"
         android:layout_height="110dp"
+        kosmos:cb_max_progress="100"
+        kosmos:cb_progress="10"
         kosmos:inside_color="#ffffff"
-        kosmos:max_progress="100"
         kosmos:outside_color="#ea5413"
         kosmos:outside_radius="40dp"
-        kosmos:progress="10"
         kosmos:progress_text_size="30dp"
         kosmos:progress_width="4dp"/>
 
@@ -123,6 +123,7 @@
         kosmos:threshold_color="#5dc6e7"
         kosmos:top_text_color="#3b8be3"
         kosmos:top_text_size="12dp"/>
+
     <cos.mos.utils.widget.progress.AudioBar
         android:id="@+id/aubar"
         android:layout_width="match_parent"
@@ -130,10 +131,10 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-       kosmos:base_color="#ffffff"
-       kosmos:cover_color="#ff2b81"
-       kosmos:line_padding="5dp"
-       kosmos:line_with="2dp"
-       kosmos:max_progress="100"
-       kosmos:progress="45"/>
+        kosmos:base_color="#ffffff"
+        kosmos:cover_color="#ff2b81"
+        kosmos:line_padding="5dp"
+        kosmos:line_with="2dp"
+        kosmos:ab_max_progress="100"
+        kosmos:ab_progress="45"/>
 </FrameLayout>

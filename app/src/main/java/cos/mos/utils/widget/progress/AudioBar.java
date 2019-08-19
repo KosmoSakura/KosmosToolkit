@@ -48,9 +48,9 @@ public class AudioBar extends View {
         //线宽
         lineWith = a.getDimension(R.styleable.AudioBar_line_with, 10f);
         //已消耗的进度
-        progress = a.getFloat(R.styleable.AudioBar_progress, 0);
+        progress = a.getFloat(R.styleable.AudioBar_ab_progress, 0);
         //最大进度
-        maxProgress = a.getFloat(R.styleable.AudioBar_max_progress, 100);
+        maxProgress = a.getFloat(R.styleable.AudioBar_ab_max_progress, 100);
         a.recycle();
         paint = new Paint();
         paint.setAntiAlias(true);

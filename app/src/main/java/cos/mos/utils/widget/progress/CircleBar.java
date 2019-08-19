@@ -61,9 +61,9 @@ public class CircleBar extends View {
         //线圈宽
         progressWidth = a.getDimension(R.styleable.CircleBar_progress_width, dp2px(10.0f));
         //已消耗的进度
-        progress = a.getFloat(R.styleable.CircleBar_progress, 50.0f);
+        progress = a.getFloat(R.styleable.CircleBar_cb_progress, 50.0f);
         //最大进度
-        maxProgress = a.getInt(R.styleable.CircleBar_max_progress, 100);
+        maxProgress = a.getInt(R.styleable.CircleBar_cb_max_progress, 100);
         a.recycle();
         paint = new Paint();
         oval = new RectF();

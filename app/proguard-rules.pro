@@ -22,7 +22,7 @@
 #混淆时是否记录日志
 #-verbose
 #忽略警告
-#-ignorewarning
+-ignorewarning
 #apk 包内所有 class 的内部结构
 #-dump proguard/class_files.txt
 #未混淆的类和成员

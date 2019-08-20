@@ -20,6 +20,9 @@ import cos.mos.toolkit.java.UText;
  * @Email: KosmoSakura@gmail.com
  * @eg 2018.11.25 优化华为手机热点打开
  * @eg 2019.3.21 重构
+ * <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+ * <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+ * <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
  */
 public class UWiFi {
     private static WifiManager wifiMgr;

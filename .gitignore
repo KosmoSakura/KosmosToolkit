@@ -43,6 +43,7 @@ out/
 debug/
 release/
 build/
+build/*
 proguard/
 captures/
 freeline/

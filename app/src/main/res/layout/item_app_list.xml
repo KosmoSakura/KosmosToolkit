@@ -12,8 +12,8 @@
     <ImageView
         android:id="@+id/ignore_icon"
         android:layout_width="40dp"
-        android:src="@drawable/ic_android"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp"
+        android:src="@drawable/ic_android"/>
 
     <TextView
         android:id="@+id/ignore_name"

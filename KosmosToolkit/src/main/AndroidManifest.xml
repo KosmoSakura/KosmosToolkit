@@ -1,5 +1,6 @@
-<manifest package="cos.mos.toolkit"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cos.mos.toolkit">
     <!--指纹验证-->
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
     <!-- 获取网络状态改变的权限 -->

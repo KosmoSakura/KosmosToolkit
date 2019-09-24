@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="cos.mos.utils"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cos.mos.utils">
     <!--壁纸-->
     <uses-permission android:name="android.permission.SET_WALLPAPER"/>
     <!--相机-->
@@ -65,12 +66,15 @@
             android:name=".ui.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".widget.SampleActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".ui.pager_tab_frag.OnlyTextActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".ui.pager_tab_frag.IconTextActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".widget.SampleActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.pager_tab_frag.OnlyTextActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.pager_tab_frag.IconTextActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

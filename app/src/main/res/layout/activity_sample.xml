@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="#1C2327"
-        android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         kosmos:waveBaseColor="#E5E8EC"
         kosmos:waveClipColor="#7C4DB6AC"/>
 
@@ -129,12 +129,12 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        kosmos:ab_max_progress="100"
+        kosmos:ab_progress="45"
         kosmos:base_color="#ffffff"
         kosmos:cover_color="#ff2b81"
         kosmos:line_padding="5dp"
-        kosmos:line_with="2dp"
-        kosmos:ab_max_progress="100"
-        kosmos:ab_progress="45"/>
+        kosmos:line_with="2dp"/>
 </FrameLayout>

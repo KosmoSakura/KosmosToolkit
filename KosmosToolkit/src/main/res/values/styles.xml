@@ -14,10 +14,12 @@
         <item name="android:windowBackground">@color/colorPrimaryDark</item>
         <!--其他属性见values_v21-->
     </style>
+
     <!--底部弹出的dialog-->
     <style name="TransparentBottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/SheetStyle</item>
     </style>
+
     <!--底部弹出的dialog-->
     <style name="SheetStyle" parent="android:Widget">
         <item name="android:background">@color/T_all</item>
@@ -25,6 +27,7 @@
         <item name="behavior_hideable">true</item>
         <item name="behavior_skipCollapsed">false</item>
     </style>
+
     <!--背景全透明无边框 -->
     <style name="SakuraDialog" parent="android:style/Theme.Dialog">
         <!--背景颜色及透明度-->
@@ -38,6 +41,7 @@
         <!--模糊-->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
     <!--鸿洋toast-->
     <style name="ToastAnimation" parent="@android:style/Animation.Toast">
         <!--<item name="android:windowEnterAnimation">@anim/toast_enter</item>-->
@@ -49,6 +53,7 @@
         <item name="colorControlNormal">@android:color/darker_gray</item>
         <item name="colorControlActivated">@android:color/holo_orange_dark</item>
     </style>
+
     <style name="Theme.picker" parent="android:Theme.Holo.Light">
         <item name="android:editTextStyle">@style/Widget.EditText.White</item>
     </style>

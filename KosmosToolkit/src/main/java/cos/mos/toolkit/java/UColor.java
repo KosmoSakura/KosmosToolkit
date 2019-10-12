@@ -21,6 +21,7 @@ import cos.mos.toolkit.init.KApp;
  * @eg: 2019.3.13:基于Color类算法优化
  * @eg: 2019.5.8:argb颜色处理
  * @eg: 2019.5.13:获取颜色本地化
+ * @Tip 2019.10.12:重构色值
  */
 public class UColor {
     private UColor() {
@@ -139,11 +140,7 @@ public class UColor {
      * @return int型颜色
      */
     public static int getColor(@ColorRes int id) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return KApp.instance().getColor(id);
-        } else {
-            return KApp.instance().getResources().getColor(id);
-        }
+        return getColor(id, KApp.instance());
     }
 
     public static int getColor(@ColorRes int id, Context context) {

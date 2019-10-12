@@ -13,14 +13,15 @@ import android.support.annotation.Size;
 import cos.mos.toolkit.init.KApp;
 
 
+
 /**
- * @Description: 颜色工具类
- * @Author: Kosmos
- * @Date: 2017年4月5日
- * @Email: KosmoSakura@gmail.com
- * @eg: 2019.3.13:基于Color类算法优化
- * @eg: 2019.5.8:argb颜色处理
- * @eg: 2019.5.13:获取颜色本地化
+ * @Description 颜色工具类
+ * @Author Kosmos
+ * @Date 2017年4月5日
+ * @Email KosmoSakura@gmail.com
+ * @Tip 2019.3.13:基于Color类算法优化
+ * @Tip 2019.5.8:argb颜色处理
+ * @Tip 2019.5.13:获取颜色本地化
  * @Tip 2019.10.12:重构色值
  */
 public class UColor {

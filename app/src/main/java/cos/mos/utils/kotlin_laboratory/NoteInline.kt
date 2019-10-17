@@ -9,7 +9,7 @@ import cos.mos.utils.widget.list.SideBean
  * @Email KosmoSakura@gmail.com
  * @Tip
  * */
-class NotInline {
+class NoteInline {
     /**
      * @param let 关键字示例
      * @Tip

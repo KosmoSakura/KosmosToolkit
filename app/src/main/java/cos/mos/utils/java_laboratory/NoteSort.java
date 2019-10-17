@@ -11,7 +11,7 @@ import java.util.List;
  * @Date 2018.12.10 17:53
  * @Email KosmoSakura@gmail.com
  */
-public class USort {
+public class NoteSort {
 //    public static void main(String[] args) {
 //        sortInt();//int排序
 //        sortBoolean();//boolean排序

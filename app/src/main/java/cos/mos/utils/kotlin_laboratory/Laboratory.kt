@@ -1,4 +1,4 @@
-package cos.mos.utils.laboratory
+package cos.mos.utils.kotlin_laboratory
 
 /**
  * @Description:

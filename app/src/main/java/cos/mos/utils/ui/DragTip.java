@@ -7,11 +7,11 @@ import android.view.View;
 import cos.mos.utils.initial.BaseActivity;
 
 /**
- * @Description: 拖拽示例
- * @Author: Kosmos
- * @Date: 2019年1月29日
- * @Email: KosmoSakura@gmail.com
- * @apiNote 关于A拖到B位置的处理
+ * @Description 拖拽Api示例
+ * @Author Kosmos
+ * @Date 2019年1月29日
+ * @Email KosmoSakura@gmail.com
+ * @Tip 关于A拖到B位置的处理
  * 关于目标View的设置：
  * 这里不存在目标View的设置，
  * onDrag只有拖拽到 所有设置了setOnDragListener的View区域时才会回调

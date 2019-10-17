@@ -9,10 +9,10 @@ import cos.mos.toolkit.init.KFragment;
 import cos.mos.utils.R;
 
 /**
- * @Description: <p>
- * @Author: Kosmos
- * @Date: 2018.11.20 15:43
- * @Email: KosmoSakura@gmail.com
+ * @Description Eventbus示例
+ * @Author Kosmos
+ * @Date 2018.11.20 15:43
+ * @Email KosmoSakura@gmail.com
  */
 public class EventbusSampleFragment extends KFragment {
 

@@ -8,10 +8,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import io.reactivex.annotations.Nullable;
 
 /**
- * @Description: <p>
- * @Author: Kosmos
- * @Date: 2018.11.20 15:52
- * @Email: KosmoSakura@gmail.com
+ * @Description ViewPager适配器示例
+ * @Author Kosmos
+ * @Date 2018.11.20 15:52
+ * @Email KosmoSakura@gmail.com
  */
 public class KPagerAdapter extends FragmentPagerAdapter {
     private Fragment[] arr;

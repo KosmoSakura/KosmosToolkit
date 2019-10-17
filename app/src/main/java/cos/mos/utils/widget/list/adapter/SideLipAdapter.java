@@ -12,10 +12,10 @@ import cos.mos.utils.widget.list.SideBean;
 import io.reactivex.annotations.Nullable;
 
 /**
- * @Description: 侧滑删除
- * @Author: Kosmos
- * @Date: 2018.11.22 11:15
- * @Email: KosmoSakura@gmail.com
+ * @Description 侧滑删除适配器示例
+ * @Author Kosmos
+ * @Date 2018.11.22 11:15
+ * @Email KosmoSakura@gmail.com
  */
 public class SideLipAdapter extends BaseQuickAdapter<SideBean, BaseViewHolder> {
     public SideLipAdapter(@Nullable List<SideBean> data) {

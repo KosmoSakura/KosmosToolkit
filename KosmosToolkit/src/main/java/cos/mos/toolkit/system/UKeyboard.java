@@ -14,13 +14,13 @@ import android.widget.EditText;
 import java.lang.reflect.Method;
 
 /**
- * @Description: 键盘输入工具类
- * @Author: Kosmos
- * @Date: 2018年2月8日 16:12
- * @Email: KosmoSakura@gmail.com
- * @eg: 修改日期：2018年09月24日 16:19
- * @eg: 最新修改日期：2019年2月28日
- * @eg: 2019.6.14:Edittext键盘控制
+ * @Description 键盘输入工具类
+ * @Author Kosmos
+ * @Date 2018年2月8日 16:12
+ * @Email KosmoSakura@gmail.com
+ * @Tip 修改日期：2018年09月24日 16:19
+ * @Tip 最新修改日期：2019年2月28日
+ * @Tip 2019.6.14:Edittext键盘控制
  */
 public class UKeyboard {
     /**

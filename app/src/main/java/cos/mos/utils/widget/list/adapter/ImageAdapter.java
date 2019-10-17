@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.list;
+package cos.mos.utils.widget.list.adapter;
 
 
 import android.support.annotation.Nullable;
@@ -14,10 +14,10 @@ import cos.mos.utils.R;
 import cos.mos.utils.mvp.bean.ImageBean;
 
 /**
- * @Description: 瀑布流适配器
- * @Author: Kosmos
- * @Date: 2018.11.14 10:27
- * @Email: KosmoSakura@gmail.com
+ * @Description 瀑布流适配器示例
+ * @Author Kosmos
+ * @Date 2018.11.14 10:27
+ * @Email KosmoSakura@gmail.com
  */
 public class ImageAdapter extends BaseQuickAdapter<ImageBean, BaseViewHolder> {
     private int width;

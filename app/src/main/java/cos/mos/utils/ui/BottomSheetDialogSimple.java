@@ -116,7 +116,6 @@ public class BottomSheetDialogSimple extends KActivity {
         }
     }
 
-    private ListViewAdapter adapter;
 
     /**
      * BottomSheetDialog+Listview的滑动冲突问题
@@ -138,7 +137,7 @@ public class BottomSheetDialogSimple extends KActivity {
             View view = View.inflate(context, R.layout.dia_wifi_code, null);
             diaBottom = new BottomSheetDialog(context, R.style.TransparentBottomSheetStyle);
             ListView listView = view.findViewById(R.id.ig_list);
-            adapter = new ListViewAdapter(list, this);
+            ListViewAdapter adapter = new ListViewAdapter(list, this);
             listView.setAdapter(adapter);
             diaBottom.setContentView(view);
             listView.setOnTouchListener(new View.OnTouchListener() {

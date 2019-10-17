@@ -22,7 +22,7 @@ import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.mvp.bean.ImageBean;
 import cos.mos.utils.mvp.contract.KOnFreshListener;
-import cos.mos.utils.widget.list.ImageAdapter;
+import cos.mos.utils.widget.list.adapter.ImageAdapter;
 
 public class MainActivity extends BaseActivity implements MainListener {
     private SpringView spv;

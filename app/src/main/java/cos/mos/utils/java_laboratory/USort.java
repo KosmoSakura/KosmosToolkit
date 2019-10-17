@@ -1,4 +1,4 @@
-package cos.mos.utils.java_note;
+package cos.mos.utils.java_laboratory;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -6,10 +6,10 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * @Description: <p>
- * @Author: Kosmos
- * @Date: 2018.12.10 17:53
- * @Email: KosmoSakura@gmail.com
+ * @Description 关于Java提供的一些排序api
+ * @Author Kosmos
+ * @Date 2018.12.10 17:53
+ * @Email KosmoSakura@gmail.com
  */
 public class USort {
 //    public static void main(String[] args) {

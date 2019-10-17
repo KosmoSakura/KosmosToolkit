@@ -15,10 +15,10 @@ import cos.mos.toolkit.system.AppBean;
 import cos.mos.utils.R;
 
 /**
- * @Description: <p>
- * @Author: Kosmos
- * @Date: 2019.03.19 16:51
- * @Email: KosmoSakura@gmail.com
+ * @Description ListView适配器示例
+ * @Author Kosmos
+ * @Date 2019.03.19 16:51
+ * @Email KosmoSakura@gmail.com
  */
 public class ListViewAdapter extends BaseAdapter {
     private List<AppBean> list;

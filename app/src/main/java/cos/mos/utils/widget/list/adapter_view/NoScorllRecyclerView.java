@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 
 /**
  * Description:完全展示列表
- * <p>
  * Author: Kosmos
  * Time: 2017/8/17 001711:28
  * Email:ZeroProject@foxmail.com
@@ -25,8 +24,6 @@ public class NoScorllRecyclerView extends RecyclerView {
                                 int defStyle) {
         super(context, attrs, defStyle);
     }
-
-
 
 
     @Override

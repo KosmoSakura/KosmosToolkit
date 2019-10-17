@@ -1,21 +1,15 @@
 package cos.mos.utils.widget.list.adapter_view;
 
-/**
- * Description:计算过高度的listview
- * <p>
- * Author: yi.zhang
- * Time: 2017/6/22 0022
- * E-mail: yi.zhang@rato360.com
- */
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ListView;
 
-/***
+/**
  * 自定义ListView子类，继承ListView
- * @author Administrator
- *
+ * Description:计算过高度的listview
+ * Author: yi.zhang
+ * Time: 2017/6/22 0022
+ * E-mail: yi.zhang@rato360.com
  */
 public class NoScrollListView extends ListView {
 

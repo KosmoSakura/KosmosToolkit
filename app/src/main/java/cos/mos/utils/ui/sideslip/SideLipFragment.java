@@ -15,7 +15,7 @@ import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.listener.KOnFreshListener;
 import cos.mos.toolkit.system.UScreen;
 import cos.mos.utils.R;
-import cos.mos.utils.widget.list.MyDividerDecoration;
+import cos.mos.utils.widget.list.KDividerDecoration;
 import cos.mos.utils.widget.list.SideBean;
 import cos.mos.utils.widget.list.adapter.SideLipAdapter;
 
@@ -47,7 +47,7 @@ public class SideLipFragment extends KFragment {
         adapter.openLoadAnimation();
         rv.setLayoutManager(new LinearLayoutManager(context));
         adapter.setEmptyView(R.layout.lay_empty, rv);
-        rv.addItemDecoration(new MyDividerDecoration(ContextCompat.getColor(context, R.color.fun_bg_white),
+        rv.addItemDecoration(new KDividerDecoration(ContextCompat.getColor(context, R.color.fun_bg_white),
             (int) UScreen.dp2px(10), (int) UScreen.dp2px(10), (int) UScreen.dp2px(10)));
         rv.setAdapter(adapter);
     }

@@ -16,10 +16,10 @@ import com.liaoinstan.springview.container.BaseHeader;
 import cos.mos.utils.R;
 
 /**
- * @Description:
- * @Author: Kosmos
- * @Date: 2019.05.05 10:51
- * @Email: KosmoSakura@gmail.com
+ * @Description SpringView自定义Header示例
+ * @Author Kosmos
+ * @Date 2019.05.05 10:51
+ * @Email KosmoSakura@gmail.com
  */
 public class KHeader extends BaseHeader {
     private Context context;

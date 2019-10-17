@@ -1,11 +1,11 @@
 package cos.mos.utils.widget.list;
 
 /**
- * @Description: <p>
- * @Author: Kosmos
- * @Date: 2019.04.16 10:16
- * @Email: KosmoSakura@gmail.com
- */
+ * @Description 侧滑实体类
+ * @Author Kosmos
+ * @Date 2019.04.16 10:16
+ * @Email KosmoSakura@gmail.com
+ * */
 public class SideBean {
     private Long imageId;
     private String url;

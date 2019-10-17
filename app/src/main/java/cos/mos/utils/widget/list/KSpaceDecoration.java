@@ -12,33 +12,50 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 
 
 /**
- * 网格布局
+ * @Description 网格布局分割线
+ * @Author Kosmos
+ * @Date 2019-10-17 16:32
+ * @Email KosmoSakura@gmail.com
  */
-public class MySpaceDecoration extends RecyclerView.ItemDecoration {
+public class KSpaceDecoration extends RecyclerView.ItemDecoration {
+    private int space;//分割线宽
+    private boolean mPaddingEdgeSide = true;//保留边距（为分割线宽）
+    private boolean mPaddingStart = true;//保留左边分割线
+    private boolean mPaddingEnd = true;//保留右边分割线
+    private boolean mPaddingHeaderFooter = false;//保留上下分割线
 
-    private int space;
-    private boolean mPaddingEdgeSide = true;
-    private boolean mPaddingStart = true;
-    private boolean mPaddingEnd = true;
-    private boolean mPaddingHeaderFooter = false;
-
-    public MySpaceDecoration(int space) {
+    /**
+     * @param space 分割线宽
+     */
+    public KSpaceDecoration(int space) {
         this.space = space;
     }
 
 
+    /**
+     * @param mPaddingEdgeSide 保留边距（为分割线宽）
+     */
     public void setPaddingEdgeSide(boolean mPaddingEdgeSide) {
         this.mPaddingEdgeSide = mPaddingEdgeSide;
     }
 
+    /**
+     * @param mPaddingStart 保留左边分割线
+     */
     public void setPaddingStart(boolean mPaddingStart) {
         this.mPaddingStart = mPaddingStart;
     }
 
+    /**
+     * @param mPaddingEnd 保留右边分割线
+     */
     public void setmPaddingEnd(boolean mPaddingEnd) {
         this.mPaddingEnd = mPaddingEnd;
     }
 
+    /**
+     * @param mPaddingHeaderFooter 保留上下分割线
+     */
     public void setPaddingHeaderFooter(boolean mPaddingHeaderFooter) {
         this.mPaddingHeaderFooter = mPaddingHeaderFooter;
     }
@@ -70,9 +87,7 @@ public class MySpaceDecoration extends RecyclerView.ItemDecoration {
             spanIndex = 0;
         }
 
-        /**
-         * 普通Item的尺寸
-         */
+        //普通Item的尺寸
         int itemCount = parent.getAdapter().getItemCount();
         if ((position >= headerCount && position < itemCount - footerCount)) {
 

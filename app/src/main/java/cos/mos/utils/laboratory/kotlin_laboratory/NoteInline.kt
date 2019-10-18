@@ -1,4 +1,4 @@
-package cos.mos.utils.kotlin_laboratory
+package cos.mos.utils.laboratory.kotlin_laboratory
 
 import cos.mos.utils.widget.list.SideBean
 

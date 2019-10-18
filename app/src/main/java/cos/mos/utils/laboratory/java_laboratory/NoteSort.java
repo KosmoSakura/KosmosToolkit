@@ -1,4 +1,4 @@
-package cos.mos.utils.java_laboratory;
+package cos.mos.utils.laboratory.java_laboratory;
 
 import java.util.Arrays;
 import java.util.Collections;

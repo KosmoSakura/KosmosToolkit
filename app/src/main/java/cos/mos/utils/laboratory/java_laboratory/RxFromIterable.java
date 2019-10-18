@@ -67,6 +67,7 @@ public class RxFromIterable {
             })
             // 线程切换
             .compose(observableIoSchedulers(0))
+//            .toList() //toList可以把结果打包输出，加上的话，这里为：Consumer<List<String>>
             .subscribe(new Consumer<String>() {
                 @Override
                 public void accept(String s) throws Exception {

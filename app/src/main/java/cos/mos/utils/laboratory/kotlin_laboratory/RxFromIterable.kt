@@ -51,6 +51,7 @@ class RxFromIterable {
             })
             // 线程切换
             .compose(observableIoSchedulers())
+//            .toList() //toList可以把结果打包输出，加上的话，这里为：Consumer<List<String>>
             .subscribe(object : Consumer<String> {
                 override fun accept(t: String?) {
                     outList.add(t!!)

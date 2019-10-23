@@ -28,11 +28,11 @@ import cos.mos.utils.widget.progress.clip.WaveClipBar;
 import cos.mos.utils.widget.single.KRatingBar;
 
 /**
- * @Description: 自定义控件演示 单独  single
- * @Author: Kosmos
- * @Date: 2019.04.25 14:23
- * @Email: KosmoSakura@gmail.com
- */
+ * @Description 自定义控件演示
+ * @Author Kosmos
+ * @Date 2019.04.25 14:23
+ * @Email KosmoSakura@gmail.com
+ * */
 public class SampleActivity extends BaseActivity {
     @Override
     protected int layout() {

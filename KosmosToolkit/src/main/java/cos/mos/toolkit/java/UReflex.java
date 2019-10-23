@@ -4,11 +4,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * @Description: 反射辅助工具
- * @Author: Kosmos
- * @Date: 2018.11.25 16:31
- * @Email: KosmoSakura@gmail.com
- * @eg: 最新修改日期：2018年11月25日 17:19
+ * @Description 反射辅助工具
+ * @Author Kosmos
+ * @Date 2018.11.25 16:31
+ * @Email KosmoSakura@gmail.com
+ * @Tip  最新修改日期：2018年11月25日 17:19
  */
 public class UReflex {
     /**

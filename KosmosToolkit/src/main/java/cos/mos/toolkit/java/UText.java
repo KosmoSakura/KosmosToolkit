@@ -6,15 +6,15 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * @Description: 字符校验类
- * @Author: Kosmos
- * @Date: 2016年8月29日 11:32
- * @Email: KosmoSakura@gmail.com
- * @eg: 2018.9.12:转录
- * @eg: 2018.9.22:重载方法
- * @eg: 2018.11.27:重构
- * @eg: 2019.3.7:优化文字处理的执行效率
- * @eg: 2019.4.8:优化重构变量
+ * @Description 字符校验类
+ * @Author Kosmos
+ * @Date 2016年8月29日 11:32
+ * @Email KosmoSakura@gmail.com
+ * @Tip 2018.9.12:转录
+ * @Tip 2018.9.22:重载方法
+ * @Tip 2018.11.27:重构
+ * @Tip 2019.3.7:优化文字处理的执行效率
+ * @Tip 2019.4.8:优化重构变量
  * @apiNote 本类中的空值判断：长度为0都为false
  */
 public class UText {

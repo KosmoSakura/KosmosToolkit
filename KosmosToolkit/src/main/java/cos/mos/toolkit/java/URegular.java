@@ -8,17 +8,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @Description: 正则表达式
- * @Author: Kosmos
- * @Date: 2016年9月21日 17:01
- * @Email: KosmoSakura@gmail.com
- * →→is：是某种特定字符
+ * @Description 正则表达式
+ * @Author Kosmos
+ * @Date 2016年9月21日 17:01
+ * @Email KosmoSakura@gmail.com
+ * @Tip →→is：是某种特定字符
  * →→checkXX:校验类
  * →→fun：功能类
- * @eg: 2018.9.12:转录
- * @eg: 2018.12.26:重构
- * @eg: 2019.2.28:Url判断
- * @eg: 2019.3.20:新增几个正则校验
+ * @Tip 2018.9.12:转录
+ * @Tip 2018.12.26:重构
+ * @Tip 2019.2.28:Url判断
+ * @Tip 2019.3.20:新增几个正则校验
  */
 public class URegular {
 

@@ -2,15 +2,14 @@ package cos.mos.toolkit.java;
 
 import java.util.Locale;
 
-
 /**
- * @Description: 单位换算工具类
- * @Author: Kosmos
- * @Date: 2018.10.31 14:02
- * @Email: KosmoSakura@gmail.com
- * @eg 2018.11.29:重构
- * @eg 2019.2.22:分类
- * @eg 2019.2.25:算法优化
+ * @Description 单位换算工具类
+ * @Author Kosmos
+ * @Date 2018.10.31 14:02
+ * @Email KosmoSakura@gmail.com
+ * @Tip 2018.11.29:重构
+ * @Tip 2019.2.22:分类
+ * @Tip 2019.2.25:算法优化
  */
 public class UUnitFull {
     /**

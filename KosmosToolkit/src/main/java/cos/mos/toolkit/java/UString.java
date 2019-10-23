@@ -9,10 +9,10 @@ import android.text.style.RelativeSizeSpan;
 import android.widget.TextView;
 
 /**
- * @Description: 字符处理类
- * @Author: Kosmos
- * @Date: 2019.04.30 19:36
- * @Email: KosmoSakura@gmail.com
+ * @Description 字符处理类
+ * @Author Kosmos
+ * @Date 2019.04.30 19:36
+ * @Email KosmoSakura@gmail.com
  */
 public class UString {
     /**

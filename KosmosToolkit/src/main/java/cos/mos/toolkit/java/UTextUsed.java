@@ -6,11 +6,11 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * @Description: 字符校验类
- * @Author: Kosmos
- * @Date: 2016年8月29日 11:32
- * @Email: KosmoSakura@gmail.com
- */
+ * @Description 字符校验类
+ * @Author Kosmos
+ * @Date 2016年8月29日 11:32
+ * @Email KosmoSakura@gmail.com
+ * */
 public class UTextUsed {
     public static String isNull(TextView tv) {
         return isEmpty(tv) ? "" : tv.getText().toString();

@@ -8,13 +8,13 @@ import java.util.Locale;
 import java.util.NoSuchElementException;
 
 /**
- * @Description: 时间日期处理
- * @Author: Kosmos
- * @Date: 2018年1月29日 16:04
- * @Email: KosmoSakura@gmail.com
- * @eg 2018.10.31:重构
- * @eg 2018.11.11:setFirstDayOfWeek的失效，修复获取当前星期的天数方法
- * @eg 2018.11.22:获取当前短/长日期
+ * @Description 时间日期处理
+ * @Author Kosmos
+ * @Date 2018年1月29日 16:04
+ * @Email KosmoSakura@gmail.com
+ * @Tip  2018.10.31:重构
+ * @Tip  2018.11.11:setFirstDayOfWeek的失效，修复获取当前星期的天数方法
+ * @Tip  2018.11.22:获取当前短/长日期
  * <p>
  * 默认的时间格式为：yyyy-MM-dd HH:mm:ss
  * 其他格式的时间需要自己传入相应的时间格式

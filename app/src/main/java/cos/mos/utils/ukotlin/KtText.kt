@@ -4,46 +4,24 @@ import android.text.Editable
 import android.widget.TextView
 
 /**
- * @Description:字符校验类
- * @Author: Kosmos
- * @Date: 2019.04.23 13:25
- * @Email: KosmoSakura@gmail.com
- */
+ * @Description 字符校验类
+ * @Author Kosmos
+ * @Date 2019.04.23 13:25
+ * @Email KosmoSakura@gmail.com
+ * @Tip 2019-10-24 优化空判断显示
+ * */
 object KtText {
-    /**
-     * isNull: 校验为空返回指定字符，默认""
-     */
     @JvmStatic
-    fun isNull(tv: TextView?, defaul: String = ""): String {
-        return if (tv != null) {
-            if (KtText.isEmpty(tv.text)) defaul else tv.text.toString()
-        } else defaul
-    }
+    fun isNull(str: String?, defaul: String = "") = str ?: defaul
 
     @JvmStatic
-    fun isNull(str: String?, defaul: String = ""): String {
-        return if (str != null) {
-            if (KtText.isEmpty(str)) defaul else str
-        } else {
-            return defaul
-        }
-    }
+    fun isNull(charSequence: CharSequence?, defaul: String = "") = if (charSequence == null) defaul else isNull(charSequence.toString())
 
     @JvmStatic
-    fun isNull(str: Editable?, defaul: String = ""): String {
-        return if (str != null) {
-            if (KtText.isEmpty(str)) defaul else str.toString()
-        } else {
-            return defaul
-        }
-    }
+    fun isNull(textView: TextView?, defaul: String = "") = if (textView == null) defaul else isNull(textView.text)
 
     @JvmStatic
-    fun isNull(str: CharSequence?, defaul: String = ""): String {
-        return if (str != null) {
-            if (isEmpty(str)) defaul else str.toString()
-        } else defaul
-    }
+    fun isNull(editable: Editable?, defaul: String = "") = if (editable == null) defaul else isNull(editable.toString())
 
     @JvmStatic
     fun isNull(digit: Double?, defaul: Double = -1.0): Double = digit ?: defaul
@@ -63,29 +41,18 @@ object KtText {
     @JvmStatic
     fun isNull(digit: Byte?, defaul: Byte = -1): Byte = digit ?: defaul
 
-    /**
-     * isEmpty: 字符是否为空(只有空格也为空  字符为null或长度为0均判定为空)
-     * */
     @JvmStatic
     fun isEmpty(digit: Boolean?, defaul: Boolean = false): Boolean = digit ?: defaul
 
     @JvmStatic
-    fun isEmpty(str: String?): Boolean {
-        return str == null || str.isEmpty() || str.equals("null", ignoreCase = false)
-    }
+    fun isEmpty(str: String?) = str?.length == 0
 
     @JvmStatic
-    fun isEmpty(tv: TextView?): Boolean {
-        return if (tv == null) true else KtText.isEmpty(tv.text.toString())
-    }
+    fun isEmpty(sequence: CharSequence?) = sequence?.length == 0
 
     @JvmStatic
-    fun isEmpty(sequence: CharSequence?): Boolean {
-        return sequence == null || sequence.isEmpty()
-    }
+    fun isEmpty(textView: TextView?) = textView?.length() == 0
 
     @JvmStatic
-    fun isEmpty(list: List<Any>?): Boolean {
-        return list?.isEmpty() ?: true
-    }
+    fun isEmpty(list: List<Any>?) = list?.isEmpty() ?: true
 }

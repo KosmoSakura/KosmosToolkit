@@ -54,5 +54,5 @@ object KtText {
     fun isEmpty(textView: TextView?) = textView?.length() == 0
 
     @JvmStatic
-    fun isEmpty(list: List<Any>?) = list?.isEmpty() ?: true
+    fun isEmpty(list: List<Any>?) = list?.size == 0
 }

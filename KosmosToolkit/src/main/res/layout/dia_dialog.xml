@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="10dp"
-    android:background="@drawable/arc_full_dark"
+    android:background="@drawable/arc_full_dark_r4"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -60,7 +60,7 @@
             android:layout_height="40dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/arc_rim_white"
+            android:background="@drawable/arc_rim_white_r4"
             android:hint="发现新版本"
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"

@@ -16,7 +16,7 @@
         android:layout_height="45dp"
         android:layout_marginLeft="36dp"
         android:layout_marginRight="36dp"
-        android:background="@drawable/arc_rim_dark"
+        android:background="@drawable/arc_rim_dark_r4"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="10dp">

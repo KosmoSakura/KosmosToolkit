@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="400dp"
     android:layout_gravity="center"
-    android:background="@drawable/arc_half_white"
+    android:background="@drawable/arc_full_gar_pink_r10_cor_2"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingBottom="12dp"
@@ -33,7 +33,7 @@
         android:id="@+id/dia_time_confitm"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:background="@drawable/arc_full_dark"
+        android:background="@drawable/arc_full_dark_r4"
         android:gravity="center"
         android:text="OK"
         android:textColor="@color/white"/>

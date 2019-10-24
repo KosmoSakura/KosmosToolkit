@@ -2,15 +2,46 @@ package cos.mos.toolkit.java;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
  * @Description 反射辅助工具
  * @Author Kosmos
  * @Date 2018.11.25 16:31
  * @Email KosmoSakura@gmail.com
- * @Tip  最新修改日期：2018年11月25日 17:19
+ * @Tip 最新修改日期：2018年11月25日 17:19
+ * @Tip 返回目标的泛型 的真实类型:2019.10.24
  */
 public class UReflex {
+    /**
+     * @param obj 目标对象
+     * @return 返回目标的泛型 的真实类型
+     */
+    public static Type getRealType(Object obj) {
+        Type[] ts = obj.getClass().getGenericInterfaces();
+        for (Type type : ts) {
+            //如果 参数化类型 可以转让
+            if (ParameterizedType.class.isAssignableFrom(type.getClass())) {
+                //获取实际的类型参数 的第一个类型
+                return ((ParameterizedType) type).getActualTypeArguments()[0];
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @return 返回目标的泛型 的真实类型
+     * 这种方法 还没有想到封装的办法
+     */
+    @Deprecated
+    public <T> Class getRealTypeDeprecated(Object obj) {
+        // 获取当前new的对象的泛型的父类类型
+        ParameterizedType pt = (ParameterizedType) obj.getClass().getGenericSuperclass();
+        // 获取第一个类型参数的真实类型
+        return (Class<T>) pt.getActualTypeArguments()[0];
+    }
+
     /**
      * @param obj  目标类的实例对象：WifiManager obj;
      * @param name 属性名字，eg：WIFI_AP_STATE_ENABLED
@@ -122,5 +153,6 @@ public class UReflex {
             return null;
         }
     }
+
 
 }

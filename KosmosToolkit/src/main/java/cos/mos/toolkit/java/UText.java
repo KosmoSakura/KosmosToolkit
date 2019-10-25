@@ -15,14 +15,15 @@ import java.util.List;
  * @Tip 2018.11.27:重构
  * @Tip 2019.3.7:优化文字处理的执行效率
  * @Tip 2019.4.8:优化重构变量
+ * @Tip 2019.10.25:优化判断逻辑执行效率
  * @apiNote 本类中的空值判断：长度为0都为false
  */
 public class UText {
     /**
-     * @apiNote TextView为空返回""
+     * @apiNote String为空返回指定字符
      */
-    public static String isNull(TextView tv) {
-        return isEmpty(tv) ? "" : tv.getText().toString();
+    public static String isNull(String str, final String defaul) {
+        return isEmpty(str) ? defaul : str;
     }
 
     /**
@@ -32,20 +33,29 @@ public class UText {
         return isNull(str, "");
     }
 
-    /**
-     * @apiNote String为空返回指定字符
-     */
-    public static String isNull(String str, final String defaul) {
-        return isEmpty(str) ? defaul : str;
+    public static String isNull(CharSequence str, final String defaul) {
+        return isEmpty(str) ? defaul : str.toString();
+    }
+
+    public static String isNull(CharSequence str) {
+        return isNull(str, "");
     }
 
     public static String isNull(Editable str, final String defaul) {
         return isEmpty(str) ? defaul : str.toString();
     }
 
-    public static String isNull(CharSequence str, final String defaul) {
-        return isEmpty(str) ? defaul : str.toString();
+    public static String isNull(Editable str) {
+        return isNull(str, "");
     }
+
+    /**
+     * @apiNote TextView为空返回""
+     */
+    public static String isNull(TextView tv) {
+        return isEmpty(tv) ? "" : tv.getText().toString();
+    }
+//-------------------------------------------------------------------------------------------------------------------
 
     /**
      * @apiNote Long为空返回-1
@@ -97,47 +107,58 @@ public class UText {
         return integer == null ? defasult : integer;
     }
 
-    /**
-     * Boolean为空返回false
-     */
-    public static boolean isBoolean(Boolean b) {
-        return b == null ? false : b;
-    }
+//-------------------------------------------------------------------------------------------------------------------
 
     /**
-     * @apiNote 文本控件内容是否为空
-     */
-    public static boolean isEmpty(TextView tv) {
-        return tv == null || isEmpty(tv.getText());
-    }
-
-    /**
-     * @apiNote 集合是否为空
-     */
-    public static boolean isEmpty(List list) {
-        return list == null || list.size() == 0;
-    }
-
-    /**
-     * @apiNote 数组是否为空
-     */
-    public static <Z> boolean isEmpty(Z[] arr) {
-        return arr == null || arr.length == 0;
-    }
-
-    /**
-     * @apiNote 字符串是否为空(只有空格也为空 ）
+     * @param str 被校验的字符
+     * @return 字符是否为空{@code true}: 空  {@code false}: 不为空
+     * @Tip 字符串是否为空(只有空格也为空 ）
+     * @Tip str.length () == 0:可以减少一次判断
+     * @Tip null.toString().length =4
+     * @Tip str.equalsIgnoreCase(null.toString ())=true
      */
     public static boolean isEmpty(String str) {
         return str == null || str.length() == 0 || str.trim().length() == 0 || str.equalsIgnoreCase("null");
     }
 
-    /**
-     * @param sequence 被校验的字符
-     * @return 字符是否为空{@code true}: 空  {@code false}: 不为空
-     * @apiNote (字符为null或长度为0均判定为空)
-     */
     public static boolean isEmpty(CharSequence sequence) {
-        return sequence == null || sequence.length() == 0;
+        return isEmpty(sequence.toString());
+    }
+
+    public static boolean isEmpty(TextView tv) {
+        return tv == null || isEmpty(tv.getText());
+    }
+
+    public static boolean isEmpty(List list) {
+        return list == null || list.size() == 0;
+    }
+
+    public static <Z> boolean isEmpty(Z[] arr) {
+        return arr == null || arr.length == 0;
+    }
+
+    public static boolean isEmpty(Boolean b) {
+        return b == null ? false : b;
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------
+    public static boolean isNotEmpty(String str) {
+        return str != null && str.length() > 0 && str.trim().length() == 0 && !str.equalsIgnoreCase("null");
+    }
+
+    public static boolean isNotEmpty(CharSequence sequence) {
+        return isNotEmpty(sequence.toString());
+    }
+
+    public static boolean isNotEmpty(TextView tv) {
+        return tv != null && isNotEmpty(tv.getText());
+    }
+
+    public static boolean isNotEmpty(List list) {
+        return list != null && list.size() > 0;
+    }
+
+    public static <Z> boolean isNotEmpty(Z[] arr) {
+        return arr != null && arr.length > 0;
     }
 }

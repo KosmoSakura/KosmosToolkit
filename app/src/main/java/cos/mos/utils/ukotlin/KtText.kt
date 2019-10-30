@@ -26,22 +26,22 @@ object KtText {
     fun isNull(editable: Editable?, defaul: String = "") = if (editable == null) defaul else isNull(editable.toString())
 
     @JvmStatic
-    fun isNull(digit: Double?, defaul: Double = -1.0) = digit ?: defaul
+    fun isNull(digit: Double?, defaul: Double = 0.0) = digit ?: defaul
 
     @JvmStatic
-    fun isNull(digit: Float?, defaul: Float = -1f) = digit ?: defaul
+    fun isNull(digit: Float?, defaul: Float = 0f) = digit ?: defaul
 
     @JvmStatic
-    fun isNull(digit: Long?, defaul: Long = -1L) = digit ?: defaul
+    fun isNull(digit: Long?, defaul: Long = 0L) = digit ?: defaul
 
     @JvmStatic
-    fun isNull(digit: Int?, defaul: Int = -1) = digit ?: defaul
+    fun isNull(digit: Int?, defaul: Int = 0) = digit ?: defaul
 
     @JvmStatic
-    fun isNull(digit: Short?, defaul: Short = -1) = digit ?: defaul
+    fun isNull(digit: Short?, defaul: Short = 0) = digit ?: defaul
 
     @JvmStatic
-    fun isNull(digit: Byte?, defaul: Byte = -1) = digit ?: defaul
+    fun isNull(digit: Byte?, defaul: Byte = 0) = digit ?: defaul
 
     //--------------------------------------------------------------------------------------------------------------
     @JvmStatic

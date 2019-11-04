@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -38,7 +40,7 @@ public class RoundImageView extends ImageView {
     private final Paint mBorderPaint = new Paint();
     private int mBorderColor = DEFAULT_BORDER_COLOR;
     private int mBorderWidth = DEFAULT_BORDER_WIDTH;
-
+    private BitmapShader mBitmapShader;
     private Bitmap mBitmap;
     private float radius;//圆角弧度
     private RectF rectF = new RectF();
@@ -191,8 +193,9 @@ public class RoundImageView extends ImageView {
         if (mBitmap == null) {
             return;
         }
-
+        mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         mBitmapPaint.setAntiAlias(true);
+        mBitmapPaint.setShader(mBitmapShader);
         mBorderPaint.setStyle(Paint.Style.STROKE);
         mBorderPaint.setAntiAlias(true);
         mBorderPaint.setColor(mBorderColor);

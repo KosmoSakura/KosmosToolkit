@@ -147,10 +147,18 @@
         <attr name="bsb_rtl" format="boolean"/>
         <attr name="android:enabled"/>
     </declare-styleable>
-
+    <!--粒子雨-->
+    <declare-styleable name="RainView">
+        <attr name="rain_num" format="integer"/>
+        <attr name="rain_lengh" format="integer"/>
+        <attr name="rain_color" format="color"/>
+        <attr name="auto_color" format="boolean"/>
+    </declare-styleable>
     <declare-styleable name="CircleImageView">
-        <attr name="border_width" format="dimension"/>
-        <attr name="border_color" format="color"/>
+        <attr name="civ_border_width" format="dimension"/>
+        <attr name="civ_border_color" format="color"/>
+        <attr name="civ_border_overlay" format="boolean"/>
+        <attr name="civ_circle_background_color" format="color"/>
     </declare-styleable>
     <declare-styleable name="RoundImageView">
         <attr name="rmg_width" format="dimension"/>

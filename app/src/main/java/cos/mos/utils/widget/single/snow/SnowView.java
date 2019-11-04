@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.snow;
+package cos.mos.utils.widget.single.snow;
 
 import android.content.Context;
 import android.graphics.Canvas;

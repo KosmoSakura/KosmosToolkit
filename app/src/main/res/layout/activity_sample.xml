@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <cos.mos.utils.widget.snow.SnowView
+    <cos.mos.utils.widget.single.snow.SnowView
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

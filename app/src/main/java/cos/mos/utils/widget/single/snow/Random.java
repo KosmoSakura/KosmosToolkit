@@ -1,4 +1,4 @@
-package cos.mos.utils.widget.snow;
+package cos.mos.utils.widget.single.snow;
 
 class Random {
     private static final java.util.Random RANDOM = new java.util.Random();

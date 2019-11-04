@@ -154,6 +154,17 @@
         <attr name="rain_color" format="color"/>
         <attr name="auto_color" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="KAutoImage">
+        <!--参考边-->
+        <attr name="cos_refer" format="enum">
+            <enum name="for_width" value="1"/>
+            <enum name="for_height" value="2"/>
+        </attr>
+        <!--长宽比例-->
+        <attr name="cos_ratio" format="float"/>
+        <!--圆弧度-->
+        <attr name="cos_radius" format="float"/>
+    </declare-styleable>
     <declare-styleable name="CircleImageView">
         <attr name="civ_border_width" format="dimension"/>
         <attr name="civ_border_color" format="color"/>

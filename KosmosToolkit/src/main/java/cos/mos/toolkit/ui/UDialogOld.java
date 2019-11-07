@@ -11,14 +11,13 @@ import android.widget.TextView;
 import cos.mos.toolkit.R;
 import cos.mos.toolkit.java.UText;
 
-
 /**
- * @Description: 弹出统一对话框
- * @Author: Kosmos
- * @Date: 2018年07月06日 14:11
- * @Email: KosmoSakura@gmail.com
- * @eg 2018.9.2 基础弹窗
- * @eg 2018.9.12 函数封装
+ * @Description 弹出统一对话框
+ * @Author Kosmos
+ * @Date 2018年07月06日 14:11
+ * @Email KosmoSakura@gmail.com
+ * @Tip 2018.9.2 基础弹窗
+ * @Tip 2018.9.12 函数封装
  */
 @Deprecated
 public class UDialogOld {

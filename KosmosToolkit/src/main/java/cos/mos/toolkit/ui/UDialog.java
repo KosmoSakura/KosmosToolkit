@@ -15,13 +15,13 @@ import cos.mos.toolkit.java.UText;
 
 
 /**
- * @Description: 弹出统一对话框
- * @Author: Kosmos
- * @Date: 2018年07月06日 14:11
- * @Email: KosmoSakura@gmail.com
- * @eg 2018.9.2 基础弹窗
- * @eg 2018.9.12 函数封装
- * @eg 2019.3.21 解耦、构建封装
+ * @Description 弹出统一对话框
+ * @Author Kosmos
+ * @Date 2018年07月06日 14:11
+ * @Email KosmoSakura@gmail.com
+ * @Tip 2018.9.2 基础弹窗
+ * @Tip 2018.9.12 函数封装
+ * @Tip 2019.3.21 解耦、构建封装
  */
 public class UDialog extends Dialog {
     private String strTitle, strMsg, strHint, strConfirm, strCancle;

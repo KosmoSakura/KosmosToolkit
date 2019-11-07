@@ -86,7 +86,6 @@ dependencies {
     //第三方库----------------------------------------------------------
     //okhttp
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-    implementation 'com.google.code.gson:gson:2.8.5'
     //Retrofit2
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'//网络请求
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0' //解析json字符所用

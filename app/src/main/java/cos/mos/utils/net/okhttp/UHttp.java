@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import cos.mos.toolkit.java.UText;
+import cos.mos.toolkit.json.UGson;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;

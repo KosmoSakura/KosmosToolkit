@@ -57,7 +57,7 @@ object KtText {
     fun isEmpty(textView: TextView?) = textView == null || isEmpty(textView.text)
 
     @JvmStatic
-    fun isEmpty(list: List<Any>?) = list == null || list.isEmpty()
+    fun isEmpty(list: List<Any?>?) = list == null || list.isEmpty()
 
     //--------------------------------------------------------------------------------------------------------------
     @JvmStatic
@@ -70,7 +70,7 @@ object KtText {
     fun isNotEmpty(textView: TextView?) = textView != null && isNotEmpty(textView.text)
 
     @JvmStatic
-    fun isNotEmpty(list: List<Any>?) = list == null || list.isNotEmpty()
+    fun isNotEmpty(list: List<Any?>?) = list == null || list.isNotEmpty()
 
     //------------------------------------------------------------------------------------------------
 

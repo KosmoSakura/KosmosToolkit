@@ -15,6 +15,7 @@ import java.util.List;
  * @Tip 2018.11.27:重构
  * @Tip 2019.3.7:优化文字处理的执行效率
  * @Tip 2019.4.8:优化重构变量
+ * @Tip 2019.11.7:追加空处理类型
  * @apiNote 本类中的空值判断：长度为0都为false
  */
 public class UTextFull {
@@ -131,54 +132,56 @@ public class UTextFull {
 //-------------------------------------------------------------------------------------------------------------------
 
     /**
-     * @apiNote Long为空返回-1
+     * @return digit为空返回缺省数字
      */
-    public static long isNull(Long l) {
-        return isNull(l, -1);
+    public static double isNull(Double digit, final double defasult) {
+        return digit == null ? defasult : digit;
     }
 
-    /**
-     * Long为空返回为空返回指定值
-     *
-     * @param l        长整型
-     * @param defasult 缺省数字
-     * @return 为空返回缺省数字
-     */
-    public static long isNull(Long l, final long defasult) {
-        return l == null ? defasult : l;
+    public static double isNull(Double digit) {
+        return isNull(digit, 0.0D);
     }
 
-    /**
-     * @apiNote Float为空返回-1
-     */
-    public static float isNull(Float l) {
-        return isNull(l, -1f);
+    public static long isNull(Long digit, final long defasult) {
+        return digit == null ? defasult : digit;
     }
 
-    /**
-     * @param l        浮点型
-     * @param defasult 缺省数字
-     * @return 为空返回缺省数字
-     */
-    public static float isNull(Float l, final float defasult) {
-        return l == null ? defasult : l;
+    public static long isNull(Long digit) {
+        return isNull(digit, 0L);
     }
 
-    /**
-     * @apiNote Integer为空返回-1
-     */
-    public static int isNull(Integer integer) {
-        return isNull(integer, -1);
+    public static float isNull(Float digit) {
+        return isNull(digit, 0f);
     }
 
-    /**
-     * @param integer  整型
-     * @param defasult 缺省数字
-     * @return 为空返回缺省数字
-     */
-    public static int isNull(Integer integer, final int defasult) {
-        return integer == null ? defasult : integer;
+    public static float isNull(Float digit, final float defasult) {
+        return digit == null ? defasult : digit;
     }
+
+    public static int isNull(Integer digit) {
+        return isNull(digit, 0);
+    }
+
+    public static int isNull(Integer digit, final int defasult) {
+        return digit == null ? defasult : digit;
+    }
+
+    public static short isNull(Short digit) {
+        return isNull(digit, (short) 0);
+    }
+
+    public static short isNull(Short digit, final short defasult) {
+        return digit == null ? defasult : digit;
+    }
+
+    public static byte isNull(Byte digit) {
+        return isNull(digit, (byte) 0);
+    }
+
+    public static byte isNull(Byte digit, final byte defasult) {
+        return digit == null ? defasult : digit;
+    }
+
 
 //-------------------------------------------------------------------------------------------------------------------
 

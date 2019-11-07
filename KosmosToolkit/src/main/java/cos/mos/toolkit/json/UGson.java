@@ -1,4 +1,4 @@
-package cos.mos.utils.net.okhttp;
+package cos.mos.toolkit.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,22 +9,27 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 
 /**
- * @Description: Gson解析
- * @Author: Kosmos
- * @Date: 2018年10月08日 16:30
- * @Email: KosmoSakura@foxmail.com
+ * @Description Gson解析
+ * @Author Kosmos
+ * @Date 2018年10月08日 16:30
+ * @Email KosmoSakura@gmail.com
+ * @Tip 2019.11.7-添加gson解析容错格式
  */
 public class UGson {
     private static Gson gson;
 
     static {
         gson = new GsonBuilder()
+            .setLenient()
+            .enableComplexMapKeySerialization()
             .serializeNulls()//序列化null
+            .setPrettyPrinting()//格式化输出
+            .disableHtmlEscaping() //禁止转义html标签
             .setDateFormat("yyyy-MM-dd HH:mm:ss")// 设置日期时间格式，另有2个重载方法 ,在序列化和反序化时均生效
             .disableInnerClassSerialization()// 禁此序列化内部类
+            .registerTypeAdapter(Double.class, new DoubleConverter())
+            .registerTypeAdapter(String.class, new StringConverter())
 //            .generateNonExecutableJson() //生成不可执行的Json（多了 )]}' 这4个字符）
-            .disableHtmlEscaping() //禁止转义html标签
-            .setPrettyPrinting()//格式化输出
             .create();
     }
 
@@ -58,8 +63,8 @@ public class UGson {
 
     /**
      * @param list<A> 待转泛型列表
-     * @param cls  目标类型Class
-     * @param <B>  目标泛型
+     * @param cls     目标类型Class
+     * @param <B>     目标泛型
      * @return 返回一个转换类型的列表
      */
     public static <B> ArrayList<B> toParseNew(ArrayList list, Class<B> cls) {

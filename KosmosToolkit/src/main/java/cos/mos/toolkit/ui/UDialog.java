@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.DrawableRes;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -29,7 +30,7 @@ import cos.mos.toolkit.java.UText;
  */
 public class UDialog extends Dialog {
     private String strTitle, strMsg, strHint, strConfirm, strCancle;
-    private int iconRes;
+    private int iconRes, gravity = Gravity.CENTER;
     private boolean password;//密码模式
     private CancelClick cancelClick;
 
@@ -104,6 +105,16 @@ public class UDialog extends Dialog {
      */
     public UDialog msg(String msg) {
         this.strMsg = msg;
+        return this;
+    }
+
+    /**
+     * @param msg     通知内容
+     * @param gravity 文字显示模式
+     */
+    public UDialog msg(String msg, int gravity) {
+        this.strMsg = msg;
+        this.gravity = gravity;
         return this;
     }
 
@@ -224,6 +235,7 @@ public class UDialog extends Dialog {
         } else {
             msg.setText(strMsg);
             msg.setVisibility(View.VISIBLE);
+            msg.setGravity(gravity);
         }
         //输入框
         EditText edt = findViewById(R.id.dia_edt);

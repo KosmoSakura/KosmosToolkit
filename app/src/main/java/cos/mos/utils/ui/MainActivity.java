@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cos.mos.toolkit.system.permission.UrxPermissions;
-import cos.mos.toolkit.ui.UDialog;
+import cos.mos.utils.ui.dialog.UDialog;
 import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;
 import cos.mos.utils.mvp.bean.ImageBean;

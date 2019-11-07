@@ -1,4 +1,4 @@
-package cos.mos.toolkit.ui;
+package cos.mos.utils.ui.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -25,7 +25,6 @@ public class UDialogOld {
     private EditText edt;
     private ImageView icon;
     private TextView msg, title, cancel, sure;
-    private View lineTitle, lineBotton;
 
     public interface SureClick {
         void OnSureClick(String result, Dialog dia);
@@ -61,8 +60,6 @@ public class UDialogOld {
         edt = view.findViewById(R.id.dia_edt);
         cancel = view.findViewById(R.id.dia_cancel);
         sure = view.findViewById(R.id.dia_confirm);
-        lineTitle = view.findViewById(R.id.dia_line_top);
-        lineBotton = view.findViewById(R.id.dia_line_bottom);
         View root = view.findViewById(R.id.dia_root);
         root.setOnClickListener(v -> {
             if (outside) {
@@ -209,11 +206,9 @@ public class UDialogOld {
     private void show(String strTitle, String strMsg, String strHint, String strSure, String strCancel, int res) {
         if (UText.isEmpty(strTitle)) {
             title.setVisibility(View.GONE);
-            lineTitle.setVisibility(View.GONE);
         } else {
             title.setText(strTitle);
             title.setVisibility(View.VISIBLE);
-            lineTitle.setVisibility(View.VISIBLE);
         }
 
         if (res > 0) {
@@ -240,11 +235,9 @@ public class UDialogOld {
 
         if (UText.isEmpty(strCancel)) {
             cancel.setVisibility(View.GONE);
-            lineBotton.setVisibility(View.GONE);
             sure.setText(UText.isNull(strSure, "确定"));
         } else {
             cancel.setVisibility(View.VISIBLE);
-            lineBotton.setVisibility(View.VISIBLE);
             cancel.setText(UText.isNull(strCancel, "取消"));
             sure.setText(UText.isNull(strSure, "确定"));
         }

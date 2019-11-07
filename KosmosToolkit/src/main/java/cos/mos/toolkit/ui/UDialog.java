@@ -168,6 +168,16 @@ public class UDialog extends Dialog {
         return this;
     }
 
+    public UDialog buttonCancle(String cancle) {
+        this.strCancle = cancle;
+        return this;
+    }
+
+    public UDialog buttonConfirm(String confirm) {
+        this.strConfirm = confirm;
+        return this;
+    }
+
     /**
      * @param cancelClick 取消按钮点击事件
      * @apiNote 不调用、或传入空 则自动处理
@@ -193,13 +203,10 @@ public class UDialog extends Dialog {
     public void build(final ConfirmClick confirmClick) {
         //标题
         TextView title = findViewById(R.id.dia_title);
-        View lineTop = findViewById(R.id.dia_line_top);
         if (UText.isEmpty(strTitle)) {
             title.setVisibility(View.GONE);
-            lineTop.setVisibility(View.GONE);
         } else {
             title.setVisibility(View.VISIBLE);
-            lineTop.setVisibility(View.VISIBLE);
             title.setText(strTitle);
         }
         //图标
@@ -229,34 +236,41 @@ public class UDialog extends Dialog {
             edt.setTransformationMethod(password ? PasswordTransformationMethod.getInstance()
                 : HideReturnsTransformationMethod.getInstance());
         }
-        //取消、确认按钮:至少要显示一个
         TextView cancel = findViewById(R.id.dia_cancel);
         TextView confirm = findViewById(R.id.dia_confirm);
-        View lineBottom = findViewById(R.id.dia_line_bottom);
-        if (!UText.isEmpty(strCancle) && !UText.isEmpty(strConfirm)) {
-            cancel.setVisibility(View.VISIBLE);
-            lineBottom.setVisibility(View.VISIBLE);
-            cancel.setText(strCancle);
-            confirm.setText(strConfirm);
-            cancel.setOnClickListener(v -> {
-                if (cancelClick == null) {
-                    clear();
-                } else {
-                    cancelClick.onCancelClick(UDialog.this);
-                }
-            });
-        } else {
+        //取消、确认按钮:至少要显示一个
+        if (UText.isEmpty(strCancle) && UText.isEmpty(strConfirm)) {
             cancel.setVisibility(View.GONE);
-            lineBottom.setVisibility(View.GONE);
             confirm.setText(UText.isNull(strConfirm, "Confirm"));
-        }
-        confirm.setOnClickListener(view -> {
-            if (confirmClick == null) {
-                clear();
+            confirm.setOnClickListener(v -> clear());
+        } else {
+            if (UText.isEmpty(strCancle)) {
+                cancel.setVisibility(View.GONE);
             } else {
-                confirmClick.onConfirmClick(UText.isNull(edt.getText().toString()), UDialog.this);
+                cancel.setVisibility(View.VISIBLE);
+                cancel.setText(strCancle);
+                cancel.setOnClickListener(v -> {
+                    if (cancelClick == null) {
+                        clear();
+                    } else {
+                        cancelClick.onCancelClick(UDialog.this);
+                    }
+                });
             }
-        });
+            if (UText.isEmpty(strConfirm)) {
+                confirm.setVisibility(View.GONE);
+            } else {
+                confirm.setVisibility(View.VISIBLE);
+                confirm.setText(strConfirm);
+                confirm.setOnClickListener(v -> {
+                    if (confirmClick == null) {
+                        clear();
+                    } else {
+                        confirmClick.onConfirmClick(UText.isNull(edt.getText().toString(), ""), UDialog.this);
+                    }
+                });
+            }
+        }
         show();
     }
 

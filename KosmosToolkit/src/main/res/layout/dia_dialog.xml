@@ -1,7 +1,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dia_root"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="10dp"
@@ -14,18 +14,11 @@
         android:id="@+id/dia_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
+        android:background="@drawable/line_alpha_bottom_gray"
         android:gravity="center"
         android:text="我是标题"
         android:textColor="@color/white"
         android:textSize="18sp"/>
-    <!--标题分割线-->
-    <View
-        android:id="@+id/dia_line_top"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/fun_line"/>
 
     <!--中间内容-->
     <LinearLayout
@@ -71,16 +64,11 @@
             android:textSize="14sp"/>
     </LinearLayout>
 
-    <!--确认按钮分割线-->
-    <View
-        android:id="@+id/dia_line_middle"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/fun_line"/>
     <!--确定按钮-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@drawable/line_alpha_top_gray"
         android:orientation="horizontal">
 
         <!--取消-->
@@ -89,17 +77,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/line_alpha_right_gray"
             android:gravity="center"
             android:maxLines="1"
             android:text="Cancel"
             android:textColor="@color/fun_txt_gray"
             android:textSize="17sp"/>
-        <!--取消和同意分割线-->
-        <View
-            android:id="@+id/dia_line_bottom"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/fun_line"/>
         <!--同意-->
         <TextView
             android:id="@+id/dia_confirm"

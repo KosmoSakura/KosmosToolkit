@@ -2,10 +2,13 @@ package cos.mos.toolkit.ui;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.DrawableRes;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +25,7 @@ import cos.mos.toolkit.java.UText;
  * @Tip 2018.9.2 基础弹窗
  * @Tip 2018.9.12 函数封装
  * @Tip 2019.3.21 解耦、构建封装
+ * @Tip 2019.11.7:优化显示尺寸
  */
 public class UDialog extends Dialog {
     private String strTitle, strMsg, strHint, strConfirm, strCancle;
@@ -42,10 +46,16 @@ public class UDialog extends Dialog {
         setContentView(R.layout.dia_dialog);
         setCancelable(cancelable);//是否可以通过返回键关闭
         setCanceledOnTouchOutside(cancelable);//是否可以点击外面关闭
-        getWindow().setBackgroundDrawableResource(R.color.T_all);
-        if (cancelable) {
-            findViewById(R.id.dia_root).setOnClickListener(v -> clear());
-        }
+
+//        GradientDrawable drawable = new GradientDrawable();
+//        drawable.setCornerRadius(12);
+//        drawable.setColor(ContextCompat.getColor(getContext(), R.color.T_all));
+//        this.getWindow().setBackgroundDrawable(drawable);
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        this.getWindow().setAttributes(lp);
         iconRes = -1;
         strTitle = "";
         strMsg = "";

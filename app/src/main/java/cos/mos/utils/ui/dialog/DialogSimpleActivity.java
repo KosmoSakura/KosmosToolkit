@@ -33,23 +33,21 @@ public class DialogSimpleActivity {
         list.add(new DialogBean(1, false, "划算出来"));
 
 
-        UDialogList dialog = UDialogList.builder(activity)
-            .title("取消理由")
+        UDialogList dialog = UDialogList.builder(activity);
+
+        dialog.title("取消理由")
             .msg("请选择您取消订单的理由以告知卖家")
-            .buttonStyleConfirm("提交", Color.parseColor("#ffffff"), R.drawable.arc_full_blue_r4_cor_2be);
-        dialog.initList(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                List<DialogBean> temp = new ArrayList<>();
-                for (int i = 0; i < list.size(); i++) {
-                    temp.add(list.get(i).setSelect(i == position));
+            .buttonStyleConfirm("提交", Color.parseColor("#ffffff"),
+                R.drawable.arc_full_blue_r4_cor_2be)
+            .initList(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    for (int i = 0; i < list.size(); i++) {
+                        list.set(i, list.get(i).setSelect(i == position));
+                    }
+                    dialog.notify(list);
                 }
-                list.clear();
-                list.addAll(temp);
-                dialog.notify(list);
-                temp.clear();
-            }
-        });
+            });
         dialog.notify(list);
         dialog.build(new UDialogList.ConfirmClick() {
             @Override

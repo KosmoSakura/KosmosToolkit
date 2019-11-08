@@ -47,7 +47,6 @@ public class UDialogList extends Dialog {
     private CancelClick cancelClick;
     private DialogAdapter adapter;
     private List<DialogBean> list;
-    private BaseQuickAdapter.OnItemClickListener listener;
 
     public interface ConfirmClick {
         void onConfirmClick(String result, Dialog dia);
@@ -199,10 +198,15 @@ public class UDialogList extends Dialog {
      * @param listener 初始化Dialog列表，如果没有调用该方法，列表则不会显示
      */
     public UDialogList initList(BaseQuickAdapter.OnItemClickListener listener) {
-        if (this.list == null) {
-            this.list = new ArrayList<>();
+        if (list == null) {
+            list = new ArrayList<>();
         }
-        this.listener = listener;
+        if (adapter == null) {
+            adapter = new DialogAdapter(list);
+        }
+        if (listener != null) {
+            adapter.setOnItemClickListener(listener);
+        }
         return this;
     }
 
@@ -210,7 +214,7 @@ public class UDialogList extends Dialog {
      * 刷新列表
      */
     public void notify(List<DialogBean> data) {
-        this.list.clear();
+        list.clear();
         if (data != null) {
             this.list.addAll(data);
         }
@@ -320,21 +324,16 @@ public class UDialogList extends Dialog {
         }
         //列表
         RecyclerView rcv = findViewById(R.id.dia_list);
-        if (UText.isEmpty(list)) {
+        if (UText.isEmpty(list) || adapter == null) {
             rcv.setVisibility(View.GONE);
         } else {
-            adapter = new DialogAdapter(list);
             rcv.setVisibility(View.VISIBLE);
             rcv.setLayoutManager(new LinearLayoutManager(getContext()));
             rcv.setAdapter(adapter);
-            if (listener != null) {
-                adapter.setOnItemClickListener(listener);
-            }
         }
 
         TextView cancel = findViewById(R.id.dia_cancel);
         TextView confirm = findViewById(R.id.dia_confirm);
-
         //取消、确认按钮:至少要显示一个
         if (UText.isEmpty(strCancle) && UText.isEmpty(strConfirm)) {
             cancel.setVisibility(View.GONE);

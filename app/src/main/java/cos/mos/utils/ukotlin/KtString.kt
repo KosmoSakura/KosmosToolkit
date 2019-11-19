@@ -1,9 +1,7 @@
 package cos.mos.utils.ukotlin
 
-import android.graphics.Paint
 import android.text.Html
 import android.text.Spanned
-import android.widget.TextView
 
 /**
  * @Description:字符处理类
@@ -12,8 +10,6 @@ import android.widget.TextView
  * @Email: KosmoSakura@gmail.com
  */
 object KtString {
-    internal var aa: Array<String>? = null
-    internal var bb: IntArray? = null
     /**
      * @param str "1967+2356-433*12/66"
      * @return [1967], [2356], [433], [12], [66]
@@ -65,30 +61,4 @@ object KtString {
         return calculat
     }
 
-    /**
-     * 给字符添加下划线
-     */
-    @JvmStatic
-    fun setTextUnderLine(tv: TextView) {
-        tv.paint.flags = Paint.UNDERLINE_TEXT_FLAG//下划线
-        tv.paint.isAntiAlias = true//抗锯齿
-    }
-
-    /**
-     * @return 给字符添加下划线
-     */
-    @JvmStatic
-    fun getTextUnderLine(str: String): Spanned = Html.fromHtml("<u>$str</u>")
-
-    /**
-     * @return 文本加粗
-     */
-    @JvmStatic
-    fun getTextBold(str: String): Spanned = Html.fromHtml("<b>$str</b>")
-
-    /**
-     * @return 文本斜体
-     */
-    @JvmStatic
-    fun getTextItalic(str: String): Spanned = Html.fromHtml("<i>$str</i>")
 }

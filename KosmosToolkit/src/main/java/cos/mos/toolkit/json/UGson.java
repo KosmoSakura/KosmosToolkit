@@ -5,8 +5,13 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Description Gson解析
@@ -28,6 +33,10 @@ public class UGson {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")// 设置日期时间格式，另有2个重载方法 ,在序列化和反序化时均生效
             .disableInnerClassSerialization()// 禁此序列化内部类
             .registerTypeAdapter(Double.class, new DoubleConverter())
+            .registerTypeAdapter(Float.class, new FloatConverter())
+            .registerTypeAdapter(Long.class, new LongConverter())
+            .registerTypeAdapter(Integer.class, new IntConverter())
+            .registerTypeAdapter(Boolean.class, new BoolConverter())
             .registerTypeAdapter(String.class, new StringConverter())
 //            .generateNonExecutableJson() //生成不可执行的Json（多了 )]}' 这4个字符）
             .create();
@@ -64,17 +73,50 @@ public class UGson {
     /**
      * @param list<A> 待转泛型列表
      * @param cls     目标类型Class
-     * @param <B>     目标泛型
+     * @param <T>     目标泛型
      * @return 返回一个转换类型的列表
      */
-    public static <B> ArrayList<B> toParseNew(ArrayList list, Class<B> cls) {
-        ArrayList<B> dtoList = new ArrayList<>();
+    public static <T> ArrayList<T> toParseList(ArrayList list, Class<T> cls) {
+        ArrayList<T> dtoList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             Object object = list.get(i);
             String json = gson.toJson(object);
-            B dto = gson.fromJson(json, cls);
+            T dto = gson.fromJson(json, cls);
             dtoList.add(dto);
         }
         return dtoList;
+    }
+
+    /**
+     * @return Json==>List
+     */
+    public static <T> List<T> jsonToList(String json) {
+        try {
+            return gson.fromJson(json, new TypeToken<List<T>>() {
+            }.getType());
+        } catch (JsonSyntaxException e) {
+            return null;
+        }
+    }
+
+    /**
+     * @param <T> 解析任何类型的数据
+     */
+    public static <T> T jsonToAny(String json, Object obj) {
+        try {
+            return gson.fromJson(json, getRealType(obj));
+        } catch (JsonSyntaxException e) {
+            return null;
+        }
+    }
+
+    private static Type getRealType(Object obj) {
+        Type[] ts = obj.getClass().getGenericInterfaces();
+        for (Type type : ts) {
+            if (ParameterizedType.class.isAssignableFrom(type.getClass())) {
+                return ((ParameterizedType) type).getActualTypeArguments()[0];
+            }
+        }
+        return null;
     }
 }

@@ -243,11 +243,11 @@ public class UHttpSSL {
         //服务器成功返回码
         if (code == 0) {
             try {
-                final ArrayList arrayList = UGson.toParseList(json, cls);
+                final ArrayList arrayList = UGson.toList(json, cls);
                 success(arrayList);
             } catch (Exception e) {
                 try {
-                    Object object = UGson.toParseObj(json, cls);
+                    Object object = UGson.toBean(json, cls);
                     success(object);
                 } catch (Exception e1) {
                     failure("解析失败", code);

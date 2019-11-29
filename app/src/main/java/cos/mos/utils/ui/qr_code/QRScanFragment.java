@@ -111,7 +111,7 @@ public class QRScanFragment extends KFragment implements QRCodeView.Delegate, Vi
             scanFlag = 3;
         } else {
             try {
-                bean = UGson.toParseObj(result, WifiBean.class);
+                bean = UGson.toBean(result, WifiBean.class);
                 if (bean == null) {
                     title = "It's just plain text";
                     scanFlag = 4;

@@ -53,14 +53,14 @@ public class UGson {
     /**
      * @return 返回一个实体类对象 JsonSyntaxException
      */
-    public static <T> T toParseObj(String json, Class<T> cls) {
+    public static <T> T toBean(String json, Class<T> cls) {
         return gson.fromJson(json, cls);
     }
 
     /**
      * @return 返回一个列表 JsonSyntaxException
      */
-    public static <T> ArrayList<T> toParseList(String json, Class<T> cls) {
+    public static <T> ArrayList<T> toList(String json, Class<T> cls) {
         ArrayList<T> list = new ArrayList<>();
         JsonArray array = new JsonParser().parse(json).getAsJsonArray();
         for (final JsonElement elem : array) {
@@ -76,7 +76,7 @@ public class UGson {
      * @param <T>     目标泛型
      * @return 返回一个转换类型的列表
      */
-    public static <T> ArrayList<T> toParseList(ArrayList list, Class<T> cls) {
+    public static <T> ArrayList<T> toList(ArrayList list, Class<T> cls) {
         ArrayList<T> dtoList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             Object object = list.get(i);
@@ -88,29 +88,22 @@ public class UGson {
     }
 
     /**
-     * @return Json==>List
+     * 没封装出来orz
      */
-    public static <T> List<T> jsonToList(String json) {
-        try {
-            return gson.fromJson(json, new TypeToken<List<T>>() {
-            }.getType());
-        } catch (JsonSyntaxException e) {
-            return null;
-        }
+    public static <T> void toList(String json) {
+        List<T> list = gson.fromJson(json, new TypeToken<List<T>>() {
+        }.getType());
     }
 
-    void ss() {
-        Integer xx = jsonToAny("", 1);
-        ArrayList<Integer> ss = jsonToAny("", new ArrayList<>());
-    }
 
     /**
-     * @param json
-     * @return
-     * @param obj
+     * @param obj 被解析的实例化对象如 Bean() ArrayList<Bean>()
      * @param <T> 解析任何类型的数据
+     * @Tip 栗子
+     * Integer xx = jsonToAny("json", 1);
+     * ArrayList<Integer> ss = jsonToAny("json", new ArrayList<Integer>());
      */
-    public static <T> T jsonToAny(String json, T obj) {
+    public static <T> T toAny(String json, T obj) {
         try {
             return gson.fromJson(json, getRealType(obj));
         } catch (JsonSyntaxException e) {

@@ -99,10 +99,18 @@ public class UGson {
         }
     }
 
+    void ss() {
+        Integer xx = jsonToAny("", 1);
+        ArrayList<Integer> ss = jsonToAny("", new ArrayList<>());
+    }
+
     /**
+     * @param json
+     * @return
+     * @param obj
      * @param <T> 解析任何类型的数据
      */
-    public static <T> T jsonToAny(String json, Object obj) {
+    public static <T> T jsonToAny(String json, T obj) {
         try {
             return gson.fromJson(json, getRealType(obj));
         } catch (JsonSyntaxException e) {

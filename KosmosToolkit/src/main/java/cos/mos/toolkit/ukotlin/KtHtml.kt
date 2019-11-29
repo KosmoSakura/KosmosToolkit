@@ -1,4 +1,4 @@
-package cos.mos.utils.ukotlin
+package cos.mos.toolkit.ukotlin
 
 import android.graphics.Paint
 import android.os.Build

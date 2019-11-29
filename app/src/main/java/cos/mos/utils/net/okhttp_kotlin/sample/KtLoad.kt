@@ -1,4 +1,4 @@
-package cos.mos.utils.ukotlin.okhttp.sample
+package cos.mos.utils.net.okhttp_kotlin.sample
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -7,7 +7,7 @@ import android.os.Looper
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import cos.mos.utils.initial.KtApp
-import cos.mos.utils.ukotlin.okhttp.KtHttpListener
+import cos.mos.utils.net.okhttp_kotlin.KtHttpListener
 import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject

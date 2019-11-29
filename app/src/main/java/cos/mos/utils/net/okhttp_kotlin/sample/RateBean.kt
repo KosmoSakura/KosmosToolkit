@@ -1,4 +1,4 @@
-package cos.mos.utils.ukotlin.okhttp.sample
+package cos.mos.utils.net.okhttp_kotlin.sample
 
 /**
  * @Description:

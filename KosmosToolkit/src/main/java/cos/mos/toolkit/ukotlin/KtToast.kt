@@ -1,4 +1,4 @@
-package cos.mos.utils.ukotlin
+package cos.mos.toolkit.ukotlin
 
 import android.widget.Toast
 import cos.mos.toolkit.init.KApp

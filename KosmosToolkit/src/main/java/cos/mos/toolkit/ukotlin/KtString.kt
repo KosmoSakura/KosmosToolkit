@@ -1,7 +1,4 @@
-package cos.mos.utils.ukotlin
-
-import android.text.Html
-import android.text.Spanned
+package cos.mos.toolkit.ukotlin
 
 /**
  * @Description:字符处理类

@@ -1,4 +1,4 @@
-package cos.mos.utils.ukotlin.okhttp
+package cos.mos.utils.net.okhttp_kotlin
 
 import android.os.Handler
 import android.os.Looper

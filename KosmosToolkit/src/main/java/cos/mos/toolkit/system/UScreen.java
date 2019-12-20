@@ -1,6 +1,7 @@
 package cos.mos.toolkit.system;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Build;
@@ -13,14 +14,16 @@ import cos.mos.toolkit.init.KApp;
 
 
 /**
- * @Description: 屏幕信息
- * @Author: Kosmos
- * @Date: 2018.11.26 11:27
- * @Email: KosmoSakura@gmail.com
- * @eg: 2019.2.25:基本函数抽取
+ * @Description 屏幕信息
+ * @Author Kosmos
+ * @Date 2018.11.26 11:27
+ * @Email KosmoSakura@gmail.com
+ * @Tip 2019.2.25:基本函数抽取
+ * @Tip 2019.12.20:获取状态栏高度
  */
 public class UScreen {
     private static final DisplayMetrics metrics = KApp.instance().getResources().getDisplayMetrics();
+    private static int statusBarHeight;//状态栏高度
 
     /**
      * @return bp 截图
@@ -163,4 +166,17 @@ public class UScreen {
         return metrics.densityDpi;
     }
 
+    /**
+     * @return 状态栏高度
+     */
+    public static int getStatusBarHeight(Activity activity) {
+        if (statusBarHeight <= 0) {
+            Resources res = activity.getResources();
+            int resourceId = res.getIdentifier("status_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                res.getDimensionPixelSize(resourceId);
+            }
+        }
+        return statusBarHeight;
+    }
 }

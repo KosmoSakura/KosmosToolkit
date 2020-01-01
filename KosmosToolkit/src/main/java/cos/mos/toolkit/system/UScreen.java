@@ -174,7 +174,7 @@ public class UScreen {
             Resources res = activity.getResources();
             int resourceId = res.getIdentifier("status_bar_height", "dimen", "android");
             if (resourceId > 0) {
-                res.getDimensionPixelSize(resourceId);
+                statusBarHeight = res.getDimensionPixelSize(resourceId);
             }
         }
         return statusBarHeight;

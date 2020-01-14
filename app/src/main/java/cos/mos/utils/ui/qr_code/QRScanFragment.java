@@ -12,7 +12,7 @@ import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zxing.ZXingView;
 import cos.mos.utils.R;
 import cos.mos.toolkit.init.KFragment;
-import cos.mos.toolkit.ULogBj;
+import cos.mos.utils.from_blankj.ULogBj;
 import cos.mos.toolkit.json.UGson;
 import cos.mos.toolkit.java.UText;
 import cos.mos.utils.ui.dialog.UDialog;

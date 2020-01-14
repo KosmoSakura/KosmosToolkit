@@ -2,7 +2,7 @@ package cos.mos.utils.initial;
 
 import org.litepal.LitePal;
 
-import cos.mos.toolkit.ULogBj;
+import cos.mos.utils.from_blankj.ULogBj;
 import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.io.USP;
 import cos.mos.toolkit.media.audio.USampleSound;

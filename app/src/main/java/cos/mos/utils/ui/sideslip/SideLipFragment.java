@@ -10,7 +10,7 @@ import com.liaoinstan.springview.widget.SpringView;
 
 import java.util.ArrayList;
 
-import cos.mos.toolkit.ULogBj;
+import cos.mos.utils.from_blankj.ULogBj;
 import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.listener.KOnFreshListener;
 import cos.mos.toolkit.system.UScreen;

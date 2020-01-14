@@ -1,4 +1,4 @@
-package cos.mos.toolkit;
+package cos.mos.utils.from_blankj;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -42,11 +42,11 @@ import javax.xml.transform.stream.StreamSource;
 
 
 /**
- * @Description: 一个精简、全面、方便的 Android LogInterceptor 库
- * @Author: Blankj
- * @Date: 2016年09月21日
- * @Email: https://github.com/Blankj
- * @eg 最新修改日期：2018-11-13
+ * @Description 一个精简、全面、方便的 Android LogInterceptor 库
+ * @Author Blankj
+ * @Date 2016年09月21日
+ * @Email https://github.com/Blankj
+ * @Tip 最新修改日期：2018-11-13
  */
 public final class ULogBj {
 

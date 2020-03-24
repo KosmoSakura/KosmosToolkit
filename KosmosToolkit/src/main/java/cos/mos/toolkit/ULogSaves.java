@@ -9,10 +9,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * @Description: 把字符串保存到SD卡根目录
- * @Author: Kosmos
- * @Date: 2019.04.19 14:24
- * @Email: KosmoSakura@gmail.com
+ * @Description 把字符串保存到SD卡根目录
+ * @Author Kosmos
+ * @Date 2019.04.19 14:24
+ * @Email KosmoSakura@gmail.com
  */
 public class ULogSaves {
     private static File saveFile = new File(Environment.getExternalStorageDirectory(), "WM记录.txt");

@@ -47,7 +47,11 @@ object KtHtml {
      * @param textColor2 字符2颜色
      * @param space      分隔符
      */
-    fun getHtml(text1: String, textColor1: String, text2: String, textColor2: String, space: String) = getHtml("<font color= '$textColor1'>$text1</font> $space<font color= '$textColor2'><big>$text2</big></font><br/>")
+    fun getHtml(text1: String, textColor1: String, text2: String, textColor2: String, space: String): Spanned =
+            getHtml("<font color= '$textColor1'>$text1</font> $space<font color= '$textColor2'><big>$text2</big></font><br/>")
+
+    fun getHtml(str0: String, strBefor: String, strAfter: String, color: String): Spanned =
+            getHtml("$strBefor<font color='$color'>$str0</font>$strAfter")
 
     /**
      * @Tip flags:

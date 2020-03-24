@@ -7,7 +7,6 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 
 import cos.mos.toolkit.R;
-import cos.mos.toolkit.ULogBj;
 
 /**
  * @Description: 原生转圈进度条

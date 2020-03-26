@@ -3,6 +3,7 @@ package cos.mos.toolkit.ukotlin
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.util.Log
 import android.view.View
 
 /**
@@ -33,6 +34,7 @@ inline fun <T : View> T.makeSingleClick(time: Long = 800, crossinline block: (T)
 }
 
 fun String?.checkNull(defaul: String = "") = if (this.isNullOrEmpty()) defaul else this
+
 //保留2位小数
 fun Float.fotmatMax() = (this * 100f).toInt() / 100f
 
@@ -45,4 +47,24 @@ private fun getHtml(html: String) = if (Build.VERSION.SDK_INT < Build.VERSION_CO
     Html.fromHtml(html)
 } else {
     Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
+}
+
+fun String.logD(tag: String = "Kosmos") {
+    Log.d(tag, this)
+}
+
+fun String.logV(tag: String = "Kosmos") {
+    Log.v(tag, this)
+}
+
+fun String.logW(tag: String = "Kosmos") {
+    Log.w(tag, this)
+}
+
+fun String.logI(tag: String = "Kosmos") {
+    Log.i(tag, this)
+}
+
+fun String.logE(tag: String = "Kosmos") {
+    Log.e(tag, this)
 }

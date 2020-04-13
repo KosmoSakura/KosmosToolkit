@@ -68,6 +68,10 @@ import static android.graphics.BlurMaskFilter.Blur;
  * desc  : utils about span
  *
  * @Tip 如果需要添加不同样式的文字，需要把文字样式写在 append(text)之后才能生效。因为，该方法执行前 会apply()效果
+ * USpan.with(TextView)
+ * .append("aaaaaaaa").setFontSize(14, true)
+ * .append("bbbbbbb").setFontSize(12, true)
+ * .create();
  */
 public final class SpanUtils {
 

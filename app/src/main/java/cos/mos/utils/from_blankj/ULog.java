@@ -62,37 +62,27 @@ public class ULog {
 
     //输出堆栈信息
     public static void d(String str) {
-        if (Config.IsDebug) {
-            d(Config.DefaultTag, str);
-        }
+        d(Config.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void v(String str) {
-        if (Config.IsDebug) {
-            v(Config.DefaultTag, str);
-        }
+        v(Config.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void e(String str) {
-        if (Config.IsDebug) {
-            e(Config.DefaultTag, str);
-        }
+        e(Config.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void w(String str) {
-        if (Config.IsDebug) {
-            w(Config.DefaultTag, str);
-        }
+        w(Config.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void i(String str) {
-        if (Config.IsDebug) {
-            i(Config.DefaultTag, str);
-        }
+        i(Config.DefaultTag, str);
     }
 
     //打印Json格式的日志

@@ -10,7 +10,7 @@ import java.io.OutputStream;
 
 import cos.mos.toolkit.java.UText;
 import cos.mos.utils.constant.KConfig;
-import cos.mos.utils.initial.Constant;
+import cos.mos.utils.constant.Config;
 import cos.mos.utils.mvp.bean.ResultBean;
 import cos.mos.utils.mvp.contract.KListMsgListener;
 import io.reactivex.Observable;
@@ -92,7 +92,7 @@ public class UHttp {
 
 
     private static boolean writeResponseBodyToDisks(ResponseBody body) {
-        File futureStudioIconFile = new File(Constant.getDownloadPath() + System.currentTimeMillis() + ".jpg");
+        File futureStudioIconFile = new File(Config.getDownloadPath() + System.currentTimeMillis() + ".jpg");
         long fileSize = body.contentLength();
         byte[] fileReader = new byte[4096];
         try (InputStream inputStream = body.byteStream();
@@ -114,11 +114,11 @@ public class UHttp {
     private static boolean writeResponseBodyToDisk(ResponseBody body) {
         try {
             InputStream is = body.byteStream();
-            File fileDr = new File(Constant.getDownloadPath());
+            File fileDr = new File(Config.getDownloadPath());
             if (!fileDr.exists()) {
                 fileDr.mkdir();
             }
-            File file = new File(Constant.getDownloadPath(), System.currentTimeMillis() + ".jpg");
+            File file = new File(Config.getDownloadPath(), System.currentTimeMillis() + ".jpg");
             FileOutputStream fos = new FileOutputStream(file);
             BufferedInputStream bis = new BufferedInputStream(is);
             byte[] buffer = new byte[1024];

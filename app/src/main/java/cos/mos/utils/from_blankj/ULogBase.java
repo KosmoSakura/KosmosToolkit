@@ -47,8 +47,15 @@ import javax.xml.transform.stream.StreamSource;
  * @Date 2016年09月21日
  * @Email https://github.com/Blankj
  * @Tip 最新修改日期：2018-11-13
+ * * Log带:
+ * * 1、线程信息 Thread information
+ * * 2、类信息 Class infomation
+ * * 3、方法信息 Method information
+ * * 4、打印json内容 pretty-print for json content
+ * * 5、清除输出Clean output
+ * * 6、跳到源码 jump to source feature
  */
-public final class ULogBj {
+public final class ULogBase {
 
     public static final int V = Log.VERBOSE;
     public static final int D = Log.DEBUG;
@@ -59,8 +66,7 @@ public final class ULogBj {
 
     @IntDef({V, D, I, W, E, A})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface TYPE {
-    }
+    @interface TYPE {}
 
     private static final char[] T = new char[]{'V', 'D', 'I', 'W', 'E', 'A'};
 
@@ -90,27 +96,7 @@ public final class ULogBj {
     private static Config sConfig;
     private static ExecutorService sExecutor;
 
-    public static void commonD(String str) {
-        Log.d(sConfig.mGlobalTag, str);
-    }
-
-    public static void commonV(String str) {
-        Log.v(sConfig.mGlobalTag, str);
-    }
-
-    public static void commonE(String str) {
-        Log.e(sConfig.mGlobalTag, str);
-    }
-
-    public static void commonW(String str) {
-        Log.w(sConfig.mGlobalTag, str);
-    }
-
-    public static void commonI(String str) {
-        Log.i(sConfig.mGlobalTag, str);
-    }
-
-    private ULogBj() {
+    private ULogBase() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -373,10 +359,7 @@ public final class ULogBj {
         return xml;
     }
 
-    private static void print2Console(final int type,
-                                      final String tag,
-                                      final String[] head,
-                                      final String msg) {
+    private static void print2Console(final int type, final String tag, final String[] head, final String msg) {
         if (sConfig.mSingleTagSwitch) {
             StringBuilder sb = new StringBuilder();
             sb.append(PLACEHOLDER).append(LINE_SEP);

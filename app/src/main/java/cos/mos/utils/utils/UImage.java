@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
-import cos.mos.utils.initial.Constant;
+import cos.mos.utils.constant.Config;
 import cos.mos.utils.mvp.KRequest;
 import cos.mos.utils.net.retrofit.file.FileWrapper;
 import io.reactivex.Observable;
@@ -179,11 +179,11 @@ public class UImage {
     private static boolean writeResponseBodyToDisk(ResponseBody body) {
         try {
             InputStream is = body.byteStream();
-            File fileDr = new File(Constant.getDownloadPath());
+            File fileDr = new File(Config.getDownloadPath());
             if (!fileDr.exists()) {
                 fileDr.mkdir();
             }
-            File file = new File(Constant.getDownloadPath(), System.currentTimeMillis() + ".jpg");
+            File file = new File(Config.getDownloadPath(), System.currentTimeMillis() + ".jpg");
             FileOutputStream fos = new FileOutputStream(file);
             BufferedInputStream bis = new BufferedInputStream(is);
             byte[] buffer = new byte[1024];

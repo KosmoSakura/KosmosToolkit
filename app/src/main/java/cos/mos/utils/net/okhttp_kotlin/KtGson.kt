@@ -1,8 +1,8 @@
 package cos.mos.utils.net.okhttp_kotlin
 
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import cos.mos.toolkit.json.UGson
 import java.util.*
 
 /**
@@ -12,13 +12,7 @@ import java.util.*
  * @Email: KosmoSakura@gmail.com
  */
 object KtGson {
-    private val gson: Gson = GsonBuilder()
-        .serializeNulls()//序列化null
-        .setDateFormat("yyyy-MM-dd HH:mm:ss")// 设置日期时间格式，另有2个重载方法 ,在序列化和反序化时均生效
-        .disableInnerClassSerialization()// 禁此序列化内部类
-        .disableHtmlEscaping() //禁止转义html标签
-        .setPrettyPrinting()//格式化输出
-        .create()
+    private val gson: Gson = UGson.getGson()
 
 
     /**

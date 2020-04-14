@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.os.Handler
 import android.os.Looper
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import cos.mos.toolkit.json.UGson
 import cos.mos.utils.initial.KtApp
 import cos.mos.utils.net.okhttp_kotlin.KtHttpListener
 import okhttp3.*
@@ -47,18 +47,12 @@ class KtLoad private constructor() {
 
     init {
         client = client.newBuilder()
-            .retryOnConnectionFailure(true)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(300, TimeUnit.SECONDS)
-            .writeTimeout(300, TimeUnit.SECONDS)
-            .build()
-        gson = GsonBuilder()
-            .serializeNulls()//序列化null
-            .setDateFormat("yyyy-MM-dd HH:mm:ss")// 设置日期时间格式，另有2个重载方法 ,在序列化和反序化时均生效
-            .disableInnerClassSerialization()// 禁此序列化内部类
-            .disableHtmlEscaping() //禁止转义html标签
-            .setPrettyPrinting()//格式化输出
-            .create()
+                .retryOnConnectionFailure(true)
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(300, TimeUnit.SECONDS)
+                .writeTimeout(300, TimeUnit.SECONDS)
+                .build()
+        gson = UGson.getGson()
     }
 
     private var netMgr: ConnectivityManager? = null
@@ -81,31 +75,31 @@ class KtLoad private constructor() {
             return
         }
         client.newCall(Request.Builder()
-            .url("com/exchange-rate/get-exchange-rate?from=$from&to=$to")
-            .build())
-            .enqueue(object : Callback {
-                override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
-                        val body = response.body()
-                        if (body != null) {
-                            try {
-                                convert(body.string())
-                            } catch (e: Exception) {
-                                failure("解析失败", 200)
+                .url("com/exchange-rate/get-exchange-rate?from=$from&to=$to")
+                .build())
+                .enqueue(object : Callback {
+                    override fun onResponse(call: Call, response: Response) {
+                        if (response.code() == 200) {
+                            val body = response.body()
+                            if (body != null) {
+                                try {
+                                    convert(body.string())
+                                } catch (e: Exception) {
+                                    failure("解析失败", 200)
+                                }
+
+                            } else {
+                                failure("ResponseBody为空", 200)
                             }
-
                         } else {
-                            failure("ResponseBody为空", 200)
+                            failure("Code不等于200", response.code())
                         }
-                    } else {
-                        failure("Code不等于200", response.code())
                     }
-                }
 
-                override fun onFailure(call: Call?, e: IOException) {
-                    failure("请求失败", HttpError)
-                }
-            })
+                    override fun onFailure(call: Call?, e: IOException) {
+                        failure("请求失败", HttpError)
+                    }
+                })
     }
 
     @Throws(JSONException::class)

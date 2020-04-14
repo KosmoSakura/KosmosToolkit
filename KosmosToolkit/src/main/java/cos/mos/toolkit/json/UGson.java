@@ -25,11 +25,11 @@ public class UGson {
 
     static {
         gson = new GsonBuilder()
-            .setLenient()
-            .enableComplexMapKeySerialization()
+            .setLenient()//宽容的解析，默认情况下，Gson是严格的，只接受指定的JSON
+            .enableComplexMapKeySerialization()//启用复杂映射键序列化
             .serializeNulls()//序列化null
-            .setPrettyPrinting()//格式化输出
-            .disableHtmlEscaping() //禁止转义html标签
+            .setPrettyPrinting()//将Gson配置为输出Json，以便在页面中进行漂亮的打印。这个选项有影响Json序列化。
+            .disableHtmlEscaping() //禁止转义html标签:默认情况下，Gson会转义HTML字符，如&lt等。使用此选项进行配置按原样传递HTML字符
             .setDateFormat("yyyy-MM-dd HH:mm:ss")// 设置日期时间格式，另有2个重载方法 ,在序列化和反序化时均生效
             .disableInnerClassSerialization()// 禁此序列化内部类
             .registerTypeAdapter(Double.class, new DoubleConverter())
@@ -38,10 +38,14 @@ public class UGson {
             .registerTypeAdapter(Integer.class, new IntConverter())
             .registerTypeAdapter(Boolean.class, new BoolConverter())
             .registerTypeAdapter(String.class, new StringConverter())
-//            .generateNonExecutableJson() //生成不可执行的Json（多了 )]}' 这4个字符）
+//            .excludeFieldsWithoutExposeAnnotation()// 不转换没有@Expose注释的字段
+//            .generateNonExecutableJson() //生成不可执行的Json（多了 )]}' 这4个字符）：通过在生成的JSON前面加上一些前缀，使输出JSON在Javascript中不可执行
             .create();
     }
 
+    public static Gson getGson() {
+        return gson;
+    }
 
     /**
      * @return 实体类转换的字符串

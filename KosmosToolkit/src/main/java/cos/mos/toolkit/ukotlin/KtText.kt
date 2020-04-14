@@ -45,7 +45,7 @@ object KtText {
 
     //--------------------------------------------------------------------------------------------------------------
     @JvmStatic
-    fun isEmpty(digit: Boolean?, defaul: Boolean = false) = digit ?: defaul
+    fun isTrue(digit: Boolean?, defaul: Boolean = false) = digit ?: defaul
 
     @JvmStatic
     fun isEmpty(str: String?) = str == null || str.isEmpty() || str.trim().isEmpty() || str.equals("null", ignoreCase = true)

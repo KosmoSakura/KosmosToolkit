@@ -133,7 +133,7 @@ public class UText {
         return arr == null || arr.length == 0;
     }
 
-    public static boolean isEmpty(Boolean b) {
+    public static boolean isTrue(Boolean b) {
         return b == null ? false : b;
     }
 

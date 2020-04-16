@@ -1,4 +1,4 @@
-package cos.mos.utils.from_blankj;
+package cos.mos.toolkit.java;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -57,7 +57,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.ref.WeakReference;
 
-import cos.mos.utils.initial.App;
+
+import cos.mos.toolkit.init.KApp;
 
 import static android.graphics.BlurMaskFilter.Blur;
 
@@ -69,11 +70,12 @@ import static android.graphics.BlurMaskFilter.Blur;
  *
  * @Tip 如果需要添加不同样式的文字，需要把文字样式写在 append(text)之后才能生效。因为，该方法执行前 会apply()效果
  * USpan.with(TextView)
- * .append("aaaaaaaa").setFontSize(14, true)
- * .append("bbbbbbb").setFontSize(12, true)
+ * .append("aaaaaaaa").setFontSize(14, true).setForegroundColor(intColor)
+ * .appendLine()
+ * .append("bbbbbbb").setFontSize(12, true).setForegroundColor(intColor)
  * .create();
  */
-public final class SpanUtils {
+public final class USpan {
 
     private static final int COLOR_DEFAULT = 0xFEFFFFFF;
 
@@ -146,12 +148,12 @@ public final class SpanUtils {
     private final int mTypeImage = 1;
     private final int mTypeSpace = 2;
 
-    private SpanUtils(TextView textView) {
+    private USpan(TextView textView) {
         this();
         mTextView = textView;
     }
 
-    public SpanUtils() {
+    public USpan() {
         mBuilder = new SerializableSpannableStringBuilder();
         mText = "";
         mType = -1;
@@ -205,7 +207,7 @@ public final class SpanUtils {
      *             </ul>
      * @Tip 立Flag
      */
-    public SpanUtils setFlag(final int flag) {
+    public USpan setFlag(final int flag) {
         this.flag = flag;
         return this;
     }
@@ -213,7 +215,7 @@ public final class SpanUtils {
     /**
      * @Tip 设置前景颜色
      */
-    public SpanUtils setForegroundColor(@ColorInt final int color) {
+    public USpan setForegroundColor(@ColorInt final int color) {
         this.foregroundColor = color;
         return this;
     }
@@ -221,7 +223,7 @@ public final class SpanUtils {
     /**
      * @Tip 设置背景颜色
      */
-    public SpanUtils setBackgroundColor(@ColorInt final int color) {
+    public USpan setBackgroundColor(@ColorInt final int color) {
         this.backgroundColor = color;
         return this;
     }
@@ -230,7 +232,7 @@ public final class SpanUtils {
      * @param lineHeight 行高，以像素为单位。
      * @Tip 设置行高
      */
-    public SpanUtils setLineHeight(@IntRange(from = 0) final int lineHeight) {
+    public USpan setLineHeight(@IntRange(from = 0) final int lineHeight) {
         return setLineHeight(lineHeight, ALIGN_CENTER);
     }
 
@@ -244,8 +246,8 @@ public final class SpanUtils {
      *                   </ul>
      * @Tip 设置行高
      */
-    public SpanUtils setLineHeight(@IntRange(from = 0) final int lineHeight,
-                                   @Align final int align) {
+    public USpan setLineHeight(@IntRange(from = 0) final int lineHeight,
+                               @Align final int align) {
         this.lineHeight = lineHeight;
         this.alignLine = align;
         return this;
@@ -254,7 +256,7 @@ public final class SpanUtils {
     /**
      * @Tip 页边距颜色
      */
-    public SpanUtils setQuoteColor(@ColorInt final int color) {
+    public USpan setQuoteColor(@ColorInt final int color) {
         return setQuoteColor(color, 2, 2);
     }
 
@@ -264,7 +266,7 @@ public final class SpanUtils {
      * @param gapWidth    间隙宽度，以像素为单位。
      * @Tip 页边距样式
      */
-    public SpanUtils setQuoteColor(@ColorInt final int color, @IntRange(from = 1) final int stripeWidth, @IntRange(from = 0) final int gapWidth) {
+    public USpan setQuoteColor(@ColorInt final int color, @IntRange(from = 1) final int stripeWidth, @IntRange(from = 0) final int gapWidth) {
         this.quoteColor = color;
         this.stripeWidth = stripeWidth;
         this.quoteGapWidth = gapWidth;
@@ -276,7 +278,7 @@ public final class SpanUtils {
      * @param rest  段落其余行的缩进
      * @Tip 段落缩进
      */
-    public SpanUtils setLeadingMargin(@IntRange(from = 0) final int first, @IntRange(from = 0) final int rest) {
+    public USpan setLeadingMargin(@IntRange(from = 0) final int first, @IntRange(from = 0) final int rest) {
         this.first = first;
         this.rest = rest;
         return this;
@@ -286,7 +288,7 @@ public final class SpanUtils {
      * @param gapWidth 间隙宽度，以像素为单位。
      * @Tip bullet相关
      */
-    public SpanUtils setBullet(@IntRange(from = 0) final int gapWidth) {
+    public USpan setBullet(@IntRange(from = 0) final int gapWidth) {
         return setBullet(0, 3, gapWidth);
     }
 
@@ -296,7 +298,7 @@ public final class SpanUtils {
      * @param gapWidth 间隙宽度，以像素为单位。
      * @Tip bullet相关
      */
-    public SpanUtils setBullet(@ColorInt final int color, @IntRange(from = 0) final int radius, @IntRange(from = 0) final int gapWidth) {
+    public USpan setBullet(@ColorInt final int color, @IntRange(from = 0) final int radius, @IntRange(from = 0) final int gapWidth) {
         this.bulletColor = color;
         this.bulletRadius = radius;
         this.bulletGapWidth = gapWidth;
@@ -307,7 +309,7 @@ public final class SpanUtils {
      * @param size The size of font.
      * @Tip 字体大小
      */
-    public SpanUtils setFontSize(@IntRange(from = 0) final int size) {
+    public USpan setFontSize(@IntRange(from = 0) final int size) {
         return setFontSize(size, false);
     }
 
@@ -316,7 +318,7 @@ public final class SpanUtils {
      * @param isSp True to use sp, false to use pixel.
      * @Tip 字体大小
      */
-    public SpanUtils setFontSize(@IntRange(from = 0) final int size, final boolean isSp) {
+    public USpan setFontSize(@IntRange(from = 0) final int size, final boolean isSp) {
         this.fontSize = size;
         this.fontSizeIsDp = isSp;
         return this;
@@ -325,7 +327,7 @@ public final class SpanUtils {
     /**
      * @Tip 字体比例
      */
-    public SpanUtils setFontProportion(final float proportion) {
+    public USpan setFontProportion(final float proportion) {
         this.proportion = proportion;
         return this;
     }
@@ -333,7 +335,7 @@ public final class SpanUtils {
     /**
      * @Tip 字体横向比例
      */
-    public SpanUtils setFontXProportion(final float proportion) {
+    public USpan setFontXProportion(final float proportion) {
         this.xProportion = proportion;
         return this;
     }
@@ -341,7 +343,7 @@ public final class SpanUtils {
     /**
      * @Tip 文字删除线
      */
-    public SpanUtils setStrikethrough() {
+    public USpan setStrikethrough() {
         this.isStrikethrough = true;
         return this;
     }
@@ -349,7 +351,7 @@ public final class SpanUtils {
     /**
      * @Tip 文字下划线
      */
-    public SpanUtils setUnderline() {
+    public USpan setUnderline() {
         this.isUnderline = true;
         return this;
     }
@@ -357,7 +359,7 @@ public final class SpanUtils {
     /**
      * @Tip 文字在准心上
      */
-    public SpanUtils setSuperscript() {
+    public USpan setSuperscript() {
         this.isSuperscript = true;
         return this;
     }
@@ -365,7 +367,7 @@ public final class SpanUtils {
     /**
      * @Tip 文字在准心下
      */
-    public SpanUtils setSubscript() {
+    public USpan setSubscript() {
         this.isSubscript = true;
         return this;
     }
@@ -373,7 +375,7 @@ public final class SpanUtils {
     /**
      * @Tip 设置粗体
      */
-    public SpanUtils setBold() {
+    public USpan setBold() {
         isBold = true;
         return this;
     }
@@ -381,7 +383,7 @@ public final class SpanUtils {
     /**
      * @Tip 设置斜体
      */
-    public SpanUtils setItalic() {
+    public USpan setItalic() {
         isItalic = true;
         return this;
     }
@@ -389,7 +391,7 @@ public final class SpanUtils {
     /**
      * @Tip 设置粗体斜体
      */
-    public SpanUtils setBoldItalic() {
+    public USpan setBoldItalic() {
         isBoldItalic = true;
         return this;
     }
@@ -403,7 +405,7 @@ public final class SpanUtils {
      *                   </ul>
      * @Tip 设置字体格式
      */
-    public SpanUtils setFontFamily(@NonNull final String fontFamily) {
+    public USpan setFontFamily(@NonNull final String fontFamily) {
         this.fontFamily = fontFamily;
         return this;
     }
@@ -411,7 +413,7 @@ public final class SpanUtils {
     /**
      * @Tip 设置字体
      */
-    public SpanUtils setTypeface(@NonNull final Typeface typeface) {
+    public USpan setTypeface(@NonNull final Typeface typeface) {
         this.typeface = typeface;
         return this;
     }
@@ -425,7 +427,7 @@ public final class SpanUtils {
      *                  </ul>
      * @Tip 设置水平对齐
      */
-    public SpanUtils setHorizontalAlign(@NonNull final Alignment alignment) {
+    public USpan setHorizontalAlign(@NonNull final Alignment alignment) {
         this.alignment = alignment;
         return this;
     }
@@ -440,7 +442,7 @@ public final class SpanUtils {
      *              </ul>
      * @Tip 设置垂直对齐
      */
-    public SpanUtils setVerticalAlign(@Align final int align) {
+    public USpan setVerticalAlign(@Align final int align) {
         this.verticalAlign = align;
         return this;
     }
@@ -450,7 +452,7 @@ public final class SpanUtils {
      *
      * @Tip 设置可点击的文字
      */
-    public SpanUtils setClickSpan(@NonNull final ClickableSpan clickSpan) {
+    public USpan setClickSpan(@NonNull final ClickableSpan clickSpan) {
         if (mTextView != null && mTextView.getMovementMethod() == null) {
             mTextView.setMovementMethod(LinkMovementMethod.getInstance());
         }
@@ -463,7 +465,7 @@ public final class SpanUtils {
      *
      * @Tip 设置URL链接
      */
-    public SpanUtils setUrl(@NonNull final String url) {
+    public USpan setUrl(@NonNull final String url) {
         if (mTextView != null && mTextView.getMovementMethod() == null) {
             mTextView.setMovementMethod(LinkMovementMethod.getInstance());
         }
@@ -482,8 +484,8 @@ public final class SpanUtils {
      *               </ul>
      * @Tip 设置模糊
      */
-    public SpanUtils setBlur(@FloatRange(from = 0, fromInclusive = false) final float radius,
-                             final Blur style) {
+    public USpan setBlur(@FloatRange(from = 0, fromInclusive = false) final float radius,
+                         final Blur style) {
         this.blurRadius = radius;
         this.style = style;
         return this;
@@ -492,7 +494,7 @@ public final class SpanUtils {
     /**
      * @Tip 设置着色器
      */
-    public SpanUtils setShader(@NonNull final Shader shader) {
+    public USpan setShader(@NonNull final Shader shader) {
         this.shader = shader;
         return this;
     }
@@ -504,10 +506,10 @@ public final class SpanUtils {
      * @param shadowColor 阴影颜色
      * @Tip 设置阴影
      */
-    public SpanUtils setShadow(@FloatRange(from = 0, fromInclusive = false) final float radius,
-                               final float dx,
-                               final float dy,
-                               final int shadowColor) {
+    public USpan setShadow(@FloatRange(from = 0, fromInclusive = false) final float radius,
+                           final float dx,
+                           final float dy,
+                           final int shadowColor) {
         this.shadowRadius = radius;
         this.shadowDx = dx;
         this.shadowDy = dy;
@@ -519,7 +521,7 @@ public final class SpanUtils {
     /**
      * @Tip 设置spans
      */
-    public SpanUtils setSpans(@NonNull final Object... spans) {
+    public USpan setSpans(@NonNull final Object... spans) {
         if (spans.length > 0) {
             this.spans = spans;
         }
@@ -529,7 +531,7 @@ public final class SpanUtils {
     /**
      * @Tip 添加文字
      */
-    public SpanUtils append(@NonNull final CharSequence text) {
+    public USpan append(@NonNull final CharSequence text) {
         apply(mTypeCharSequence);
         mText = text;
         return this;
@@ -538,7 +540,7 @@ public final class SpanUtils {
     /**
      * @Tip 换行
      */
-    public SpanUtils appendLine() {
+    public USpan appendLine() {
         apply(mTypeCharSequence);
         mText = LINE_SEPARATOR;
         return this;
@@ -547,7 +549,7 @@ public final class SpanUtils {
     /**
      * @Tip 换行
      */
-    public SpanUtils appendLine(@NonNull final CharSequence text) {
+    public USpan appendLine(@NonNull final CharSequence text) {
         apply(mTypeCharSequence);
         mText = text + LINE_SEPARATOR;
         return this;
@@ -557,7 +559,7 @@ public final class SpanUtils {
      * @param bitmap bitmap
      * @Tip 添加一个图像
      */
-    public SpanUtils appendImage(@NonNull final Bitmap bitmap) {
+    public USpan appendImage(@NonNull final Bitmap bitmap) {
         return appendImage(bitmap, ALIGN_BOTTOM);
     }
 
@@ -572,7 +574,7 @@ public final class SpanUtils {
      *               </ul>
      * @Tip 添加一个图像
      */
-    public SpanUtils appendImage(@NonNull final Bitmap bitmap, @Align final int align) {
+    public USpan appendImage(@NonNull final Bitmap bitmap, @Align final int align) {
         apply(mTypeImage);
         this.imageBitmap = bitmap;
         this.alignImage = align;
@@ -583,7 +585,7 @@ public final class SpanUtils {
      * @param drawable 图片drawable
      * @Tip 添加一个图像
      */
-    public SpanUtils appendImage(@NonNull final Drawable drawable) {
+    public USpan appendImage(@NonNull final Drawable drawable) {
         return appendImage(drawable, ALIGN_BOTTOM);
     }
 
@@ -598,7 +600,7 @@ public final class SpanUtils {
      *                 </ul>
      * @Tip 添加一个图像
      */
-    public SpanUtils appendImage(@NonNull final Drawable drawable, @Align final int align) {
+    public USpan appendImage(@NonNull final Drawable drawable, @Align final int align) {
         apply(mTypeImage);
         this.imageDrawable = drawable;
         this.alignImage = align;
@@ -609,7 +611,7 @@ public final class SpanUtils {
      * @param uri 图片uri地址
      * @Tip 添加一个图像
      */
-    public SpanUtils appendImage(@NonNull final Uri uri) {
+    public USpan appendImage(@NonNull final Uri uri) {
         return appendImage(uri, ALIGN_BOTTOM);
     }
 
@@ -624,7 +626,7 @@ public final class SpanUtils {
      *              </ul>
      * @Tip 添加一个图像
      */
-    public SpanUtils appendImage(@NonNull final Uri uri, @Align final int align) {
+    public USpan appendImage(@NonNull final Uri uri, @Align final int align) {
         apply(mTypeImage);
         this.imageUri = uri;
         this.alignImage = align;
@@ -635,7 +637,7 @@ public final class SpanUtils {
      * @param resourceId 图片资源id
      * @Tip 添加一个图像
      */
-    public SpanUtils appendImage(@DrawableRes final int resourceId) {
+    public USpan appendImage(@DrawableRes final int resourceId) {
         return appendImage(resourceId, ALIGN_BOTTOM);
     }
 
@@ -650,7 +652,7 @@ public final class SpanUtils {
      *                   </ul>
      * @Tip 添加一个图像
      */
-    public SpanUtils appendImage(@DrawableRes final int resourceId, @Align final int align) {
+    public USpan appendImage(@DrawableRes final int resourceId, @Align final int align) {
         apply(mTypeImage);
         this.imageResourceId = resourceId;
         this.alignImage = align;
@@ -661,7 +663,7 @@ public final class SpanUtils {
      * @param size 空格宽度
      * @Tip 添加一个空格
      */
-    public SpanUtils appendSpace(@IntRange(from = 0) final int size) {
+    public USpan appendSpace(@IntRange(from = 0) final int size) {
         return appendSpace(size, Color.TRANSPARENT);
     }
 
@@ -670,7 +672,7 @@ public final class SpanUtils {
      * @param color 颜色
      * @Tip 添加一个空格
      */
-    public SpanUtils appendSpace(@IntRange(from = 0) final int size, @ColorInt final int color) {
+    public USpan appendSpace(@IntRange(from = 0) final int size, @ColorInt final int color) {
         apply(mTypeSpace);
         spaceSize = size;
         spaceColor = color;
@@ -1105,7 +1107,7 @@ public final class SpanUtils {
 
         private CustomImageSpan(final Bitmap b, final int verticalAlignment) {
             super(verticalAlignment);
-            mDrawable = new BitmapDrawable(App.instance().getResources(), b);
+            mDrawable = new BitmapDrawable(KApp.instance().getResources(), b);
             mDrawable.setBounds(
                 0, 0, mDrawable.getIntrinsicWidth(), mDrawable.getIntrinsicHeight()
             );
@@ -1137,9 +1139,9 @@ public final class SpanUtils {
             } else if (mContentUri != null) {
                 Bitmap bitmap;
                 try {
-                    InputStream is = App.instance().getContentResolver().openInputStream(mContentUri);
+                    InputStream is = KApp.instance().getContentResolver().openInputStream(mContentUri);
                     bitmap = BitmapFactory.decodeStream(is);
-                    drawable = new BitmapDrawable(App.instance().getResources(), bitmap);
+                    drawable = new BitmapDrawable(KApp.instance().getResources(), bitmap);
                     drawable.setBounds(
                         0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight()
                     );
@@ -1151,7 +1153,7 @@ public final class SpanUtils {
                 }
             } else {
                 try {
-                    drawable = ContextCompat.getDrawable(App.instance(), mResourceId);
+                    drawable = ContextCompat.getDrawable(KApp.instance(), mResourceId);
                     drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
                 } catch (Exception e) {
                     Log.e("sms", "Unable to find resource: " + mResourceId);
@@ -1300,7 +1302,7 @@ public final class SpanUtils {
     // static
     ///////////////////////////////////////////////////////////////////////////
 
-    public static SpanUtils with(final TextView textView) {
-        return new SpanUtils(textView);
+    public static USpan with(final TextView textView) {
+        return new USpan(textView);
     }
 }

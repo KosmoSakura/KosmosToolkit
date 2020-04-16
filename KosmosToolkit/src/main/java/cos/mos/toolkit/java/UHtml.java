@@ -10,7 +10,7 @@ import android.text.style.RelativeSizeSpan;
 import android.widget.TextView;
 
 /**
- * @Description Html处理
+ * @Description
  * @Author Kosmos
  * @Date 2019.11.19 17:24
  * @Email KosmoSakura@gmail.com
@@ -47,6 +47,18 @@ public class UHtml {
     }
 
     /**
+     * @param text      字符
+     * @param textColor 字符颜色
+     */
+    public static Spanned getHtml(String text, String textColor) {
+        return getHtml("<font color= '" + textColor + "'>" + text + "</font> ");
+    }
+
+    public static Spanned getHtml(String text, int textColor) {
+        return getHtml("<font color= '" + textColor + "'>" + text + "</font> ");
+    }
+
+    /**
      * @param text1      字符1
      * @param textColor1 字符1颜色
      * @param text2      字符2
@@ -54,6 +66,10 @@ public class UHtml {
      * @param space      分隔符
      */
     public static Spanned getHtml(String text1, String textColor1, String text2, String textColor2, String space) {
+        return getHtml("<font color= '" + textColor1 + "'>" + text1 + "</font> " + space + "<font color= '" + textColor2 + "'>" + "<big>" + text2 + "</big></font><br/>");
+    }
+
+    public static Spanned getHtml(String text1, int textColor1, String text2, int textColor2, String space) {
         return getHtml("<font color= '" + textColor1 + "'>" + text1 + "</font> " + space + "<font color= '" + textColor2 + "'>" + "<big>" + text2 + "</big></font><br/>");
     }
 

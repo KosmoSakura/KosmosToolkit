@@ -23,13 +23,14 @@ import cos.mos.utils.R;
  * @Author Kosmos
  * @Date 2018年07月06日 14:11
  * @Email KosmoSakura@gmail.com
- * @Tip 2018.9.2 基础弹窗
- * @Tip 2018.9.12 函数封装
- * @Tip 2019.3.21 解耦、构建封装
- * @Tip 2019.11.7:优化显示尺寸
+ * @tip 2018.9.2 基础弹窗
+ * @tip 2018.9.12 函数封装
+ * @tip 2019.3.21 解耦、构建封装
+ * @tip 2019.11.7 优化显示尺寸
+ * @tip 2020.4.17 支持定制颜色(通过UHtml设置)
  */
 public class UDialog extends Dialog {
-    private String strTitle, strMsg, strHint, strConfirm, strCancle;
+    private CharSequence strTitle, strMsg, strHint, strConfirm, strCancle;
     private int iconRes, gravity = Gravity.CENTER;
     private boolean password;//密码模式
     private CancelClick cancelClick;
@@ -79,7 +80,7 @@ public class UDialog extends Dialog {
      * @apiNote 可以通过返回键、点击外面关闭
      * 为了调用简单，集成通知内容
      */
-    public static UDialog builder(Context context, String msg) {
+    public static UDialog builder(Context context, CharSequence msg) {
         return new UDialog(context, true).msg(msg);
     }
 
@@ -94,7 +95,7 @@ public class UDialog extends Dialog {
      * @param title 标题
      * @apiNote 不调用、或传入空 则不显示该区域
      */
-    public UDialog title(String title) {
+    public UDialog title(CharSequence title) {
         this.strTitle = title;
         return this;
     }
@@ -103,7 +104,7 @@ public class UDialog extends Dialog {
      * @param msg 通知内容
      * @apiNote 不调用、或传入空 则不显示该区域
      */
-    public UDialog msg(String msg) {
+    public UDialog msg(CharSequence msg) {
         this.strMsg = msg;
         return this;
     }
@@ -112,7 +113,7 @@ public class UDialog extends Dialog {
      * @param msg     通知内容
      * @param gravity 文字显示模式
      */
-    public UDialog msg(String msg, int gravity) {
+    public UDialog msg(CharSequence msg, int gravity) {
         this.strMsg = msg;
         this.gravity = gravity;
         return this;
@@ -122,7 +123,7 @@ public class UDialog extends Dialog {
      * @param hint 输入框提示
      * @apiNote 不调用、或传入空 则不显示该区域
      */
-    public UDialog input(String hint) {
+    public UDialog input(CharSequence hint) {
         this.strHint = hint;
         return this;
     }
@@ -132,7 +133,7 @@ public class UDialog extends Dialog {
      * @param password 是否是密码模式
      * @apiNote 不调用、或传入空 则不显示该区域
      */
-    public UDialog input(String hint, boolean password) {
+    public UDialog input(CharSequence hint, boolean password) {
         this.strHint = hint;
         this.password = password;
         return this;
@@ -162,7 +163,7 @@ public class UDialog extends Dialog {
      * @apiNote 不调用、或传入空 则不显示该区域
      * 一个按钮
      */
-    public UDialog button(String confirm) {
+    public UDialog button(CharSequence confirm) {
         this.strConfirm = confirm;
         return this;
     }
@@ -173,18 +174,18 @@ public class UDialog extends Dialog {
      * @apiNote 不调用、或传入空 则不显示该区域
      * 两个按钮
      */
-    public UDialog button(String confirm, String cancle) {
+    public UDialog button(CharSequence confirm, CharSequence cancle) {
         this.strConfirm = confirm;
         this.strCancle = cancle;
         return this;
     }
 
-    public UDialog buttonCancle(String cancle) {
+    public UDialog buttonCancle(CharSequence cancle) {
         this.strCancle = cancle;
         return this;
     }
 
-    public UDialog buttonConfirm(String confirm) {
+    public UDialog buttonConfirm(CharSequence confirm) {
         this.strConfirm = confirm;
         return this;
     }

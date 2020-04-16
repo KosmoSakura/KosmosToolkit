@@ -1,6 +1,5 @@
 package cos.mos.toolkit.java;
 
-import android.text.Editable;
 import android.widget.TextView;
 
 import java.util.List;
@@ -23,27 +22,11 @@ public class UText {
     /**
      * @apiNote String为空返回缺省字符
      */
-    public static String isNull(String str, final String defaul) {
-        return isEmpty(str) ? defaul : str;
-    }
-
-    public static String isNull(String str) {
-        return isNull(str, "");
-    }
-
     public static String isNull(CharSequence str, final String defaul) {
         return isEmpty(str) ? defaul : str.toString();
     }
 
     public static String isNull(CharSequence str) {
-        return isNull(str, "");
-    }
-
-    public static String isNull(Editable str, final String defaul) {
-        return isEmpty(str) ? defaul : str.toString();
-    }
-
-    public static String isNull(Editable str) {
         return isNull(str, "");
     }
 
@@ -106,19 +89,15 @@ public class UText {
 //-------------------------------------------------------------------------------------------------------------------
 
     /**
-     * @param str 被校验的字符
+     * @param sequence 被校验的字符
      * @return 字符是否为空{@code true}: 空  {@code false}: 不为空
      * @Tip 字符串是否为空(只有空格也为空 ）
-     * @Tip str.length () == 0:可以减少一次判断
+     * @Tip sequence.length () == 0:可以减少一次判断
      * @Tip null.toString().length =4
      * @Tip str.equalsIgnoreCase(null.toString ())=true
      */
-    public static boolean isEmpty(String str) {
-        return str == null || str.length() == 0 || str.trim().length() == 0 || str.equalsIgnoreCase("null");
-    }
-
     public static boolean isEmpty(CharSequence sequence) {
-        return isEmpty(sequence.toString());
+        return sequence == null || sequence.length() == 0 || sequence.toString().trim().length() == 0;
     }
 
     public static boolean isEmpty(TextView tv) {
@@ -138,12 +117,8 @@ public class UText {
     }
 
     //-------------------------------------------------------------------------------------------------------------------
-    public static boolean isNotEmpty(String str) {
-        return str != null && str.length() > 0 && str.trim().length() == 0 && !str.equalsIgnoreCase("null");
-    }
-
     public static boolean isNotEmpty(CharSequence sequence) {
-        return isNotEmpty(sequence.toString());
+        return sequence != null && sequence.length() > 0 && sequence.toString().trim().length() > 0;
     }
 
     public static boolean isNotEmpty(TextView tv) {
@@ -156,5 +131,21 @@ public class UText {
 
     public static <Z> boolean isNotEmpty(Z[] arr) {
         return arr != null && arr.length > 0;
+    }
+
+    public static boolean equals(CharSequence a, CharSequence b) {
+        if (a == b) return true;
+        int length;
+        if (a != null && b != null && (length = a.length()) == b.length()) {
+            if (a instanceof String && b instanceof String) {
+                return a.equals(b);
+            } else {
+                for (int i = 0; i < length; i++) {
+                    if (a.charAt(i) != b.charAt(i)) return false;
+                }
+                return true;
+            }
+        }
+        return false;
     }
 }

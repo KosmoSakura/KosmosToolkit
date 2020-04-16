@@ -12,11 +12,8 @@ import android.widget.TextView
  * @Tip 优化判断逻辑执行效率：2019.10.25
  * */
 object KtText {
-    @JvmStatic
-    fun isNull(str: String?, defaul: String = "") = if (str.isNullOrEmpty()) defaul else str
 
     @JvmStatic
-
     fun isNull(charSequence: CharSequence?, defaul: String = "") = if (isEmpty(charSequence)) defaul else isNull(charSequence.toString())
 
     @JvmStatic
@@ -48,10 +45,7 @@ object KtText {
     fun isTrue(digit: Boolean?, defaul: Boolean = false) = digit ?: defaul
 
     @JvmStatic
-    fun isEmpty(str: String?) = str == null || str.isEmpty() || str.trim().isEmpty() || str.equals("null", ignoreCase = true)
-
-    @JvmStatic
-    fun isEmpty(sequence: CharSequence?) = isEmpty(sequence.toString())
+    fun isEmpty(str: CharSequence?) = str == null || str.isEmpty() || str.trim().isEmpty() || str == "null"
 
     @JvmStatic
     fun isEmpty(textView: TextView?) = textView == null || isEmpty(textView.text)
@@ -61,10 +55,7 @@ object KtText {
 
     //--------------------------------------------------------------------------------------------------------------
     @JvmStatic
-    fun isNotEmpty(str: String?) = str != null && str.isNotEmpty() && str.trim().isNotEmpty() && !str.equals("null", ignoreCase = true)
-
-    @JvmStatic
-    fun isNotEmpty(sequence: CharSequence?) = isNotEmpty(sequence.toString())
+    fun isNotEmpty(str: CharSequence?) = str != null && str.isNotEmpty() && str.trim().isNotEmpty() && str != "null"
 
     @JvmStatic
     fun isNotEmpty(textView: TextView?) = textView != null && isNotEmpty(textView.text)

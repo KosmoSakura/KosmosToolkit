@@ -96,17 +96,6 @@ public class UTextFull {
     /**
      * @apiNote String为空返回指定字符
      */
-    public static String isNull(String str, final String defaul) {
-        return isEmpty(str) ? defaul : str;
-    }
-
-    /**
-     * @apiNote String为空返回""
-     */
-    public static String isNull(String str) {
-        return isNull(str, "");
-    }
-
     public static String isNull(CharSequence str, final String defaul) {
         return isEmpty(str) ? defaul : str.toString();
     }
@@ -193,12 +182,8 @@ public class UTextFull {
      * @Tip null.toString().length =4
      * @Tip str.equalsIgnoreCase(null.toString ())=true
      */
-    public static boolean isEmpty(String str) {
-        return str == null || str.length() == 0 || str.trim().length() == 0 || str.equalsIgnoreCase("null");
-    }
-
     public static boolean isEmpty(CharSequence sequence) {
-        return isEmpty(sequence.toString());
+        return sequence == null || sequence.length() == 0 || sequence.toString().trim().length() == 0;
     }
 
     public static boolean isEmpty(TextView tv) {
@@ -218,12 +203,8 @@ public class UTextFull {
     }
 
     //-------------------------------------------------------------------------------------------------------------------
-    public static boolean isNotEmpty(String str) {
-        return str != null && str.length() > 0 && str.trim().length() == 0 && !str.equalsIgnoreCase("null");
-    }
-
     public static boolean isNotEmpty(CharSequence sequence) {
-        return isNotEmpty(sequence.toString());
+        return sequence != null && sequence.length() > 0 && sequence.toString().trim().length() > 0;
     }
 
     public static boolean isNotEmpty(TextView tv) {

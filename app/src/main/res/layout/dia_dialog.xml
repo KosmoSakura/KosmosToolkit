@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/line_alpha_top_bottom_gray"
+        android:background="@drawable/line_alpha_bottom_gray"
         android:gravity="center_horizontal"
         android:minHeight="70dp"
         android:orientation="vertical"

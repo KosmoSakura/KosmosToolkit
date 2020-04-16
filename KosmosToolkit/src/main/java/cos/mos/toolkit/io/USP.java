@@ -1,23 +1,25 @@
 package cos.mos.toolkit.io;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * @Description: SharedPreferences工具
- * @Author: Kosmos
- * @Date: 2018年08月03日 14:08
- * @Email: KosmoSakura@gmail.com
- * @eg: 修改日期：2018年10月8日
- * @eg: 修改日期：2018年12月22日
+ * @Description SharedPreferences工具
+ * @Author Kosmos
+ * @Date 2018年08月03日 14:08
+ * @Email KosmoSakura@gmail.com
+ * @tip 2018.10.8:基本
+ * @tip 2018.12.22: 重构
+ * @tip 2020.4.16：重载
  */
+@SuppressLint("CommitPrefEdits")
 public class USP {
     private volatile static USP instance;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
-    private USP() {
-    }
+    private USP() { }
 
     public static USP instance() {
         if (instance == null) {
@@ -61,7 +63,27 @@ public class USP {
     }
 
     public float getFloat(String key) {
-        return sp.getFloat(key, -1f);
+        return getFloat(key, 0f);
+    }
+
+    public long getLong(String key) {
+        return getLong(key, 0L);
+    }
+
+    public int getInt(String key) {
+        return getInt(key, 0);
+    }
+
+    public String getString(String key) {
+        return getString(key, "");
+    }
+
+    public boolean getBoolean(String key) {
+        return getBoolean(key, false);
+    }
+
+    public float getFloat(String key, float value) {
+        return sp.getFloat(key, value);
     }
 
     public long getLong(String key, long value) {
@@ -72,16 +94,8 @@ public class USP {
         return sp.getInt(key, value);
     }
 
-    public String getString(String key) {
-        return getString(key, "");
-    }
-
     public String getString(String key, String value) {
         return sp.getString(key, value);
-    }
-
-    public boolean getBoolean(String key) {
-        return sp.getBoolean(key, false);
     }
 
     public boolean getBoolean(String key, boolean value) {

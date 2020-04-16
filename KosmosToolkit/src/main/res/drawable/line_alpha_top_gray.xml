@@ -7,9 +7,9 @@
         android:right="-4dp"
         android:top="0dp">
         <shape>
-            <solid android:color="@color/T_all"/>
+            <solid android:color="@color/t_all"/>
             <stroke
-                android:width="1dp"
+                android:width="2px"
                 android:color="@color/fun_line"/>
             <padding android:bottom="4dp"/>
         </shape>

@@ -6,7 +6,7 @@
         android:right="-4dp"
         android:top="-4dp">
         <shape>
-            <solid android:color="@color/T_all"/>
+            <solid android:color="@color/t_all"/>
             <stroke
                 android:width="1dp"
                 android:color="@color/fun_txt_green"/>

@@ -52,7 +52,7 @@ public class UDialogOld {
         dialog.setCanceledOnTouchOutside(outside);//是否可以点击外面关闭
         dialog.show();
         dialog.setContentView(view);
-        dialog.getWindow().setBackgroundDrawableResource(R.color.T_all);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.t_all);
 
         title = view.findViewById(R.id.dia_title);
         icon = view.findViewById(R.id.dia_icon);

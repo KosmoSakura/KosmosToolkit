@@ -22,7 +22,7 @@
 
     <!--底部弹出的dialog-->
     <style name="SheetStyle" parent="android:Widget">
-        <item name="android:background">@color/T_all</item>
+        <item name="android:background">@color/t_all</item>
         <item name="behavior_peekHeight">400dp</item>
         <item name="behavior_hideable">true</item>
         <item name="behavior_skipCollapsed">false</item>

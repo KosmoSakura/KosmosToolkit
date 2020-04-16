@@ -5,14 +5,14 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorBase">#1ebaba</color>
     <!--透明颜色-->
-    <color name="T_light">#b0000000</color>
-    <color name="T_all">#00000000</color>
-    <color name="T_half">#88000000</color>
-    <color name="T_dark">#e0000000</color>
-    <color name="T_mini_black">#bd000000</color>
-    <color name="T_mini_gay">#bda1a1a1</color>
-    <color name="T_green">#653DAD6E</color>
-    <color name="T_mini_blue">#ac39acc2</color>
+    <color name="t_light">#b0000000</color>
+    <color name="t_all">#00000000</color>
+    <color name="t_half">#88000000</color>
+    <color name="t_dark">#e0000000</color>
+    <color name="t_mini_black">#bd000000</color>
+    <color name="t_mini_gay">#bda1a1a1</color>
+    <color name="t_green">#653DAD6E</color>
+    <color name="t_mini_blue">#ac39acc2</color>
     <!--功能色值-->
     <color name="fun_bg_white">#f5f5f5</color>
     <color name="fun_bg_orange">#fffffaf5</color>

@@ -251,38 +251,32 @@ public class UDialog extends Dialog {
         TextView cancel = findViewById(R.id.dia_cancel);
         TextView confirm = findViewById(R.id.dia_confirm);
         //取消、确认按钮:至少要显示一个
-        if (UText.isEmpty(strCancle) && UText.isEmpty(strConfirm)) {
-            cancel.setVisibility(View.GONE);
-            confirm.setText(UText.isNull(strConfirm, "Confirm"));
-            confirm.setOnClickListener(v -> clear());
+        if (UText.isNotEmpty(strCancle) && UText.isNotEmpty(strConfirm)) {
+            cancel.setVisibility(View.VISIBLE);
+            confirm.setVisibility(View.VISIBLE);
+            cancel.setBackgroundResource(R.drawable.arc_full_white_r4_cor_lb);
+            confirm.setBackgroundResource(R.drawable.arc_full_blue_r4_cor_rb);
+            cancel.setText(strCancle);
+            confirm.setText(strConfirm);
+            cancel.setOnClickListener(v -> {
+                if (cancelClick == null) {
+                    clear();
+                } else {
+                    cancelClick.onCancelClick(UDialog.this);
+                }
+            });
         } else {
-            if (UText.isEmpty(strCancle)) {
-                cancel.setVisibility(View.GONE);
-            } else {
-                cancel.setVisibility(View.VISIBLE);
-                cancel.setText(strCancle);
-                cancel.setOnClickListener(v -> {
-                    if (cancelClick == null) {
-                        clear();
-                    } else {
-                        cancelClick.onCancelClick(UDialog.this);
-                    }
-                });
-            }
-            if (UText.isEmpty(strConfirm)) {
-                confirm.setVisibility(View.GONE);
-            } else {
-                confirm.setVisibility(View.VISIBLE);
-                confirm.setText(strConfirm);
-                confirm.setOnClickListener(v -> {
-                    if (confirmClick == null) {
-                        clear();
-                    } else {
-                        confirmClick.onConfirmClick(UText.isNull(edt.getText().toString(), ""), UDialog.this);
-                    }
-                });
-            }
+            cancel.setVisibility(View.GONE);
+            confirm.setText(UText.isEmpty(strConfirm) ? UText.isNull(strCancle, "确定") : strConfirm);
+            confirm.setBackgroundResource(R.drawable.arc_full_blue_r4_cor_b);
         }
+        confirm.setOnClickListener(v -> {
+            if (confirmClick == null) {
+                clear();
+            } else {
+                confirmClick.onConfirmClick(UText.isNull(edt.getText().toString(), ""), UDialog.this);
+            }
+        });
         show();
     }
 

@@ -10,5 +10,5 @@
         android:id="@+id/frag_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/T_mini_blue"/>
+        android:background="@color/t_mini_blue"/>
 </LinearLayout>

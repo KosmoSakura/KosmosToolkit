@@ -1,11 +1,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dia_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="10dp"
-    android:background="@drawable/arc_full_dark_r4"
+    android:background="@drawable/arc_full_white_r4"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -13,18 +14,20 @@
     <TextView
         android:id="@+id/dia_title"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/line_alpha_bottom_gray"
         android:gravity="center"
-        android:text="我是标题"
-        android:textColor="@color/white"
-        android:textSize="18sp"/>
+        android:padding="15dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        tools:text="我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题"/>
 
     <!--中间内容-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@drawable/line_alpha_top_bottom_gray"
         android:gravity="center_horizontal"
         android:minHeight="70dp"
         android:orientation="vertical"
@@ -36,7 +39,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/lib_spinner"/>
+            android:src="@drawable/brvah_sample_footer_loading"/>
         <!--提示内容文本-->
         <TextView
             android:id="@+id/dia_msg"
@@ -44,8 +47,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="50dp"
-            android:text="正文文本正文文本正文文本正文文本"
-            android:textColor="@color/white"/>
+            android:textColor="@color/fun_txt_black"
+            tools:text="正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本"/>
         <!--输入框-->
         <EditText
             android:id="@+id/dia_edt"
@@ -53,46 +56,44 @@
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/arc_rim_white_r4"
-            android:hint="发现新版本"
+            android:background="@drawable/arc_rim_gray_r4"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
             android:textColor="@color/white"
             android:textColorHint="@color/fun_txt_gray"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            tools:hint="发现新版本"/>
     </LinearLayout>
 
     <!--确定按钮-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/line_alpha_top_gray"
         android:orientation="horizontal">
-
         <!--取消-->
         <TextView
             android:id="@+id/dia_cancel"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/line_alpha_right_gray"
             android:gravity="center"
             android:maxLines="1"
             android:text="Cancel"
             android:textColor="@color/fun_txt_gray"
-            android:textSize="17sp"/>
+            android:textSize="18sp"/>
         <!--同意-->
         <TextView
             android:id="@+id/dia_confirm"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/blue"
             android:gravity="center"
             android:maxLines="1"
             android:text="Confirm"
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 </LinearLayout>

@@ -61,7 +61,7 @@
             android:paddingTop="5dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="@color/fun_txt_gray"
             android:textSize="14sp"
             tools:hint="发现新版本"/>

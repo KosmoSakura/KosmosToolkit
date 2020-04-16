@@ -15,7 +15,7 @@ import cos.mos.toolkit.init.KFragment;
 import cos.mos.utils.from_blankj.ULogBj;
 import cos.mos.toolkit.json.UGson;
 import cos.mos.toolkit.java.UText;
-import cos.mos.utils.ui.dialog.UDialog;
+import cos.mos.utils.ui_tools.dialog.UDialog;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 

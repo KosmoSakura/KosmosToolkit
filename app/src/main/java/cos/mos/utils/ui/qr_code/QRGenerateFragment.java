@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder;
 import cos.mos.toolkit.io.USDCard;
 import cos.mos.toolkit.java.UText;
-import cos.mos.toolkit.ui.toast.ToastUtil;
+import cos.mos.utils.ui_tools.toast.ToastUtil;
 import cos.mos.toolkit.init.KFragment;
 import cos.mos.toolkit.listener.KTextWatcher;
 import cos.mos.utils.R;

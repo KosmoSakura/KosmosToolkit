@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.provider.Settings;
 
-import cos.mos.utils.ui.dialog.UDialog;
+import cos.mos.utils.ui_tools.dialog.UDialog;
 
 /**
  * @Description: GPS工具类

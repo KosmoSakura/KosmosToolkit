@@ -15,7 +15,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.java.UText;
 import cos.mos.toolkit.system.UIntent;
-import cos.mos.utils.ui.dialog.UDialog;
+import cos.mos.utils.ui_tools.dialog.UDialog;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

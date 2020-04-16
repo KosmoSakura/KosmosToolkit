@@ -5,7 +5,7 @@ import org.litepal.LitePal;
 import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.io.USP;
 import cos.mos.toolkit.media.audio.USampleSound;
-import cos.mos.toolkit.ui.toast.ToastUtil;
+import cos.mos.utils.ui_tools.toast.ToastUtil;
 import cos.mos.utils.constant.KConfig;
 import cos.mos.utils.from_blankj.ULog;
 

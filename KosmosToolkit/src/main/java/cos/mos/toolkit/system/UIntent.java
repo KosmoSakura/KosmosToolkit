@@ -11,7 +11,7 @@ import android.support.annotation.RequiresApi;
 
 import cos.mos.toolkit.ULog;
 import cos.mos.toolkit.init.KApp;
-import cos.mos.toolkit.ui.toast.UToast;
+import cos.mos.utils.ui_tools.toast.UToast;
 
 
 /**

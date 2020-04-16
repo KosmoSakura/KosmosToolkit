@@ -8,7 +8,7 @@ import android.provider.MediaStore;
 import java.io.IOException;
 
 import cos.mos.toolkit.java.UText;
-import cos.mos.toolkit.ui.toast.ToastUtil;
+import cos.mos.utils.ui_tools.toast.ToastUtil;
 
 /**
  * @Description: 分享工具

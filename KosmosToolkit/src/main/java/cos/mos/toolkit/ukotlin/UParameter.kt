@@ -39,7 +39,7 @@ fun String?.checkNull(defaul: String = "") = if (this.isNullOrEmpty()) defaul el
 fun Float.keep2(): Float = (this * 100.0f).toInt() / 100.0f
 
 //保留3位有效小数
-fun Float.keepDecimals3(): Float = (this * 1000f).toInt() / 1000f
+fun Float.keep3(): Float = (this * 1000f).toInt() / 1000f
 
 //保留2位有效小数
 fun Double.keep2(): Double = (this * 100.0).toInt() / 100.0

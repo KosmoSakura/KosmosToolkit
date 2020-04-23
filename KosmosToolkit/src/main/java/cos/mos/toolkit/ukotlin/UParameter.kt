@@ -5,6 +5,7 @@ import android.text.Html
 import android.text.Spanned
 import android.util.Log
 import android.view.View
+import java.math.BigDecimal
 
 /**
  * @Description Kotlin拓展函数库
@@ -35,17 +36,26 @@ inline fun <T : View> T.makeSingleClick(time: Long = 800, crossinline block: (T)
 
 fun String?.checkNull(defaul: String = "") = if (this.isNullOrEmpty()) defaul else this
 
-//保留2位有效小数
+//保留2位有效小数 直接砍掉后面的
 fun Float.keep2(): Float = (this * 100.0f).toInt() / 100.0f
 
-//保留3位有效小数
+//保留3位有效小数 直接砍掉后面的
 fun Float.keep3(): Float = (this * 1000f).toInt() / 1000f
 
-//保留2位有效小数
-fun Double.keep2(): Double = (this * 100.0).toInt() / 100.0
+//保留2位有效小数 直接砍掉后面的
+fun Double.keep2(): Double = (this * 100.0).toLong() / 100.0
 
-//保留3位有效小数
-fun Double.keep3(): Double = (this * 1000.0).toInt() / 1000.0
+//保留3位有效小数 直接砍掉后面的
+fun Double.keep3(): Double = (this * 1000.0).toLong() / 1000.0
+
+//保留2位有效小数 四舍五入=>返回：5.0 、5.12
+fun Double.keepRound2(): Double = BigDecimal(this).setScale(2, BigDecimal.ROUND_HALF_UP).toDouble()
+
+//保留3位有效小数 四舍五入 =>返回：5.0 、5.123
+fun Double.keepRound3(): Double = BigDecimal(this).setScale(3, BigDecimal.ROUND_HALF_UP).toDouble()
+
+//保留3位有效小数 四舍五入 =>返回：5.000、5.123
+fun Double.keepRoundStr3(): String = BigDecimal(this).setScale(3, BigDecimal.ROUND_HALF_UP).toString()
 
 fun String.makeUnderLine(): Spanned = getHtml("<u>$this</u>")
 fun String.makeBold(): Spanned = getHtml("<b>$this</b>")

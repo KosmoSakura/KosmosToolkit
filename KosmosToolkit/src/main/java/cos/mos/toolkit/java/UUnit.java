@@ -1,5 +1,7 @@
 package cos.mos.toolkit.java;
 
+import java.math.BigDecimal;
+
 /**
  * @Description 单位换算工具类
  * @Author Kosmos
@@ -17,21 +19,21 @@ public class UUnit {
     public static String formatUnits(float digit, String units) {
         float kiloByte = digit / 1000;
         if (kiloByte < 1) {
-            return formatTwo(digit) + units;
+            return keep2(digit) + units;
         }
         float megaByte = kiloByte / 1000;
         if (megaByte < 1) {
-            return formatTwo(kiloByte) + " K" + units;
+            return keep2(kiloByte) + " K" + units;
         }
         float gigaByte = megaByte / 1024;
         if (gigaByte < 1) {
-            return formatTwo(megaByte) + " M" + units;
+            return keep2(megaByte) + " M" + units;
         }
         float teraBytes = gigaByte / 1024;
         if (teraBytes < 1) {
-            return formatTwo(gigaByte) + " G" + units;
+            return keep2(gigaByte) + " G" + units;
         }
-        return formatTwo(teraBytes) + " T" + units;
+        return keep2(teraBytes) + " T" + units;
     }
 
     /**
@@ -41,21 +43,21 @@ public class UUnit {
     public static String formatBit(float size) {
         float kiloByte = size / 1024;
         if (kiloByte < 1) {
-            return formatTwo(size) + "\tB";
+            return keep2(size) + "\tB";
         }
         float megaByte = kiloByte / 1024;
         if (megaByte < 1) {
-            return formatTwo(kiloByte) + "\tKB";
+            return keep2(kiloByte) + "\tKB";
         }
         float gigaByte = megaByte / 1024;
         if (gigaByte < 1) {
-            return formatTwo(megaByte) + "\tMB";
+            return keep2(megaByte) + "\tMB";
         }
         float teraBytes = gigaByte / 1024;
         if (teraBytes < 1) {
-            return formatTwo(gigaByte) + "\tGB";
+            return keep2(gigaByte) + "\tGB";
         }
-        return formatTwo(teraBytes) + "\tTB";
+        return keep2(teraBytes) + "\tTB";
     }
 
     /**
@@ -65,42 +67,44 @@ public class UUnit {
     public static String formatTime(float millisecond) {
         float second = millisecond / 1000;
         if (second < 1) {
-            return formatTwo(millisecond) + "ms";
+            return keep2(millisecond) + "ms";
         }
         float min = second / 60;
         if (min < 1) {
-            return formatTwo(second) + "s";
+            return keep2(second) + "s";
         }
         float h = min / 60;
         if (h < 1) {
-            return formatTwo(min) + "min";
+            return keep2(min) + "min";
         }
         float day = h / 24;
         if (day < 1) {
-            return formatTwo(h) + "h";
+            return keep2(h) + "h";
         }
         float mon = day / 30;
         if (mon < 1) {
-            return formatTwo(day) + "D";
+            return keep2(day) + "D";
         }
         float year = mon / 12;
         if (year < 1) {
-            return formatTwo(mon) + "M";
+            return keep2(mon) + "M";
         }
-        return formatTwo(year) + "Y";
+        return keep2(year) + "Y";
     }
 
-    /**
-     * @param digit 输入
-     * @return 2位有效小数
-     * 截断2位以上的小数(最优先使用
-     */
-    private static float formatTwo(float digit) {
+    //保留2位有效小数 直接砍掉后面的
+    private static float keep2(float digit) {
         return (int) (digit * 100f) / 100f;
     }
 
-    private static double formatTwo(double digit) {
-        return (int) (digit * 100d) / 100d;
+    //保留2位有效小数 直接砍掉后面的
+    private static double keep2(double digit) {
+        return (long) (digit * 100d) / 100d;
+    }
+
+    //保留2位有效小数 四舍五入=>返回：5.0 、5.12
+    private static String keepStr2(float digit) {
+        return new BigDecimal(digit).setScale(2, BigDecimal.ROUND_HALF_UP).toString();
     }
 
     /**

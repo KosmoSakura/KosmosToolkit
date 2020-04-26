@@ -12,6 +12,7 @@ import java.math.BigDecimal
  * @Author Kosmos
  * @Date 2020.03.24 17:06
  * @Email KosmoSakura@gmail.com
+ * @tip 2020.4.26-四舍五入，精度问题
  * */
 //最后一次点击时间
 var <T : View> T.lastClickTime: Long

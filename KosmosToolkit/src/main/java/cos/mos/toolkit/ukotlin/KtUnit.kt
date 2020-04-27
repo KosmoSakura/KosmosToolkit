@@ -7,6 +7,7 @@ import java.math.BigDecimal
  * @Author: Kosmos
  * @Date: 2019.04.23 16:01
  * @Email: KosmoSakura@gmail.com
+ * @tip 2020.4.27-四舍五入，取整、精度问题
  */
 object KtUnit {
     @JvmStatic
@@ -58,30 +59,46 @@ object KtUnit {
         } else keep2(year).toString() + "Y"
     }
 
-    //保留2位有效小数 直接砍掉后面的
-    @JvmStatic
+    //-----------------------------------------------------------------------------------------------------------
+
+    @JvmStatic//取整 四舍五入：5.6=>6
+    fun keepRound(digit: Double): Int = BigDecimal(digit).setScale(0, BigDecimal.ROUND_HALF_UP).toInt()
+
+    @JvmStatic//取整 四舍五入：5.6=>6,效果同toInt，少一次转换
+    fun keepRoundStr(digit: Double): String = BigDecimal(digit).setScale(0, BigDecimal.ROUND_HALF_UP).toString()
+
+    //-----------------------------------------------------------------------------------------------------------
+
+    @JvmStatic//保留1位有效小数 四舍五入: 5.25=>5.3
+    fun keepRound1(digit: Double): Double = BigDecimal(digit).setScale(1, BigDecimal.ROUND_HALF_UP).toDouble()
+
+    @JvmStatic//保留2位有效小数 直接砍掉后面的:5.116=>5.11
     fun keep2(digit: Float): Float = (digit * 100f).toInt() / 100f
 
-    //保留2位有效小数 直接砍掉后面的
+    @JvmStatic //保留2位有效小数 直接砍掉后面的:5.1235=>5.123
     fun keep2(digit: Double): Double = (digit * 100.0).toLong() / 100.0
 
-    //保留2位有效小数 四舍五入=>返回：5.0 、5.12
+    @JvmStatic//保留2位有效小数 四舍五入=>返回：5.0 、5.12
     fun keepRound2(digit: Double): Double = BigDecimal(digit).setScale(2, BigDecimal.ROUND_HALF_UP).toDouble()
 
-    //保留3位有效小数 四舍五入 =>返回：5.00 、5.12
+    @JvmStatic//保留2位有效小数 四舍五入 =>返回：5.00 、5.12
     fun keepRoundStr2(digit: Double): String = BigDecimal(digit).setScale(2, BigDecimal.ROUND_HALF_UP).toString()
 
-    //保留3位有效小数 直接砍掉后面的
+    //-----------------------------------------------------------------------------------------------------------
+
+    @JvmStatic//保留3位有效小数 直接砍掉后面的:5.11677=>5.116
     fun keep3(digit: Float): Float = (digit * 1000f).toInt() / 1000f
 
-    //保留3位有效小数 直接砍掉后面的
+    @JvmStatic//保留3位有效小数 直接砍掉后面的:5.11677=>5.116
     fun keep3(digit: Double): Double = (digit * 1000.0).toLong() / 1000.0
 
-    //保留3位有效小数 四舍五入 =>返回：5.0 、5.123
+    @JvmStatic //保留3位有效小数 四舍五入：5.1235=>5.124 , 5.0=>5.0
     fun keepRound3(digit: Double): Double = BigDecimal(digit).setScale(3, BigDecimal.ROUND_HALF_UP).toDouble()
 
-    //保留3位有效小数 四舍五入 =>返回：5.000、5.123
+    @JvmStatic//保留3位有效小数 四舍五入：5.1235=>5.124 , 5.0=>5.000
     fun keepRoundStr3(digit: Double): String = BigDecimal(digit).setScale(3, BigDecimal.ROUND_HALF_UP).toString()
+
+    //-----------------------------------------------------------------------------------------------------------
 
     /**
      * @param celsius 摄氏度

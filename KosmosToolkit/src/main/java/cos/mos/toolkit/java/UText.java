@@ -16,6 +16,7 @@ import java.util.List;
  * @Tip 2019.4.8:优化重构变量
  * @Tip 2019.10.25:优化判断逻辑执行效率
  * @Tip 2019.11.7:追加空处理类型
+ * @Tip 2020.5.6:新增几个函数
  * @apiNote 本类中的空值判断：长度为0都为false
  */
 public class UText {
@@ -133,19 +134,42 @@ public class UText {
         return arr != null && arr.length > 0;
     }
 
-    public static boolean equals(CharSequence a, CharSequence b) {
-        if (a == b) return true;
-        int length;
-        if (a != null && b != null && (length = a.length()) == b.length()) {
-            if (a instanceof String && b instanceof String) {
-                return a.equals(b);
-            } else {
-                for (int i = 0; i < length; i++) {
-                    if (a.charAt(i) != b.charAt(i)) return false;
-                }
-                return true;
-            }
-        }
-        return false;
+    //------------------------------------------------------------------------------------------------
+
+    /**
+     * @return 返回str长度，为空返回指定值
+     */
+    public static int getLength(String str, final int defaul) {
+        return isEmpty(str) ? defaul : str.length();
     }
+
+    /**
+     * @return 返回str长度，为空返回0
+     */
+    public static int getLength(String str) {
+        return getLength(str, 0);
+    }
+
+    /**
+     * @return 文本控件内容长度，为空返回0
+     */
+    public static int getLength(TextView tv) {
+        return isEmpty(tv) ? 0 : tv.length();
+    }
+
+    /**
+     * @apiNote 获取数组长度(为空返回0)
+     */
+    public static int getLength(String[] arr) {
+        return arr == null ? 0 : arr.length;
+    }
+
+    /**
+     * @return 获取list长度(为空返回0)
+     */
+    public static int getLength(List list) {
+        return list == null ? 0 : list.size();
+    }
+
+//-------------------------------------------------------------------------------------------------------------------
 }

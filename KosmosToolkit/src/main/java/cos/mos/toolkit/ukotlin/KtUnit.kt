@@ -113,4 +113,28 @@ object KtUnit {
      */
     @JvmStatic
     fun fToC(fahrenheit: Float): Float = (fahrenheit - 32) * 5 / 9
+
+    //-------------------------------------------------------------------------------------------------------------------
+    /**
+     * @param version    要比较的版本号
+     * @param versionOld 被比较的版本号
+     * @return 比较版本号的大小, 前者大则返回一个正数, 后者大返回一个负数, 相等则返回0
+     */
+    fun compareVersion(version: String?, versionOld: String?): Int {
+        if (version == null || versionOld == null) {
+            throw NullPointerException("传入对象为空")
+        }
+        val versionArray1 = version.split("\\.").toTypedArray() //注意此处为正则匹配，不能用"."；
+        val versionArray2 = versionOld.split("\\.").toTypedArray()
+        var idx = 0
+        val minLength = versionArray1.size.coerceAtMost(versionArray2.size) //取最小长度值
+        var diff = 0
+        while (idx < minLength && versionArray1[idx].length - versionArray2[idx].length.also { diff = it } == 0 //先比较长度
+            && versionArray1[idx].compareTo(versionArray2[idx]).also { diff = it } == 0) { //再比较字符
+            ++idx
+        }
+        //如果已经分出大小，则直接返回，如果未分出大小，则再比较位数，有子版本的为大；
+        diff = if (diff != 0) diff else versionArray1.size - versionArray2.size
+        return diff
+    }
 }

@@ -104,6 +104,18 @@ object KtUnit {
     @JvmStatic//保留3位有效小数 四舍五入：5.1235=>5.124 , 5.0=>5.000
     fun keepRoundStr3(digit: Double): String = BigDecimal(digit).setScale(3, BigDecimal.ROUND_HALF_UP).toString()
 
+    @JvmStatic //保留3位有效小数 四舍五入：5.1235=>5.124 , 5.0=>5.0
+    fun keepRound3(digit: String): Double = BigDecimal(digit).setScale(3, BigDecimal.ROUND_HALF_UP).toDouble()
+
+    @JvmStatic//保留3位有效小数 四舍五入：5.1235=>5.124 , 5.0=>5.000
+    fun keepRoundStr3(digit: String): String = BigDecimal(digit).setScale(3, BigDecimal.ROUND_HALF_UP).toString()
+    //-----------------------------------------------------------------------------------------------------------
+
+    @JvmStatic//保留6位有效小数 四舍五入
+    fun keepRound6(digit: Double): Double = BigDecimal(digit).setScale(6, BigDecimal.ROUND_HALF_UP).toDouble()
+
+    @JvmStatic//保留6位有效小数 四舍五入
+    fun keepRoundStr6(digit: Double): String = BigDecimal(digit).setScale(6, BigDecimal.ROUND_HALF_UP).toString()
     //-----------------------------------------------------------------------------------------------------------
 
     /**

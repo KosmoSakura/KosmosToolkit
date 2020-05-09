@@ -43,12 +43,23 @@
         <!--提示内容文本-->
         <TextView
             android:id="@+id/dia_msg"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="50dp"
-            android:textColor="@color/fun_txt_black"
-            tools:text="正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本正文文本"/>
+            android:textColor="@color/fun_txt_gray_deep"
+            tools:text="当前版本为: V1.1.0  |  最新版本为：V1.1.1\n
+更新发布时间：2020-04-14 07:01:08\n
+更新内容:xxxxxx\n
+是否更新？"/>
+        <TextView
+            android:id="@+id/dia_msg_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/fun_txt_gray_deep"
+            tools:text="是否更新？"/>
         <!--输入框-->
         <EditText
             android:id="@+id/dia_edt"

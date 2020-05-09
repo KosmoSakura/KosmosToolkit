@@ -27,11 +27,16 @@ import cos.mos.utils.R;
  * @tip 2018.9.12 函数封装
  * @tip 2019.3.21 解耦、构建封装
  * @tip 2019.11.7 优化显示尺寸
- * @tip 2020.4.17 支持定制颜色(通过UHtml设置)
+ * @tip 2020.4.17 支持定制颜色(UHtml.getHtml("检测到可用更新", Code.ColorError))
+ * @tip 2020.5.9 追加通知内容2展示
  */
 public class UDialog extends Dialog {
-    private CharSequence strTitle, strMsg, strHint, strConfirm, strCancle;
-    private int iconRes, gravity = Gravity.CENTER;
+    private CharSequence strTitle, strHint;//标题、输入框hint
+    private CharSequence strConfirm, strCancle;//确定、取消按钮文字
+    private CharSequence strMsg, strMsg_2;//通知内容1,通知内容2
+    private int iconRes;//图标
+    private int gravity = Gravity.CENTER;//通知内容排版
+    private int gravity_2 = Gravity.CENTER;//通知内容2排版
     private boolean password;//密码模式
     private CancelClick cancelClick;
 
@@ -101,11 +106,22 @@ public class UDialog extends Dialog {
     }
 
     /**
-     * @param msg 通知内容
+     * @param msg 通知内容|居中对齐
      * @apiNote 不调用、或传入空 则不显示该区域
      */
     public UDialog msg(CharSequence msg) {
         this.strMsg = msg;
+        return this;
+    }
+
+    /**
+     * @param msg           通知内容
+     * @param alignmentLeft 是否左对齐，false右对齐
+     * @apiNote 不调用、或传入空 则不显示该区域
+     */
+    public UDialog msg(CharSequence msg, boolean alignmentLeft) {
+        this.strMsg = msg;
+        this.gravity = alignmentLeft ? Gravity.START : Gravity.END;
         return this;
     }
 
@@ -116,6 +132,36 @@ public class UDialog extends Dialog {
     public UDialog msg(CharSequence msg, int gravity) {
         this.strMsg = msg;
         this.gravity = gravity;
+        return this;
+    }
+
+    /**
+     * @param msg 通知内容2|居中对齐
+     * @apiNote 不调用、或传入空 则不显示该区域
+     */
+    public UDialog msg_2(CharSequence msg) {
+        this.strMsg_2 = msg;
+        return this;
+    }
+
+    /**
+     * @param msg           通知内容2
+     * @param alignmentLeft 是否左对齐，false右对齐
+     * @apiNote 不调用、或传入空 则不显示该区域
+     */
+    public UDialog msg_2(CharSequence msg, boolean alignmentLeft) {
+        this.strMsg_2 = msg;
+        this.gravity_2 = alignmentLeft ? Gravity.START : Gravity.END;
+        return this;
+    }
+
+    /**
+     * @param msg     通知内容
+     * @param gravity 文字显示模式
+     */
+    public UDialog msg_2(CharSequence msg, int gravity) {
+        this.strMsg_2 = msg;
+        this.gravity_2 = gravity;
         return this;
     }
 
@@ -229,7 +275,7 @@ public class UDialog extends Dialog {
             icon.setVisibility(View.VISIBLE);
             icon.setImageResource(iconRes);
         }
-        //通知内容
+        //通知内容1
         TextView msg = findViewById(R.id.dia_msg);
         if (UText.isEmpty(strMsg)) {
             msg.setVisibility(View.GONE);
@@ -237,6 +283,15 @@ public class UDialog extends Dialog {
             msg.setText(strMsg);
             msg.setVisibility(View.VISIBLE);
             msg.setGravity(gravity);
+        }
+        //通知内容2
+        TextView msg_2 = findViewById(R.id.dia_msg_2);
+        if (UText.isEmpty(strMsg)) {
+            msg_2.setVisibility(View.GONE);
+        } else {
+            msg_2.setText(strMsg_2);
+            msg_2.setVisibility(View.VISIBLE);
+            msg_2.setGravity(gravity_2);
         }
         //输入框
         EditText edt = findViewById(R.id.dia_edt);

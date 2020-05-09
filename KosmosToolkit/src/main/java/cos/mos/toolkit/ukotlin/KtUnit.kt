@@ -68,10 +68,16 @@ object KtUnit {
     fun keepRoundStr(digit: Double): String = BigDecimal(digit).setScale(0, BigDecimal.ROUND_HALF_UP).toString()
 
     //-----------------------------------------------------------------------------------------------------------
+    @JvmStatic //保留1位有效小数 直接砍掉后面的:5.1235=>5.1
+    fun keep1(digit: Double): Double = (digit * 10.0).toLong() / 10.0
 
     @JvmStatic//保留1位有效小数 四舍五入: 5.25=>5.3
     fun keepRound1(digit: Double): Double = BigDecimal(digit).setScale(1, BigDecimal.ROUND_HALF_UP).toDouble()
 
+    @JvmStatic//保留1位有效小数 四舍五入: 5.25=>5.3,效果同toDouble，少一次转换
+    fun keepRoundStr1(digit: Double): String = BigDecimal(digit).setScale(1, BigDecimal.ROUND_HALF_UP).toString()
+
+    //-----------------------------------------------------------------------------------------------------------
     @JvmStatic//保留2位有效小数 直接砍掉后面的:5.116=>5.11
     fun keep2(digit: Float): Float = (digit * 100f).toInt() / 100f
 

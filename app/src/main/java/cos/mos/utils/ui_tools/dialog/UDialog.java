@@ -286,7 +286,7 @@ public class UDialog extends Dialog {
         }
         //通知内容2
         TextView msg_2 = findViewById(R.id.dia_msg_2);
-        if (UText.isEmpty(strMsg)) {
+        if (UText.isEmpty(strMsg_2)) {
             msg_2.setVisibility(View.GONE);
         } else {
             msg_2.setText(strMsg_2);

@@ -81,6 +81,11 @@ fun Double.keepRoundStr6(): String = BigDecimal(this).setScale(6, BigDecimal.ROU
 //保留6位有效小数 四舍五入
 fun Double.keepRound6(): Double = BigDecimal(this).setScale(6, BigDecimal.ROUND_HALF_UP).toDouble()
 
+//保留6位有效小数 进位:5.11111111=>5.111112
+fun Double.keepRound6Up(): Double = BigDecimal(this).setScale(6, BigDecimal.ROUND_UP).toDouble()
+
+//保留6位有效小数 进位:5.11111111=>5.111112
+fun Double.keepRoundStr6Up(): String = BigDecimal(this).setScale(6, BigDecimal.ROUND_UP).toString()
 //-----------------------------------------------------------------------------------------------------------
 
 fun String?.checkNull(defaul: String = "") = if (this.isNullOrEmpty()) defaul else this

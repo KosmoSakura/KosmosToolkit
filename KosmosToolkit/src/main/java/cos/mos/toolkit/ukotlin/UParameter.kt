@@ -41,6 +41,7 @@ inline fun <T : View> T.makeSingleClick(time: Long = 800, crossinline block: (T)
 
 //取整 四舍五入：5.6=>6
 fun Double.keepRound(): Int = BigDecimal(this).setScale(0, BigDecimal.ROUND_HALF_UP).toInt()
+
 //取整 四舍五入：5.6=>6,效果同toInt，少一次转换
 fun Double.keepRoundStr(): String = BigDecimal(this).setScale(0, BigDecimal.ROUND_HALF_UP).toString()
 
@@ -72,6 +73,13 @@ fun Double.keepRound3(): Double = BigDecimal(this).setScale(3, BigDecimal.ROUND_
 
 //保留3位有效小数 四舍五入：5.1235=>5.124 , 5.0=>5.000
 fun Double.keepRoundStr3(): String = BigDecimal(this).setScale(3, BigDecimal.ROUND_HALF_UP).toString()
+
+//-----------------------------------------------------------------------------------------------------------
+//保留6位有效小数 四舍五入
+fun Double.keepRoundStr6(): String = BigDecimal(this).setScale(6, BigDecimal.ROUND_HALF_UP).toString()
+
+//保留6位有效小数 四舍五入
+fun Double.keepRound6(): Double = BigDecimal(this).setScale(6, BigDecimal.ROUND_HALF_UP).toDouble()
 
 //-----------------------------------------------------------------------------------------------------------
 

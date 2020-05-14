@@ -14,7 +14,7 @@ import android.widget.TextView
 object KtText {
 
     @JvmStatic
-    fun isNull(charSequence: CharSequence?, defaul: String = "") = if (isEmpty(charSequence)) defaul else isNull(charSequence.toString())
+    fun isNull(charSequence: CharSequence?, defaul: String = "") = if (isEmpty(charSequence)) defaul else charSequence
 
     @JvmStatic
     fun isNull(textView: TextView?, defaul: String = "") = if (textView == null) defaul else isNull(textView.text)

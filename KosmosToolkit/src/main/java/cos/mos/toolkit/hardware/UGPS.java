@@ -2,11 +2,8 @@ package cos.mos.toolkit.hardware;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.location.LocationManager;
-import android.provider.Settings;
 
-import cos.mos.utils.ui_tools.dialog.UDialog;
 
 /**
  * @Description: GPS工具类
@@ -28,13 +25,14 @@ public class UGPS {
      * 跳转GPS设置界面
      */
     public static void openGPSSettings(Activity activity) {
-        UDialog.builder(activity, false)
-            .msg("Please open the location service")
-            .button("To Open")
-            .build((result, dia) -> {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                activity.startActivityForResult(intent, 5);
-                dia.dismiss();
-            });
+        //相关提示提示
+//        UDialog.builder(activity, false)
+//            .msg("Please open the location service")
+//            .button("To Open")
+//            .build((result, dia) -> {
+//                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                activity.startActivityForResult(intent, 5);
+//                dia.dismiss();
+//            });
     }
 }

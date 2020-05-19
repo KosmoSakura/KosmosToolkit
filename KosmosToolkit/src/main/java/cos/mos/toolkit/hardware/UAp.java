@@ -9,7 +9,7 @@ import android.support.annotation.RequiresApi;
 
 import java.lang.reflect.Method;
 
-import cos.mos.toolkit.ULog;
+import cos.mos.toolkit.log.ULog;
 import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.java.UText;
 
@@ -223,7 +223,7 @@ public class UAp {
             Method method = getWifiMgr().getClass().getMethod("setWifiApEnabled",
                 WifiConfiguration.class, Boolean.TYPE);
             Boolean result = (Boolean) method.invoke(getWifiMgr(), config, true);
-            if (UText.isBoolean(result)) {
+            if (UText.isTrue(result)) {
                 sid = "Scan-Wifi";
                 pwd = "Scan-Wifi@233";
                 callbak.onConnected("", sid, pwd);

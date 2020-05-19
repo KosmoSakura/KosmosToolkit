@@ -7,7 +7,7 @@ import cos.mos.toolkit.io.USP;
 import cos.mos.toolkit.media.audio.USampleSound;
 import cos.mos.utils.ui_tools.toast.ToastUtil;
 import cos.mos.utils.constant.KConfig;
-import cos.mos.utils.from_blankj.ULog;
+import cos.mos.toolkit.log.ULog;
 
 /**
  * @Description: <p>

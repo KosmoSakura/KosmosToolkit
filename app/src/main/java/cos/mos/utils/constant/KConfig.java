@@ -1,5 +1,6 @@
 package cos.mos.utils.constant;
 
+import cos.mos.toolkit.constant.Code;
 import cos.mos.toolkit.java.UText;
 
 /**
@@ -8,7 +9,7 @@ import cos.mos.toolkit.java.UText;
  * @Date: 2018.11.13 12:12
  * @Email: KosmoSakura@gmail.com
  */
-public class KConfig {
+public class KConfig implements Code {
     public static String Describe;//接口描述
     private static String BASE_URL;//base url
 

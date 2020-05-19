@@ -6,17 +6,17 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
-import cos.mos.utils.from_blankj.ULogBj;
+import cos.mos.toolkit.log.ULog;
 import cos.mos.toolkit.java.UText;
-import cos.mos.utils.net.retrofit.file.FileProgressCallback;
-import cos.mos.utils.net.retrofit.file.FileWrapper;
-import cos.mos.utils.widget.progress.ProgressDialog;
-import cos.mos.utils.net.retrofit.UHttp;
 import cos.mos.utils.mvp.KPresenter;
 import cos.mos.utils.mvp.KRequest;
 import cos.mos.utils.mvp.bean.ImageBean;
 import cos.mos.utils.mvp.contract.KContract;
 import cos.mos.utils.mvp.contract.KListMsgListener;
+import cos.mos.utils.net.retrofit.UHttp;
+import cos.mos.utils.net.retrofit.file.FileProgressCallback;
+import cos.mos.utils.net.retrofit.file.FileWrapper;
+import cos.mos.utils.widget.progress.ProgressDialog;
 import io.reactivex.disposables.Disposable;
 
 /**
@@ -85,7 +85,7 @@ class MainPresenter extends KPresenter {
         KRequest rs = FileWrapper.getInstance(new FileProgressCallback() {
             @Override
             public void onLoading(long total, long progress) {
-                ULogBj.commonD("All:" + total + ",Progress:" + progress);
+                ULog.commonD("All:" + total + ",Progress:" + progress);
             }
         }).create(KRequest.class);
 //        UHttp.download(rs.download("url"), new KDownloadListener() {

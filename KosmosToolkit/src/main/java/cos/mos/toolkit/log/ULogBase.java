@@ -1,4 +1,4 @@
-package cos.mos.utils.from_blankj;
+package cos.mos.toolkit.log;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

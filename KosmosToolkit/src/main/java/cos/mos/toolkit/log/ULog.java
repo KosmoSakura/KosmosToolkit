@@ -1,10 +1,10 @@
-package cos.mos.utils.from_blankj;
+package cos.mos.toolkit.log;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import cos.mos.utils.constant.Config;
+import cos.mos.toolkit.constant.Code;
 
 
 /**
@@ -15,15 +15,15 @@ import cos.mos.utils.constant.Config;
  */
 public class ULog {
     public static void init(@NonNull final Context context) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.init(context)
                 .setLogSwitch(true)//日志开关
                 .setConsoleSwitch(true)//日志开关
-                .setGlobalTag(Config.DefaultTag)
+                .setGlobalTag(Code.DefaultTag)
                 .setLogHeadSwitch(true)
                 .setLog2FileSwitch(false)
                 .setDir("")
-                .setFilePrefix(Config.DefaultTag)//日志默认Tag
+                .setFilePrefix(Code.DefaultTag)//日志默认Tag
                 .setBorderSwitch(true)
                 .setSingleTagSwitch(true)
                 .setConsoleFilter(ULogBase.V)
@@ -37,197 +37,197 @@ public class ULog {
 
     //输出普通的打印信息
     public static void commonD(String str) {
-        commonD(Config.DefaultTag, str);
+        commonD(Code.DefaultTag, str);
     }
 
     //输出普通的打印信息
     public static void commonV(String str) {
-        commonV(Config.DefaultTag, str);
+        commonV(Code.DefaultTag, str);
     }
 
     //输出普通的打印信息
     public static void commonE(String str) {
-        commonE(Config.DefaultTag, str);
+        commonE(Code.DefaultTag, str);
     }
 
     //输出普通的打印信息
     public static void commonW(String str) {
-        commonW(Config.DefaultTag, str);
+        commonW(Code.DefaultTag, str);
     }
 
     //输出普通的打印信息
     public static void commonI(String str) {
-        commonI(Config.DefaultTag, str);
+        commonI(Code.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void d(String str) {
-        d(Config.DefaultTag, str);
+        d(Code.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void v(String str) {
-        v(Config.DefaultTag, str);
+        v(Code.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void e(String str) {
-        e(Config.DefaultTag, str);
+        e(Code.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void w(String str) {
-        w(Config.DefaultTag, str);
+        w(Code.DefaultTag, str);
     }
 
     //输出堆栈信息
     public static void i(String str) {
-        i(Config.DefaultTag, str);
+        i(Code.DefaultTag, str);
     }
 
     //打印Json格式的日志
     public static void jsonD(String str) {
-        jsonD(Config.DefaultTag, str);
+        jsonD(Code.DefaultTag, str);
     }
 
     //打印Json格式的日志
     public static void jsonV(String str) {
-        jsonV(Config.DefaultTag, str);
+        jsonV(Code.DefaultTag, str);
     }
 
     //打印Json格式的日志
     public static void jsonE(String str) {
-        jsonE(Config.DefaultTag, str);
+        jsonE(Code.DefaultTag, str);
     }
 
     //打印Json格式的日志
     public static void jsonW(String str) {
-        jsonW(Config.DefaultTag, str);
+        jsonW(Code.DefaultTag, str);
     }
 
     //打印Json格式的日志
     public static void jsonI(String str) {
-        jsonI(Config.DefaultTag, str);
+        jsonI(Code.DefaultTag, str);
     }
 
     //打印xml格式的日志
     public static void xmlD(String str) {
-        xmlD(Config.DefaultTag, str);
+        xmlD(Code.DefaultTag, str);
     }
 
     //打印xml格式的日志
     public static void xmlV(String str) {
-        xmlV(Config.DefaultTag, str);
+        xmlV(Code.DefaultTag, str);
     }
 
     //打印xml格式的日志
     public static void xmlE(String str) {
-        xmlE(Config.DefaultTag, str);
+        xmlE(Code.DefaultTag, str);
     }
 
     //打印xml格式的日志
     public static void xmlW(String str) {
-        xmlW(Config.DefaultTag, str);
+        xmlW(Code.DefaultTag, str);
     }
 
     //打印xml格式的日志
     public static void xmlI(String str) {
-        xmlI(Config.DefaultTag, str);
+        xmlI(Code.DefaultTag, str);
     }
 
     //打印文件格式的日志
     public static void fileD(String str) {
-        fileD(Config.DefaultTag, str);
+        fileD(Code.DefaultTag, str);
     }
 
     //打印文件格式的日志
     public static void fileV(String str) {
-        fileV(Config.DefaultTag, str);
+        fileV(Code.DefaultTag, str);
     }
 
     //打印文件格式的日志
     public static void fileE(String str) {
-        fileE(Config.DefaultTag, str);
+        fileE(Code.DefaultTag, str);
     }
 
     //打印文件格式的日志
     public static void fileW(String str) {
-        fileW(Config.DefaultTag, str);
+        fileW(Code.DefaultTag, str);
     }
 
     //打印文件格式的日志
     public static void fileI(String str) {
-        fileI(Config.DefaultTag, str);
+        fileI(Code.DefaultTag, str);
     }
 
 // 传入tag打印log ------------------------------------------------------------------------------------
 
     //输出普通的打印信息
     public static void commonD(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             Log.d(tag, str);
         }
     }
 
     //输出普通的打印信息
     public static void commonV(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             Log.v(tag, str);
         }
     }
 
     //输出普通的打印信息
     public static void commonE(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             Log.e(tag, str);
         }
     }
 
     //输出普通的打印信息
     public static void commonW(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             Log.w(tag, str);
         }
     }
 
     //输出普通的打印信息
     public static void commonI(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             Log.i(tag, str);
         }
     }
 
     //输出堆栈信息
     public static void d(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.dTag(tag, str);
         }
     }
 
     //输出堆栈信息
     public static void v(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.vTag(tag, str);
         }
     }
 
     //输出堆栈信息
     public static void e(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.eTag(tag, str);
         }
     }
 
     //输出堆栈信息
     public static void w(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.wTag(tag, str);
         }
     }
 
     //输出堆栈信息
     public static void i(String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.iTag(tag, str);
         }
     }
@@ -316,7 +316,7 @@ public class ULog {
      * @Tip 打印Json格式的日志
      */
     private static void json(@ULogBase.TYPE int type, String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.json(type, tag, str);
         }
     }
@@ -328,7 +328,7 @@ public class ULog {
      * @Tip 打印xml格式的日志
      */
     private static void xml(@ULogBase.TYPE int type, String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.xml(type, tag, str);
         }
     }
@@ -340,7 +340,7 @@ public class ULog {
      * @Tip 打印文件日志
      */
     private static void file(@ULogBase.TYPE int type, String tag, String str) {
-        if (Config.IsDebug) {
+        if (Code.IsDebug) {
             ULogBase.file(type, tag, str);
         }
     }

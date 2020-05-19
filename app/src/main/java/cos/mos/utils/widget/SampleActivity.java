@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import cos.mos.toolkit.ULog;
+import cos.mos.toolkit.log.ULog;
 import cos.mos.toolkit.system.UScreen;
 import cos.mos.utils.R;
 import cos.mos.utils.initial.BaseActivity;

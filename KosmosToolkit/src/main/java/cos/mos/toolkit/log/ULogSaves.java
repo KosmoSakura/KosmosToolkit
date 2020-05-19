@@ -1,4 +1,4 @@
-package cos.mos.toolkit;
+package cos.mos.toolkit.log;
 
 import android.os.Environment;
 

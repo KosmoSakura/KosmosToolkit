@@ -6,7 +6,7 @@ import android.os.Environment;
 
 import java.io.File;
 
-import cos.mos.toolkit.ULog;
+import cos.mos.toolkit.log.ULog;
 
 /**
  * @Description: <p>

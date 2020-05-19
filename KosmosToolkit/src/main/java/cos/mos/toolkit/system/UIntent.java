@@ -9,9 +9,8 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 
-import cos.mos.toolkit.ULog;
 import cos.mos.toolkit.init.KApp;
-import cos.mos.utils.ui_tools.toast.UToast;
+import cos.mos.toolkit.log.ULog;
 
 
 /**
@@ -194,7 +193,7 @@ public class UIntent {
         try {
             start(intent);
         } catch (Exception e) {
-            UToast.show("No default player");
+//            UToast.show("No default player");//显示提示
         }
     }
 
@@ -254,7 +253,7 @@ public class UIntent {
             data.putExtra(Intent.EXTRA_TEXT, "This is the content");
             start(data);
         } catch (Exception e) {
-            UToast.show("No mail client found");
+//            UToast.show("No mail client found");//显示提示
         }
     }
 

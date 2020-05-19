@@ -40,6 +40,8 @@
         <item name="android:windowIsFloating">true</item>
         <!--模糊-->
         <item name="android:backgroundDimEnabled">true</item>
+        <!--透明度-->
+        <item name="android:backgroundDimAmount">0.2</item>
     </style>
 
     <!--鸿洋toast-->

@@ -1,0 +1,27 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dia_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/arc_full_white_r4"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="50dp"
+    android:paddingTop="20dp"
+    android:paddingRight="50dp"
+    android:paddingBottom="20dp">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/purple"
+        android:indeterminateTintMode="src_atop"/>
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/purple"
+        tools:text="数据加载中..."/>
+</LinearLayout>

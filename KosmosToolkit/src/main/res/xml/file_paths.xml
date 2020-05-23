@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="p1"
+        path="/data/dir1/"/>
+
+    <external-path
+        name="p2"
+        path="/"/>
+
+    <external-files-path
+        name="p3"
+        path="/data/dir2"/>
+
+    <external-cache-path
+        name="p4"
+        path="/data/dir3"/>
+
+    <cache-path
+        name="p5"
+        path="/data"/>
+
+    <files-path
+        name="p6"
+        path="/ff"/>
+</paths>

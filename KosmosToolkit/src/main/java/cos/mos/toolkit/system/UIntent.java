@@ -8,22 +8,27 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.FileProvider;
 
+import java.io.File;
+
+import cos.mos.toolkit.constant.Code;
 import cos.mos.toolkit.init.KApp;
 import cos.mos.toolkit.log.ULog;
 
 
 /**
- * @Description: 各中页面跳转
- * @Author: Kosmos
- * @Date: 2018.12.17 15:16
- * @Email: KosmoSakura@gmail.com
- * @eg: 2018.12.24:特殊权限页面跳转
- * @eg: 2019.2.26:辅助通道页面跳转
- * @eg: 2019.3.5:打开系统视频播放器
- * @eg: 2019.3.7:分享文字
- * @eg: 2019.3.18: 跳转应用商店
- * @eg 2019.3.21: 跳转邮箱、拨号等界面
+ * @Description 各中页面跳转
+ * @Author Kosmos
+ * @Date 2018.12.17 15:16
+ * @Email KosmoSakura@gmail.com
+ * @tip 2018.12.24:特殊权限页面跳转
+ * @tip 2019.2.26:辅助通道页面跳转
+ * @tip 2019.3.5:打开系统视频播放器
+ * @tip 2019.3.7:分享文字
+ * @tip 2019.3.18: 跳转应用商店
+ * @tip 2019.3.21: 跳转邮箱、拨号等界面
+ * @tip 2020.5.23 apk安装，兼容至“Android 10”
  */
 public class UIntent {
     private static void start(Intent intent) {
@@ -276,5 +281,41 @@ public class UIntent {
         phone.setData(Uri.parse("tel:" + telephone));
         phone.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         start(phone);
+    }
+
+    /**
+     * @param path new File("apk地址")
+     * @tip apk安装，兼容至“Android 10”
+     * @tip 需要权限（待考证是否真的需要）： <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+     * @tip 需要权限（待考证是否真的需要）： <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+     * @tip AndroidManifest中-application标签下面：
+     * <provider
+     * android:name="android.support.v4.content.FileProvider"
+     * android:authorities="ehanghai.hanxinhangtong.ehangtong.fileprovider"
+     * android:exported="false"
+     * android:grantUriPermissions="true">
+     * <meta-data
+     * android:name="android.support.FILE_PROVIDER_PATHS"
+     * android:resource="@xml/file_paths"/>
+     * </provider>
+     * 其中：
+     * android:name => FileProvider类的完整包名，区分：support.v4 、androidx等
+     * android:authorities => 一般"包名.fileprovider"
+     * android:resource => 参考本module中：./res/xml/file_paths.xml文件
+     */
+    public static void installApk(File path, Activity act) {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setAction(Intent.ACTION_VIEW);
+        //7.0
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //与manifest中定义的provider中的authorities="包名.fileprovider"保持一致
+            Uri apkUri = FileProvider.getUriForFile(act, "ehanghai.hanxinhangtong.ehangtong.fileprovider", path);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setDataAndType(apkUri, Code.FILE_TYPE_apk);
+        } else {
+            intent.setDataAndType(Uri.fromFile(path), Code.FILE_TYPE_apk);
+        }
+        act.startActivity(intent);
     }
 }

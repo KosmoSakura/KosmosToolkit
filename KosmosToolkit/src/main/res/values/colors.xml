@@ -16,7 +16,9 @@
     <!--功能色值-->
     <color name="fun_bg_white">#f5f5f5</color>
     <color name="fun_bg_orange">#fffffaf5</color>
-    <color name="fun_line">#e5e5e5</color>
+    <color name="fun_line">#e2e5e7</color>
+    <color name="fun_line_dark">#e5e5e5</color>
+    <color name="fun_line_deep">#d9d9d9</color>
     <color name="fun_txt_white">#f2f2f2</color>
     <color name="fun_txt_gray">#9a9a9a</color>
     <color name="fun_txt_gray_deep">#7d7d7d</color>

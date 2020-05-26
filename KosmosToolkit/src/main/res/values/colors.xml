@@ -3,6 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="test">#487389</color>
 
     <!--基础色号-->
     <color name="white">#ffffff</color>
@@ -50,10 +51,9 @@
     <color name="fun_txt_green">#7ECB9A</color>
     <color name="fun_txt_yellow">#cfbfae</color>
     <color name="fun_txt_pink">#EB8DB6</color>
-    <color name="fun_txt_blue">#487389</color>
+    <color name="fun_txt_blue">#5E8FA8</color>
     <color name="fun_txt_blue_light">#87CEFA</color>
     <color name="fun_txt_orange">#ffe4ac75</color>
-
 
     <!--补充色号-->
     <!--黑白灰-->
@@ -83,7 +83,7 @@
     <!--蓝-->
     <color name="blue_deep">#0016ff</color>
     <color name="blue_dark">#007ACC</color>
-    <color name="blue_light">#487389</color>
+    <color name="blue_light">#7CC2E6</color>
     <!--紫-->
     <color name="purple_deep">#c200ff</color>
     <color name="purple_dark">#651085</color>

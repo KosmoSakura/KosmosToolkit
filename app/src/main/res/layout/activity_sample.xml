@@ -25,7 +25,7 @@
         android:id="@+id/vu_clip"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        kosmos:waveBaseColor="@color/colorBase"/>
+        kosmos:waveBaseColor="@color/t_mini_blue"/>
 
     <cos.mos.utils.widget.single.KRatingBar
         android:id="@+id/rating_bar"

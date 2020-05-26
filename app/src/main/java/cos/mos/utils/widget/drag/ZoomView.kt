@@ -30,9 +30,10 @@ class ZoomView : FrameLayout {
 
     // 坐标
     private var zoom = 1.0f
-    private var doubleZoom = 4.0f//双倍缩放比例
+    private var doubleZoom = 2.0f//双倍缩放比例
     private var tripleZoom = doubleZoom * 2//3倍缩放比例
-    private var maxZoom = doubleZoom * 3 //最大缩放比例
+    private var quadraZoom = doubleZoom * 3 //4最大缩放比例
+    private var maxZoom = doubleZoom * 4 //最大缩放比例
     private var smoothZoom = 1.0f
     private var zoomX = 0f
     private var zoomY = 0f
@@ -158,7 +159,7 @@ class ZoomView : FrameLayout {
                     when (smoothZoom) {
                         1.0f -> smoothZoomTo(doubleZoom, x, y)
                         doubleZoom -> smoothZoomTo(tripleZoom, x, y)
-                        tripleZoom -> smoothZoomTo(maxZoom, x, y)
+                        tripleZoom -> smoothZoomTo(quadraZoom, x, y)
                         else -> smoothZoomTo(1.0f, width / 2.0f, height / 2.0f)
                     }
                     lastTapTime = 0

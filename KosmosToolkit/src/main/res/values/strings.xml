@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">KosmosToolkit</string>
+    <!--单位-->
+    <string name="unit_du">度</string>
+    <string name="unit_fen">分</string>
+    <string name="unit_miao">秒</string>
+    <string name="unit_du_s">°</string>
+    <string name="unit_fen_s">′</string>
+    <string name="unit_miao_s">″</string>
+    <string name="unit_hour">小时</string>
+    <string name="unit_minute">分钟</string>
+    <string name="unit_seconds">秒</string>
+    <string name="unit_meter">米</string>
+    <string name="unit_cm">厘米</string>
+    <string name="unit_knot">节</string>
+    <string name="unit_chain">链</string>
+    <string name="unit_sea_mile">海里</string>
+    <string name="unit_percent">%</string>
+    <string name="unit_speed_meter">米/秒</string>
 </resources>

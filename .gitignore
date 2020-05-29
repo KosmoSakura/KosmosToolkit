@@ -41,7 +41,6 @@ bin/
 gen/
 out/
 debug/
-release/
 build/
 build/*
 proguard/

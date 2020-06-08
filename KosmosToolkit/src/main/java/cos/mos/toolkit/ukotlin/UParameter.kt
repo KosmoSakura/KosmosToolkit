@@ -6,6 +6,7 @@ import android.text.Spanned
 import android.util.Log
 import android.view.View
 import java.math.BigDecimal
+import kotlin.math.*
 
 /**
  * @Description Kotlin拓展函数库
@@ -14,6 +15,7 @@ import java.math.BigDecimal
  * @Email KosmoSakura@gmail.com
  * @tip 2020.4.26-四舍五入，精度问题
  * @tip 2020.4.27-四舍五入，取整
+ * @tip 2020.6.8-三角函数，弧度转度
  * */
 //最后一次点击时间
 var <T : View> T.lastClickTime: Long
@@ -47,6 +49,9 @@ fun Double.keepRoundStr(): String = BigDecimal(this).setScale(0, BigDecimal.ROUN
 
 //保留1位有效小数 四舍五入: 5.25=>5.3
 fun Double.keepRound1(): Double = BigDecimal(this).setScale(1, BigDecimal.ROUND_HALF_UP).toDouble()
+
+//保留1位有效小数 四舍五入: 5.25=>5.3
+fun Double.keepRoundStr1(): String = BigDecimal(this).setScale(1, BigDecimal.ROUND_HALF_UP).toString()
 
 //保留2位有效小数 直接砍掉后面的:5.116=>5.11
 fun Float.keep2(): Float = (this * 100f).toInt() / 100f
@@ -101,22 +106,25 @@ private fun getHtml(html: String) = if (Build.VERSION.SDK_INT < Build.VERSION_CO
     Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
 }
 
-fun String.logD(tag: String = "Kosmos") {
-    Log.d(tag, this)
-}
+//-----------------------------------------------------------------------------------------------------------
+private const val PI_D: Double = 3.141592653589793
+private const val PI_F: Float = 3.141592653589793f
+fun Double.toDegrees(): Double = this * 180.0 / PI_D//弧度=>度
+fun Double.toRadians(): Double = this / 180.0 * PI_D//度=>弧度
+fun Float.toDegrees(): Float = this * 180.0f / PI_F//弧度=>度
+fun Float.toRadians(): Float = this / 180.0f * PI_F//度=>弧度
 
-fun String.logV(tag: String = "Kosmos") {
-    Log.v(tag, this)
-}
+fun Double.ksin() = sin(this.toRadians())//sin计算，传入度
+fun Float.ksin() = sin(this.toRadians())//sin计算，传入度
+fun Double.kcos() = cos(this.toRadians())//cos计算，传入度
+fun Float.kcos() = cos(this.toRadians())//cos计算，传入度
+fun Double.ktan() = tan(this.toRadians())//tan计算，传入度
+fun Float.ktan() = tan(this.toRadians())//tan计算，传入度
 
-fun String.logW(tag: String = "Kosmos") {
-    Log.w(tag, this)
-}
-
-fun String.logI(tag: String = "Kosmos") {
-    Log.i(tag, this)
-}
-
-fun String.logE(tag: String = "Kosmos") {
-    Log.e(tag, this)
-}
+//已知正弦求角度:siaθ=X => θ=asinX
+fun Double.kasin() = asin(this).toDegrees()//asin计算，返回度
+fun Float.kasin() = asin(this).toDegrees()//asin计算，返回度
+fun Double.kacos() = acos(this).toDegrees()//acos计算，传入度
+fun Float.kacos() = acos(this).toDegrees()//acos计算，传入度
+fun Double.katan() = atan(this).toDegrees()//atan计算，传入度
+fun Float.katan() = atan(this).toDegrees()//atan计算，传入度

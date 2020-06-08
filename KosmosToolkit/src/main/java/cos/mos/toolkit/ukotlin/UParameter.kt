@@ -114,17 +114,17 @@ fun Double.toRadians(): Double = this / 180.0 * PI_D//度=>弧度
 fun Float.toDegrees(): Float = this * 180.0f / PI_F//弧度=>度
 fun Float.toRadians(): Float = this / 180.0f * PI_F//度=>弧度
 
-fun Double.ksin() = sin(this.toRadians())//sin计算，传入度
-fun Float.ksin() = sin(this.toRadians())//sin计算，传入度
-fun Double.kcos() = cos(this.toRadians())//cos计算，传入度
-fun Float.kcos() = cos(this.toRadians())//cos计算，传入度
-fun Double.ktan() = tan(this.toRadians())//tan计算，传入度
-fun Float.ktan() = tan(this.toRadians())//tan计算，传入度
+fun Double.toSin() = sin(this.toRadians())//sin计算，传入度
+fun Float.toSin() = sin(this.toRadians())//sin计算，传入度
+fun Double.toCos() = cos(this.toRadians())//cos计算，传入度
+fun Float.toCos() = cos(this.toRadians())//cos计算，传入度
+fun Double.toTan() = tan(this.toRadians())//tan计算，传入度
+fun Float.toTan() = tan(this.toRadians())//tan计算，传入度
 
 //已知正弦求角度:siaθ=X => θ=asinX
-fun Double.kasin() = asin(this).toDegrees()//asin计算，返回度
-fun Float.kasin() = asin(this).toDegrees()//asin计算，返回度
-fun Double.kacos() = acos(this).toDegrees()//acos计算，传入度
-fun Float.kacos() = acos(this).toDegrees()//acos计算，传入度
-fun Double.katan() = atan(this).toDegrees()//atan计算，传入度
-fun Float.katan() = atan(this).toDegrees()//atan计算，传入度
+fun Double.toAsin() = asin(this).toDegrees()//asin计算，返回度
+fun Float.toAsin() = asin(this).toDegrees()//asin计算，返回度
+fun Double.toAcos() = acos(this).toDegrees()//acos计算，传入度
+fun Float.toAcos() = acos(this).toDegrees()//acos计算，传入度
+fun Double.toAtan() = atan(this).toDegrees()//atan计算，传入度
+fun Float.toAtan() = atan(this).toDegrees()//atan计算，传入度

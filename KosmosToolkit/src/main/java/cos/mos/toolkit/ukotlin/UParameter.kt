@@ -124,7 +124,7 @@ fun Float.toTan() = tan(this.toRadians())//tan计算，传入度
 //已知正弦求角度:siaθ=X => θ=asinX
 fun Double.toAsin() = asin(this).toDegrees()//asin计算，返回度
 fun Float.toAsin() = asin(this).toDegrees()//asin计算，返回度
-fun Double.toAcos() = acos(this).toDegrees()//acos计算，传入度
-fun Float.toAcos() = acos(this).toDegrees()//acos计算，传入度
-fun Double.toAtan() = atan(this).toDegrees()//atan计算，传入度
-fun Float.toAtan() = atan(this).toDegrees()//atan计算，传入度
+fun Double.toAcos() = acos(this).toDegrees()//acos计算，返回度
+fun Float.toAcos() = acos(this).toDegrees()//acos计算，返回度
+fun Double.toAtan() = atan(this).toDegrees()//atan计算，返回度
+fun Float.toAtan() = atan(this).toDegrees()//atan计算，返回度

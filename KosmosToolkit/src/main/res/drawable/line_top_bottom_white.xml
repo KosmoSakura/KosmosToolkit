@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><?xml version="1.0" encoding="utf-8"?>
-<layer-list
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!--控件上下分割线-->
     <!-- 连框颜色值 -->
     <item>
@@ -9,9 +8,7 @@
         </shape>
     </item>
     <!-- 主体背景颜色值 -->
-    <item
-        android:bottom="0.5dp"
-        android:top="0.5dp">
+    <item android:bottom="0.5dp" android:top="0.5dp">
         <shape>
             <solid android:color="@color/white"/>
         </shape>

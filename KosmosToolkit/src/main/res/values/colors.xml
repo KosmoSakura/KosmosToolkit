@@ -29,6 +29,7 @@
     <color name="t_mini_blue">#ac39acc2</color>
 
     <!--功能色值-->
+    <color name="fun_bg">#f6f6f6</color>
     <color name="fun_bg_white_light">#FEFEFE</color>
     <color name="fun_bg_white">#f5f5f5</color>
     <color name="fun_bg_gray">#d9dee4</color>

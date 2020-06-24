@@ -11,7 +11,6 @@ import android.location.*
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.support.v4.app.ActivityCompat
 import cos.mos.toolkit.listener.GpsListener
 
 /**
@@ -25,67 +24,74 @@ import cos.mos.toolkit.listener.GpsListener
  * <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
  * @tip 2020.06.23 完善定位
  * */
-class UGps(val activity: Activity?) : LocationListener {
+
+//class UGps(private val act: Activity?) : LocationListener {
+class UGps private constructor(private val act: Activity?) : LocationListener {
+    companion object {
+        @Volatile
+        private var gps: UGps? = null
+
+        @JvmStatic
+        fun instance(actNow: Activity?): UGps {
+            if (gps == null || UText.isActNull(gps!!.act)) {
+                gps = UGps(actNow)
+            }
+            return gps!!
+        }
+    }
+
+    private var waitingDialog: ProgressDialog? = null
     private lateinit var listener: GpsListener
+    private var showDia: Boolean = true
+    private var hasShow: Boolean = false
 
     //位置管理器
     private val mgrLocation: LocationManager? by lazy {
-        activity?.getSystemService(Context.LOCATION_SERVICE) as? LocationManager
-    }
-    private val waitingDialog: ProgressDialog by lazy {
-        val waitingDialog = ProgressDialog(activity)
-        waitingDialog.setTitle("GPS位置获取中")
-        waitingDialog.setMessage("请稍后...")
-        waitingDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER) // 设置进度条的形式为圆形转动的进度条
-        waitingDialog.isIndeterminate = true // 设置ProgressDialog 的进度条是否不明确
-        waitingDialog.setCancelable(true) // 设置是否可以通过点击Back键取消
-        waitingDialog.setCanceledOnTouchOutside(false) // 设置在点击Dialog外是否取消Dialog进度条
-//        waitingDialog.setIcon(R.drawable.ic_navigation_location_sudoku_gps) // 设置提示的title的图标，默认是没有的
-        waitingDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "取消") { _: DialogInterface?, _: Int ->
-//            listener.failure(-2, "用户取消定位")
-            clear()
-        }
-        waitingDialog.setOnCancelListener {
-//            listener.failure(-2, "用户取消定位")
-            clear()
-        }
-        waitingDialog
+        act?.getSystemService(Context.LOCATION_SERVICE) as? LocationManager
     }
 
     fun getLocation(listener: GpsListener) {
-        if (activity == null) {
-            KtToast.show("Gps检查异常")
-            return
-        }
+        getLocation(true, listener)
+    }
+
+    //获取经纬度-没有对话框等视图
+    fun getLocation(showDia: Boolean, listener: GpsListener) {
+        if (UText.isActNull(act)) return
         //检查权限
-        if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            UDialog.builder(activity)
-//                    .title(UHtml.getHtml("提示", Code.ColorRed))
-//                    .msg(UHtml.getHtml("使用GPS,需授予本应用定位权限", Code.ColorBlueTheme))
-//                    .button()
-//                    .build { _, dia ->
-//                        goToAppSetting()//跳转到当前应用的设置界面
-//                        dia.dismiss()
-//                    }
+        if (ActivityCompat.checkSelfPermission(act!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(act, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            UDialog.builder(act)
+                    .title(UHtml.getHtml("提示", Code.ColorRed))
+                    .msg(UHtml.getHtml("使用GPS,需授予本应用定位权限", Code.ColorBlueTheme))
+                    .button()
+                    .build { _, dia ->
+                        goToAppSetting()//跳转到当前应用的设置界面
+                        dia.dismiss()
+                    }
             return
         }
         //gps状态检查
         if (!isGpsOpen()) {
-//            UDialog.builder(activity)
-//                    .title(UHtml.getHtml("注意", Code.ColorRed))
-//                    .msg(UHtml.getHtml("检测到GPS已关闭，请手动打开", Code.ColorBlueTheme))
-//                    .button()
-//                    .build { _, dia ->
-//                        goToGpsSettings()//跳转到Gps开关界面
-//                        dia.dismiss()
-//                    }
+            val ss = UDialog.builder(act)
+                    .title(UHtml.getHtml("注意", Code.ColorRed))
+                    .msg(UHtml.getHtml("检测到GPS已关闭，请手动打开", Code.ColorBlueTheme))
+                    .button()
+            ss.build { _, dia ->
+                goToGpsSettings()//跳转到Gps开关界面
+                dia.dismiss()
+            }
+            ss.setOnDismissListener { ULog.commonD("关闭") }
             return
         }
+        this.showDia = showDia
         this.listener = listener
-        waitingDialog.show()
+        if (showDia) {
+            showWaitingDialog()
+        }
         if (mgrLocation == null) {
-            listener.failure(-1, "定位捕获异常")
+            if (showDia) {
+                handleFailure(-1, "定位捕获异常")
+            }
             clear()
         } else {
             val criteria = Criteria()//定位参数
@@ -108,18 +114,63 @@ class UGps(val activity: Activity?) : LocationListener {
         }
     }
 
+
+    private fun showWaitingDialog() {
+        if (UText.isActNull(act)) return
+        if (waitingDialog == null) {
+            waitingDialog = ProgressDialog(act)
+            waitingDialog!!.setTitle("GPS位置获取中")
+            waitingDialog!!.setMessage("请稍后...")
+            waitingDialog!!.setProgressStyle(ProgressDialog.STYLE_SPINNER) // 设置进度条的形式为圆形转动的进度条
+            waitingDialog!!.isIndeterminate = true // 设置ProgressDialog 的进度条是否不明确
+            waitingDialog!!.setCancelable(true) // 设置是否可以通过点击Back键取消
+            waitingDialog!!.setCanceledOnTouchOutside(false) // 设置在点击Dialog外是否取消Dialog进度条
+            waitingDialog!!.setIcon(R.drawable.ic_navigation_location_sudoku_gps) // 设置提示的title的图标，默认是没有的
+            waitingDialog!!.setButton(DialogInterface.BUTTON_NEGATIVE, "取消") { _: DialogInterface?, _: Int ->
+                handleFailure(-2, "用户取消定位")
+                clear()
+            }
+            waitingDialog!!.setOnCancelListener {
+                handleFailure(-2, "用户取消定位")
+                clear()
+            }
+        }
+        waitingDialog!!.show()
+    }
+
+    /**
+     * @param status 状态码 -2:用户取消定位, -1:工具类中错误，其他：定位错误
+     * @param msg 描述信息
+     * @tip 处理获取失败的情况
+     */
+    private fun handleFailure(status: Int, msg: String) {
+        if (showDia && !hasShow) {
+            if (UText.isActNull(act)) return
+            if (status != -2) {
+                hasShow = true
+                val dia = UDialog.builder(act)
+                        .title(UHtml.getHtml("错误", Code.ColorRed))
+                        .msg(UHtml.getHtml(msg, Code.ColorBlueTheme))
+                        .button()
+                dia.build()
+                dia.setOnDismissListener { hasShow = false }
+            }
+        }
+    }
+
     //清除，是否反馈
-    fun clear() {
+    private fun clear() {
         mgrLocation?.apply {
             removeUpdates(this@UGps)
         }
-        waitingDialog.dismiss()
+        if (act == null || act.isFinishing || act.isDestroyed) return
+        waitingDialog?.dismiss()
     }
 
     // 当坐标改变时触发此函数，如果Provider传进相同的坐标，它就不会被触发
     override fun onLocationChanged(location: Location?) {
         if (location == null) {
-            listener.failure(-1, "定位失败，请移至开阔地带重试！")
+            handleFailure(-1, "定位失败，请移至开阔地带重试！")
         } else {
             listener.success(location)
         }
@@ -158,16 +209,20 @@ class UGps(val activity: Activity?) : LocationListener {
 
     // 跳转到Gps开关界面
     fun goToGpsSettings() {
-        val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        activity?.startActivity(intent)
+        act?.apply {
+            val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
     }
 
     //跳转到当前应用的设置界面
     fun goToAppSetting() {
-        val intent = Intent()
-        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-        intent.data = Uri.fromParts("package", activity?.packageName, null)
-        activity?.startActivityForResult(intent, 123)
+        act?.apply {
+            val intent = Intent()
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            intent.data = Uri.fromParts("package", packageName, null)
+            startActivity(intent)
+        }
     }
 }

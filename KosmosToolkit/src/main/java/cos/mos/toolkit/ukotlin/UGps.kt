@@ -11,6 +11,7 @@ import android.location.*
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import cos.mos.toolkit.R
 import cos.mos.toolkit.listener.GpsListener
 
 /**
@@ -117,7 +118,7 @@ class UGps private constructor(private val act: Activity?) : LocationListener {
 
     private fun showWaitingDialog() {
         if (UText.isActNull(act)) return
-        if (waitingDialog == null) {
+//        if (waitingDialog == null) {
             waitingDialog = ProgressDialog(act)
             waitingDialog!!.setTitle("GPS位置获取中")
             waitingDialog!!.setMessage("请稍后...")
@@ -125,7 +126,7 @@ class UGps private constructor(private val act: Activity?) : LocationListener {
             waitingDialog!!.isIndeterminate = true // 设置ProgressDialog 的进度条是否不明确
             waitingDialog!!.setCancelable(true) // 设置是否可以通过点击Back键取消
             waitingDialog!!.setCanceledOnTouchOutside(false) // 设置在点击Dialog外是否取消Dialog进度条
-            waitingDialog!!.setIcon(R.drawable.ic_navigation_location_sudoku_gps) // 设置提示的title的图标，默认是没有的
+//            waitingDialog!!.setIcon(R.drawable.ic_navigation_location_sudoku_gps) // 设置提示的title的图标，默认是没有的
             waitingDialog!!.setButton(DialogInterface.BUTTON_NEGATIVE, "取消") { _: DialogInterface?, _: Int ->
                 handleFailure(-2, "用户取消定位")
                 clear()
@@ -134,7 +135,7 @@ class UGps private constructor(private val act: Activity?) : LocationListener {
                 handleFailure(-2, "用户取消定位")
                 clear()
             }
-        }
+//        }
         waitingDialog!!.show()
     }
 

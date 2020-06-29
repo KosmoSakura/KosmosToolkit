@@ -5,10 +5,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * @Description: 拖拽
- * @Author: Kosmos
- * @Date: 2019.01.23 18:26
- * @Email: KosmoSakura@gmail.com
+ * @Description 拖拽
+ * @Author Kosmos
+ * @Date 2019.01.23 18:26
+ * @Email KosmoSakura@gmail.com
  */
 public class DragImageView extends ScaleImageView {
     private float sx, sy;//二维坐标

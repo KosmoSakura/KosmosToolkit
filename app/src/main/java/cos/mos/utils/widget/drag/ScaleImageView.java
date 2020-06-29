@@ -6,10 +6,10 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * @Description: 缩放
- * @Author: Kosmos
- * @Date: 2019.01.23 18:26
- * @Email: KosmoSakura@gmail.com
+ * @Description 缩放
+ * @Author Kosmos
+ * @Date 2019.01.23 18:26
+ * @Email KosmoSakura@gmail.com
  */
 public class ScaleImageView extends android.support.v7.widget.AppCompatImageView implements View.OnTouchListener {
     private TouchScaleListener listener;

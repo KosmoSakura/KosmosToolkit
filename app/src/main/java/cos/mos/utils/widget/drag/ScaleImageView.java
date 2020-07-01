@@ -1,6 +1,7 @@
 package cos.mos.utils.widget.drag;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.view.View;
  * @Date 2019.01.23 18:26
  * @Email KosmoSakura@gmail.com
  */
-public class ScaleImageView extends android.support.v7.widget.AppCompatImageView implements View.OnTouchListener {
+public class ScaleImageView extends AppCompatImageView implements View.OnTouchListener {
     private TouchScaleListener listener;
     private float scale = 0.9f;
 
@@ -54,12 +55,12 @@ public class ScaleImageView extends android.support.v7.widget.AppCompatImageView
             case MotionEvent.ACTION_UP:
                 setScaleX(1);
                 setScaleY(1);
+                if (listener != null) {
+                    //返回false，事件传递下去onClick会把ACTION_UP消耗掉
+                    listener.scaleTouch(v, event);
+                    return true;
+                }
                 break;
-        }
-        if (listener != null) {
-            //返回false，事件传递下去onClick会把ACTION_UP消耗掉
-            listener.scaleTouch(v, event);
-            return true;
         }
         return false;
     }

@@ -7,30 +7,30 @@ import android.view.MotionEvent;
 /**
  * @Description 拖拽
  * @Author Kosmos
- * @Date 2019.01.23 18:26
+ * @Date 2020.06.30 15:35
  * @Email KosmoSakura@gmail.com
- * 2020.7.1 优化拖拽和点击事件
+ * @tip 2020.7.1 解决:在顶层控件，点击事件都是本视图不能拖拽
  */
-public class DragTextView extends ScaleTextView {
+public class DragLinearLayout extends ScaleLinearLayout {
     private float sx, sy;//二维坐标
     private int moving = 0;//移动中
-    private MovingListener<DragTextView> listener;//四向坐标监听器
-    private TouchStateListener<DragTextView> stateListener;
+    private MovingListener<DragLinearLayout> listener;//四向坐标监听器
+    private TouchStateListener<DragLinearLayout> stateListener;
 
-    public DragTextView(Context context) {
+    public DragLinearLayout(Context context) {
         super(context);
     }
 
-    public DragTextView(Context context, AttributeSet attrs) {
+    public DragLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
 
-    public void setOnStateListener(TouchStateListener<DragTextView> stateListener) {
+    public void setOnStateListener(TouchStateListener<DragLinearLayout> stateListener) {
         this.stateListener = stateListener;
     }
 
-    public void setOnMovingListener(MovingListener<DragTextView> listener) {
+    public void setOnMovingListener(MovingListener<DragLinearLayout> listener) {
         this.listener = listener;
     }
 
@@ -39,9 +39,8 @@ public class DragTextView extends ScaleTextView {
         return super.performClick();
     }
 
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    @Override//解决:在顶层控件，点击事件都是本视图不能拖拽
+    public boolean dispatchTouchEvent(MotionEvent event) {
         if (stateListener != null) {
             stateListener.state(this, event);
         }
@@ -67,13 +66,14 @@ public class DragTextView extends ScaleTextView {
                 if (listener != null) {
                     listener.moving(this);
                 }
-                break;
             case MotionEvent.ACTION_UP:
                 if (moving < 5) {
                     performClick();
+                    return super.dispatchTouchEvent(event);
+                } else {
+                    return true;
                 }
-                break;
         }
-        return true;
+        return super.dispatchTouchEvent(event);
     }
 }

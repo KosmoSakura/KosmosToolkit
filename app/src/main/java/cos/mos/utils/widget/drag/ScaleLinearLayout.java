@@ -1,18 +1,18 @@
 package cos.mos.utils.widget.drag;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 
 /**
  * @Description 缩放
  * @Author Kosmos
- * @Date 2019.01.23 18:26
+ * @Date 2020.06.30 15:34
  * @Email KosmoSakura@gmail.com
  */
-public class ScaleTextView extends AppCompatTextView implements View.OnTouchListener {
+public class ScaleLinearLayout extends LinearLayout implements View.OnTouchListener {
     private TouchScaleListener listener;
     private float scale = 0.9f;
 
@@ -36,11 +36,11 @@ public class ScaleTextView extends AppCompatTextView implements View.OnTouchList
         this.listener = listener;
     }
 
-    public ScaleTextView(Context context) {
+    public ScaleLinearLayout(Context context) {
         super(context);
     }
 
-    public ScaleTextView(Context context, AttributeSet attrs) {
+    public ScaleLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOnTouchListener(this);
     }

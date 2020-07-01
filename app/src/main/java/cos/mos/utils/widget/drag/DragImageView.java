@@ -9,9 +9,11 @@ import android.view.MotionEvent;
  * @Author Kosmos
  * @Date 2019.01.23 18:26
  * @Email KosmoSakura@gmail.com
+ * @tip 2020.7.1 优化拖拽和点击事件
  */
 public class DragImageView extends ScaleImageView {
     private float sx, sy;//二维坐标
+    private int moving = 0;//移动中
     private MovingListener<DragImageView> listener;//四向坐标监听器
     private TouchStateListener<DragImageView> stateListener;
 
@@ -45,11 +47,13 @@ public class DragImageView extends ScaleImageView {
         }
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                moving = 0;
                 //手指坐标
                 sx = event.getRawX();
                 sy = event.getRawY();
                 break;
             case MotionEvent.ACTION_MOVE:
+                moving++;
                 //手指移动坐标
                 float x = event.getRawX();
                 float y = event.getRawY();
@@ -65,7 +69,9 @@ public class DragImageView extends ScaleImageView {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                performClick();
+                if (moving < 5) {
+                    performClick();
+                }
                 break;
             case MotionEvent.ACTION_CANCEL:
                 break;

@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 /**
- * @Description: 轨迹动画演示栗子
- * @Author: Kosmos
- * @Date: 2019.03.15 10:13
- * @Email: KosmoSakura@gmail.com
+ * @Description 轨迹动画演示栗子
+ * @Author Kosmos
+ * @Date 2019.03.15 10:13
+ * @Email KosmoSakura@gmail.com
  * 注意：当前反射类不能混淆
  * -keep public class cos.mos.utils.anim.bessel.PathSample{*;}
  */

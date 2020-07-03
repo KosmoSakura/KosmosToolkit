@@ -4,10 +4,10 @@ package cos.mos.utils.anim.bessel;
 import android.animation.TypeEvaluator;
 
 /**
- * @Description: 估值器 坐标点计算
- * @Author: Kosmos
- * @Date: 2019.03.14 17:52
- * @Email: KosmoSakura@gmail.com
+ * @Description 估值器 坐标点计算
+ * @Author Kosmos
+ * @Date 2019.03.14 17:52
+ * @Email KosmoSakura@gmail.com
  * 参考：https://www.jianshu.com/p/f64c3cd25f67
  */
 public class PathEvaluator implements TypeEvaluator<PathPoint> {
@@ -15,7 +15,7 @@ public class PathEvaluator implements TypeEvaluator<PathPoint> {
     /**
      * @param fraction   :数值变化值的比例
      * @param startValue : 起点
-     * @param endValue   : 终点
+     * @param endValue    终点
      * @return 计算后的运动点
      */
     @Override

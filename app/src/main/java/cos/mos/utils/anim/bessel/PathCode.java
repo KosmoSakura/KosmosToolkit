@@ -1,10 +1,10 @@
 package cos.mos.utils.anim.bessel;
 
 /**
- * @Description: 曲线类型常量
- * @Author: Kosmos
- * @Date: 2019.03.14 17:52
- * @Email: KosmoSakura@gmail.com
+ * @Description 曲线类型常量
+ * @Author Kosmos
+ * @Date 2019.03.14 17:52
+ * @Email KosmoSakura@gmail.com
  */
 public interface PathCode {
     int MOVE = 0;//起始点操作

@@ -5,10 +5,10 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @Description: 不同类型移动轨迹的绘制方法
- * @Author: Kosmos
- * @Date: 2019.03.14 17:52
- * @Email: KosmoSakura@gmail.com
+ * @Description 不同类型移动轨迹的绘制方法
+ * @Author Kosmos
+ * @Date 2019.03.14 17:52
+ * @Email KosmoSakura@gmail.com
  * 参考：https://www.jianshu.com/p/f64c3cd25f67
  */
 public class AnimatorPath {

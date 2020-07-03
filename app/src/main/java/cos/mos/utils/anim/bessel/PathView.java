@@ -9,11 +9,11 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * @Description: 辅助绘制轨迹
- * @Author: 郑亮
- * @Date: 2016.11.09 23:02
- * @QQ: 1023007219
- * @link: https://www.jianshu.com/p/f64c3cd25f67
+ * @Description 辅助绘制轨迹
+ * @Author 郑亮
+ * @Date 2016.11.09 23:02
+ * @QQ 1023007219
+ * @link https://www.jianshu.com/p/f64c3cd25f67
  */
 public class PathView extends View {
     private Paint paint;

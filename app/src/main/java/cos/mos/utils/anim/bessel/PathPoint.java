@@ -1,10 +1,10 @@
 package cos.mos.utils.anim.bessel;
 
 /**
- * @Description: 移动轨迹的坐标点
- * @Author: Kosmos
- * @Date: 2019.03.14 17:52
- * @Email: KosmoSakura@gmail.com
+ * @Description 移动轨迹的坐标点
+ * @Author Kosmos
+ * @Date 2019.03.14 17:52
+ * @Email KosmoSakura@gmail.com
  * 参考：https://www.jianshu.com/p/f64c3cd25f67
  */
 public class PathPoint {

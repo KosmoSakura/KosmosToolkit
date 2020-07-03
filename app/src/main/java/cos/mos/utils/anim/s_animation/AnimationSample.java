@@ -14,10 +14,10 @@ import android.view.animation.TranslateAnimation;
 import cos.mos.utils.R;
 
 /**
- * @Description: 补间动画示例
- * @Author: Kosmos
- * @Date: 2019.04.08 16:59
- * @Email: KosmoSakura@gmail.com
+ * @Description 补间动画示例
+ * @Author Kosmos
+ * @Date 2019.04.08 16:59
+ * @Email KosmoSakura@gmail.com
  */
 public class AnimationSample {
     private View view;//动画的目标控件

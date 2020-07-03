@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 /**
- * @Description: 属性动画示例(ValueAnimator)
- * @Author: Kosmos
- * @Date: 2019.04.08 19:25
- * @Email: KosmoSakura@gmail.com
+ * @Description 属性动画示例(ValueAnimator)
+ * @Author Kosmos
+ * @Date 2019.04.08 19:25
+ * @Email KosmoSakura@gmail.com
  */
 public class ValueAnimSample {
     private ValueAnimator valueAnimator;

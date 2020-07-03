@@ -3,10 +3,10 @@ package cos.mos.utils.anim.color;
 import android.animation.ArgbEvaluator;
 
 /**
- * @Description: 颜色估计器
- * @Author: Kosmos
- * @Date: 2019.04.02 15:12
- * @Email: KosmoSakura@gmail.com
+ * @Description 颜色估计器
+ * @Author Kosmos
+ * @Date 2019.04.02 15:12
+ * @Email KosmoSakura@gmail.com
  */
 public class ColorEvaluator extends ArgbEvaluator {
     /**

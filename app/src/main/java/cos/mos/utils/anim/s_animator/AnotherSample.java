@@ -18,10 +18,10 @@ import android.view.animation.OvershootInterpolator;
 import cos.mos.utils.R;
 
 /**
- * @Description: <p>
- * @Author: Kosmos
- * @Date: 2019.04.08 19:41
- * @Email: KosmoSakura@gmail.com
+ * @Description <p>
+ * @Author Kosmos
+ * @Date 2019.04.08 19:41
+ * @Email KosmoSakura@gmail.com
  */
 public class AnotherSample {
     private View view;//动画的目标控件

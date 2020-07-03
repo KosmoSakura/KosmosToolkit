@@ -8,10 +8,10 @@ import android.widget.ImageView;
 import cos.mos.utils.R;
 
 /**
- * @Description: 帧动画示例
- * @Author: Kosmos
- * @Date: 2019.04.08 17:37
- * @Email: KosmoSakura@gmail.com
+ * @Description 帧动画示例
+ * @Author Kosmos
+ * @Date 2019.04.08 17:37
+ * @Email KosmoSakura@gmail.com
  */
 public class FrameSample {
     private ImageView view;//动画的目标控件

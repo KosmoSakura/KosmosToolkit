@@ -6,10 +6,10 @@ import android.animation.ValueAnimator;
 import android.widget.TextView;
 
 /**
- * @Description: 颜色变化的属性动画示例
- * @Author: Kosmos
- * @Date: 2019.04.02 15:06
- * @Email: KosmoSakura@gmail.com
+ * @Description 颜色变化的属性动画示例
+ * @Author Kosmos
+ * @Date 2019.04.02 15:06
+ * @Email KosmoSakura@gmail.com
  */
 public class ColorAnimSample {
     private TextView text;//目标控件

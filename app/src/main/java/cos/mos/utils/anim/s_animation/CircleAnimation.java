@@ -4,9 +4,9 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 /**
- * @Description: 补间动画：圆周运动动画效果(比如放大镜圈圈动画）
- * @Author: 作者地址：https://blog.csdn.net/niu0147/article/details/52292541
- * @Date: 2018.11.01 15:11
+ * @Description 补间动画：圆周运动动画效果(比如放大镜圈圈动画）
+ * @Author 作者地址：https://blog.csdn.net/niu0147/article/details/52292541
+ * @Date 2018.11.01 15:11
  * @apiNote 使用示例见AnimationSample.circle()
  */
 public class CircleAnimation extends Animation {

@@ -16,10 +16,10 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.OvershootInterpolator;
 
 /**
- * @Description: 属性动画示例(ObjectAnimator)
- * @Author: Kosmos
- * @Date: 2019.04.08 17:09
- * @Email: KosmoSakura@gmail.com
+ * @Description 属性动画示例(ObjectAnimator)
+ * @Author Kosmos
+ * @Date 2019.04.08 17:09
+ * @Email KosmoSakura@gmail.com
  */
 public class ObjAnimSample {
     private View view;//动画的目标控件

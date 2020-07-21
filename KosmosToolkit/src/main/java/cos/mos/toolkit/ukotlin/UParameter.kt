@@ -71,8 +71,11 @@ fun Double.keepRound6Up(): Double = BigDecimal(this).setScale(6, BigDecimal.ROUN
 
 //保留6位有效小数 进位:5.11111111=>5.111112
 fun Double.keepRoundStr6Up(): String = BigDecimal(this).setScale(6, BigDecimal.ROUND_UP).toString()
+
 //-----------------------------------------------------------------------------------------------------------
 //保留2位有效小数 直接砍掉后面的:5.116=>5.11
+fun Float.keep1(): Float = (this * 10f).toInt() / 10f
+fun Double.keep1(): Double = (this * 10.0).toLong() / 10.0
 fun Float.keep2(): Float = (this * 100f).toInt() / 100f
 fun Double.keep2(): Double = (this * 100.0).toLong() / 100.0
 fun Float.keep3(): Float = (this * 1000f).toInt() / 1000f
@@ -81,6 +84,7 @@ fun Float.keep5(): Float = (this * 100000).toInt() / 100000f
 fun Double.keep5(): Double = (this * 100000).toInt() / 100000.0
 fun Float.keep6(): Float = (this * 1000000).toInt() / 1000000f //注：保证Float和Double输出数据相同，则切6位
 fun Double.keep6(): Double = (this * 1000000).toInt() / 1000000.0//注：保证Float和Double输出数据相同，则切6位
+
 //-----------------------------------------------------------------------------------------------------------
 fun String?.checkNull(defaul: String = "") = if (this.isNullOrEmpty()) defaul else this
 

@@ -12,6 +12,7 @@ import kotlin.math.*
  * @Author Kosmos
  * @Date 2020.04.22 21:50
  * @Email KosmoSakura@gmail.com
+ * @tip 2020.6.13 不同精度的取舍
  * @tip 2020.7.21 追加精确位数
  * */
 var <T : View> T.lastClickTime: Long

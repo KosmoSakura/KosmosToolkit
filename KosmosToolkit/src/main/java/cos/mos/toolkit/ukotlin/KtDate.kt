@@ -8,6 +8,7 @@ import java.util.*
  * @Author: Kosmos
  * @Date: 2019.04.23 16:09
  * @Email: KosmoSakura@gmail.com
+ * @tip 2020.7.28 追加时间获取
  */
 object KtDate {
     private val intSECOND = 0x00// 秒
@@ -22,7 +23,9 @@ object KtDate {
     private val DAY = 24 * HOUR// 天
     private val MONTH = 31 * DAY// 月
     private val YEAR = 12 * MONTH// 年
-    private const val FORMAT_DEFAULT = "yyyy-MM-dd HH:mm:ss"//服务器现在默认的时间格式
+    const val FORMAT_DEFAULT = "yyyy-MM-dd HH:mm:ss"//默认的时间格式
+    const val FORMAT_DEFAULT_DATE = "yyyy-MM-dd"//默认的日期格式
+    const val FORMAT_DEFAULT_TIME = "HH:mm:ss"//服务器现在默认的时间格式
 
     /**
      * @return 当前日期:yyyy-MM-dd HH:mm:ss
@@ -32,4 +35,12 @@ object KtDate {
 
     @JvmStatic
     fun dateToStr(date: Date, format: String): String = SimpleDateFormat(format, Locale.getDefault()).format(date)
+
+    @JvmStatic
+    fun getDateByCalendar() = Calendar.getInstance().run {
+//        val hour=  get(Calendar.HOUR_OF_DAY)
+//        val minute =  get(Calendar.MINUTE)
+//        val second =  get(Calendar.SECOND)
+        "${get(Calendar.YEAR)}-${get(Calendar.MONTH) + 1}-${get(Calendar.DAY_OF_MONTH)}"
+    }
 }

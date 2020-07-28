@@ -8,7 +8,7 @@ import java.util.*
  * @Author: Kosmos
  * @Date: 2019.04.23 16:09
  * @Email: KosmoSakura@gmail.com
- * @tip 2020.7.28 追加时间获取
+ * @tip 2020.7.28  追加时间获取
  */
 object KtDate {
     private val intSECOND = 0x00// 秒

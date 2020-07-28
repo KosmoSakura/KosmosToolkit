@@ -2,11 +2,13 @@ package cos.mos.toolkit.ukotlin
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonParser
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import cos.mos.toolkit.json.UGson
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
+import java.util.ArrayList
 
 /**
  * @Description 可用于简单的json解析
@@ -42,7 +44,14 @@ object UGson {
      * @return 返回一个实体类对象 JsonSyntaxException
      */
     fun <T> fromJson(json: String?, cls: Class<T>?) = gson.fromJson(json, cls)
-    fun <T> fromJsonList(json: String?): List<T>? = gson.fromJson(json, object : TypeToken<List<T>>() {}.type)
+    fun <T> fromJsonList(json: String?, cls: Class<T>): List<T>? {
+//        gson.fromJson(json, object : TypeToken<List<T>>() {}.type)
+        val list = ArrayList<T>()
+        JsonParser().parse(json).asJsonArray?.forEach {
+            list.add(gson.fromJson(it, cls))
+        }
+        return list
+    }
 
 //---------------------------------------------------------------------------------------------
 //下面的代码仅测试用

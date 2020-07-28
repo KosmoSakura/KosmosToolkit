@@ -140,11 +140,11 @@ public class UHttp {
         //服务器成功返回码
         if (code == 0) {
             try {
-                final ArrayList arrayList = UGson.toList(json, cls);
+                final ArrayList arrayList = UGson.fromJsonList(json, cls);
                 success(arrayList);
             } catch (Exception e) {
                 try {
-                    Object object = UGson.toBean(json, cls);
+                    Object object = UGson.fromJson(json, cls);
                     success(object);
                 } catch (Exception e1) {
                     failure("解析失败", code);

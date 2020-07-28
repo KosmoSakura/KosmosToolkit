@@ -14,11 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Description Gson解析
+ * @Description 可用于简单的json解析
  * @Author Kosmos
  * @Date 2018年10月08日 16:30
  * @Email KosmoSakura@gmail.com
  * @Tip 2019.11.7-添加gson解析容错格式
+ * @Tip 2020.7.28 优化gson列表解析
  */
 public class UGson {
     private static Gson gson;
@@ -54,17 +55,22 @@ public class UGson {
         return gson.toJson(bean);
     }
 
-    /**
-     * @return 返回一个实体类对象 JsonSyntaxException
-     */
-    public static <T> T toBean(String json, Class<T> cls) {
-        return gson.fromJson(json, cls);
+    public static <T> String toJson(T bean, Type type) {
+        return gson.toJson(bean, type);
     }
 
     /**
-     * @return 返回一个列表 JsonSyntaxException
+     * @return 返回一个实体类对象 JsonSyntaxException
      */
-    public static <T> ArrayList<T> toList(String json, Class<T> cls) {
+    public static <T> T fromJson(String json, Class<T> cls) {
+        return gson.fromJson(json, cls);
+    }
+
+    public static <T> List<T> fromJsonList(String json) {
+        return gson.fromJson(json, new TypeToken<List<T>>() {}.getType());
+    }
+
+    public static <T> ArrayList<T> fromJsonList(String json, Class<T> cls) {
         ArrayList<T> list = new ArrayList<>();
         JsonArray array = new JsonParser().parse(json).getAsJsonArray();
         for (final JsonElement elem : array) {
@@ -80,7 +86,7 @@ public class UGson {
      * @param <T>     目标泛型
      * @return 返回一个转换类型的列表
      */
-    public static <T> ArrayList<T> toList(ArrayList list, Class<T> cls) {
+    public static <T> ArrayList<T> fromJsonList(ArrayList list, Class<T> cls) {
         ArrayList<T> dtoList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             Object object = list.get(i);
@@ -91,14 +97,9 @@ public class UGson {
         return dtoList;
     }
 
-    /**
-     * 没封装出来orz
-     */
-    public static <T> void toList(String json) {
-        List<T> list = gson.fromJson(json, new TypeToken<List<T>>() {
-        }.getType());
-    }
-
+//---------------------------------------------------------------------------------------------
+//下面的代码仅测试用
+//---------------------------------------------------------------------------------------------
 
     /**
      * @param obj 被解析的实例化对象如 Bean() ArrayList<Bean>()

@@ -12,9 +12,10 @@ import java.util.NoSuchElementException;
  * @Author Kosmos
  * @Date 2018年1月29日 16:04
  * @Email KosmoSakura@gmail.com
- * @Tip  2018.10.31:重构
- * @Tip  2018.11.11:setFirstDayOfWeek的失效，修复获取当前星期的天数方法
- * @Tip  2018.11.22:获取当前短/长日期
+ * @Tip 2018.10.31:重构
+ * @Tip 2018.11.11:setFirstDayOfWeek的失效，修复获取当前星期的天数方法
+ * @Tip 2018.11.22:获取当前短/长日期
+ * @tip 2020.7.30  追加时间格式
  * <p>
  * 默认的时间格式为：yyyy-MM-dd HH:mm:ss
  * 其他格式的时间需要自己传入相应的时间格式
@@ -35,7 +36,10 @@ public class UDate {
     private final static long DAY = 24 * HOUR;// 天
     private final static long MONTH = 31 * DAY;// 月
     private final static long YEAR = 12 * MONTH;// 年
-    private final static String FORMAT_DEFAULT = "yyyy-MM-dd HH:mm:ss";//服务器现在默认的时间格式
+    private final static String FORMAT_DEFAULT_TIME = "HH:mm:ss";//时间格式
+    private final static String FORMAT_DEFAULT = "yyyy-MM-dd HH:mm:ss";//默认的时间格式
+    private final static String FORMAT_DEFAULT_No_SEPARATOR = "yyyyMMddHHmmss";//时间格式-没有分隔符
+    private final static String FORMAT_DEFAULT_DATE = "yyyy-MM-dd";//默认的日期格式
 
     /**
      * @Description: 不对外开发的东西，注释懒得写(oﾟ▽ﾟ)o

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.Browser;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.FileProvider;
@@ -267,10 +268,15 @@ public class UIntent {
      * @param link 地址
      * @apiNote 用默认浏览器打开
      */
-    public static void toBrowser(String link) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        start(intent);
+    public static void toBrowser(Activity act, String link) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+            intent.putExtra(Browser.EXTRA_APPLICATION_ID, act.getPackageName());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            act.startActivity(intent);
+        } catch (Exception e) {
+//            ToastUtils.show("未找到默认浏览器");
+        }
     }
 
     /**
@@ -283,6 +289,7 @@ public class UIntent {
         phone.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         start(phone);
     }
+
     /**
      * @apiNote 打开微信
      */
@@ -299,6 +306,7 @@ public class UIntent {
 //            ToastUtils.show("未找到微信客户端");
         }
     }
+
     /**
      * @param path new File("apk地址")
      * @tip apk安装，兼容至“Android 10”

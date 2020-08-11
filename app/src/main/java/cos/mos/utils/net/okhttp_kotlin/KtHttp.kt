@@ -6,7 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import cos.mos.toolkit.java.UText
 import cos.mos.toolkit.json.UGson
-import cos.mos.utils.net.okhttp.UNet
+import cos.mos.utils.utils.gps.UNet
 import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject

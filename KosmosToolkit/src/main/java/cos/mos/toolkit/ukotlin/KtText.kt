@@ -1,5 +1,8 @@
 package cos.mos.toolkit.ukotlin
 
+import android.app.Activity
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.text.Editable
 import android.widget.TextView
 
@@ -72,4 +75,9 @@ object KtText {
 
     fun getLength(tv: TextView, defaul: Int = 0) = if (isEmpty(tv)) defaul else tv.length()
     fun getLength(arr: List<Any>?) = arr?.size ?: 0
+
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    fun isActNull(act: Activity?): Boolean {
+        return act == null || act.isFinishing || act.isDestroyed
+    }
 }

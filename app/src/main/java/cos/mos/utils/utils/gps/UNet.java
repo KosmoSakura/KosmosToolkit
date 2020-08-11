@@ -1,4 +1,4 @@
-package cos.mos.utils.net.okhttp;
+package cos.mos.utils.utils.gps;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

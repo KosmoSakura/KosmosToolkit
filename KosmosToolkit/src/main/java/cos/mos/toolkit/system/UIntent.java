@@ -252,8 +252,8 @@ public class UIntent {
         try {
             Intent data = new Intent(Intent.ACTION_SENDTO);
             data.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            data.setData(Uri.parse("mailto:way.ping.li@gmail.com"));
-            data.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{email});
+            data.setData(Uri.parse("mailto:" + email));
+//            data.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{email});
             data.putExtra(Intent.EXTRA_SUBJECT, "This is a title");
             data.putExtra(Intent.EXTRA_TEXT, "This is the content");
             start(data);

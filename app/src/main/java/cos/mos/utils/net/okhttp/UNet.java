@@ -9,10 +9,11 @@ import java.lang.ref.WeakReference;
 import cos.mos.utils.initial.App;
 
 /**
- * @Description: 网络状态
- * @Author: Kosmos
- * @Date: 2019.05.06 10:09
- * @Email: KosmoSakura@gmail.com
+ * @Description 网络状态
+ * @Author Kosmos
+ * @Date 2019.05.06 10:09
+ * @Email KosmoSakura@gmail.com
+ * @tip 2020.8.11 网络校验
  * 权限
  * <uses-permission android:name="android.permission.INTERNET"/>
  * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -22,9 +23,7 @@ public class UNet {
     private WeakReference<Context> ref;
     private ConnectivityManager netMgr;
 
-    private UNet() {
-
-    }
+    private UNet() { }
 
     public static UNet instance(Context context) {
         if (net == null) {
@@ -56,9 +55,12 @@ public class UNet {
     /**
      * @return 当前是否为有网络可以使用（链接）
      */
-    public boolean isNetCanlinked() {
+    public boolean isNetAvailable() {
+        if (mgr() == null) {
+            return false;
+        }
         NetworkInfo info = mgr().getActiveNetworkInfo();
-        return info != null && info.isAvailable();
+        return info != null && info.isConnected() && info.isAvailable();
     }
 
     /**

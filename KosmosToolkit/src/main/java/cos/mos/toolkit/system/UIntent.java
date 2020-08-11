@@ -29,6 +29,7 @@ import cos.mos.toolkit.log.ULog;
  * @tip 2019.3.18: 跳转应用商店
  * @tip 2019.3.21: 跳转邮箱、拨号等界面
  * @tip 2020.5.23 apk安装，兼容至“Android 10”
+ * @tip 2020.8.11 跳转微信
  */
 public class UIntent {
     private static void start(Intent intent) {
@@ -258,7 +259,7 @@ public class UIntent {
             data.putExtra(Intent.EXTRA_TEXT, "This is the content");
             start(data);
         } catch (Exception e) {
-//            UToast.show("No mail client found");//显示提示
+//            ToastUtils.show("未找到邮件客户端");
         }
     }
 
@@ -282,7 +283,22 @@ public class UIntent {
         phone.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         start(phone);
     }
-
+    /**
+     * @apiNote 打开微信
+     */
+    public static void toWechat(Activity act) {
+        try {
+            Intent intent = new Intent();
+            ComponentName cmp = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI");
+            intent.setAction(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setComponent(cmp);
+            act.startActivity(intent);
+        } catch (Exception e) {
+//            ToastUtils.show("未找到微信客户端");
+        }
+    }
     /**
      * @param path new File("apk地址")
      * @tip apk安装，兼容至“Android 10”

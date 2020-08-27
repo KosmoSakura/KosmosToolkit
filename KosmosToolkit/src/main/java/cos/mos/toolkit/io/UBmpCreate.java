@@ -1,4 +1,4 @@
-package cos.mos.toolkit.media.image;
+package cos.mos.toolkit.io;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

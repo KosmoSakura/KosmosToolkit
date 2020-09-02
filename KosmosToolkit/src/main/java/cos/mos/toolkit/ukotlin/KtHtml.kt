@@ -14,6 +14,7 @@ import android.widget.TextView
  * @Author Kosmos
  * @Date 2019.11.19 17:22
  * @Email KosmoSakura@gmail.com
+ * @tip 2020.9.2 追加样式
  * */
 object KtHtml {
     /**
@@ -25,20 +26,20 @@ object KtHtml {
         tv.paint.isAntiAlias = true//抗锯齿
     }
 
-    /**
-     * @return 给字符添加下划线
-     */
-    fun getTextUnderLine(str: String): Spanned = getHtml("<u>$str</u>")
+    //下划线
+    fun getTextUnderLine(str: String) = getHtml("<u>$str</u>")
 
-    /**
-     * @return 文本加粗
-     */
-    fun getTextBold(str: String): Spanned = getHtml("<b>$str</b>")
+    //文本加粗
+    fun getTextBold(str: String) = getHtml("<b>$str</b>")
 
-    /**
-     * @return 文本斜体
-     */
-    fun getTextItalic(str: String): Spanned = getHtml("<i>$str</i>")
+    //文本斜体
+    fun getTextItalic(str: String) = getHtml("<i>$str</i>")
+
+    //文本上标
+    fun getTextSup(str: String) = getHtml("<sup><small>$str</small></sup>")
+
+    //文本下标
+    fun getTextSub(str: String) = getHtml("<sub><small>$str</small></sub>")
 
     /**
      * @param text1      字符1

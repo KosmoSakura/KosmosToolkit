@@ -14,7 +14,7 @@ import android.widget.TextView;
  * @Author Kosmos
  * @Date 2019.11.19 17:24
  * @Email KosmoSakura@gmail.com
- * @Tip
+ * @tip 2020.9.2 追加样式
  */
 public class UHtml {
     /**
@@ -25,25 +25,29 @@ public class UHtml {
         t.getPaint().setAntiAlias(true);//抗锯齿
     }
 
-    /**
-     * @return 下划线
-     */
+    //下划线
     public static Spanned getTextUnderLine(String str) {
         return getHtml("<u>" + str + "</u>");
     }
 
-    /**
-     * @return 文本加粗
-     */
+    //文本加粗
     public static Spanned getTextBold(String str) {
         return getHtml("<b>" + str + "</b>");
     }
 
-    /**
-     * @return 文本斜体
-     */
+    //文本斜体
     public static Spanned getTextItalic(String str) {
         return getHtml("<i>" + str + "</i>");
+    }
+
+    //文本上标
+    public static Spanned getTextSup(String str) {
+        return getHtml("<sup><small>" + str + "</small></sup>");
+    }
+
+    //文本下标
+    public static Spanned getTextSub(String str) {
+        return getHtml("<sub><small>" + str + "</small></sub>");
     }
 
     /**

@@ -13,7 +13,9 @@ import android.widget.TextView
  * @Email KosmoSakura@gmail.com
  * @Tip 优化空判断显示:2019.10.24
  * @Tip 优化判断逻辑执行效率：2019.10.25
+ * @Tip 可变参数判断：2020.9.14
  * */
+@Deprecated("还是不用了，日后只在Uxxx.java中更新")
 object KtText {
 
     @JvmStatic
@@ -79,5 +81,14 @@ object KtText {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     fun isActNull(act: Activity?): Boolean {
         return act == null || act.isFinishing || act.isDestroyed
+    }
+
+    fun checkEmpty(vararg texts: TextView): Boolean {
+        texts.forEach {
+            if (isEmpty(it)) {
+                return true
+            }
+        }
+        return false
     }
 }

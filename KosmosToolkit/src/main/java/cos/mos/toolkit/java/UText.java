@@ -1,5 +1,8 @@
 package cos.mos.toolkit.java;
 
+import android.app.Activity;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.widget.TextView;
 
 import java.util.List;
@@ -17,6 +20,7 @@ import java.util.List;
  * @Tip 2019.10.25:优化判断逻辑执行效率
  * @Tip 2019.11.7:追加空处理类型
  * @Tip 2020.5.6:新增几个函数
+ * @Tip 2020.9.14:可变参数判断
  * @apiNote 本类中的空值判断：长度为0都为false
  */
 public class UText {
@@ -171,5 +175,18 @@ public class UText {
         return list == null ? 0 : list.size();
     }
 
-//-------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public static boolean isActNull(Activity act) {
+        return act == null || act.isFinishing() || act.isDestroyed();
+    }
+
+    public static boolean checkEmpty(TextView... texts) {
+        for (TextView tvs : texts) {
+            if (isEmpty(tvs)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

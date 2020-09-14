@@ -9,6 +9,7 @@ import java.math.BigDecimal
  * @Email: KosmoSakura@gmail.com
  * @tip 2020.4.27-四舍五入，取整、精度问题
  */
+@Deprecated("还是不用了，日后只在Uxxx.java中更新")
 object KtUnit {
     @JvmStatic
     fun sizeFormatbit(size: Float): String {

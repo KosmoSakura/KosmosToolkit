@@ -6,6 +6,7 @@ package cos.mos.toolkit.ukotlin
  * @Date: 2019.04.30 19:34
  * @Email: KosmoSakura@gmail.com
  */
+@Deprecated("还是不用了，日后只在Uxxx.java中更新")
 object KtString {
     /**
      * @param str "1967+2356-433*12/66"

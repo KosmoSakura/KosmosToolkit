@@ -18,6 +18,7 @@ import java.util.ArrayList
  * @Tip 2019.11.7-添加gson解析容错格式
  * @Tip 2020.7.28 优化gson列表解析
  * */
+@Deprecated("还是不用了，日后只在Uxxx.java中更新")
 object UGson {
     private val gson: Gson by lazy {
         GsonBuilder().setLenient()//宽容的解析，默认情况下，Gson是严格的，只接受指定的JSON

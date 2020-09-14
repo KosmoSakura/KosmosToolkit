@@ -11,6 +11,7 @@ import java.util.*
  * @tip 2020.7.28  追加时间获取
  * @tip 2020.7.30  追加时间格式
  */
+@Deprecated("还是不用了，日后只在Uxxx.java中更新")
 object KtDate {
     private val intSECOND = 0x00// 秒
     private val intMINUTE = 0x0001// 分钟

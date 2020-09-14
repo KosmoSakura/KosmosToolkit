@@ -13,6 +13,7 @@ import cos.mos.toolkit.init.KApp
  * @Date: 2019.04.22 21:30
  * @Email: KosmoSakura@gmail.com
  */
+@Deprecated("还是不用了，日后只在Uxxx.java中更新,截至2019.04.22，两个内容还是相同的")
 object KtScreen {
     private val metric = KApp.instance().resources.displayMetrics
     private val scale = metric.density

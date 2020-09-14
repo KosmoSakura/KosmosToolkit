@@ -16,6 +16,7 @@ import cos.mos.toolkit.init.KApp
  * @Email: KosmoSakura@gmail.com
  * @eg: 2019.5.13:获取颜色本地化
  */
+@Deprecated("还是不用了，日后只在Uxxx.java中更新")
 object KtColor {
     /**
      * @param color eg：-4253158

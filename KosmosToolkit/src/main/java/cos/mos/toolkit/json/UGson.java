@@ -28,6 +28,7 @@ public class UGson {
         gson = new GsonBuilder()
             .setLenient()//宽容的解析，默认情况下，Gson是严格的，只接受指定的JSON
             .enableComplexMapKeySerialization()//启用复杂映射键序列化
+            .serializeSpecialFloatingPointValues()//序列化特殊浮点值
             .serializeNulls()//序列化null
             .setPrettyPrinting()//将Gson配置为输出Json，以便在页面中进行漂亮的打印。这个选项有影响Json序列化。
             .disableHtmlEscaping() //禁止转义html标签:默认情况下，Gson会转义HTML字符，如&lt等。使用此选项进行配置按原样传递HTML字符

@@ -29,6 +29,9 @@ public interface Code {
     int OrgBlue = Color.parseColor("#0000FF");//原色：蓝色
     int OrgRed = Color.parseColor("#FF0000");//原色：红色
     int OrgGreen = Color.parseColor("#00FF00");//原色：绿色
+    int OrgBlueGreen = Color.parseColor("#00FFFF");//原色：蓝绿-浅蓝(天依蓝)
+    int OrgRedGreen = Color.parseColor("#FFFF00");//原色：红绿-亮黄(柠檬黄)
+    int OrgRedBlue = Color.parseColor("#FF00FF");//原色：红蓝-亮紫(嫣红)
 
     int ColorGray = Color.parseColor("#7d7d7d"); //常规颜色:灰
     int ColorGrayLight = Color.parseColor("#C3C3C3"); //常规颜色:灰

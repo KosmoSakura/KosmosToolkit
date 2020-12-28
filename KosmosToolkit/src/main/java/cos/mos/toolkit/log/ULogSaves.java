@@ -15,7 +15,7 @@ import java.io.IOException;
  * @Email KosmoSakura@gmail.com
  */
 public class ULogSaves {
-    private static File saveFile = new File(Environment.getExternalStorageDirectory(), "WM记录.txt");
+    private static final File saveFile = new File(Environment.getExternalStorageDirectory(), "WM记录.txt");
 
     private static String read() {
         byte[] Buffer = new byte[1024];

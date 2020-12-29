@@ -16,6 +16,7 @@ import kotlin.math.sign
  * @Date 2020.03.25 00:18
  * @Email KosmoSakura@gmail.com
  * @tip 2020.8.20 优化手势判断，小地图事件，和小地图显示时机
+ * @tip 2020.12.29 缩放重置
  * */
 class ZoomView : FrameLayout {
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
@@ -79,6 +80,14 @@ class ZoomView : FrameLayout {
         zoomX = x
         zoomY = y
         smoothZoomTo(this.zoom, x, y)
+    }
+
+    fun zoomReset() {
+        zoomTo(zoomOriginal, width / 2.0f, height / 2.0f)
+    }
+
+    fun zoomResetSmooth() {
+        smoothZoomTo(zoomOriginal, width / 2.0f, height / 2.0f)
     }
 
     private fun smoothZoomTo(zoom: Float, x: Float, y: Float) {

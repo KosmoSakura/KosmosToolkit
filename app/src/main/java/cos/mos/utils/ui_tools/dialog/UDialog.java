@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.DrawableRes;
+import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.Gravity;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import cos.mos.toolkit.constant.Code;
+import cos.mos.toolkit.java.UHtml;
 import cos.mos.toolkit.java.UText;
 import cos.mos.utils.R;
 
@@ -29,12 +32,14 @@ import cos.mos.utils.R;
  * @tip 2019.11.7 优化显示尺寸
  * @tip 2020.4.17 支持定制颜色(UHtml.getHtml("检测到可用更新", Code.ColorError))
  * @tip 2020.5.9 追加通知内容2展示
+ * @tip 2020.8.9 添加模板
+ * @tip 2020.12.23 追加类型输入属性
  */
 public class UDialog extends Dialog {
     private CharSequence strTitle, strHint;//标题、输入框hint
     private CharSequence strConfirm, strCancle;//确定、取消按钮文字
     private CharSequence strMsg, strMsg_2;//通知内容1,通知内容2
-    private int iconRes;//图标
+    private int iconRes, edtInputType;//图标
     private int gravity = Gravity.CENTER;//通知内容排版
     private int gravity_2 = Gravity.CENTER;//通知内容2排版
     private boolean password;//密码模式
@@ -69,9 +74,39 @@ public class UDialog extends Dialog {
         strHint = "";
         strConfirm = "";
         strCancle = "";
+        edtInputType = InputType.TYPE_CLASS_TEXT;
         password = false;
         cancelClick = null;
     }
+
+    //添加模板,监听可为空:alignmentLeft 是否左对齐，false右对齐
+    public static void builderTemplate(Context ctx, String title, String msg, boolean alignmentLeft, ConfirmClick confirmClick) {
+        UDialog.builder(ctx, false)
+            .title(UHtml.getHtml(title, Code.ColorRed))
+            .msg(UHtml.getHtml(msg, Code.ColorBlueTheme), alignmentLeft)
+            .button("确定", "取消")
+            .build(confirmClick);
+    }
+
+    //添加模板,监听可为空
+    public static void builderTemplate(Context ctx, String title, String msg, ConfirmClick confirmClick) {
+        UDialog.builder(ctx, false)
+            .title(UHtml.getHtml(title, Code.ColorRed))
+            .msg(UHtml.getHtml(msg, Code.ColorBlueTheme))
+            .button("确定", "取消")
+            .build(confirmClick);
+    }
+
+    //添加模板,监听可为空
+    public static void builderTemplate(Context ctx, String title, String msg, int iconRes, ConfirmClick confirmClick) {
+        UDialog.builder(ctx, false)
+            .title(UHtml.getHtml(title, Code.ColorRed))
+            .msg(UHtml.getHtml(msg, Code.ColorBlueTheme))
+            .icon(iconRes)
+            .button("确定", "取消")
+            .build(confirmClick);
+    }
+
 
     /**
      * @apiNote 可以通过返回键、点击外面关闭
@@ -162,6 +197,19 @@ public class UDialog extends Dialog {
     public UDialog msg_2(CharSequence msg, int gravity) {
         this.strMsg_2 = msg;
         this.gravity_2 = gravity;
+        return this;
+    }
+
+    /**
+     * @param inputType 输入类型
+     * @tip 一般字符：InputType.TYPE_CLASS_TEXT
+     * @tip 纯数字：InputType.TYPE_CLASS_NUMBER
+     * @tip 小数(Kt:or)：InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL
+     * @tip 正负整数(Kt:or)：InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED
+     * @tip 正负小数(Kt:or)：InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED or InputType.TYPE_NUMBER_FLAG_DECIMAL
+     */
+    public UDialog inputType(int inputType) {
+        edtInputType = inputType;
         return this;
     }
 
@@ -300,6 +348,7 @@ public class UDialog extends Dialog {
         } else {
             edt.setVisibility(View.VISIBLE);
             edt.setHint(strHint);
+            edt.setInputType(edtInputType);
             edt.setText("");
             edt.setTransformationMethod(password ? PasswordTransformationMethod.getInstance()
                 : HideReturnsTransformationMethod.getInstance());

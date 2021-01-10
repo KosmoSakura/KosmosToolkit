@@ -4,6 +4,8 @@ import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import android.view.View
+import android.widget.TextView
+import cos.mos.toolkit.java.UText
 import java.math.BigDecimal
 import kotlin.math.*
 
@@ -33,6 +35,24 @@ inline fun <T : View> T.makeSingleClick(time: Long = 800, crossinline block: (T)
             block(this)
         }
     }
+}
+
+//-----------------------------------------------------------------------------------------------------------
+fun TextView?.loadDouble() = if (UText.isEmpty(this)) 0.0 else this!!.text.toString().toDoubleOrNull() ?: 0.0
+fun TextView?.loadFloat() = if (UText.isEmpty(this)) 0f else this!!.text.toString().toFloatOrNull() ?: 0f
+fun String?.loadFloat() = if (UText.isEmpty(this)) 0f else this!!.toFloatOrNull() ?: 0f
+fun TextView?.loadFloatSigned(): String {
+    val ff = this.loadFloat()
+    return if (ff > 0f) "+$ff" else if (ff == 0f) "±$ff" else ff.toString()
+}
+
+fun String?.loadFloatSigned(): String {
+    val ff = this.loadFloat()
+    return if (ff > 0f) "+$ff" else if (ff == 0f) "±$ff" else ff.toString()
+}
+
+fun Float.loadFloatSigned(): String {
+    return if (this > 0f) "+${this.keep1()}" else if (this == 0f) "±${this.keep1()}" else (this.keep1()).toString()
 }
 
 //-----------------------------------------------------------------------------------------------------------

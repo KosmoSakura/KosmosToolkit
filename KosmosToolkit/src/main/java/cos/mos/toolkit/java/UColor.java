@@ -13,7 +13,6 @@ import android.support.annotation.Size;
 import cos.mos.toolkit.init.KApp;
 
 
-
 /**
  * @Description 颜色工具类
  * @Author Kosmos
@@ -280,4 +279,24 @@ public class UColor {
         su.append(b);
         return su.toString();
     }
+
+//系统源码--------------------------------------------------------------------------------------------
+
+
+    public static int parseColor(@Size(min = 1) String colorString) {
+        if (colorString.charAt(0) == '#') {
+            // Use a long to avoid rollovers on #ffXXXXXX
+            long color = Long.parseLong(colorString.substring(1), 16);
+            if (colorString.length() == 7) {
+                // Set the alpha value
+                color |= 0x00000000ff000000;
+            } else if (colorString.length() != 9) {
+                throw new IllegalArgumentException("Unknown color");
+            }
+            return (int) color;
+        } else {
+            throw new IllegalArgumentException("Unknown color");
+        }
+    }
+
 }

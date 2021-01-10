@@ -8,8 +8,7 @@ package cos.mos.toolkit.encrypt;
  */
 public class PtHex {
     //十六进制数字->字符 映射数组
-    private final static String[] hexDigits = {"0", "1", "2", "3", "4", "5", "6", "7",
-        "8", "9", "a", "b", "c", "d", "e", "f"};
+    private final static String[] hexDigits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
 
     /**
      * @return 二行制->字符串

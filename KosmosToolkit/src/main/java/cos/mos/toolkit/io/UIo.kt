@@ -11,43 +11,57 @@ import java.io.*
  * @Author Kosmos
  * @Date 2020.08.27 19:45
  * @Email KosmoSakura@gmail.com
+ * @tip 2021.1.22 io读写
  * */
 object UIo {
     //SD卡中加载图片
     fun loadBmp(dirFile: String?): Bitmap? {
-        if (UText.isEmpty(dirFile)) {
-            return null
-        }
+        if (UText.isEmpty(dirFile)) return null
         val options: BitmapFactory.Options = BitmapFactory.Options()
         options.inSampleSize = 2
         return BitmapFactory.decodeFile(dirFile, options)
     }
 
-    fun <T> loadStr(cls: Class<T>, path: String, name: String, listener: NormalStrBoolListener) {
-        try {// 获取指定文件对应的输入流
+    //读取：字符类文件（非二进制）
+    fun loadStr(path: String, name: String, listener: NormalStrBoolListener?) {
+        try {
             val fis = FileInputStream(path + name)
-            val ois = ObjectInputStream(fis)
-            val outObj = ois.readObject() as String
-            ois.close()
+            val size = fis.available()
+            val buffer = ByteArray(size)
+            fis.read(buffer)
             fis.close()
-            listener.onResult(outObj, true)
+            listener?.onResult(String(buffer), true)
         } catch (e: Exception) {
-            listener.onResult("", false)
+            listener?.onResult(e.message, false)
         }
     }
 
-    fun <T> loadObj(cls: Class<T>, path: String, name: String): T? {
+    //读取：字符类二进制形式文件
+    fun loadObjStr(path: String, name: String, listener: NormalStrBoolListener?) {
+        try {// 获取指定文件对应的输入流
+            val dis = DataInputStream(BufferedInputStream(FileInputStream(path + name)))
+            val out = dis.readUTF()
+            close(dis)
+            listener?.onResult(out, false)
+        } catch (e: Exception) {
+            listener?.onResult(e.message, false)
+        }
+    }
+
+    //读取：文件类二进制文件对象,传入全路径
+    fun <T> loadObj(fullDir: String): T? {
         return try {// 获取指定文件对应的输入流
-            val fis = FileInputStream(path + name)
+            val fis = FileInputStream(fullDir)
             val ois = ObjectInputStream(fis)
-            val outObj = ois.readObject() as T
-            ois.close()
-            fis.close()
-            outObj
+            val out = ois.readObject() as? T
+            close(fis, ois)
+            out
         } catch (e: Exception) {
             null
         }
     }
+
+    fun <T> loadObj(path: String, name: String): T? = loadObj(path + name)
 
     /**
      * @param json 要保存的字符
@@ -56,21 +70,21 @@ object UIo {
      * @param listener 监听
      *  @tip 保存字符串
      */
-    fun saveStr(json: String, path: String, name: String, listener: NormalStrBoolListener) {
+    fun saveStr(json: String, path: String, name: String, listener: NormalStrBoolListener?) {
         val saveFile = File(path, name)
         try {
-            if (!createDir(path)) {
-                listener.onResult("文件夹创建失败", false)
+            if (!UFile.createDir(path)) {
+                listener?.onResult("文件夹创建失败", false)
                 return
             }
-            createFile(saveFile)//新建文件
-            val outStream = FileOutputStream(saveFile)
-            outStream.write(json.toByteArray())
-            outStream.flush()
-            outStream.close()
-            listener.onResult("保存成功", true)
+            UFile.createFile(saveFile)//新建文件
+            val fos = FileOutputStream(saveFile)
+            fos.write(json.toByteArray())
+            fos.flush()
+            fos.close()
+            listener?.onResult("保存成功", true)
         } catch (e: Exception) {
-            listener.onResult("保存失败", false)
+            listener?.onResult("保存失败", false)
         }
     }
 
@@ -79,49 +93,83 @@ object UIo {
      * @param path 保存路径
      * @param name 文件名.后缀：xxx.txt
      * @param listener 监听
-     * @tip 保存文件对象
+     * @tip 保存字符类二进制文件对象
      */
-    fun saveObj(json: Any, path: String, name: String, listener: NormalStrBoolListener) {
+    fun saveObjStr(json: String, path: String, name: String, listener: NormalStrBoolListener?) {
         val saveFile = File(path, name)
         try {
-            if (!createDir(path)) {
-                listener.onResult("文件夹创建失败", false)
+            if (!UFile.createDir(path)) {
+                listener?.onResult("文件夹创建失败", false)
                 return
             }
-            createFile(saveFile)//新建文件
-            val fos = FileOutputStream(path + name)
-            val oos = ObjectOutputStream(fos)
-            oos.writeObject(json)
-            oos.close()
-            fos.close()
-            listener.onResult("保存成功", true)
+            UFile.createFile(saveFile)//新建文件
+            val dos = DataOutputStream(BufferedOutputStream(FileOutputStream(saveFile)))
+            dos.writeUTF(json)
+            dos.flush()
+            close(dos)
+            listener?.onResult("保存成功", true)
         } catch (e: Exception) {
-            listener.onResult("保存失败", false)
+            listener?.onResult("保存失败", false)
         }
     }
 
-    //新建文件:true-文件不存在，并且已经成功创建 ,false-文件已经存在
-    @Throws(IOException::class)
-    fun createFile(dir: String): Boolean = createFile(File(dir))
-
-    //新建文件:true-文件不存在，并且已经成功创建 ,false-文件已经存在
-    @Throws(IOException::class)
-    fun createFile(file: File): Boolean {
-        return if (file.exists()) {
-            true
-        } else file.createNewFile()
+    //保存文件类二进制文件对象
+    fun saveObj(obj: Serializable, path: String, name: String, listener: NormalStrBoolListener?) {
+        val saveFile = File(path, name)
+        try {
+            if (!UFile.createDir(path)) {
+                listener?.onResult("文件夹创建失败", false)
+                return
+            }
+            UFile.createFile(saveFile)//新建文件
+            val fos = FileOutputStream(path + name)
+            val oos = ObjectOutputStream(fos)
+            oos.writeObject(obj)
+            close(oos, fos)
+            listener?.onResult("保存成功", true)
+        } catch (e: Exception) {
+            listener?.onResult("保存失败" + e.message, false)
+        }
     }
 
-    //创建文件夹
-    @Throws(IOException::class)
-    fun createDir(dir: String): Boolean = createDir(File(dir))
-
-    //创建文件夹
-    @Throws(IOException::class)
-    fun createDir(file: File): Boolean {
-        return if (file.exists()) {
-            true
-        } else file.mkdir()
+    /**
+     * @param src 被复制文件的完整（路径+文件名+后缀名）
+     * @param dst 复制到哪里（路径+文件名+后缀名）
+     * @return 复制是否成功
+     * @apiNote 复制文件
+     */
+    fun copyFile(src: String?, dst: String?): Boolean {
+        val file = File(src)
+        return if (file.exists() && file.isFile) {
+            var ism: InputStream? = null
+            var otm: OutputStream? = null
+            try {
+                ism = BufferedInputStream(FileInputStream(src))
+                otm = BufferedOutputStream(FileOutputStream(dst))
+                val buf = ByteArray(1024)
+                var len: Int
+                while (ism.read(buf).also { len = it } > 0) {
+                    otm.write(buf, 0, len)
+                }
+                true
+            } catch (e: Exception) {
+                false
+            } finally {
+                close(ism, otm)
+            }
+        } else {
+            false //不是一个文件，或者文件不存在
+        }
     }
 
+    // 关流
+    fun close(vararg clos: Closeable?) {
+        clos.forEach {
+            try {
+                it?.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
 }

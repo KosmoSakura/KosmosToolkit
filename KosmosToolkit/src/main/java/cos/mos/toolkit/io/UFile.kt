@@ -1,7 +1,5 @@
 package cos.mos.toolkit.io
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import cos.mos.toolkit.init.KApp
 import cos.mos.toolkit.java.UText
 import java.io.*
@@ -246,7 +244,13 @@ object UFile {
      * @param filePath 路径（a/b/c)、文件(a/b/c/aa.txt)
      * @return 路径、文件是否存在
      */
-    fun isFileExist(filePath: String?): Boolean = if (filePath == null) false else File(filePath).exists()
+    fun isFileExist(filePath: String): Boolean {
+        return try {
+            File(filePath).exists()
+        } catch (e: Exception) {
+            false
+        }
+    }
 
     /**
      * @return 判断 两个文件大小是否相等.

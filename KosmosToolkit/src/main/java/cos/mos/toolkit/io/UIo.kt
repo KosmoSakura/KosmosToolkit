@@ -115,17 +115,18 @@ object UIo {
 
     //保存文件类二进制文件对象
     fun saveObj(obj: Serializable, path: String, name: String, listener: NormalStrBoolListener?) {
-        val saveFile = File(path, name)
+
         try {
             if (!UFile.createDir(path)) {
                 listener?.onResult("文件夹创建失败", false)
                 return
             }
-            UFile.createFile(saveFile)//新建文件
-            val fos = FileOutputStream(path + name)
-            val oos = ObjectOutputStream(fos)
+            val saveFile = File(path, name)
+            UFile.createFileReplace(saveFile)//新建文件
+            val oos = ObjectOutputStream(FileOutputStream(saveFile))
             oos.writeObject(obj)
-            close(oos, fos)
+            oos.flush()
+            close(oos)
             listener?.onResult("保存成功", true)
         } catch (e: Exception) {
             listener?.onResult("保存失败" + e.message, false)

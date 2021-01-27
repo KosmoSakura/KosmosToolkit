@@ -1,6 +1,7 @@
 package cos.mos.toolkit.encrypt;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -34,12 +35,12 @@ public class PtBase64 {
         -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
         38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1,
         -1, -1};
-
+    private static StringBuilder sb = new StringBuilder();
     /**
      * @return 编码
      */
-    static String encode(byte[] data) {
-        StringBuilder sb = new StringBuilder();
+    public static String encode(byte[] data) {
+        sb.setLength(0);
         int len = data.length;
         int i = 0;
         int b1, b2, b3;
@@ -63,7 +64,7 @@ public class PtBase64 {
             sb.append(base64EncodeChars[b1 >>> 2]);
             sb.append(base64EncodeChars[getPosition(b1, b2)]);
             sb.append(base64EncodeChars[((b2 & 0x0f) << 2)
-                | ((b3 & 0xc0) >>> 6)]);
+                    | ((b3 & 0xc0) >>> 6)]);
             sb.append(base64EncodeChars[b3 & 0x3f]);
         }
         return sb.toString();
@@ -72,14 +73,13 @@ public class PtBase64 {
     /**
      * @return 解码
      */
-    static byte[] decode(String str) throws UnsupportedEncodingException {
-        StringBuilder sb = new StringBuilder();
-        byte[] data = str.getBytes("US-ASCII");
+    public static byte[] decode(String str) throws UnsupportedEncodingException {
+        sb.setLength(0);
+        byte[] data = str.getBytes(StandardCharsets.US_ASCII);
         int len = data.length;
         int i = 0;
         int b1, b2, b3, b4;
         while (i < len) {
-
             do {
                 b1 = base64DecodeChars[data[i++]];
             } while (i < len && b1 == -1);

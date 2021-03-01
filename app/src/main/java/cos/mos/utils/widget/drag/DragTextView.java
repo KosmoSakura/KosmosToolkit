@@ -1,6 +1,7 @@
 package cos.mos.utils.widget.drag;
 
 import android.content.Context;
+import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
@@ -9,11 +10,12 @@ import android.view.MotionEvent;
  * @Author Kosmos
  * @Date 2019.01.23 18:26
  * @Email KosmoSakura@gmail.com
- * 2020.7.1 优化拖拽和点击事件
+ * @tip 2020.7.1 优化拖拽和点击事件
+ * @tip 20201.3.1 优化拖拽算法
  */
 public class DragTextView extends ScaleTextView {
     private float sx, sy;//二维坐标
-    private int moving = 0;//移动中
+    private final PointF start = new PointF();
     private MovingListener<DragTextView> listener;//四向坐标监听器
     private TouchStateListener<DragTextView> stateListener;
 
@@ -47,19 +49,15 @@ public class DragTextView extends ScaleTextView {
         }
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                moving = 0;
                 //手指坐标
+                start.set(event.getRawX(), event.getRawY());
                 sx = event.getRawX();
                 sy = event.getRawY();
                 break;
             case MotionEvent.ACTION_MOVE:
-                moving++;
-                //手指移动坐标
-                float x = event.getRawX();
-                float y = event.getRawY();
                 // 获取手指移动的距离
-                int dx = (int) (x - sx);
-                int dy = (int) (y - sy);
+                int dx = (int) (event.getRawX() - sx);
+                int dy = (int) (event.getRawY() - sy);
                 // 得到imageView最开始的各顶点的坐标
                 layout(getLeft() + dx, getTop() + dy, getRight() + dx, getBottom() + dy);
                 sx = event.getRawX();
@@ -69,7 +67,7 @@ public class DragTextView extends ScaleTextView {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                if (moving < 5) {
+                if (Math.abs(event.getRawX() - start.x) + Math.abs(event.getRawY() - start.y) < 1f) {
                     performClick();
                 }
                 break;

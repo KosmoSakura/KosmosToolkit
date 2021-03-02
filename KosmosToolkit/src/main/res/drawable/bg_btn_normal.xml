@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><!--普通的按钮的背景-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/arc_full_blue_lighter_r8" android:state_pressed="true"/>
+    <item android:drawable="@drawable/arc_full_blue_lighter_r8" android:state_focused="true"/>
+    <item android:drawable="@drawable/arc_full_blue_light_r8"/>
+</selector>

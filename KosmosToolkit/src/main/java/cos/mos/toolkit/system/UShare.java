@@ -8,7 +8,6 @@ import android.provider.MediaStore;
 import java.io.IOException;
 
 import cos.mos.toolkit.java.UText;
-import cos.mos.utils.ui_tools.toast.ToastUtil;
 
 /**
  * @Description: 分享工具
@@ -24,7 +23,7 @@ public class UShare {
      */
     public static void shareText(String title, String content, Context context) {
         if (UText.isEmpty(title) || UText.isEmpty(content)) {
-            ToastUtil.show("Data abnormity !");
+            UToast.show("Data abnormity !");
             return;
         }
         Intent share_intent = new Intent(Intent.ACTION_SEND);

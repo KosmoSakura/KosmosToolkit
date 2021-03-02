@@ -2,7 +2,7 @@ package cos.mos.utils.net.okhttp_kotlin
 
 import android.content.Context
 import android.net.ConnectivityManager
-import cos.mos.utils.initial.App
+import cos.mos.utils.initial.TApp
 import java.lang.ref.WeakReference
 
 /**
@@ -40,7 +40,7 @@ class KtNet private constructor() {
             if (ref != null && ref?.get() != null) {
                 netMgr = ref!!.get()!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             } else {
-                netMgr = App.instance().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                netMgr = TApp.instance().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             }
         }
         return netMgr!!

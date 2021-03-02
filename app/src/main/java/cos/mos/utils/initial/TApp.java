@@ -15,7 +15,7 @@ import cos.mos.toolkit.log.ULog;
  * @Date: 2019.04.12 13:09
  * @Email: KosmoSakura@gmail.com
  */
-public class App extends KApp {
+public class TApp extends KApp {
     @Override
     protected void initialize() {
         //鸿洋牌吐司

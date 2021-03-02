@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 import java.lang.ref.WeakReference;
 
-import cos.mos.utils.initial.App;
+import cos.mos.utils.initial.TApp;
 
 /**
  * @Description 网络状态
@@ -46,7 +46,7 @@ public class UNet {
                 netMgr = (ConnectivityManager) ref.get().getSystemService(Context.CONNECTIVITY_SERVICE);
                 ref.clear();
             } else {
-                netMgr = (ConnectivityManager) App.instance().getSystemService(Context.CONNECTIVITY_SERVICE);
+                netMgr = (ConnectivityManager) TApp.instance().getSystemService(Context.CONNECTIVITY_SERVICE);
             }
         }
         return netMgr;

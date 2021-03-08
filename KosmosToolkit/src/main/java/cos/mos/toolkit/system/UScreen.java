@@ -3,8 +3,11 @@ package cos.mos.toolkit.system;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +23,7 @@ import cos.mos.toolkit.init.KApp;
  * @Email KosmoSakura@gmail.com
  * @Tip 2019.2.25:基本函数抽取
  * @Tip 2019.12.20:获取状态栏高度
+ * @Tip 2020.3.8:代码封装
  */
 public class UScreen {
     private static final DisplayMetrics metrics = KApp.instance().getResources().getDisplayMetrics();
@@ -58,6 +62,10 @@ public class UScreen {
         return location;
     }
 
+    public static void setBarColor(Activity activity, int color) {
+        setBarColor(activity, color, color);
+    }
+
     /**
      * @param activity    Activity引用
      * @param colorTop    顶部颜色
@@ -76,6 +84,58 @@ public class UScreen {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 通过设置全屏，设置状态栏透明
+     */
+    public static void fullScreen(Activity activity) {
+        // 去除系统自带标题栏
+        if (activity instanceof AppCompatActivity) {
+            ((AppCompatActivity) activity).supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        } else {
+            activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
+                Window window = activity.getWindow();
+                View decorView = window.getDecorView();
+                //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
+                int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+                decorView.setSystemUiVisibility(option);
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.TRANSPARENT);
+                //导航栏颜色也可以正常设置
+                window.setNavigationBarColor(Infos.ColorTheme);
+            } else {
+                Window window = activity.getWindow();
+                WindowManager.LayoutParams attributes = window.getAttributes();
+                int flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+                int flagTranslucentNavigation = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
+                attributes.flags |= flagTranslucentStatus;
+//                attributes.flags |= flagTranslucentNavigation;
+                window.setAttributes(attributes);
+            }
+        }
+    }
+
+    /**
+     * @return 文字的宽度
+     * @tip 获取以paint为画笔要绘制的文字的宽度
+     */
+    public static int getTextWidth(Paint paint, String str) {
+        int iRet = 0;
+        if (str != null && str.length() > 0) {
+            int len = str.length();
+            float[] widths = new float[len];
+            paint.getTextWidths(str, widths);
+            for (int j = 0; j < len; j++) {
+                iRet += (int) Math.ceil(widths[j]);
+            }
+        }
+        return iRet;
     }
 
     /**

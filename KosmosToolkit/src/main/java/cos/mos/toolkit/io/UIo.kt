@@ -1,7 +1,9 @@
 package cos.mos.toolkit.io
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import cos.mos.toolkit.init.App
 import cos.mos.toolkit.java.UText
 import cos.mos.toolkit.listener.NormalStrBoolListener
 import java.io.*
@@ -12,6 +14,7 @@ import java.io.*
  * @Date 2020.08.27 19:45
  * @Email KosmoSakura@gmail.com
  * @tip 2021.1.22 io读写
+ * @tip 2021.3.9 Assets文件复制
  * */
 object UIo {
     //SD卡中加载图片
@@ -162,7 +165,36 @@ object UIo {
             false //不是一个文件，或者文件不存在
         }
     }
-
+    /**
+     * @param name assets目录下的文件名，如：test.db
+     * @param dir 数据库复制目标目录，如：/data/data/包名/dbs
+     * @return 返回复制后的文件File对象
+     */
+    fun copyAssetsToSDcard(ctx: Context?, dir: String, name: String): File? {
+        val fileDB = File("${dir}/${name}")
+        if (fileDB.exists()) {
+            return fileDB
+        }
+        if (!UFile.createDir(dir)) {
+            return null//文件夹创建失败
+        }
+        try {
+            val input = (ctx ?: App.instance).assets.open(name)//数据库的输入流
+            val fos = FileOutputStream(fileDB)//输出流写到SDcard上
+            val buffer = ByteArray(1024)//byte数组,1KB写一次
+            var count: Int
+            while (input.read(buffer).also { count = it } > 0) {
+                fos.write(buffer, 0, count)
+            }
+            //关流
+            fos.flush()
+            fos.close()
+            input.close()
+            return fileDB
+        } catch (e: IOException) {
+            return null
+        }
+    }
     // 关流
     fun close(vararg clos: Closeable?) {
         clos.forEach {
